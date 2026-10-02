@@ -112,17 +112,24 @@ function ArmyMember({
   const picked = cls ? classById.get(cls) : undefined
   return (
     <li className="flex w-44 shrink-0 snap-start flex-col items-center gap-1.5 rounded-lg border border-line p-2 md:w-36" style={{ background: tint(route, 5) }}>
-      <UnitChip
-        unit={unit}
-        state={state}
-        route={route}
-        title={onRemove ? `${unit.name} — click to remove` : unit.name}
-        hovered={hovered}
-        onHover={onHover}
-        onClick={onRemove}
-      />
-      <div className="flex w-full items-center gap-1.5">
-        {picked && <ClassIcon name={picked.name} id={picked.id} size={22} />}
+      <div className="flex items-start justify-center">
+        <UnitChip
+          unit={unit}
+          state={state}
+          route={route}
+          title={onRemove ? `${unit.name} — click to remove` : unit.name}
+          hovered={hovered}
+          onHover={onHover}
+          onClick={onRemove}
+        />
+        {/* Sized and offset to sit level with the portrait and its route ring */}
+        {picked && (
+          <span title={picked.name} className="mt-px flex">
+            <ClassIcon name={picked.name} id={picked.id} size={44} />
+          </span>
+        )}
+      </div>
+      <div className="flex w-full">
         <ClassSelect unit={unit} value={cls} onChange={onClass} emptyLabel="No class" />
       </div>
       {mergesWith.length > 0 && (
