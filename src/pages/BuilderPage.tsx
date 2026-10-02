@@ -1,10 +1,11 @@
 import { useMemo, useState, type CSSProperties, type ReactNode } from 'react'
 import { Link } from 'react-router'
+import { ClassSelect } from '../components/ClassSelect'
 import { MergePlanner, type MergeCandidate } from '../components/MergePlanner'
-import { Avatar, Card, Empty, PageHeader, RouteDot, SectionTitle } from '../components/ui'
-import { routes, timingLabel, units } from '../data'
+import { Avatar, Card, ClassIcon, Empty, PageHeader, RouteDot, SectionTitle } from '../components/ui'
+import { classById, routeById, routes, timingLabel, units } from '../data'
 import type { Recruitment, Unit } from '../data/schema'
-import { useArmy } from '../lib/army'
+import { mergeCardId, useArmy } from '../lib/army'
 import { useSettings } from '../lib/settings'
 
 type Entry = { unit: Unit; r: Recruitment }
@@ -89,6 +90,51 @@ function UnitChip({
   )
 }
 
+/** One unit in a route's army: the chip, its planned final class, and the other armies its copy merges with. */
+function ArmyMember({
+  unit, route, state, cls, mergesWith, hovered, onHover, onRemove, onClass,
+}: {
+  unit: Unit
+  route: string
+  state: ChipState
+  cls: string
+  mergesWith: string[]
+  hovered: string | null
+  onHover: (id: string | null) => void
+  onRemove?: () => void
+  onClass: (cls: string) => void
+}) {
+  const picked = cls ? classById.get(cls) : undefined
+  return (
+    <li className="flex w-36 shrink-0 flex-col items-center gap-1.5 rounded-lg border border-line p-2" style={{ background: tint(route, 5) }}>
+      <UnitChip
+        unit={unit}
+        state={state}
+        route={route}
+        title={onRemove ? `${unit.name} — click to remove` : unit.name}
+        hovered={hovered}
+        onHover={onHover}
+        onClick={onRemove}
+      />
+      <div className="flex w-full items-center gap-1.5">
+        {picked && <ClassIcon name={picked.name} id={picked.id} size={22} />}
+        <ClassSelect unit={unit} value={cls} onChange={onClass} emptyLabel="No class" />
+      </div>
+      {mergesWith.length > 0 && (
+        <button
+          type="button"
+          onClick={() => document.getElementById(mergeCardId(unit.id))?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+          title={`Also in ${mergesWith.map((r) => routeById.get(r)?.army).join(', ')}. Jump to the merge plan.`}
+          className="flex items-center gap-1 rounded text-[10px] font-medium text-muted hover:text-accent focus-visible:outline-2 focus-visible:outline-accent"
+        >
+          Merges with
+          {mergesWith.map((r) => <RouteDot key={r} route={r} />)}
+        </button>
+      )}
+    </li>
+  )
+}
+
 function Legend() {
   const item = (label: string, el: ReactNode) => (
     <span className="inline-flex items-center gap-1.5">{el}{label}</span>
@@ -165,13 +211,15 @@ export function BuilderPage() {
     return [...onRoutes.values()].filter((c) => c.routes.length > 1).sort((a, b) => a.unit.order - b.unit.order)
   }, [armies])
 
+  const mergeRoutes = useMemo(() => new Map(mergeCandidates.map((c) => [c.unit.id, c.routes])), [mergeCandidates])
+
   const totalPicked = routes.reduce((n, r) => n + armies[r.id].picked.length, 0)
 
   return (
     <div className="grid gap-8">
       <PageHeader
         title="Army Builder"
-        subtitle="Pick who you'll recruit on each lord's route. Rows are the Renown level each unit needs on that route; click a unit to add it to that route's army."
+        subtitle="Pick who you'll recruit on each lord's route. Rows are the Renown level each unit needs on that route; click a unit to add it to that route's army, then choose its final class in the army list."
       >
         {totalPicked > 0 && (
           <button
@@ -289,62 +337,55 @@ export function BuilderPage() {
 
       {/* Per-route army */}
       <section>
-        <SectionTitle>Armies</SectionTitle>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
+          <SectionTitle>Armies</SectionTitle>
+          <p className="text-xs text-muted">Choose a final class for each unit. The merge planner below uses the same choices.</p>
+        </div>
+        <div className="grid gap-3">
           {routes.map((route) => {
             const { auto, picked } = armies[route.id]
-            const groups: { label: string; items: Unit[]; removable?: boolean }[] = [
-              { label: 'Automatic', items: auto.map((e) => e.unit) },
-              { label: 'Recruited', items: picked.map((e) => e.unit), removable: true },
-            ]
+            const planned = [...auto, ...picked].filter((e) => finalClasses[route.id][e.unit.id]).length
             return (
               <div
                 key={route.id}
-                className="flex flex-col rounded-xl border border-line bg-surface"
-                style={{ borderTop: `4px solid var(--route-${route.id})` }}
+                className="min-w-0 rounded-xl border border-line bg-surface"
+                style={{ borderLeft: `4px solid var(--route-${route.id})` }}
               >
-                <div className="flex items-baseline justify-between gap-2 px-4 pt-3">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 px-4 pt-3">
                   <h3 className="font-display font-bold">{route.army}</h3>
-                  <span className="tabular text-xs text-muted">{auto.length + picked.length}</span>
+                  <span className="tabular text-xs text-muted">
+                    {auto.length + picked.length} units · {picked.length} recruited · {planned} with a class
+                  </span>
+                  {picked.length > 0 && (
+                    <button onClick={() => clear(route.id)} className="ml-auto text-xs font-medium text-muted hover:text-bad">
+                      Clear recruits
+                    </button>
+                  )}
                 </div>
-                <div className="grid gap-3 p-3">
-                  {groups.map((g) => (
-                    <div key={g.label}>
-                      <p className="mb-1 px-1 text-[10px] font-semibold tracking-wider text-muted uppercase">
-                        {g.label} <span className="tabular font-normal">· {g.items.length}</span>
-                      </p>
-                      {g.items.length ? (
-                        <div className="flex flex-wrap gap-0.5">
-                          {g.items.map((u) => (
-                            <UnitChip
-                              key={u.id}
-                              unit={u}
-                              size={32}
-                              state={u.lord ? 'lord' : g.removable ? 'on' : 'auto'}
-                              route={route.id}
-                              title={g.removable ? `${u.name} — click to remove` : u.name}
-                              hovered={hovered}
-                              onHover={setHovered}
-                              onClick={g.removable ? () => toggle(route.id, u.id) : undefined}
-                            />
-                          ))}
-                        </div>
-                      ) : (
-                        <p className="px-1 text-xs text-muted">
-                          {g.removable ? 'Click units in the grid above to add them.' : 'None'}
-                        </p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-                {picked.length > 0 && (
-                  <button
-                    onClick={() => clear(route.id)}
-                    className="mt-auto border-t border-line px-4 py-2 text-left text-xs font-medium text-muted hover:text-bad"
-                  >
-                    Clear recruits
-                  </button>
-                )}
+                <ul aria-label={`${route.army} units`} className="flex gap-2 overflow-x-auto p-3">
+                  {[...auto, ...picked].map((e) => {
+                    const state = stateOf(route.id, e)
+                    return (
+                      <ArmyMember
+                        key={e.unit.id}
+                        unit={e.unit}
+                        route={route.id}
+                        state={state}
+                        cls={finalClasses[route.id][e.unit.id] ?? ''}
+                        mergesWith={(mergeRoutes.get(e.unit.id) ?? []).filter((r) => r !== route.id)}
+                        hovered={hovered}
+                        onHover={setHovered}
+                        onRemove={state === 'on' ? () => toggle(route.id, e.unit.id) : undefined}
+                        onClass={(v) => setFinalClass(route.id, e.unit.id, v)}
+                      />
+                    )
+                  })}
+                  {picked.length === 0 && (
+                    <li className="flex w-36 shrink-0 items-center rounded-lg border border-dashed border-line p-3 text-xs text-muted">
+                      Click units in the grid above to add them.
+                    </li>
+                  )}
+                </ul>
               </div>
             )
           })}

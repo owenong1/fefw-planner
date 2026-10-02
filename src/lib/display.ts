@@ -19,6 +19,21 @@ export function growthColor(v: number) {
   return 'var(--good)'
 }
 
+/** Largest class growth modifier in the data; a modifier this big gets the full tint. */
+const MODIFIER_MAX = 30
+
+/** Tint and weight for a class growth modifier, scaled by magnitude so +30 reads louder than +5. */
+export function modifierStyle(v: number): { background?: string; color: string; fontWeight: number; opacity?: number } {
+  if (v === 0) return { color: 'var(--muted)', fontWeight: 400, opacity: 0.45 }
+  const tone = v > 0 ? 'var(--good)' : 'var(--bad)'
+  const t = Math.min(Math.abs(v), MODIFIER_MAX) / MODIFIER_MAX
+  return {
+    background: `color-mix(in oklab, ${tone} ${Math.round(t * 40)}%, transparent)`,
+    color: `color-mix(in oklab, ${tone} ${Math.round(100 - t * 45)}%, var(--ink))`,
+    fontWeight: t >= 0.8 ? 700 : t >= 0.5 ? 600 : t >= 0.3 ? 500 : 400,
+  }
+}
+
 export const TIER_INFO: Record<ClassTier, { label: string; blurb: string }> = {
   base: { label: 'Base', blurb: 'Starting classes. They add nothing to growth rates.' },
   beginner: { label: 'Beginner', blurb: 'Beginner License · Lv 5 · Renown 1' },

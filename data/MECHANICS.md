@@ -23,7 +23,7 @@ This answers the questions in PLAN.md §0 as far as public sources allow. The RN
 - **Empty level-ups / minimum stat gains**: no source mentions a guarantee. Assume none.
 - **Charioteer's Path / Elephant Rider's Path**: "Unit's growth rate increases with level". The formula is undocumented. The RNG checker should flag these classes as approximate.
 - **Mu's Signs of Growth**: +20% to every growth (Game8 vs Fextralife base growths differ by exactly 20 on every stat). Game8's table already includes it.
-- **Class stat bonuses**: the size of each class's flat stat bonus isn't published. The checker needs it to separate level-up gains from class bonuses, or users must enter stats with the class bonus removed.
+- **Class stat bonuses**: published, but not imported yet. Game8's per-class pages (linked from its class list, e.g. Guardian: +3 HP, +1 Str, +1 Spd, +3 Def, +4 Res; Gladiator: +1 HP, +1 Str) have a "Bonus" column next to the growth modifiers, described as fixed stats added when changing into the class. The checker needs them to separate level-up gains from class bonuses; until they're in `classes.json` the RNG page carries a "not reliable yet" note and users must enter stats with the class bonus removed. Unknown: whether the previous class's bonus is removed on class change.
 - **Stat caps**: not published yet.
 - **Base level**: published base stats are at Level 1 for most units. Recruits probably join at a higher level (auto-levelled?). Unknown.
 

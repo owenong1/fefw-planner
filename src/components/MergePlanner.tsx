@@ -1,9 +1,10 @@
 import { Link } from 'react-router'
-import { canUseClass, classById, classes, combinedGrowths, growthTotal, routeById } from '../data'
-import { CLASS_TIERS, STAT_KEYS, STAT_LABELS } from '../data/constants'
+import { classById, combinedGrowths, growthTotal, routeById } from '../data'
+import { STAT_KEYS, STAT_LABELS } from '../data/constants'
 import type { Stats, Unit } from '../data/schema'
-import type { FinalClasses } from '../lib/army'
-import { growthColor, TIER_INFO } from '../lib/display'
+import { mergeCardId, type FinalClasses } from '../lib/army'
+import { growthColor } from '../lib/display'
+import { ClassSelect } from './ClassSelect'
 import { Avatar, Badge, Empty, SectionTitle } from './ui'
 
 /** Game8: Merge Causality costs 300 Karma Shards per character. */
@@ -12,28 +13,6 @@ const MERGE_COST = 300
 export type MergeCandidate = { unit: Unit; routes: string[] }
 
 type Copy = { route: string; cls: string; growths: Stats }
-
-function ClassSelect({ unit, value, onChange }: { unit: Unit; value: string; onChange: (v: string) => void }) {
-  return (
-    <select
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      aria-label={`${unit.name}'s final class`}
-      className="min-w-0 flex-1 rounded-md border border-line bg-surface px-2 py-1 text-xs text-ink focus:outline-2 focus:outline-accent"
-    >
-      <option value="">No class (personal growths)</option>
-      {CLASS_TIERS.filter((t) => t !== 'base').map((tier) => (
-        <optgroup key={tier} label={TIER_INFO[tier].label}>
-          {classes
-            .filter((c) => c.tier === tier && canUseClass(unit, c))
-            .map((c) => (
-              <option key={c.id} value={c.id}>{c.name}</option>
-            ))}
-        </optgroup>
-      ))}
-    </select>
-  )
-}
 
 /** One bar per route copy for each stat; the copy that sets the merged value is drawn solid. */
 function SynergyBars({ copies, merged }: { copies: Copy[]; merged: Stats }) {
@@ -98,7 +77,7 @@ function MergeCard({
     STAT_KEYS.filter((k) => copies.every((c) => c.route === route || c.growths[k] < merged[k])).length
 
   return (
-    <div className="flex flex-col gap-3 rounded-xl border border-line bg-surface p-4">
+    <div id={mergeCardId(unit.id)} className="flex scroll-mt-20 flex-col gap-3 rounded-xl border border-line bg-surface p-4">
       <div className="flex items-center gap-3">
         <Avatar name={unit.name} id={unit.id} size={44} />
         <div className="min-w-0 flex-1">
@@ -150,7 +129,8 @@ export function MergePlanner({
       </div>
       <p className="mb-3 max-w-3xl text-sm text-muted">
         In Part III, Merge Causality keeps each stat's highest value across every route a unit was recruited on. Give each copy a
-        different final class so their growths cover different stats. Growths shown are personal + class.
+        different final class so their growths cover different stats. Classes here are the ones chosen in the armies above, and
+        changing one changes the other. Growths shown are personal + class.
       </p>
       {candidates.length ? (
         <div className="grid gap-3 md:grid-cols-2">

@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { Link, useSearchParams } from 'react-router'
 import { Empty, PageHeader, Segmented } from '../components/ui'
-import { skillOwners, skills } from '../data'
+import { classSpoiler, skillOwners, skills } from '../data'
 import type { Skill } from '../data/schema'
 import { useSettings } from '../lib/settings'
 
@@ -30,9 +30,13 @@ export function SkillsPage() {
       .filter((s) => type === 'all' || s.type === type)
       .map((s) => {
         const owners = skillOwners(s.id)
-        return { skill: s, units: owners.units.filter((u) => u.spoiler <= spoilerLevel), classes: owners.classes }
+        return {
+          skill: s,
+          units: owners.units.filter((u) => u.spoiler <= spoilerLevel),
+          classes: owners.classes.filter((c) => classSpoiler(c) <= spoilerLevel),
+        }
       })
-      // Hide unit-only skills whose every owner is hidden by the spoiler setting.
+      // Hide skills whose every owner is hidden by the spoiler setting.
       .filter((r) => r.units.length > 0 || r.classes.length > 0)
       .filter(
         (r) =>

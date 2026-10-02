@@ -59,6 +59,17 @@ export function canUseClass(unit: Unit, cls: GameClass) {
   return !cls.tags.some((t) => banned.includes(t))
 }
 
+/** Spoiler level needed to list a class: Master and Divine classes only open up late in the story. */
+export function classSpoiler(cls: GameClass) {
+  return cls.tier === 'master' || cls.tier === 'divine' ? 1 : 0
+}
+
+/** Lowest spoiler level at which some owner of the skill is visible (Infinity when nothing owns it). */
+export function skillSpoiler(skillId: string) {
+  const owners = skillOwners(skillId)
+  return Math.min(...owners.units.map((u) => u.spoiler), ...owners.classes.map(classSpoiler))
+}
+
 export function skillOwners(skillId: string): { units: Unit[]; classes: GameClass[] } {
   return {
     units: units.filter(

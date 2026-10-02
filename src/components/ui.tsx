@@ -87,6 +87,30 @@ export function Avatar({ name, id, size = 40 }: { name: string; id?: string; siz
   )
 }
 
+/** Class icons fetched by scripts/import/fetch_portraits.py, keyed by class id. */
+const CLASS_ICONS: Record<string, string> = Object.fromEntries(
+  Object.entries(
+    import.meta.glob<string>('../assets/classes/*.{webp,png}', { eager: true, query: '?url', import: 'default' }),
+  ).map(([path, url]) => [path.replace(/^.*\/|\.\w+$/g, ''), url]),
+)
+
+/** The class's icon, or a neutral tile with its initial for classes that have none (Commoner, Noble). */
+export function ClassIcon({ name, id, size = 28 }: { name: string; id: string; size?: number }) {
+  const icon = CLASS_ICONS[id]
+  if (icon) {
+    return <img aria-hidden alt="" src={icon} width={size} height={size} loading="lazy" className="inline-block shrink-0 rounded-md" />
+  }
+  return (
+    <span
+      aria-hidden
+      className="inline-flex shrink-0 items-center justify-center rounded-md bg-surface-2 font-display font-bold text-muted"
+      style={{ width: size, height: size, fontSize: size * 0.45 }}
+    >
+      {name[0]}
+    </span>
+  )
+}
+
 export function Select<T extends string>({
   label, value, onChange, options,
 }: { label: string; value: T; onChange: (v: T) => void; options: { value: T; label: string }[] }) {

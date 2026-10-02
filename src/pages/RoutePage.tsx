@@ -19,7 +19,7 @@ export function RoutePage() {
   const route = id ? routeById.get(id) : undefined
   const { spoilerLevel } = useSettings()
   const [params, setParams] = useSearchParams()
-  const group = (params.get('group') as Group) ?? 'chapter'
+  const group: Group = params.get('group') === 'chapter' ? 'chapter' : 'renown'
 
   const groups = useMemo(() => {
     if (!route) return []
@@ -54,8 +54,8 @@ export function RoutePage() {
         <Segmented
           label="Group by"
           value={group}
-          onChange={(v) => setParams(v === 'chapter' ? {} : { group: v }, { replace: true })}
-          options={[{ value: 'chapter', label: 'By chapter' }, { value: 'renown', label: 'By renown' }]}
+          onChange={(v) => setParams(v === 'renown' ? {} : { group: v }, { replace: true })}
+          options={[{ value: 'renown', label: 'By renown' }, { value: 'chapter', label: 'By chapter' }]}
         />
       </PageHeader>
 
@@ -63,7 +63,7 @@ export function RoutePage() {
         {routes.map((r) => (
           <NavLink
             key={r.id}
-            to={`/routes/${r.id}${group === 'renown' ? '?group=renown' : ''}`}
+            to={`/routes/${r.id}${group === 'chapter' ? '?group=chapter' : ''}`}
             className={({ isActive }) =>
               `inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 text-sm font-medium ${
                 isActive ? 'border-transparent text-white' : 'border-line bg-surface text-muted hover:text-ink'

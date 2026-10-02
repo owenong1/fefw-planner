@@ -5,23 +5,26 @@ import { SpoilerGate } from '../components/Spoiler'
 import { GrowthBars } from '../components/Stats'
 import { Avatar, Badge, Card, SectionTitle, Select } from '../components/ui'
 import {
-  APTITUDE_LABELS, aptitudeFit, canUseClass, classById, classes, classRestrictions, combinedGrowths, growthTotal,
-  skillById, unitById,
+  APTITUDE_LABELS, aptitudeFit, canUseClass, classById, classes, classRestrictions, classSpoiler, combinedGrowths,
+  growthTotal, skillById, unitById,
 } from '../data'
 import { CLASS_TIERS, STAT_KEYS, STAT_LABELS } from '../data/constants'
+import { useSettings } from '../lib/settings'
 import { NotFoundPage } from './NotFoundPage'
 
 export function UnitDetailPage() {
   const { id } = useParams()
   const unit = id ? unitById.get(id) : undefined
   const [clsId, setClsId] = useState('')
+  const { spoilerLevel } = useSettings()
   if (!unit) return <NotFoundPage what="unit" />
 
   const cls = classById.get(clsId)
   const personal = unit.personalSkill ? skillById.get(unit.personalSkill) : undefined
   const growths = combinedGrowths(unit, cls)
   const restrictions = classRestrictions(unit)
-  const usable = classes.filter((c) => c.tier !== 'base' && canUseClass(unit, c))
+  const shown = classes.filter((c) => c.tier !== 'base' && (classSpoiler(c) <= spoilerLevel || c.id === clsId))
+  const usable = shown.filter((c) => classSpoiler(c) <= spoilerLevel && canUseClass(unit, c))
   const favoredClasses = usable.filter((c) => aptitudeFit(unit, c) === 'favored')
 
   return (
@@ -160,8 +163,8 @@ export function UnitDetailPage() {
                 options={[
                   { value: '', label: 'Personal (no class)' },
                   ...CLASS_TIERS.flatMap((tier) =>
-                    classes
-                      .filter((c) => c.tier === tier && tier !== 'base')
+                    shown
+                      .filter((c) => c.tier === tier)
                       .map((c) => ({ value: c.id, label: `${c.name}${canUseClass(unit, c) ? '' : ' (unavailable)'}` })),
                   ),
                 ]}

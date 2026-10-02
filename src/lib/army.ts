@@ -9,6 +9,9 @@ export type FinalClasses = Record<string, Record<string, string>>
 const ARMY_KEY = 'fefw:army'
 const CLASSES_KEY = 'fefw:finalClasses'
 
+/** DOM id of a unit's card in the merge planner, so the army lists can jump to it. */
+export const mergeCardId = (unit: string) => `merge-${unit}`
+
 function perRoute<T>(make: () => T): Record<string, T> {
   return Object.fromEntries(routes.map((r) => [r.id, make()]))
 }

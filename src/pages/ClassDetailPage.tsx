@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router'
-import { Avatar, Badge, Card, Segmented, SectionTitle } from '../components/ui'
-import { aptitudeFit, canUseClass, classById, combinedGrowths, growthTotal, skillById, units } from '../data'
+import { SpoilerGate } from '../components/Spoiler'
+import { Avatar, Badge, Card, ClassIcon, Segmented, SectionTitle } from '../components/ui'
+import { aptitudeFit, canUseClass, classById, classSpoiler, combinedGrowths, growthTotal, skillById, units } from '../data'
 import { STAT_KEYS, STAT_LABELS } from '../data/constants'
 import { useSettings } from '../lib/settings'
 import { TIER_INFO, weaponReqText } from '../lib/display'
@@ -27,11 +28,12 @@ export function ClassDetailPage() {
   const blocked = units.filter((u) => u.spoiler <= spoilerLevel && !canUseClass(u, cls))
 
   return (
-    <div>
+    <SpoilerGate level={classSpoiler(cls)} reason="This is a late-game class.">
       <div className="mb-2 text-sm text-muted">
         <Link to="/classes" className="hover:underline">Classes</Link> /
       </div>
       <div className="mb-6 flex flex-wrap items-center gap-3">
+        <ClassIcon name={cls.name} id={cls.id} size={44} />
         <h1 className="font-display text-3xl font-bold tracking-wide">{cls.name}</h1>
         <Badge tone="accent">{TIER_INFO[cls.tier].label}</Badge>
         {cls.tags.map((t) => <Badge key={t}>{t}</Badge>)}
@@ -148,6 +150,6 @@ export function ClassDetailPage() {
           </table>
         </div>
       </section>
-    </div>
+    </SpoilerGate>
   )
 }

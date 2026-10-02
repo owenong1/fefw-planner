@@ -4,7 +4,7 @@ import { RouteStrip } from '../components/Recruitment'
 import { StatHeaders } from '../components/Stats'
 import { growthColor } from '../lib/display'
 import { Avatar, Empty, PageHeader, Segmented, Select } from '../components/ui'
-import { canUseClass, classById, classes, combinedGrowths, growthTotal, recruitmentOn, routes, units } from '../data'
+import { canUseClass, classById, classes, classSpoiler, combinedGrowths, growthTotal, recruitmentOn, routes, units } from '../data'
 import { CLASS_TIERS, STAT_KEYS } from '../data/constants'
 import type { StatKey, Stats } from '../data/schema'
 import { useSettings } from '../lib/settings'
@@ -66,7 +66,9 @@ export function UnitsPage() {
   const classOptions = [
     { value: '', label: 'No class (personal growths)' },
     ...CLASS_TIERS.flatMap((tier) =>
-      classes.filter((c) => c.tier === tier && tier !== 'base').map((c) => ({ value: c.id, label: `${c.name} (${tier})` })),
+      classes
+        .filter((c) => c.tier === tier && tier !== 'base' && (classSpoiler(c) <= spoilerLevel || c.id === clsId))
+        .map((c) => ({ value: c.id, label: `${c.name} (${tier})` })),
     ),
   ]
 

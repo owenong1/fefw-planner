@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router'
 import { Avatar, Card, Empty, PageHeader, SectionTitle } from '../components/ui'
-import { canUseClass, classById, classes, skillById, unitById, units } from '../data'
+import { canUseClass, classById, classes, classSpoiler, skillById, unitById, units } from '../data'
 import { CLASS_TIERS, STAT_KEYS, STAT_LABELS, type StatKey } from '../data/constants'
 import type { Unit } from '../data/schema'
 import {
@@ -40,19 +40,22 @@ function NumberInput({
 }
 
 function ClassSelect({ unit, value, onChange, label }: { unit: Unit; value: string; onChange: (v: string) => void; label: string }) {
+  const { spoilerLevel } = useSettings()
   return (
     <select aria-label={label} value={value} onChange={(e) => onChange(e.target.value)} className={inputCls}>
-      {CLASS_TIERS.map((tier) => (
-        <optgroup key={tier} label={TIER_INFO[tier].label}>
-          {classes
-            .filter((c) => c.tier === tier)
-            .map((c) => (
+      {CLASS_TIERS.map((tier) => {
+        // The current class stays listed even when hidden (starting class, or a shared link).
+        const list = classes.filter((c) => c.tier === tier && (classSpoiler(c) <= spoilerLevel || c.id === value))
+        return list.length > 0 && (
+          <optgroup key={tier} label={TIER_INFO[tier].label}>
+            {list.map((c) => (
               <option key={c.id} value={c.id} disabled={!canUseClass(unit, c) && c.id !== value}>
                 {c.name}
               </option>
             ))}
-        </optgroup>
-      ))}
+          </optgroup>
+        )
+      })}
     </select>
   )
 }
@@ -207,6 +210,14 @@ export function RngPage() {
           </div>
         )}
       </PageHeader>
+
+      <div role="note" className="mb-4 rounded-xl border border-bad/40 bg-bad/10 p-4 text-sm">
+        <p className="font-semibold text-bad">Not reliable yet</p>
+        <p className="mt-1 text-muted">
+          Changing class adds fixed stat bonuses on top of level-up gains, and the checker doesn’t have those numbers yet. Until it
+          does, any unit that has changed class will look luckier than it really was.
+        </p>
+      </div>
 
       <div className="grid gap-4 lg:grid-cols-[19rem_minmax(0,1fr)]">
         <div className="grid content-start gap-4">
@@ -401,8 +412,8 @@ export function RngPage() {
                     counted gains. Ranks: S ≥ 95, A ≥ 80, B ≥ 60, C ≥ 40, D ≥ 20, E ≥ 5, E- below.
                   </li>
                   <li>
-                    Class stat bonuses aren’t published. If the stats you see include a class bonus that the base doesn’t, subtract
-                    it, or the result will look luckier than it was. The same goes for stat boosters and equipment.
+                    Class stat bonuses aren’t in the checker’s data yet. If the stats you see include a class bonus that the base
+                    doesn’t, subtract it, or the result will look luckier than it was. The same goes for stat boosters and equipment.
                   </li>
                   <li>
                     Unknowns: stat caps (not applied) and growths over 100% (treated as +1 plus a chance of +2). See{' '}

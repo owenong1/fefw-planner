@@ -11,7 +11,7 @@ export function SpoilerToggle() {
         value={spoilerLevel}
         onChange={(e) => setSpoilerLevel(Number(e.target.value))}
         className="rounded-md border border-line bg-surface px-2 py-1.5 text-xs text-ink"
-        title="Units that join in Part II/III or are secret characters are hidden unless you allow spoilers"
+        title="Units that join in Part II/III, secret characters, and Master and Divine classes are hidden unless you allow spoilers"
       >
         {SPOILER_LABELS.map((l, i) => (
           <option key={l} value={i}>{l}</option>
@@ -22,7 +22,7 @@ export function SpoilerToggle() {
 }
 
 /** Covers spoiler content until the reader opts in, for pages reached by direct link. */
-export function SpoilerGate({ level, children }: { level: number; children: ReactNode }) {
+export function SpoilerGate({ level, reason, children }: { level: number; reason?: string; children: ReactNode }) {
   const { spoilerLevel } = useSettings()
   const [revealed, setRevealed] = useState(false)
   if (level <= spoilerLevel || revealed) return <>{children}</>
@@ -33,7 +33,7 @@ export function SpoilerGate({ level, children }: { level: number; children: Reac
         <div className="max-w-sm rounded-xl border border-line bg-surface p-5 text-center shadow-lg">
           <p className="font-semibold">Story spoiler</p>
           <p className="mt-1 text-sm text-muted">
-            {level === 1 ? 'This unit joins in Part II or III.' : 'This is a secret character.'}
+            {reason ?? (level === 1 ? 'This unit joins in Part II or III.' : 'This is a secret character.')}
           </p>
           <button onClick={() => setRevealed(true)} className="mt-3 rounded-lg bg-accent px-4 py-1.5 text-sm font-semibold text-accent-ink">
             Show anyway

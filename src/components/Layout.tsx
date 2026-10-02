@@ -1,7 +1,7 @@
 import Fuse from 'fuse.js'
 import { useMemo, useRef, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router'
-import { classes, paralogues, skills, units } from '../data'
+import { classes, classSpoiler, paralogues, skills, skillSpoiler, units } from '../data'
 import { useSettings } from '../lib/settings'
 import { SpoilerToggle } from './Spoiler'
 
@@ -27,8 +27,8 @@ function GlobalSearch() {
   const fuse = useMemo(() => {
     const items: Hit[] = [
       ...units.map((u) => ({ kind: 'Unit', name: u.name, to: `/units/${u.id}`, spoiler: u.spoiler })),
-      ...classes.map((c) => ({ kind: 'Class', name: c.name, to: `/classes/${c.id}`, spoiler: 0 })),
-      ...skills.map((s) => ({ kind: 'Skill', name: s.name, to: `/skills?q=${encodeURIComponent(s.name)}`, spoiler: 0 })),
+      ...classes.map((c) => ({ kind: 'Class', name: c.name, to: `/classes/${c.id}`, spoiler: classSpoiler(c) })),
+      ...skills.map((s) => ({ kind: 'Skill', name: s.name, to: `/skills?q=${encodeURIComponent(s.name)}`, spoiler: skillSpoiler(s.id) })),
       ...paralogues.map((p) => ({ kind: 'Paralogue', name: p.name, to: `/paralogues#${p.id}`, spoiler: 0 })),
     ]
     return new Fuse(items, { keys: ['name'], threshold: 0.3 })
