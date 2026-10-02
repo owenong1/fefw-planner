@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { ClassSelect } from '../components/ClassSelect'
 import { MergePlanner, type MergeCandidate } from '../components/MergePlanner'
 import { Avatar, Card, ClassIcon, Empty, PageHeader, RouteDot, SectionTitle } from '../components/ui'
-import { classById, routeById, routes, timingLabel, units } from '../data'
+import { classById, routeById, routes, timingLabel, unitById, units } from '../data'
 import type { Recruitment, Unit } from '../data/schema'
 import { mergeCardId, useArmy } from '../lib/army'
 import { useSettings } from '../lib/settings'
@@ -59,9 +59,14 @@ function UnitChip({
       aria-pressed={onClick ? state === 'on' : undefined}
       aria-disabled={!onClick || undefined}
       onClick={onClick}
-      onMouseEnter={() => onHover(unit.id)}
-      onMouseLeave={() => onHover(null)}
-      onFocus={() => onHover(unit.id)}
+      // Mouse and keyboard only: a tap would leave every other unit dimmed until the next tap elsewhere.
+      onPointerEnter={(e) => {
+        if (e.pointerType === 'mouse') onHover(unit.id)
+      }}
+      onPointerLeave={() => onHover(null)}
+      onFocus={(e) => {
+        if (e.currentTarget.matches(':focus-visible')) onHover(unit.id)
+      }}
       onBlur={() => onHover(null)}
       className={`group flex w-14 flex-col items-center gap-1 rounded-lg p-1 transition duration-150 focus-visible:outline-2 focus-visible:outline-accent
         ${onClick ? 'cursor-pointer' : 'cursor-default'}
@@ -106,7 +111,7 @@ function ArmyMember({
 }) {
   const picked = cls ? classById.get(cls) : undefined
   return (
-    <li className="flex w-36 shrink-0 flex-col items-center gap-1.5 rounded-lg border border-line p-2" style={{ background: tint(route, 5) }}>
+    <li className="flex w-44 shrink-0 snap-start flex-col items-center gap-1.5 rounded-lg border border-line p-2 md:w-36" style={{ background: tint(route, 5) }}>
       <UnitChip
         unit={unit}
         state={state}
@@ -125,7 +130,7 @@ function ArmyMember({
           type="button"
           onClick={() => document.getElementById(mergeCardId(unit.id))?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
           title={`Also in ${mergesWith.map((r) => routeById.get(r)?.army).join(', ')}. Jump to the merge plan.`}
-          className="flex items-center gap-1 rounded text-[10px] font-medium text-muted hover:text-accent focus-visible:outline-2 focus-visible:outline-accent"
+          className="flex items-center gap-1 rounded py-1 text-xs font-medium text-muted hover:text-accent focus-visible:outline-2 focus-visible:outline-accent md:py-0 md:text-[10px]"
         >
           Merges with
           {mergesWith.map((r) => <RouteDot key={r} route={r} />)}
@@ -146,7 +151,7 @@ function Legend() {
       {item('Recruited', dot('', { background: 'var(--accent)' }))}
       {item('Joins automatically', <span className="font-bold text-ink">★</span>)}
       {item('Lord', <span className="font-bold text-ink">♛</span>)}
-      <span>Hover a unit to see it on every route.</span>
+      <span className="[@media(hover:none)]:hidden">Hover a unit to see it on every route.</span>
     </div>
   )
 }
@@ -155,6 +160,8 @@ export function BuilderPage() {
   const { spoilerLevel } = useSettings()
   const { army, toggle, clear, finalClasses, setFinalClass } = useArmy()
   const [hovered, setHovered] = useState<string | null>(null)
+  /** The one route the grid shows below `md`, where four columns don't fit. */
+  const [shownRoute, setShownRoute] = useState(routes[0].id)
 
   const byRoute = useMemo(
     () => Object.fromEntries(routes.map((r) => [r.id, partOneEntries(r.id, spoilerLevel)])),
@@ -216,7 +223,7 @@ export function BuilderPage() {
   const totalPicked = routes.reduce((n, r) => n + armies[r.id].picked.length, 0)
 
   return (
-    <div className="grid gap-8">
+    <div className="grid grid-cols-1 gap-8">
       <PageHeader
         title="Army Builder"
         subtitle="Pick who you'll recruit on each lord's route. Rows are the Renown level each unit needs on that route; click a unit to add it to that route's army, then choose its final class in the army list."
@@ -237,14 +244,40 @@ export function BuilderPage() {
           <SectionTitle>Recruitment by renown</SectionTitle>
           <Legend />
         </div>
-        <div className="overflow-x-auto rounded-xl border border-line bg-surface">
+        {/* overflow-clip rather than hidden, so the route tabs can stick to the viewport */}
+        <div className="overflow-clip rounded-xl border border-line bg-surface">
+          <div
+            role="tablist"
+            aria-label="Route shown in the grid"
+            className="sticky top-0 z-20 grid border-b border-line bg-surface md:hidden"
+            style={{ gridTemplateColumns: `repeat(${routes.length}, minmax(0, 1fr))` }}
+          >
+            {routes.map((route) => {
+              const on = route.id === shownRoute
+              return (
+                <button
+                  key={route.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={on}
+                  title={route.name}
+                  onClick={() => setShownRoute(route.id)}
+                  className={`flex min-w-0 flex-col items-center px-1 pt-1.5 pb-2 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent ${on ? 'text-ink' : 'text-muted'}`}
+                  style={{ borderTop: `4px solid var(--route-${route.id})`, background: on ? tint(route.id, 16) : undefined }}
+                >
+                  <span className="w-full truncate text-center font-display text-xs font-bold sm:text-sm">{unitById.get(route.id)?.name ?? route.name}</span>
+                  <span className="tabular text-[11px] text-muted">{armies[route.id].auto.length + armies[route.id].picked.length} units</span>
+                </button>
+              )
+            })}
+          </div>
           <div
             role="table"
             aria-label="Recruitable units by route and renown"
-            className="grid min-w-[46rem]"
-            style={{ gridTemplateColumns: `4.5rem repeat(${routes.length}, minmax(0, 1fr))` }}
+            className="grid grid-cols-[3.25rem_minmax(0,1fr)] md:grid-cols-[4.5rem_repeat(var(--route-count),minmax(0,1fr))]"
+            style={{ '--route-count': routes.length } as CSSProperties}
           >
-            <div role="row" className="contents">
+            <div role="row" className="contents max-md:hidden">
               <div role="columnheader" className="border-b border-line" />
               {routes.map((route) => (
                 <div
@@ -285,7 +318,7 @@ export function BuilderPage() {
                     <div
                       role="cell"
                       key={route.id}
-                      className={`flex flex-wrap content-start gap-0.5 border-l border-line p-1.5 ${i > 0 ? 'border-t' : ''}`}
+                      className={`grid grid-cols-[repeat(auto-fill,minmax(3.5rem,1fr))] content-start justify-items-center gap-0.5 border-l border-line p-1.5 md:flex md:flex-wrap ${i > 0 ? 'border-t' : ''} ${route.id === shownRoute ? '' : 'max-md:hidden'}`}
                       style={{ background: i % 2 ? tint(route.id, 7) : tint(route.id, 3) }}
                     >
                       {cell.length === 0 && <span className="self-center px-2 text-xs text-muted/50">—</span>}
@@ -357,12 +390,12 @@ export function BuilderPage() {
                     {auto.length + picked.length} units · {picked.length} recruited · {planned} with a class
                   </span>
                   {picked.length > 0 && (
-                    <button onClick={() => clear(route.id)} className="ml-auto text-xs font-medium text-muted hover:text-bad">
+                    <button onClick={() => clear(route.id)} className="-my-1 ml-auto py-1 text-xs font-medium text-muted hover:text-bad">
                       Clear recruits
                     </button>
                   )}
                 </div>
-                <ul aria-label={`${route.army} units`} className="flex gap-2 overflow-x-auto p-3">
+                <ul aria-label={`${route.army} units`} className="flex snap-x scroll-px-3 gap-2 overflow-x-auto p-3">
                   {[...auto, ...picked].map((e) => {
                     const state = stateOf(route.id, e)
                     return (
@@ -381,7 +414,7 @@ export function BuilderPage() {
                     )
                   })}
                   {picked.length === 0 && (
-                    <li className="flex w-36 shrink-0 items-center rounded-lg border border-dashed border-line p-3 text-xs text-muted">
+                    <li className="flex w-44 shrink-0 snap-start items-center rounded-lg border border-dashed border-line p-3 text-xs text-muted md:w-36">
                       Click units in the grid above to add them.
                     </li>
                   )}

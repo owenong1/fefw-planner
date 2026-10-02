@@ -87,7 +87,7 @@ export function Layout() {
   const { pathname } = useLocation()
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-10 border-b border-line bg-bg/90 backdrop-blur">
+      <header className="top-0 z-10 border-b border-line bg-bg/90 backdrop-blur md:sticky">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3">
           <Link to="/" className="font-display text-lg font-bold tracking-wide whitespace-nowrap">
             Fortune's Weave <span className="text-accent">Planner</span>

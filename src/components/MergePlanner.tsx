@@ -91,13 +91,13 @@ function MergeCard({
         </Badge>
       </div>
 
-      <div className="grid gap-1.5">
+      <div className="grid grid-cols-1 gap-1.5">
         {copies.map((c) => {
           const n = sole(c.route)
           return (
             <div key={c.route} className="flex items-center gap-2">
               <span className="h-5 w-1 shrink-0 rounded-full" style={{ background: `var(--route-${c.route})` }} />
-              <span className="w-28 shrink-0 truncate text-xs font-medium" title={routeById.get(c.route)?.name}>
+              <span className="w-24 shrink-0 truncate text-xs font-medium md:w-28" title={routeById.get(c.route)?.name}>
                 {routeById.get(c.route)?.army}
               </span>
               <ClassSelect unit={unit} value={c.cls} onChange={(v) => setFinalClass(c.route, unit.id, v)} />
@@ -133,7 +133,7 @@ export function MergePlanner({
         changing one changes the other. Growths shown are personal + class.
       </p>
       {candidates.length ? (
-        <div className="grid gap-3 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           {candidates.map((c) => (
             <MergeCard key={c.unit.id} {...c} finalClasses={finalClasses} setFinalClass={setFinalClass} />
           ))}
