@@ -1,0 +1,5748 @@
+[
+  {
+    "id": "eshmel",
+    "name": "Eshmel",
+    "order": 0,
+    "growths": {
+      "hp": 50,
+      "str": 45,
+      "mag": 45,
+      "spd": 45,
+      "dex": 45,
+      "def": 35,
+      "res": 35,
+      "lck": 40,
+      "cha": 50
+    },
+    "lord": false,
+    "faction": "Promised One's Army",
+    "startingClass": "guardian",
+    "personalSkill": "light-of-salvation",
+    "levelSkills": [
+      {
+        "skill": "scorching-sun",
+        "level": null
+      },
+      {
+        "skill": "scorching-sun-plus",
+        "level": null
+      }
+    ],
+    "bloodmarks": [
+      "diadem-of-the-auger"
+    ],
+    "aptitudes": {
+      "favored": [
+        "authority",
+        "spear"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 53,
+      "str": 35,
+      "mag": 24,
+      "spd": 27,
+      "dex": 38,
+      "def": 27,
+      "res": 24,
+      "lck": 23,
+      "cha": 29
+    },
+    "baseLevel": 40,
+    "recruitment": [
+      {
+        "route": "all",
+        "part": 0,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "hong-hua",
+    "name": "Hong Hua",
+    "order": 1,
+    "growths": {
+      "hp": 40,
+      "str": 30,
+      "mag": 45,
+      "spd": 45,
+      "dex": 45,
+      "def": 30,
+      "res": 45,
+      "lck": 30,
+      "cha": 40
+    },
+    "lord": false,
+    "faction": "Promised One's Army",
+    "startingClass": "ovate",
+    "personalSkill": "zhu-ming",
+    "levelSkills": [],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "blackMagic",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "axe",
+        "heavyArmor"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 46,
+      "str": 15,
+      "mag": 38,
+      "spd": 29,
+      "dex": 34,
+      "def": 21,
+      "res": 34,
+      "lck": 19,
+      "cha": 21
+    },
+    "baseLevel": 45,
+    "recruitment": [
+      {
+        "route": "all",
+        "part": 0,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      },
+      {
+        "route": "all",
+        "part": 3,
+        "chapter": null,
+        "method": "story",
+        "conditions": [
+          {
+            "type": "other",
+            "text": "Rejoins automatically in Part III: Salvation"
+          }
+        ]
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "troy",
+    "name": "Troy",
+    "order": 2,
+    "growths": {
+      "hp": 40,
+      "str": 45,
+      "mag": 45,
+      "spd": 50,
+      "dex": 40,
+      "def": 30,
+      "res": 30,
+      "lck": 30,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "Promised One's Army",
+    "startingClass": "war-monk",
+    "personalSkill": "yun-shou",
+    "levelSkills": [],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "blackMagic",
+        "gauntlet",
+        "whiteMagic"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "all",
+        "part": 0,
+        "chapter": 2,
+        "method": "automatic",
+        "conditions": []
+      },
+      {
+        "route": "all",
+        "part": 3,
+        "chapter": null,
+        "method": "story",
+        "conditions": [
+          {
+            "type": "other",
+            "text": "Rejoins automatically in Part III: Salvation"
+          }
+        ]
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "cai",
+    "name": "Cai",
+    "order": 3,
+    "growths": {
+      "hp": 45,
+      "str": 45,
+      "mag": 40,
+      "spd": 45,
+      "dex": 45,
+      "def": 35,
+      "res": 35,
+      "lck": 40,
+      "cha": 40
+    },
+    "lord": true,
+    "faction": "Ribeira Winds",
+    "startingClass": "orichaldia",
+    "personalSkill": "brio",
+    "levelSkills": [
+      {
+        "skill": "flamekeeper",
+        "level": 5
+      }
+    ],
+    "bloodmarks": [
+      "diadem-of-duality",
+      "diadem-of-the-apostle"
+    ],
+    "aptitudes": {
+      "favored": [
+        "riding",
+        "spear",
+        "sword",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "bow",
+        "flying"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 27,
+      "str": 10,
+      "mag": 7,
+      "spd": 8,
+      "dex": 8,
+      "def": 6,
+      "res": 5,
+      "lck": 6,
+      "cha": 5
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "dietrich",
+    "name": "Dietrich",
+    "order": 4,
+    "growths": {
+      "hp": 50,
+      "str": 45,
+      "mag": 30,
+      "spd": 50,
+      "dex": 60,
+      "def": 40,
+      "res": 30,
+      "lck": 50,
+      "cha": 60
+    },
+    "lord": true,
+    "faction": "House Lamine",
+    "startingClass": "noble",
+    "personalSkill": "murderous-intent",
+    "levelSkills": [
+      {
+        "skill": "bestial-impulse",
+        "level": 5
+      }
+    ],
+    "bloodmarks": [
+      "diadem-of-the-endless"
+    ],
+    "aptitudes": {
+      "favored": [
+        "infantry",
+        "sword"
+      ],
+      "unfavored": [
+        "whiteMagic"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 27,
+      "str": 11,
+      "mag": 6,
+      "spd": 11,
+      "dex": 10,
+      "def": 6,
+      "res": 4,
+      "lck": 9,
+      "cha": 10
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "theodora",
+    "name": "Theodora",
+    "order": 5,
+    "growths": {
+      "hp": 70,
+      "str": 50,
+      "mag": 30,
+      "spd": 40,
+      "dex": 40,
+      "def": 40,
+      "res": 30,
+      "lck": 30,
+      "cha": 50
+    },
+    "lord": true,
+    "faction": "Megaira's Beacon",
+    "startingClass": "noble",
+    "personalSkill": "royal-resolve",
+    "levelSkills": [
+      {
+        "skill": "direct-hit",
+        "level": 5
+      }
+    ],
+    "bloodmarks": [
+      "diadem-of-duality"
+    ],
+    "aptitudes": {
+      "favored": [
+        "authority",
+        "spear",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "blackMagic"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 30,
+      "str": 6,
+      "mag": 6,
+      "spd": 6,
+      "dex": 6,
+      "def": 7,
+      "res": 5,
+      "lck": 6,
+      "cha": 8
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "leda",
+    "name": "Leda",
+    "order": 6,
+    "growths": {
+      "hp": 40,
+      "str": 35,
+      "mag": 35,
+      "spd": 65,
+      "dex": 50,
+      "def": 30,
+      "res": 35,
+      "lck": 25,
+      "cha": 55
+    },
+    "lord": true,
+    "faction": "Rose Tempest",
+    "startingClass": "commoner",
+    "personalSkill": "blindside",
+    "levelSkills": [
+      {
+        "skill": "improviso",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [
+      "diadem-of-the-earth"
+    ],
+    "aptitudes": {
+      "favored": [
+        "bow",
+        "infantry",
+        "sword",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "spear"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 25,
+      "str": 8,
+      "mag": 6,
+      "spd": 12,
+      "dex": 8,
+      "def": 6,
+      "res": 6,
+      "lck": 5,
+      "cha": 10
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "tialla",
+    "name": "Tialla",
+    "order": 7,
+    "growths": {
+      "hp": 30,
+      "str": 25,
+      "mag": 45,
+      "spd": 35,
+      "dex": 40,
+      "def": 20,
+      "res": 40,
+      "lck": 50,
+      "cha": 45
+    },
+    "lord": false,
+    "faction": "Ribeira Winds",
+    "startingClass": "commoner",
+    "personalSkill": "tacticians-wit",
+    "levelSkills": [
+      {
+        "skill": "tacticians-insight",
+        "level": 20
+      },
+      {
+        "skill": "tacticians-insight-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "authority",
+        "blackMagic",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "sword"
+      ]
+    },
+    "magic": {
+      "white": {
+        "D": "Heal",
+        "C": "Physic",
+        "B": "Recover",
+        "A": "Seraphim",
+        "S": null
+      },
+      "black": {
+        "D": "Fire",
+        "C": "Wind",
+        "B": "Bolganone",
+        "A": "Cutting Gale",
+        "S": "Excalibur"
+      }
+    },
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "cai",
+            "text": "Clear Cai's Paralogue"
+          },
+          {
+            "type": "gold",
+            "amount": 3000,
+            "text": "give 3000 gold"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "cai",
+            "text": "Clear Cai's Paralogue"
+          },
+          {
+            "type": "gold",
+            "amount": 3000,
+            "text": "give 3000 gold"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "cai",
+            "text": "Clear Cai's Paralogue"
+          },
+          {
+            "type": "gold",
+            "amount": 3000,
+            "text": "give 3000 gold"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "peter",
+    "name": "Peter",
+    "order": 8,
+    "growths": {
+      "hp": 40,
+      "str": 35,
+      "mag": 20,
+      "spd": 45,
+      "dex": 60,
+      "def": 30,
+      "res": 25,
+      "lck": 35,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "Ribeira Winds",
+    "startingClass": "commoner",
+    "personalSkill": "steady-aim",
+    "levelSkills": [
+      {
+        "skill": "correct-for-drift",
+        "level": 20
+      },
+      {
+        "skill": "correct-for-drift-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "bow",
+        "infantry"
+      ],
+      "unfavored": [
+        "heavyArmor"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 25,
+      "str": 9,
+      "mag": 3,
+      "spd": 6,
+      "dex": 10,
+      "def": 5,
+      "res": 4,
+      "lck": 5,
+      "cha": 4
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Phantom Ginji",
+            "qty": 1,
+            "text": "Give Peter 1 Phantom Ginji"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Phantom Ginji",
+            "qty": 1,
+            "text": "Give Peter 1 Phantom Ginji"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Phantom Ginji",
+            "qty": 1,
+            "text": "Give Peter 1 Phantom Ginji"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "ultand",
+    "name": "Ultand",
+    "order": 9,
+    "growths": {
+      "hp": 45,
+      "str": 40,
+      "mag": 40,
+      "spd": 35,
+      "dex": 40,
+      "def": 35,
+      "res": 45,
+      "lck": 55,
+      "cha": 50
+    },
+    "lord": false,
+    "faction": "Temple Army, Ribeira Winds",
+    "startingClass": "diviner",
+    "personalSkill": "patch-up",
+    "levelSkills": [
+      {
+        "skill": "pray-for-safety",
+        "level": 20
+      },
+      {
+        "skill": "pray-for-safety-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "spear",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "sword"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 30,
+      "str": 11,
+      "mag": 16,
+      "spd": 10,
+      "dex": 10,
+      "def": 9,
+      "res": 12,
+      "lck": 15,
+      "cha": 15
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 6,
+        "method": "automatic",
+        "conditions": []
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Her Mother's Gift",
+            "qty": 1,
+            "text": "Give Ultand Her Mother's Gift"
+          }
+        ],
+        "support": 3,
+        "renown": 5
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Her Mother's Gift",
+            "qty": 1,
+            "text": "Give Ultand Her Mother's Gift"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Her Mother's Gift",
+            "qty": 1,
+            "text": "Give Ultand Her Mother's Gift"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "fabio",
+    "name": "Fabio",
+    "order": 10,
+    "growths": {
+      "hp": 40,
+      "str": 25,
+      "mag": 50,
+      "spd": 35,
+      "dex": 40,
+      "def": 30,
+      "res": 45,
+      "lck": 35,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "House Lamine, Church of Seiros",
+    "startingClass": "commoner",
+    "personalSkill": "dark-calling",
+    "levelSkills": [
+      {
+        "skill": "dark-secrets",
+        "level": 20
+      },
+      {
+        "skill": "dark-secrets-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "authority",
+        "blackMagic"
+      ],
+      "unfavored": [
+        "bow"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 25,
+      "str": 6,
+      "mag": 10,
+      "spd": 7,
+      "dex": 6,
+      "def": 4,
+      "res": 8,
+      "lck": 6,
+      "cha": 5
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "dietrich",
+            "text": "Clear Dietrich's Paralogue"
+          },
+          {
+            "type": "request",
+            "text": "complete Fabio's request"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "esmeralda",
+    "name": "Esmeralda",
+    "order": 11,
+    "growths": {
+      "hp": 55,
+      "str": 55,
+      "mag": 20,
+      "spd": 35,
+      "dex": 35,
+      "def": 45,
+      "res": 25,
+      "lck": 35,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "House Lamine",
+    "startingClass": "commoner",
+    "personalSkill": "brawn",
+    "levelSkills": [
+      {
+        "skill": "throwing-arm",
+        "level": 20
+      },
+      {
+        "skill": "throwing-arm-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [
+      "diadem-of-valor"
+    ],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "heavyArmor",
+        "spear"
+      ],
+      "unfavored": [
+        "sword"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 28,
+      "str": 12,
+      "mag": 4,
+      "spd": 6,
+      "dex": 5,
+      "def": 7,
+      "res": 3,
+      "lck": 7,
+      "cha": 6
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Complete Esmeralda's Request"
+          }
+        ],
+        "support": 2,
+        "renown": 7
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 2,
+        "method": "automatic",
+        "conditions": []
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Complete Esmeralda's Request"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Complete Esmeralda's Request"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "mikaela",
+    "name": "Mikaela",
+    "order": 12,
+    "growths": {
+      "hp": 50,
+      "str": 45,
+      "mag": 30,
+      "spd": 40,
+      "dex": 35,
+      "def": 40,
+      "res": 25,
+      "lck": 30,
+      "cha": 40
+    },
+    "lord": false,
+    "faction": "House Lamine",
+    "startingClass": "gladiator",
+    "personalSkill": "veterans-mettle",
+    "levelSkills": [
+      {
+        "skill": "redblades-will",
+        "level": 20
+      },
+      {
+        "skill": "redblades-will-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "bow",
+        "infantry"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 29,
+      "str": 13,
+      "mag": 4,
+      "spd": 7,
+      "dex": 8,
+      "def": 7,
+      "res": 5,
+      "lck": 7,
+      "cha": 9
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 3000,
+            "text": "Give 3000 Gold to Mikaela"
+          }
+        ],
+        "support": 3,
+        "renown": 5
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "automatic",
+        "conditions": []
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 3000,
+            "text": "Give 3000 Gold to Mikaela"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 3000,
+            "text": "Give 3000 Gold to Mikaela"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "bonaventure",
+    "name": "Bonaventure",
+    "order": 13,
+    "growths": {
+      "hp": 35,
+      "str": 35,
+      "mag": 45,
+      "spd": 40,
+      "dex": 50,
+      "def": 30,
+      "res": 40,
+      "lck": 35,
+      "cha": 40
+    },
+    "lord": false,
+    "faction": "Megaira's Beacon",
+    "startingClass": "noble",
+    "personalSkill": "sage-advice",
+    "levelSkills": [
+      {
+        "skill": "additional-intel",
+        "level": 20
+      },
+      {
+        "skill": "additional-intel-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 25,
+      "str": 7,
+      "mag": 10,
+      "spd": 7,
+      "dex": 8,
+      "def": 6,
+      "res": 8,
+      "lck": 5,
+      "cha": 7
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "tobias",
+    "name": "Tobias",
+    "order": 14,
+    "growths": {
+      "hp": 55,
+      "str": 60,
+      "mag": 15,
+      "spd": 25,
+      "dex": 30,
+      "def": 45,
+      "res": 20,
+      "lck": 40,
+      "cha": 35
+    },
+    "lord": false,
+    "faction": "Megaira's Beacon",
+    "startingClass": "noble",
+    "personalSkill": "power-arts",
+    "levelSkills": [
+      {
+        "skill": "all-out-attack",
+        "level": 20
+      },
+      {
+        "skill": "all-out-attack-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 28,
+      "str": 14,
+      "mag": 4,
+      "spd": 5,
+      "dex": 5,
+      "def": 8,
+      "res": 3,
+      "lck": 6,
+      "cha": 5
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "lilian",
+    "name": "Lilian",
+    "order": 15,
+    "growths": {
+      "hp": 35,
+      "str": 35,
+      "mag": 30,
+      "spd": 40,
+      "dex": 55,
+      "def": 30,
+      "res": 35,
+      "lck": 50,
+      "cha": 25
+    },
+    "lord": false,
+    "faction": "Megaira's Beacon",
+    "startingClass": "hunter",
+    "personalSkill": "safety-first",
+    "levelSkills": [
+      {
+        "skill": "upper-hand",
+        "level": 20
+      },
+      {
+        "skill": "upper-hand-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "bow",
+        "infantry"
+      ],
+      "unfavored": [
+        "gauntlet"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 25,
+      "str": 8,
+      "mag": 6,
+      "spd": 10,
+      "dex": 11,
+      "def": 6,
+      "res": 5,
+      "lck": 7,
+      "cha": 6
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 5000,
+            "text": "Give 5000 Gold to Lilian"
+          }
+        ],
+        "support": 2,
+        "renown": 8
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 5000,
+            "text": "Give 5000 Gold to Lilian"
+          }
+        ],
+        "support": 2,
+        "renown": 8
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 4,
+        "method": "automatic",
+        "conditions": []
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 5000,
+            "text": "Give 5000 Gold to Lilian"
+          }
+        ],
+        "support": 2,
+        "renown": 7
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "lysander",
+    "name": "Lysander",
+    "order": 16,
+    "growths": {
+      "hp": 45,
+      "str": 40,
+      "mag": 25,
+      "spd": 50,
+      "dex": 35,
+      "def": 40,
+      "res": 25,
+      "lck": 30,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "Megaira's Beacon",
+    "startingClass": "ornius-rider",
+    "personalSkill": "racing-attack",
+    "levelSkills": [
+      {
+        "skill": "accelerate",
+        "level": 20
+      },
+      {
+        "skill": "accelerate-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "flying",
+        "riding",
+        "spear"
+      ],
+      "unfavored": [
+        "gauntlet",
+        "heavyArmor",
+        "sword"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 28,
+      "str": 9,
+      "mag": 6,
+      "spd": 11,
+      "dex": 9,
+      "def": 8,
+      "res": 6,
+      "lck": 9,
+      "cha": 7
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Iron Spears",
+            "qty": 5,
+            "text": "Give 5 Iron Spears to Lysander"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Iron Spears",
+            "qty": 5,
+            "text": "Give 5 Iron Spears to Lysander"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 4,
+        "method": "automatic",
+        "conditions": []
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Iron Spears",
+            "qty": 5,
+            "text": "Give 5 Iron Spears to Lysander"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "buccar",
+    "name": "Buccar",
+    "order": 17,
+    "growths": {
+      "hp": 50,
+      "str": 50,
+      "mag": 20,
+      "spd": 25,
+      "dex": 40,
+      "def": 45,
+      "res": 20,
+      "lck": 30,
+      "cha": 35
+    },
+    "lord": false,
+    "faction": "Rose Tempest",
+    "startingClass": "commoner",
+    "personalSkill": "guardians-duty",
+    "levelSkills": [
+      {
+        "skill": "retaliatory-blow",
+        "level": 20
+      },
+      {
+        "skill": "retaliatory-blow-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "spear"
+      ],
+      "unfavored": [
+        "blackMagic",
+        "whiteMagic"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 29,
+      "str": 12,
+      "mag": 4,
+      "spd": 5,
+      "dex": 6,
+      "def": 8,
+      "res": 3,
+      "lck": 6,
+      "cha": 6
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "leda",
+            "text": "Clear Leda's Paralogue"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "leda",
+            "text": "Clear Leda's Paralogue"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "sirocco",
+    "name": "Sirocco",
+    "order": 18,
+    "growths": {
+      "hp": 40,
+      "str": 40,
+      "mag": 40,
+      "spd": 45,
+      "dex": 50,
+      "def": 35,
+      "res": 35,
+      "lck": 50,
+      "cha": 45
+    },
+    "lord": false,
+    "faction": "Rose Tempest",
+    "startingClass": "commoner",
+    "personalSkill": "goddesss-favor",
+    "levelSkills": [
+      {
+        "skill": "winds-caprice",
+        "level": 20
+      },
+      {
+        "skill": "winds-caprice-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "authority",
+        "blackMagic",
+        "sword",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "heavyArmor"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 26,
+      "str": 8,
+      "mag": 8,
+      "spd": 9,
+      "dex": 8,
+      "def": 6,
+      "res": 7,
+      "lck": 8,
+      "cha": 8
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Monument Verse",
+            "qty": 1,
+            "text": "Give Sirocco a copy of the Monument Verse"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Monument Verse",
+            "qty": 1,
+            "text": "Give Sirocco a copy of the Monument Verse"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Monument Verse",
+            "qty": 1,
+            "text": "Give Sirocco a copy of the Monument Verse"
+          }
+        ],
+        "support": 1,
+        "renown": 5
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "olympia",
+    "name": "Olympia",
+    "order": 19,
+    "growths": {
+      "hp": 35,
+      "str": 35,
+      "mag": 50,
+      "spd": 35,
+      "dex": 35,
+      "def": 30,
+      "res": 40,
+      "lck": 40,
+      "cha": 40
+    },
+    "lord": false,
+    "faction": "Temple Army, Rose Tempest",
+    "startingClass": "diviner",
+    "personalSkill": "competitive-zeal",
+    "levelSkills": [
+      {
+        "skill": "ardent-nosferatu",
+        "level": 20
+      },
+      {
+        "skill": "ardent-nosferatu-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "spear"
+      ]
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 25,
+      "str": 6,
+      "mag": 14,
+      "spd": 8,
+      "dex": 7,
+      "def": 6,
+      "res": 8,
+      "lck": 8,
+      "cha": 9
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Scarlet Firedrops",
+            "qty": 1,
+            "text": "Give Olympia Scarlet Firedrops x1"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Aurum Rose",
+            "qty": 1,
+            "text": "Give Olympia Aurum Rose x1"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Azure Heart",
+            "qty": 1,
+            "text": "Give Olympia Azure Heart x1"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 3,
+        "method": "automatic",
+        "conditions": []
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "mu",
+    "name": "Mu",
+    "order": 20,
+    "growths": {
+      "hp": 50,
+      "str": 50,
+      "mag": 25,
+      "spd": 50,
+      "dex": 50,
+      "def": 40,
+      "res": 30,
+      "lck": 30,
+      "cha": 40
+    },
+    "lord": false,
+    "faction": "Rose Tempest",
+    "startingClass": "commoner",
+    "personalSkill": "signs-of-growth",
+    "levelSkills": [
+      {
+        "skill": "warriors-blood",
+        "level": 20
+      },
+      {
+        "skill": "warriors-blood-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "gauntlet",
+        "sword",
+        "whiteMagic"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": {
+      "hp": 23,
+      "str": 7,
+      "mag": 3,
+      "spd": 7,
+      "dex": 8,
+      "def": 5,
+      "res": 5,
+      "lck": 4,
+      "cha": 4
+    },
+    "baseLevel": 1,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Glirmosa",
+            "qty": 3,
+            "text": "Give Mu 3 Glirmosa"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Glirmosa",
+            "qty": 3,
+            "text": "Give Mu 3 Glirmosa"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Glirmosa",
+            "qty": 3,
+            "text": "Give Mu 3 Glirmosa"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 1,
+        "method": "automatic",
+        "conditions": []
+      }
+    ],
+    "spoiler": 0,
+    "notes": [
+      "Growths shown include Signs of Growth (+20% to every stat). Her growths without it are 20% lower across the board."
+    ]
+  },
+  {
+    "id": "gaitz",
+    "name": "Gaitz",
+    "order": 21,
+    "growths": {
+      "hp": 50,
+      "str": 50,
+      "mag": 20,
+      "spd": 40,
+      "dex": 45,
+      "def": 45,
+      "res": 25,
+      "lck": 40,
+      "cha": 45
+    },
+    "lord": false,
+    "faction": "Fiery Mane",
+    "startingClass": null,
+    "personalSkill": "brave-assist",
+    "levelSkills": [
+      {
+        "skill": "flashing-fang",
+        "level": 20
+      },
+      {
+        "skill": "flashing-fang-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "riding",
+        "spear"
+      ],
+      "unfavored": [
+        "blackMagic",
+        "whiteMagic"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "bertrand",
+            "text": "Clear Bertrand's Paralogue"
+          },
+          {
+            "type": "chapter",
+            "chapter": 12,
+            "text": "reach Chapter 12"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "dante",
+    "name": "Dante",
+    "order": 22,
+    "growths": {
+      "hp": 30,
+      "str": 30,
+      "mag": 45,
+      "spd": 40,
+      "dex": 40,
+      "def": 20,
+      "res": 40,
+      "lck": 45,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "Fiery Mane",
+    "startingClass": null,
+    "personalSkill": "stage-directions",
+    "levelSkills": [
+      {
+        "skill": "dramatic-effect",
+        "level": 20
+      },
+      {
+        "skill": "dramatic-effect-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "authority",
+        "blackMagic",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "gauntlet"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 8000,
+            "text": "Give 8000 Gold to Dante"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 8000,
+            "text": "Give 8000 Gold to Dante"
+          }
+        ],
+        "support": 2,
+        "renown": 8
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 8000,
+            "text": "Give 8000 Gold to Dante"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 8000,
+            "text": "Give 8000 Gold to Dante"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "ursula",
+    "name": "Ursula",
+    "order": 23,
+    "growths": {
+      "hp": 40,
+      "str": 35,
+      "mag": 35,
+      "spd": 50,
+      "dex": 50,
+      "def": 35,
+      "res": 30,
+      "lck": 40,
+      "cha": 45
+    },
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": "management-skills",
+    "levelSkills": [
+      {
+        "skill": "seize-the-chance",
+        "level": 20
+      },
+      {
+        "skill": "seize-the-chance-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [
+      "diadem-of-fetters"
+    ],
+    "aptitudes": {
+      "favored": [
+        "bow",
+        "sword"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "talimun",
+            "text": "Complete Talimun's Paralogue"
+          },
+          {
+            "type": "dialogue",
+            "text": "select Agree 3 times"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "talimun",
+            "text": "Complete Talimun's Paralogue"
+          },
+          {
+            "type": "dialogue",
+            "text": "select Agree 3 times"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "talimun",
+            "text": "Complete Talimun's Paralogue"
+          },
+          {
+            "type": "dialogue",
+            "text": "select Agree 3 times"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      }
+    ],
+    "spoiler": 0,
+    "notes": [
+      "Sources disagree on some growth rates: HP 40% (Game8) vs 50% (Fextralife). Game8 values are shown."
+    ]
+  },
+  {
+    "id": "simon",
+    "name": "Simon",
+    "order": 24,
+    "growths": {
+      "hp": 50,
+      "str": 50,
+      "mag": 20,
+      "spd": 35,
+      "dex": 40,
+      "def": 40,
+      "res": 25,
+      "lck": 50,
+      "cha": 35
+    },
+    "lord": false,
+    "faction": "Vandahl Trading Company",
+    "startingClass": null,
+    "personalSkill": "close-call",
+    "levelSkills": [
+      {
+        "skill": "devils-luck",
+        "level": 20
+      },
+      {
+        "skill": "devils-luck-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "infantry",
+        "sword"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 500,
+            "text": "Pay 500 Gold"
+          },
+          {
+            "type": "dialogue",
+            "text": "pick tails on coin toss"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 500,
+            "text": "Pay 500 Gold"
+          },
+          {
+            "type": "dialogue",
+            "text": "pick tails on coin toss"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 500,
+            "text": "Pay 500 Gold"
+          },
+          {
+            "type": "dialogue",
+            "text": "pick tails on coin toss"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 500,
+            "text": "Pay 500 Gold"
+          },
+          {
+            "type": "dialogue",
+            "text": "pick tails on coin toss"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "diego",
+    "name": "Diego",
+    "order": 25,
+    "growths": {
+      "hp": 45,
+      "str": 40,
+      "mag": 20,
+      "spd": 45,
+      "dex": 60,
+      "def": 35,
+      "res": 20,
+      "lck": 35,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "Linaria Dewdrops",
+    "startingClass": null,
+    "personalSkill": "caretaker",
+    "levelSkills": [
+      {
+        "skill": "no-mercy",
+        "level": 20
+      },
+      {
+        "skill": "no-mercy-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "bow",
+        "infantry",
+        "sword"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 3,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "orchel",
+            "text": "Clear Orchel's Regret Paralogue"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "orchel",
+            "text": "Clear Orchel's Regret Paralogue"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "orchel",
+            "text": "Clear Orchel's Regret Paralogue"
+          }
+        ],
+        "support": 2,
+        "renown": 8
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "orchel",
+            "text": "Clear Orchel's Regret Paralogue"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "ninae",
+    "name": "Ninae",
+    "order": 26,
+    "growths": {
+      "hp": 45,
+      "str": 45,
+      "mag": 35,
+      "spd": 35,
+      "dex": 45,
+      "def": 35,
+      "res": 45,
+      "lck": 50,
+      "cha": 40
+    },
+    "lord": false,
+    "faction": "Linaria Dewdrops",
+    "startingClass": null,
+    "personalSkill": "spirits-voices",
+    "levelSkills": [
+      {
+        "skill": "spirits-guidance",
+        "level": 20
+      },
+      {
+        "skill": "spirits-guidance-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [
+      "diadem-of-reflection"
+    ],
+    "aptitudes": {
+      "favored": [
+        "spear",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "bow"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 3,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Paradise Fish",
+            "qty": 1,
+            "text": "Give 1 Paradise Fish to Ninae"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Paradise Fish",
+            "qty": 1,
+            "text": "Give 1 Paradise Fish to Ninae"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Paradise Fish",
+            "qty": 1,
+            "text": "Give 1 Paradise Fish to Ninae"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Paradise Fish",
+            "qty": 1,
+            "text": "Give 1 Paradise Fish to Ninae"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "sha-lan",
+    "name": "Sha Lan",
+    "order": 27,
+    "growths": {
+      "hp": 35,
+      "str": 30,
+      "mag": 45,
+      "spd": 35,
+      "dex": 50,
+      "def": 30,
+      "res": 45,
+      "lck": 35,
+      "cha": 40
+    },
+    "lord": false,
+    "faction": "Bridal Party of the Pale Raven",
+    "startingClass": "diviner",
+    "personalSkill": "cooler-heads",
+    "levelSkills": [
+      {
+        "skill": "watchfulness",
+        "level": 20
+      },
+      {
+        "skill": "watchfulness-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "authority",
+        "spear",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "sword"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "anatolia",
+            "text": "Clear Anatolia's Paralogue"
+          },
+          {
+            "type": "request",
+            "text": "answer questions correctly"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "anatolia",
+            "text": "Clear Anatolia's Paralogue"
+          },
+          {
+            "type": "request",
+            "text": "answer questions correctly"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "nezha",
+    "name": "Nezha",
+    "order": 28,
+    "growths": {
+      "hp": 45,
+      "str": 55,
+      "mag": 25,
+      "spd": 45,
+      "dex": 50,
+      "def": 35,
+      "res": 25,
+      "lck": 30,
+      "cha": 25
+    },
+    "lord": false,
+    "faction": "Bridal Party of the Pale Raven",
+    "startingClass": null,
+    "personalSkill": "quick-draw",
+    "levelSkills": [
+      {
+        "skill": "never-stop",
+        "level": 20
+      },
+      {
+        "skill": "never-stop-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "gauntlet",
+        "infantry",
+        "sword"
+      ],
+      "unfavored": [
+        "spear"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Sandworm Meat",
+            "qty": 3,
+            "text": "Give 3 Sandworm Meat to Nezha"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Sandworm Meat",
+            "qty": 3,
+            "text": "Give 3 Sandworm Meat to Nezha"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Sandworm Meat",
+            "qty": 3,
+            "text": "Give 3 Sandworm Meat to Nezha"
+          }
+        ],
+        "support": 2,
+        "renown": 6
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Sandworm Meat",
+            "qty": 3,
+            "text": "Give 3 Sandworm Meat to Nezha"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "guzran",
+    "name": "Guzran",
+    "order": 29,
+    "growths": {
+      "hp": 45,
+      "str": 45,
+      "mag": 20,
+      "spd": 50,
+      "dex": 45,
+      "def": 35,
+      "res": 20,
+      "lck": 45,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": "hot-headed",
+    "levelSkills": [
+      {
+        "skill": "top-form",
+        "level": 20
+      },
+      {
+        "skill": "top-form-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "gauntlet",
+        "infantry",
+        "sword"
+      ],
+      "unfavored": [
+        "blackMagic",
+        "whiteMagic"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 3,
+        "method": "recruit",
+        "conditions": [],
+        "support": 1,
+        "renown": 2
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [],
+        "support": 1,
+        "renown": 3
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "io",
+    "name": "Io",
+    "order": 30,
+    "growths": {
+      "hp": 45,
+      "str": 40,
+      "mag": 25,
+      "spd": 35,
+      "dex": 45,
+      "def": 40,
+      "res": 25,
+      "lck": 35,
+      "cha": 35
+    },
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": "with-my-steed",
+    "levelSkills": [
+      {
+        "skill": "mounted-push",
+        "level": 20
+      },
+      {
+        "skill": "mounted-push-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "riding",
+        "spear"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 3,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 4000,
+            "text": "Give 4000 Gold to Io"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 800,
+            "text": "Give 800 Gold to Io"
+          }
+        ],
+        "support": 2,
+        "renown": 3
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 4000,
+            "text": "Give 4000 Gold to Io"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 1500,
+            "text": "Give 1500 Gold to Io"
+          }
+        ],
+        "support": 1,
+        "renown": 6
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "catania",
+    "name": "Catania",
+    "order": 31,
+    "growths": {
+      "hp": 35,
+      "str": 35,
+      "mag": 35,
+      "spd": 55,
+      "dex": 50,
+      "def": 30,
+      "res": 35,
+      "lck": 40,
+      "cha": 45
+    },
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": "punishing-squall",
+    "levelSkills": [
+      {
+        "skill": "wind-my-friend",
+        "level": 20
+      },
+      {
+        "skill": "wind-my-friend-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "spear",
+        "sword"
+      ],
+      "unfavored": [
+        "heavyArmor"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 3,
+        "method": "recruit",
+        "conditions": [],
+        "support": 3,
+        "renown": 10
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [],
+        "support": 1,
+        "renown": 8
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [],
+        "support": 3,
+        "renown": 7
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [],
+        "support": 1,
+        "renown": 2
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "nydine",
+    "name": "Nydine",
+    "order": 32,
+    "growths": {
+      "hp": 45,
+      "str": 40,
+      "mag": 30,
+      "spd": 45,
+      "dex": 40,
+      "def": 30,
+      "res": 25,
+      "lck": 35,
+      "cha": 35
+    },
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": "barge-through",
+    "levelSkills": [
+      {
+        "skill": "at-a-gallop",
+        "level": 20
+      },
+      {
+        "skill": "at-a-gallop-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "flying",
+        "riding"
+      ],
+      "unfavored": [
+        "gauntlet",
+        "heavyArmor"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 3,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Bronze Axes",
+            "qty": 2,
+            "text": "Give 2 Bronze Axes to Nydine"
+          }
+        ],
+        "support": 1,
+        "renown": 6
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Bronze Axes",
+            "qty": 2,
+            "text": "Give 2 Bronze Axes to Nydine"
+          }
+        ],
+        "support": 2,
+        "renown": 5
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Iron Axes",
+            "qty": 3,
+            "text": "Give 3 Iron Axes to Nydine"
+          }
+        ],
+        "support": 3,
+        "renown": 5
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Iron Axes",
+            "qty": 3,
+            "text": "Give 3 Iron Axes to Nydine"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "benditz",
+    "name": "Benditz",
+    "order": 33,
+    "growths": {
+      "hp": 50,
+      "str": 35,
+      "mag": 20,
+      "spd": 35,
+      "dex": 50,
+      "def": 35,
+      "res": 25,
+      "lck": 30,
+      "cha": 35
+    },
+    "lord": false,
+    "faction": "Thundercloud Knights",
+    "startingClass": null,
+    "personalSkill": "wheeled-warrior",
+    "levelSkills": [
+      {
+        "skill": "chariot-stagger",
+        "level": 20
+      },
+      {
+        "skill": "chariot-stagger-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "bow",
+        "riding"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 6,
+        "method": "recruit",
+        "conditions": [],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [],
+        "support": 2,
+        "renown": 7
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 6,
+        "method": "recruit",
+        "conditions": [],
+        "support": 1,
+        "renown": 8
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [],
+        "support": 3,
+        "renown": 7
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "alexandra",
+    "name": "Alexandra",
+    "order": 34,
+    "growths": {
+      "hp": 30,
+      "str": 35,
+      "mag": 35,
+      "spd": 55,
+      "dex": 45,
+      "def": 30,
+      "res": 40,
+      "lck": 50,
+      "cha": 50
+    },
+    "lord": false,
+    "faction": "Silver Knights of Tellus",
+    "startingClass": null,
+    "personalSkill": "silver-maiden",
+    "levelSkills": [
+      {
+        "skill": "soar",
+        "level": 20
+      },
+      {
+        "skill": "soar-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "flying",
+        "spear",
+        "sword"
+      ],
+      "unfavored": [
+        "axe",
+        "blackMagic"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 7,
+        "method": "recruit",
+        "conditions": [],
+        "support": 2,
+        "renown": 7
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 7,
+        "method": "recruit",
+        "conditions": [],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 8,
+        "method": "recruit",
+        "conditions": [],
+        "support": 1,
+        "renown": 6
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 7,
+        "method": "recruit",
+        "conditions": [],
+        "support": 3,
+        "renown": 10
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "yang-jie",
+    "name": "Yang Jie",
+    "order": 35,
+    "growths": {
+      "hp": 50,
+      "str": 35,
+      "mag": 40,
+      "spd": 35,
+      "dex": 35,
+      "def": 30,
+      "res": 40,
+      "lck": 40,
+      "cha": 25
+    },
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": "monkly-havoc",
+    "levelSkills": [
+      {
+        "skill": "robust-health",
+        "level": 20
+      },
+      {
+        "skill": "robust-health-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "riding",
+        "sword"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 3,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Answer Yang Jie’s 3 Questions Correctly"
+          }
+        ],
+        "support": 2,
+        "renown": 3
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [],
+        "support": 1,
+        "renown": 2
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Answer Yang Jie’s 3 Questions Correctly"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Answer Yang Jie’s 3 Questions Correctly"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "noctula",
+    "name": "Noctula",
+    "order": 36,
+    "growths": {
+      "hp": 50,
+      "str": 45,
+      "mag": 20,
+      "spd": 45,
+      "dex": 40,
+      "def": 40,
+      "res": 20,
+      "lck": 35,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": "warriors-clarity",
+    "levelSkills": [
+      {
+        "skill": "attuned",
+        "level": 20
+      },
+      {
+        "skill": "attuned-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "gauntlet",
+        "infantry"
+      ],
+      "unfavored": [
+        "sword"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 3,
+        "method": "recruit",
+        "conditions": [],
+        "support": 1,
+        "renown": 4
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [],
+        "support": 1,
+        "renown": 6
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [],
+        "support": 1,
+        "renown": 3
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [],
+        "support": 3,
+        "renown": 8
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "sofia",
+    "name": "Sofia",
+    "order": 37,
+    "growths": {
+      "hp": 35,
+      "str": 30,
+      "mag": 45,
+      "spd": 40,
+      "dex": 30,
+      "def": 25,
+      "res": 40,
+      "lck": 30,
+      "cha": 40
+    },
+    "lord": false,
+    "faction": "Temple Army",
+    "startingClass": null,
+    "personalSkill": "healing-knowledge",
+    "levelSkills": [
+      {
+        "skill": "distant-healing",
+        "level": 20
+      },
+      {
+        "skill": "distant-healing-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "bow",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "axe"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 3,
+        "method": "recruit",
+        "conditions": [],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [],
+        "support": 1,
+        "renown": 2
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [],
+        "support": 3,
+        "renown": 7
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "peppe",
+    "name": "Peppe",
+    "order": 38,
+    "growths": {
+      "hp": 30,
+      "str": 30,
+      "mag": 25,
+      "spd": 60,
+      "dex": 45,
+      "def": 30,
+      "res": 30,
+      "lck": 45,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "Brigid Army",
+    "startingClass": null,
+    "personalSkill": "hunters-snare",
+    "levelSkills": [
+      {
+        "skill": "kings-majesty",
+        "level": 20
+      },
+      {
+        "skill": "kings-majesty-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "bow",
+        "infantry",
+        "sword"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 3,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "bertrand",
+            "text": "Clear Bertrand's Paralogue"
+          }
+        ],
+        "support": 1,
+        "renown": 9
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "bertrand",
+            "text": "Clear Bertrand's Paralogue"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "paralogue",
+            "paralogue": "bertrand",
+            "text": "Clear Bertrand's Paralogue"
+          }
+        ],
+        "support": 2,
+        "renown": 7
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "seteth",
+    "name": "Seteth",
+    "order": 39,
+    "growths": {
+      "hp": 45,
+      "str": 45,
+      "mag": 30,
+      "spd": 40,
+      "dex": 45,
+      "def": 40,
+      "res": 35,
+      "lck": 30,
+      "cha": 50
+    },
+    "lord": false,
+    "faction": "Linaria Dewdrops",
+    "startingClass": null,
+    "personalSkill": "ready-for-battle",
+    "levelSkills": [
+      {
+        "skill": "pass-judgment",
+        "level": 20
+      },
+      {
+        "skill": "pass-judgment-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [
+      "diadem-of-balance"
+    ],
+    "aptitudes": {
+      "favored": [
+        "authority",
+        "axe",
+        "spear"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 3,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Complete Seteth's Request"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Complete Seteth's Request"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Complete Seteth's Request"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "loretta",
+    "name": "Loretta",
+    "order": 40,
+    "growths": {
+      "hp": 35,
+      "str": 35,
+      "mag": 35,
+      "spd": 55,
+      "dex": 40,
+      "def": 30,
+      "res": 40,
+      "lck": 30,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "Linaria Dewdrops",
+    "startingClass": null,
+    "personalSkill": "steadfast",
+    "levelSkills": [
+      {
+        "skill": "peak-form",
+        "level": 20
+      },
+      {
+        "skill": "peak-form-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "spear",
+        "sword"
+      ],
+      "unfavored": [
+        "heavyArmor"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 3,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Iron Swords",
+            "qty": 3,
+            "text": "Give 3 Iron Swords to Loretta"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Iron Swords",
+            "qty": 3,
+            "text": "Give 3 Iron Swords to Loretta"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Iron Swords",
+            "qty": 3,
+            "text": "Give 3 Iron Swords to Loretta"
+          }
+        ],
+        "support": 3,
+        "renown": 5
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Iron Swords",
+            "qty": 3,
+            "text": "Give 3 Iron Swords to Loretta"
+          }
+        ],
+        "support": 3,
+        "renown": 5
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "jester",
+    "name": "Jester",
+    "order": 41,
+    "growths": {
+      "hp": 40,
+      "str": 35,
+      "mag": 15,
+      "spd": 60,
+      "dex": 45,
+      "def": 35,
+      "res": 25,
+      "lck": 40,
+      "cha": 40
+    },
+    "lord": false,
+    "faction": "Fiery Mane",
+    "startingClass": null,
+    "personalSkill": "blink-of-an-eye",
+    "levelSkills": [
+      {
+        "skill": "flickering-edge",
+        "level": 20
+      },
+      {
+        "skill": "flickering-edge-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "bow",
+        "infantry",
+        "sword"
+      ],
+      "unfavored": [
+        "axe"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Complete Jester's Three Combat Quests"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Complete Jester's Three Combat Quests"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Complete Jester's Three Combat Quests"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Complete Jester's Three Combat Quests"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "goliath",
+    "name": "Goliath",
+    "order": 42,
+    "growths": {
+      "hp": 55,
+      "str": 60,
+      "mag": 5,
+      "spd": 15,
+      "dex": 30,
+      "def": 50,
+      "res": 20,
+      "lck": 35,
+      "cha": 20
+    },
+    "lord": false,
+    "faction": "Fiery Mane",
+    "startingClass": null,
+    "personalSkill": "heavyweight-class",
+    "levelSkills": [
+      {
+        "skill": "pin-down",
+        "level": 20
+      },
+      {
+        "skill": "pin-down-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "heavyArmor"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Giants' Meat",
+            "qty": 3,
+            "text": "Give 3 Giants' Meat to Goliath"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Giants' Meat",
+            "qty": 3,
+            "text": "Give 3 Giants' Meat to Goliath"
+          }
+        ],
+        "support": 3,
+        "renown": 6
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Giants' Meat",
+            "qty": 3,
+            "text": "Give 3 Giants' Meat to Goliath"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Giants' Meat",
+            "qty": 3,
+            "text": "Give 3 Giants' Meat to Goliath"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "ludia",
+    "name": "Ludia",
+    "order": 43,
+    "growths": {
+      "hp": 40,
+      "str": 35,
+      "mag": 20,
+      "spd": 55,
+      "dex": 45,
+      "def": 30,
+      "res": 20,
+      "lck": 30,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "Vandahl Trading Company",
+    "startingClass": null,
+    "personalSkill": "falcon",
+    "levelSkills": [
+      {
+        "skill": "perception",
+        "level": 20
+      },
+      {
+        "skill": "perception-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "infantry",
+        "sword"
+      ],
+      "unfavored": [
+        "axe",
+        "blackMagic"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Gather information at Callianeira Port and report back to Ludia"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Gather information at Callianeira Port and report back to Ludia"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Gather information at Callianeira Port and report back to Ludia"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Gather information at Callianeira Port and report back to Ludia"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "dadao",
+    "name": "Dadao",
+    "order": 44,
+    "growths": {
+      "hp": 50,
+      "str": 55,
+      "mag": 20,
+      "spd": 30,
+      "dex": 35,
+      "def": 45,
+      "res": 20,
+      "lck": 25,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "Bridal Party of the Pale Raven",
+    "startingClass": null,
+    "personalSkill": "one-chance",
+    "levelSkills": [
+      {
+        "skill": "full-strength",
+        "level": 20
+      },
+      {
+        "skill": "full-strength-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "heavyArmor"
+      ],
+      "unfavored": [
+        "blackMagic",
+        "spear",
+        "whiteMagic"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Kothar Gar",
+            "qty": 2,
+            "text": "Give 2 Kothar Gar to Dadao"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Kothar Gar",
+            "qty": 2,
+            "text": "Give 2 Kothar Gar to Dadao"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Kothar Gar",
+            "qty": 2,
+            "text": "Give 2 Kothar Gar to Dadao"
+          }
+        ],
+        "support": 2,
+        "renown": 5
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Kothar Gar",
+            "qty": 2,
+            "text": "Give 2 Kothar Gar to Dadao"
+          }
+        ],
+        "support": 2,
+        "renown": 5
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "fianna",
+    "name": "Fianna",
+    "order": 45,
+    "growths": {
+      "hp": 30,
+      "str": 35,
+      "mag": 55,
+      "spd": 30,
+      "dex": 40,
+      "def": 20,
+      "res": 45,
+      "lck": 25,
+      "cha": 40
+    },
+    "lord": false,
+    "faction": "Vandahl Trading Company",
+    "startingClass": null,
+    "personalSkill": "graceful-light",
+    "levelSkills": [
+      {
+        "skill": "gift-of-faith",
+        "level": 20
+      },
+      {
+        "skill": "gift-of-faith-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [
+      "diadem-of-revival"
+    ],
+    "aptitudes": {
+      "favored": [
+        "blackMagic",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "gauntlet",
+        "sword"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 3000,
+            "text": "Give 3000 Gold to Fianna"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 3000,
+            "text": "Give 3000 Gold to Fianna"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 3000,
+            "text": "Give 3000 Gold to Fianna"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 3000,
+            "text": "Give 3000 Gold to Fianna"
+          }
+        ],
+        "support": 3,
+        "renown": 5
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "halvin",
+    "name": "Halvin",
+    "order": 46,
+    "growths": {
+      "hp": 35,
+      "str": 35,
+      "mag": 30,
+      "spd": 45,
+      "dex": 60,
+      "def": 30,
+      "res": 25,
+      "lck": 40,
+      "cha": 35
+    },
+    "lord": false,
+    "faction": "Bridal Party of the Pale Raven",
+    "startingClass": null,
+    "personalSkill": "adaptability",
+    "levelSkills": [
+      {
+        "skill": "halt-advance",
+        "level": 20
+      },
+      {
+        "skill": "halt-advance-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "bow",
+        "riding"
+      ],
+      "unfavored": [
+        "axe"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Dates (Material)",
+            "qty": 10,
+            "text": "Give 10 Dates (Material) to Halvin"
+          }
+        ],
+        "support": 3,
+        "renown": 5
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Dates (Material)",
+            "qty": 10,
+            "text": "Give 10 Dates (Material) to Halvin"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Dates (Material)",
+            "qty": 10,
+            "text": "Give 10 Dates (Material) to Halvin"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Dates (Material)",
+            "qty": 10,
+            "text": "Give 10 Dates (Material) to Halvin"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "zarcone",
+    "name": "Zarcone",
+    "order": 47,
+    "growths": {
+      "hp": 40,
+      "str": 30,
+      "mag": 20,
+      "spd": 35,
+      "dex": 60,
+      "def": 30,
+      "res": 25,
+      "lck": 30,
+      "cha": 15
+    },
+    "lord": false,
+    "faction": "Gaia's Brigadiers",
+    "startingClass": null,
+    "personalSkill": "hatchet-man",
+    "levelSkills": [
+      {
+        "skill": "vulgar-conduct",
+        "level": 20
+      },
+      {
+        "skill": "vulgar-conduct-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "sword"
+      ],
+      "unfavored": [
+        "blackMagic",
+        "whiteMagic"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "dialogue",
+            "text": "Refuse to pay thrice"
+          },
+          {
+            "type": "gold",
+            "amount": 10,
+            "text": "pay Zarcone 10 Gold"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "dialogue",
+            "text": "Refuse to pay thrice"
+          },
+          {
+            "type": "gold",
+            "amount": 10,
+            "text": "pay Zarcone 10 Gold"
+          }
+        ],
+        "support": 3,
+        "renown": 7
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "dialogue",
+            "text": "Refuse to pay thrice"
+          },
+          {
+            "type": "gold",
+            "amount": 10,
+            "text": "pay Zarcone 10 Gold"
+          }
+        ],
+        "support": 1,
+        "renown": 4
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "dialogue",
+            "text": "Refuse to pay thrice"
+          },
+          {
+            "type": "gold",
+            "amount": 10,
+            "text": "pay Zarcone 10 Gold"
+          }
+        ],
+        "support": 2,
+        "renown": 5
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "majide",
+    "name": "Majide",
+    "order": 48,
+    "growths": {
+      "hp": 65,
+      "str": 50,
+      "mag": 15,
+      "spd": 20,
+      "dex": 30,
+      "def": 40,
+      "res": 10,
+      "lck": 25,
+      "cha": 5
+    },
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": "hellbent-axe",
+    "levelSkills": [
+      {
+        "skill": "fear-nothing",
+        "level": 20
+      },
+      {
+        "skill": "fear-nothing-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "gauntlet"
+      ],
+      "unfavored": [
+        "blackMagic"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "dialogue",
+            "text": "Admit That You Need Majide Three Times"
+          }
+        ],
+        "support": 2,
+        "renown": 5
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "dialogue",
+            "text": "Admit That You Need Majide Three Times"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "dialogue",
+            "text": "Admit That You Need Majide Three Times"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 4,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "dialogue",
+            "text": "Admit That You Need Majide Three Times"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "kiroc",
+    "name": "Kiroc",
+    "order": 49,
+    "growths": {
+      "hp": 55,
+      "str": 40,
+      "mag": 15,
+      "spd": 55,
+      "dex": 50,
+      "def": 30,
+      "res": 15,
+      "lck": 30,
+      "cha": 25
+    },
+    "lord": false,
+    "faction": "Black Bird Pirates",
+    "startingClass": null,
+    "personalSkill": "tyranny",
+    "levelSkills": [
+      {
+        "skill": "menace",
+        "level": 20
+      },
+      {
+        "skill": "menace-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "bow"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 6,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Pure Water",
+            "qty": 8,
+            "text": "Give 8 Pure Water to Kiroc"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 6,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Pure Water",
+            "qty": 3,
+            "text": "Give 3 Pure Water to Kiroc"
+          }
+        ],
+        "support": 1,
+        "renown": 4
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 7,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Pure Water",
+            "qty": 8,
+            "text": "Give 8 Pure Water to Kiroc"
+          }
+        ],
+        "support": 3,
+        "renown": 10
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 5,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Pure Water",
+            "qty": 3,
+            "text": "Give 3 Pure Water to Kiroc"
+          }
+        ],
+        "support": 1,
+        "renown": 4
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "jasmine",
+    "name": "Jasmine",
+    "order": 50,
+    "growths": {
+      "hp": 50,
+      "str": 40,
+      "mag": 20,
+      "spd": 30,
+      "dex": 45,
+      "def": 45,
+      "res": 25,
+      "lck": 40,
+      "cha": 45
+    },
+    "lord": false,
+    "faction": "Rains of Palma",
+    "startingClass": null,
+    "personalSkill": "expert-counter",
+    "levelSkills": [
+      {
+        "skill": "raging-counter",
+        "level": 20
+      },
+      {
+        "skill": "raging-counter-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "heavyArmor",
+        "spear"
+      ],
+      "unfavored": [
+        "flying",
+        "sword"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 6,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 2000,
+            "text": "Give 2000 Gold to Jasmine"
+          }
+        ],
+        "support": 1,
+        "renown": 8
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 6,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 5000,
+            "text": "Give 5000 Gold to Jasmine"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 7,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 5000,
+            "text": "Give 5000 Gold to Jasmine"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 6,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 500,
+            "text": "Give 500 Gold to Jasmine"
+          }
+        ],
+        "support": 2,
+        "renown": 4
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "nuzzuo",
+    "name": "Nuzzuo",
+    "order": 51,
+    "growths": {
+      "hp": 50,
+      "str": 50,
+      "mag": 15,
+      "spd": 55,
+      "dex": 45,
+      "def": 20,
+      "res": 15,
+      "lck": 25,
+      "cha": 35
+    },
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": "har-hali-wisdom",
+    "levelSkills": [
+      {
+        "skill": "precision-strike",
+        "level": 20
+      },
+      {
+        "skill": "precision-strike-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "bow",
+        "sword"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 6,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Iron Bows",
+            "qty": 3,
+            "text": "Give 3 Iron Bows to Nuzzuo"
+          }
+        ],
+        "support": 2,
+        "renown": 6
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 8,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Iron Bows",
+            "qty": 2,
+            "text": "Give 2 Iron Bows to Nuzzuo"
+          }
+        ],
+        "support": 1,
+        "renown": 9
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 9,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Iron Bows",
+            "qty": 3,
+            "text": "Give 3 Iron Bows to Nuzzuo"
+          }
+        ],
+        "support": 1,
+        "renown": 6
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 8,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "item",
+            "item": "Iron Bows",
+            "qty": 3,
+            "text": "Give 3 Iron Bows to Nuzzuo"
+          }
+        ],
+        "support": 3,
+        "renown": 9
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "inyoni",
+    "name": "Inyoni",
+    "order": 52,
+    "growths": {
+      "hp": 40,
+      "str": 50,
+      "mag": 20,
+      "spd": 35,
+      "dex": 40,
+      "def": 40,
+      "res": 30,
+      "lck": 40,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "Sisters of Bragança",
+    "startingClass": null,
+    "personalSkill": "heavy-bow-user",
+    "levelSkills": [
+      {
+        "skill": "pierce",
+        "level": 20
+      },
+      {
+        "skill": "pierce-plus",
+        "level": 35
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "bow"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "cai",
+        "part": 1,
+        "chapter": 8,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 6000,
+            "text": "Give 6000 Gold to Inyoni"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "dietrich",
+        "part": 1,
+        "chapter": 8,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 6000,
+            "text": "Give 6000 Gold to Inyoni"
+          }
+        ],
+        "support": 3,
+        "renown": 8
+      },
+      {
+        "route": "theodora",
+        "part": 1,
+        "chapter": 9,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 4000,
+            "text": "Give 4000 Gold to Inyoni"
+          }
+        ],
+        "support": 1,
+        "renown": 9
+      },
+      {
+        "route": "leda",
+        "part": 1,
+        "chapter": 9,
+        "method": "recruit",
+        "conditions": [
+          {
+            "type": "gold",
+            "amount": 3000,
+            "text": "Give 3000 Gold to Inyoni"
+          }
+        ],
+        "support": 1,
+        "renown": 7
+      }
+    ],
+    "spoiler": 0,
+    "notes": []
+  },
+  {
+    "id": "creek",
+    "name": "Creek",
+    "order": 53,
+    "growths": {
+      "hp": 45,
+      "str": 50,
+      "mag": 15,
+      "spd": 60,
+      "dex": 50,
+      "def": 35,
+      "res": 20,
+      "lck": 30,
+      "cha": 35
+    },
+    "lord": false,
+    "faction": "Arago",
+    "startingClass": null,
+    "personalSkill": "steady-hands",
+    "levelSkills": [],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "riding",
+        "sword"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "all",
+        "part": 2,
+        "method": "story",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Clear My Late Sister's Accessory Subquest then defeat during the chapter"
+          }
+        ],
+        "chapter": 2
+      }
+    ],
+    "spoiler": 1,
+    "notes": []
+  },
+  {
+    "id": "nathan",
+    "name": "Nathan",
+    "order": 54,
+    "growths": {
+      "hp": 55,
+      "str": 60,
+      "mag": 15,
+      "spd": 25,
+      "dex": 60,
+      "def": 45,
+      "res": 15,
+      "lck": 25,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "Arago",
+    "startingClass": null,
+    "personalSkill": "headlong-rush",
+    "levelSkills": [],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "heavyArmor",
+        "riding",
+        "spear"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "all",
+        "part": 2,
+        "method": "story",
+        "conditions": [
+          {
+            "type": "battle",
+            "text": "Defeat with Creek"
+          }
+        ],
+        "chapter": 3
+      }
+    ],
+    "spoiler": 1,
+    "notes": []
+  },
+  {
+    "id": "bertrand",
+    "name": "Bertrand",
+    "order": 55,
+    "growths": {
+      "hp": 50,
+      "str": 55,
+      "mag": 15,
+      "spd": 45,
+      "dex": 50,
+      "def": 45,
+      "res": 20,
+      "lck": 30,
+      "cha": 50
+    },
+    "lord": false,
+    "faction": "Fiery Mane",
+    "startingClass": null,
+    "personalSkill": "requiem-style",
+    "levelSkills": [
+      {
+        "skill": "go-no-sen",
+        "level": null
+      }
+    ],
+    "bloodmarks": [
+      "diadem-of-duality",
+      "diadem-of-the-victor"
+    ],
+    "aptitudes": {
+      "favored": [
+        "authority",
+        "axe",
+        "gauntlet",
+        "sword"
+      ],
+      "unfavored": [
+        "blackMagic",
+        "whiteMagic"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "all",
+        "part": 3,
+        "method": "story",
+        "conditions": [
+          {
+            "type": "other",
+            "text": "Automatically joins if Bertrand's Paralogue is cleared"
+          }
+        ],
+        "chapter": null,
+        "section": 1
+      }
+    ],
+    "spoiler": 1,
+    "notes": []
+  },
+  {
+    "id": "talimun",
+    "name": "Talimun",
+    "order": 56,
+    "growths": {
+      "hp": 45,
+      "str": 40,
+      "mag": 45,
+      "spd": 40,
+      "dex": 45,
+      "def": 35,
+      "res": 40,
+      "lck": 60,
+      "cha": 50
+    },
+    "lord": false,
+    "faction": "Tale of the Moon and Vandahl Trading Company",
+    "startingClass": null,
+    "personalSkill": "swashbucklers-luck",
+    "levelSkills": [
+      {
+        "skill": "cannoning-flair",
+        "level": null
+      },
+      {
+        "skill": "winds-of-victory",
+        "level": null
+      }
+    ],
+    "bloodmarks": [
+      "diadem-of-duality"
+    ],
+    "aptitudes": {
+      "favored": [
+        "authority",
+        "blackMagic",
+        "sword"
+      ],
+      "unfavored": [
+        "heavyArmor"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "all",
+        "part": 3,
+        "method": "story",
+        "conditions": [
+          {
+            "type": "other",
+            "text": "Automatically joins if Talimun's Paralogue is cleared"
+          }
+        ],
+        "chapter": null,
+        "section": 1
+      }
+    ],
+    "spoiler": 1,
+    "notes": []
+  },
+  {
+    "id": "anatolia",
+    "name": "Anatolia",
+    "order": 57,
+    "growths": {
+      "hp": 40,
+      "str": 35,
+      "mag": 50,
+      "spd": 50,
+      "dex": 45,
+      "def": 35,
+      "res": 40,
+      "lck": 40,
+      "cha": 50
+    },
+    "lord": false,
+    "faction": "Bridal Party of the Pale Raven",
+    "startingClass": null,
+    "personalSkill": "celestial-flow",
+    "levelSkills": [
+      {
+        "skill": "continuum",
+        "level": null
+      },
+      {
+        "skill": "continuum-plus",
+        "level": null
+      }
+    ],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "blackMagic",
+        "gauntlet",
+        "infantry"
+      ],
+      "unfavored": [
+        "heavyArmor"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "all",
+        "part": 3,
+        "method": "story",
+        "conditions": [
+          {
+            "type": "other",
+            "text": "Automatically joins if Anatolia's Paralogue is cleared"
+          }
+        ],
+        "chapter": null,
+        "section": 1
+      }
+    ],
+    "spoiler": 1,
+    "notes": []
+  },
+  {
+    "id": "orchel",
+    "name": "Orchel",
+    "order": 58,
+    "growths": {
+      "hp": 30,
+      "str": 60,
+      "mag": 45,
+      "spd": 10,
+      "dex": 20,
+      "def": 60,
+      "res": 60,
+      "lck": 20,
+      "cha": 60
+    },
+    "lord": false,
+    "faction": "Linaria Dewdrops",
+    "startingClass": null,
+    "personalSkill": "solid-and-sturdy",
+    "levelSkills": [
+      {
+        "skill": "harmonic-soul",
+        "level": null
+      },
+      {
+        "skill": "harmonic-soul-plus",
+        "level": null
+      },
+      {
+        "skill": "predictive-sense",
+        "level": null
+      }
+    ],
+    "bloodmarks": [
+      "diadem-of-duality",
+      "diadem-of-the-apostle"
+    ],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "blackMagic",
+        "whiteMagic"
+      ],
+      "unfavored": [
+        "flying",
+        "riding",
+        "sword"
+      ]
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "all",
+        "part": 3,
+        "method": "story",
+        "conditions": [
+          {
+            "type": "other",
+            "text": "Automatically joins if Orchel's Paralogue is cleared"
+          }
+        ],
+        "chapter": null,
+        "section": 1
+      }
+    ],
+    "spoiler": 1,
+    "notes": []
+  },
+  {
+    "id": "centurio",
+    "name": "Centurio",
+    "order": 59,
+    "growths": {
+      "hp": 45,
+      "str": 45,
+      "mag": 25,
+      "spd": 40,
+      "dex": 50,
+      "def": 50,
+      "res": 30,
+      "lck": 30,
+      "cha": 30
+    },
+    "lord": false,
+    "faction": "Temple Army",
+    "startingClass": null,
+    "personalSkill": "sturdy-corundum",
+    "levelSkills": [],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "axe",
+        "heavyArmor",
+        "spear"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "all",
+        "part": 3,
+        "method": "story",
+        "conditions": [
+          {
+            "type": "request",
+            "text": "Clear Rescue Centurio Subquest then talk in Dagsion to recruit"
+          }
+        ],
+        "chapter": null,
+        "section": 2
+      }
+    ],
+    "spoiler": 1,
+    "notes": []
+  },
+  {
+    "id": "aswan",
+    "name": "Aswan",
+    "order": 60,
+    "growths": {
+      "hp": 40,
+      "str": 35,
+      "mag": 10,
+      "spd": 40,
+      "dex": 50,
+      "def": 30,
+      "res": 15,
+      "lck": 30,
+      "cha": 20
+    },
+    "lord": false,
+    "faction": "Arago",
+    "startingClass": null,
+    "personalSkill": "princess-of-arrows",
+    "levelSkills": [],
+    "bloodmarks": [
+      "diadem-of-the-earth"
+    ],
+    "aptitudes": {
+      "favored": [
+        "authority",
+        "bow",
+        "infantry"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "all",
+        "part": 3,
+        "method": "story",
+        "conditions": [
+          {
+            "type": "survive",
+            "text": "Joins automatically if survived in Part 2"
+          }
+        ],
+        "chapter": null,
+        "section": 5
+      }
+    ],
+    "spoiler": 1,
+    "notes": []
+  },
+  {
+    "id": "tahonia",
+    "name": "Tahonia",
+    "order": 61,
+    "growths": {
+      "hp": 65,
+      "str": 50,
+      "mag": 5,
+      "spd": 20,
+      "dex": 40,
+      "def": 45,
+      "res": 35,
+      "lck": 20,
+      "cha": 40
+    },
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": "python-technique",
+    "levelSkills": [],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [
+        "gauntlet"
+      ],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "all",
+        "part": 3,
+        "method": "story",
+        "conditions": [
+          {
+            "type": "survive",
+            "text": "Joins automatically if survived in Part 2"
+          }
+        ],
+        "chapter": null,
+        "section": 5
+      }
+    ],
+    "spoiler": 1,
+    "notes": []
+  },
+  {
+    "id": "klapka",
+    "name": "Klapka",
+    "order": 62,
+    "growths": {
+      "hp": 40,
+      "str": 40,
+      "mag": 10,
+      "spd": 25,
+      "dex": 45,
+      "def": 50,
+      "res": 15,
+      "lck": 25,
+      "cha": 35
+    },
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": "spirit-of-silver",
+    "levelSkills": [],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [
+      {
+        "route": "all",
+        "part": 3,
+        "method": "story",
+        "conditions": [
+          {
+            "type": "survive",
+            "text": "Go to Dagsion if he survived the Battle vs. Mahadu"
+          },
+          {
+            "type": "other",
+            "text": "Theodora's Path must be cleared"
+          }
+        ],
+        "chapter": null,
+        "section": 5
+      }
+    ],
+    "spoiler": 1,
+    "notes": []
+  },
+  {
+    "id": "long",
+    "name": "Long",
+    "order": 63,
+    "growths": null,
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": "qi-mastery",
+    "levelSkills": [],
+    "bloodmarks": [],
+    "aptitudes": {
+      "favored": [],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [],
+    "spoiler": 2,
+    "notes": [
+      "Recruitment details have not been documented yet."
+    ]
+  },
+  {
+    "id": "anna",
+    "name": "Anna",
+    "order": 64,
+    "growths": null,
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": "elephant-rush",
+    "levelSkills": [],
+    "bloodmarks": [
+      "diadem-of-the-fanatic"
+    ],
+    "aptitudes": {
+      "favored": [],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [],
+    "spoiler": 2,
+    "notes": [
+      "Recruitment details have not been documented yet."
+    ]
+  },
+  {
+    "id": "solel",
+    "name": "Solel",
+    "order": 65,
+    "growths": null,
+    "lord": false,
+    "faction": null,
+    "startingClass": null,
+    "personalSkill": null,
+    "levelSkills": [],
+    "bloodmarks": [
+      "diadem-of-the-auger"
+    ],
+    "aptitudes": {
+      "favored": [],
+      "unfavored": []
+    },
+    "magic": null,
+    "baseStats": null,
+    "baseLevel": null,
+    "recruitment": [],
+    "spoiler": 2,
+    "notes": [
+      "Recruitment details have not been documented yet."
+    ]
+  }
+]

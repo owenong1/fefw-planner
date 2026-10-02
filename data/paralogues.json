@@ -1,0 +1,249 @@
+[
+  {
+    "id": "leda",
+    "name": "Leda's Paralogue",
+    "location": "Dagsion",
+    "rewards": [
+      "Silver Shield",
+      "20000 Gold",
+      "150 Renown"
+    ],
+    "availability": [
+      {
+        "route": "dietrich",
+        "chapter": 9,
+        "dates": "9/2 - 9/8"
+      },
+      {
+        "route": "theodora",
+        "chapter": 10,
+        "dates": "9/2 - 9/8"
+      }
+    ],
+    "recruitmentFor": [
+      "buccar"
+    ]
+  },
+  {
+    "id": "theodora",
+    "name": "Theodora's Paralogue",
+    "location": "Purification Shrine",
+    "rewards": [
+      "Pilum",
+      "20000 Gold",
+      "150 Renown"
+    ],
+    "availability": [
+      {
+        "route": "dietrich",
+        "chapter": 9,
+        "dates": "9/3 - 9/15"
+      }
+    ],
+    "recruitmentFor": []
+  },
+  {
+    "id": "talimun",
+    "name": "Talimun's Paralogue",
+    "location": "Dragdon Pass",
+    "rewards": [
+      "Cleansing Blade",
+      "20000 Gold",
+      "150 Renown"
+    ],
+    "availability": [
+      {
+        "route": "cai",
+        "chapter": 10,
+        "dates": "9/17 - 9/22 / 10/1 - 10/12"
+      },
+      {
+        "route": "dietrich",
+        "chapter": 9,
+        "dates": "9/17 - 9/19 / 10/1 - 10/12"
+      },
+      {
+        "route": "theodora",
+        "chapter": 11,
+        "dates": "9/17 - 9/22 / 10/1 - 10/12"
+      }
+    ],
+    "recruitmentFor": [
+      "ursula"
+    ]
+  },
+  {
+    "id": "bertrand",
+    "name": "Bertrand's Paralogue",
+    "location": "Dagsion",
+    "rewards": [
+      "Extra Large Bullion",
+      "20000 Gold",
+      "150 Renown"
+    ],
+    "availability": [
+      {
+        "route": "cai",
+        "chapter": 10,
+        "dates": "9/17 - 9/25"
+      },
+      {
+        "route": "dietrich",
+        "chapter": 9,
+        "dates": "9/17"
+      },
+      {
+        "route": "theodora",
+        "chapter": 11,
+        "dates": "9/17 - 9/25"
+      }
+    ],
+    "recruitmentFor": [
+      "gaitz",
+      "peppe"
+    ]
+  },
+  {
+    "id": "anna",
+    "name": "Anna's Paralogue",
+    "location": "Dagsion",
+    "rewards": [
+      "Orichalcum",
+      "20000 Gold",
+      "150 Renown"
+    ],
+    "availability": [
+      {
+        "route": "cai",
+        "chapter": 10,
+        "dates": "9/24 - 10/5"
+      },
+      {
+        "route": "dietrich",
+        "chapter": 10,
+        "dates": "9/29 - 10/5"
+      },
+      {
+        "route": "theodora",
+        "chapter": 11,
+        "dates": "9/24 - 10/5"
+      }
+    ],
+    "recruitmentFor": []
+  },
+  {
+    "id": "anatolia",
+    "name": "Anatolia's Paralogue",
+    "location": "Pale Raven",
+    "rewards": [
+      "Electron Agitator",
+      "20000 Gold",
+      "150 Renown"
+    ],
+    "availability": [
+      {
+        "route": "dietrich",
+        "chapter": 11,
+        "dates": "10/5 - 10/17"
+      },
+      {
+        "route": "leda",
+        "chapter": 10,
+        "dates": "10/5 - 10/17"
+      }
+    ],
+    "recruitmentFor": [
+      "sha-lan"
+    ]
+  },
+  {
+    "id": "dietrich",
+    "name": "Dietrich's Paralogue",
+    "location": "Shadowy Cave",
+    "rewards": [
+      "Salamander",
+      "20000 Gold",
+      "150 Renown"
+    ],
+    "availability": [
+      {
+        "route": "theodora",
+        "chapter": 12,
+        "dates": "10/16 - 10/24"
+      },
+      {
+        "route": "leda",
+        "chapter": 11,
+        "dates": "10/16 - 11/1"
+      }
+    ],
+    "recruitmentFor": [
+      "fabio"
+    ]
+  },
+  {
+    "id": "cai",
+    "name": "Cai's Paralogue",
+    "location": "Dagsion",
+    "rewards": [
+      "Gem Box",
+      "20000 Gold",
+      "150 Renown"
+    ],
+    "availability": [
+      {
+        "route": "dietrich",
+        "chapter": 11,
+        "dates": "10/16 - 10/22"
+      },
+      {
+        "route": "theodora",
+        "chapter": 12,
+        "dates": "10/16 - 10/22"
+      },
+      {
+        "route": "leda",
+        "chapter": 11,
+        "dates": "10/16 - 10/22"
+      }
+    ],
+    "recruitmentFor": [
+      "tialla"
+    ]
+  },
+  {
+    "id": "orchel",
+    "name": "Orchel's Paralogue",
+    "location": "Fort Galcar",
+    "rewards": [
+      "Healing Staff",
+      "20000 Gold",
+      "150 Renown"
+    ],
+    "availability": [
+      {
+        "route": "cai",
+        "chapter": 11,
+        "dates": "10/18 - 10/21"
+      },
+      {
+        "route": "dietrich",
+        "chapter": 11,
+        "dates": "10/18 - 10/27"
+      },
+      {
+        "route": "theodora",
+        "chapter": 12,
+        "dates": "10/18 - 10/24"
+      },
+      {
+        "route": "leda",
+        "chapter": 11,
+        "dates": "10/18 - 10/27"
+      }
+    ],
+    "recruitmentFor": [
+      "diego"
+    ]
+  }
+]

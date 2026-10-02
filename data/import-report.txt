@@ -1,0 +1,6 @@
+mastery skill without effect text (stub added): Astra
+mastery skill without effect text (stub added): Strike and Heal
+mastery skill without effect text (stub added): Hunter's Cross
+mastery skill without effect text (stub added): Song of Calm
+growth mismatch for Ursula (game8, fextralife): {'hp': (40, 50)}
+no personal skill for Solel

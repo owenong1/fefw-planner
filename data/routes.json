@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cai",
+    "lord": "cai",
+    "name": "Cai's Path",
+    "army": "Ribeira Winds"
+  },
+  {
+    "id": "dietrich",
+    "lord": "dietrich",
+    "name": "Dietrich's Path",
+    "army": "House Lamine"
+  },
+  {
+    "id": "theodora",
+    "lord": "theodora",
+    "name": "Theodora's Path",
+    "army": "Megaira's Beacon"
+  },
+  {
+    "id": "leda",
+    "lord": "leda",
+    "name": "Leda's Path",
+    "army": "Rose Tempest"
+  }
+]

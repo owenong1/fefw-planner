@@ -1,0 +1,4 @@
+{
+  "_comment": "Hand corrections applied on top of imported data. Shape: { collection: { id: { field: value } } }. Collections: units, classes, skills, paralogues.",
+  "units": {}
+}

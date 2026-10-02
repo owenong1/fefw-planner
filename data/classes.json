@@ -1,0 +1,2331 @@
+[
+  {
+    "id": "commoner",
+    "name": "Commoner",
+    "tier": "base",
+    "growths": {
+      "hp": 0,
+      "str": 0,
+      "mag": 0,
+      "spd": 0,
+      "dex": 0,
+      "def": 0,
+      "res": 0,
+      "lck": 0,
+      "cha": 0
+    },
+    "requirements": null,
+    "skills": [],
+    "masterySkill": "combat-basics",
+    "tags": []
+  },
+  {
+    "id": "gladiator",
+    "name": "Gladiator",
+    "tier": "beginner",
+    "growths": {
+      "hp": 10,
+      "str": 10,
+      "mag": 0,
+      "spd": 0,
+      "dex": 0,
+      "def": 0,
+      "res": 0,
+      "lck": 0,
+      "cha": 0
+    },
+    "requirements": {
+      "license": "Beginner",
+      "level": 5,
+      "renown": 1,
+      "primarySkills": [],
+      "secondarySkills": [
+        {
+          "skill": "gauntlet",
+          "rank": "D"
+        },
+        {
+          "skill": "axe",
+          "rank": "D"
+        },
+        {
+          "skill": "sword",
+          "rank": "D"
+        }
+      ]
+    },
+    "skills": [],
+    "masterySkill": "attack-basics",
+    "tags": []
+  },
+  {
+    "id": "hunter",
+    "name": "Hunter",
+    "tier": "beginner",
+    "growths": {
+      "hp": 10,
+      "str": 0,
+      "mag": 0,
+      "spd": 10,
+      "dex": 10,
+      "def": 0,
+      "res": 0,
+      "lck": 0,
+      "cha": 0
+    },
+    "requirements": {
+      "license": "Beginner",
+      "level": 5,
+      "renown": 1,
+      "primarySkills": [],
+      "secondarySkills": [
+        {
+          "skill": "bow",
+          "rank": "D"
+        },
+        {
+          "skill": "sword",
+          "rank": "D"
+        }
+      ]
+    },
+    "skills": [],
+    "masterySkill": "hunting-basics",
+    "tags": []
+  },
+  {
+    "id": "soldier",
+    "name": "Soldier",
+    "tier": "beginner",
+    "growths": {
+      "hp": 10,
+      "str": 5,
+      "mag": 0,
+      "spd": -5,
+      "dex": 5,
+      "def": 10,
+      "res": 0,
+      "lck": 0,
+      "cha": 0
+    },
+    "requirements": {
+      "license": "Beginner",
+      "level": 5,
+      "renown": 1,
+      "primarySkills": [],
+      "secondarySkills": [
+        {
+          "skill": "axe",
+          "rank": "D"
+        },
+        {
+          "skill": "spear",
+          "rank": "D"
+        }
+      ]
+    },
+    "skills": [],
+    "masterySkill": "defense-basics",
+    "tags": []
+  },
+  {
+    "id": "ornius-rider",
+    "name": "Ornius Rider",
+    "tier": "beginner",
+    "growths": {
+      "hp": 10,
+      "str": 0,
+      "mag": 0,
+      "spd": 10,
+      "dex": 5,
+      "def": 0,
+      "res": 5,
+      "lck": 5,
+      "cha": 0
+    },
+    "requirements": {
+      "license": "Beginner",
+      "level": 5,
+      "renown": 1,
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "E+"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "axe",
+          "rank": "D"
+        },
+        {
+          "skill": "spear",
+          "rank": "D"
+        }
+      ]
+    },
+    "skills": [
+      "mount-dismount"
+    ],
+    "masterySkill": "offense-basics",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "diviner",
+    "name": "Diviner",
+    "tier": "beginner",
+    "growths": {
+      "hp": 5,
+      "str": -5,
+      "mag": 15,
+      "spd": 0,
+      "dex": 5,
+      "def": -5,
+      "res": 10,
+      "lck": 0,
+      "cha": 0
+    },
+    "requirements": {
+      "license": "Beginner",
+      "level": 5,
+      "renown": 1,
+      "primarySkills": [],
+      "secondarySkills": [
+        {
+          "skill": "whiteMagic",
+          "rank": "D"
+        },
+        {
+          "skill": "blackMagic",
+          "rank": "D"
+        }
+      ]
+    },
+    "skills": [],
+    "masterySkill": "magic-basics",
+    "tags": []
+  },
+  {
+    "id": "myrmidon",
+    "name": "Myrmidon",
+    "tier": "specialty",
+    "growths": {
+      "hp": 10,
+      "str": 0,
+      "mag": 0,
+      "spd": 15,
+      "dex": 10,
+      "def": 0,
+      "res": 0,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Specialty",
+      "level": 20,
+      "renown": 4,
+      "primarySkills": [
+        {
+          "skill": "sword",
+          "rank": "C"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "combat-arts-plus-1",
+      "sword-crit-plus-3"
+    ],
+    "masterySkill": "ravaging-arts",
+    "tags": []
+  },
+  {
+    "id": "brigand",
+    "name": "Brigand",
+    "tier": "specialty",
+    "growths": {
+      "hp": 15,
+      "str": 15,
+      "mag": -5,
+      "spd": 5,
+      "dex": 0,
+      "def": 5,
+      "res": 0,
+      "lck": 0,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Specialty",
+      "level": 20,
+      "renown": 4,
+      "primarySkills": [],
+      "secondarySkills": [
+        {
+          "skill": "axe",
+          "rank": "C"
+        },
+        {
+          "skill": "sword",
+          "rank": "C"
+        }
+      ]
+    },
+    "skills": [
+      "combat-arts-plus-1",
+      "axe-hit-plus-3"
+    ],
+    "masterySkill": "regroup",
+    "tags": []
+  },
+  {
+    "id": "pugilist",
+    "name": "Pugilist",
+    "tier": "specialty",
+    "growths": {
+      "hp": 15,
+      "str": 10,
+      "mag": -5,
+      "spd": 10,
+      "dex": 5,
+      "def": 10,
+      "res": 0,
+      "lck": 0,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Specialty",
+      "level": 20,
+      "renown": 4,
+      "primarySkills": [
+        {
+          "skill": "gauntlet",
+          "rank": "C"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "combat-arts-plus-1",
+      "brawl-avo-plus-3"
+    ],
+    "masterySkill": "attack-get-back",
+    "tags": []
+  },
+  {
+    "id": "archer",
+    "name": "Archer",
+    "tier": "specialty",
+    "growths": {
+      "hp": 10,
+      "str": 5,
+      "mag": 0,
+      "spd": 10,
+      "dex": 10,
+      "def": 5,
+      "res": 0,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Specialty",
+      "level": 20,
+      "renown": 4,
+      "primarySkills": [
+        {
+          "skill": "bow",
+          "rank": "C"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "combat-arts-plus-1",
+      "bow-hit-plus-5"
+    ],
+    "masterySkill": "crescendo",
+    "tags": []
+  },
+  {
+    "id": "rogue",
+    "name": "Rogue",
+    "tier": "specialty",
+    "growths": {
+      "hp": 10,
+      "str": 0,
+      "mag": 0,
+      "spd": 15,
+      "dex": 10,
+      "def": 0,
+      "res": 5,
+      "lck": 5,
+      "cha": 0
+    },
+    "requirements": {
+      "license": "Specialty",
+      "level": 20,
+      "renown": 4,
+      "primarySkills": [],
+      "secondarySkills": [
+        {
+          "skill": "bow",
+          "rank": "C"
+        },
+        {
+          "skill": "sword",
+          "rank": "C"
+        }
+      ]
+    },
+    "skills": [
+      "combat-arts-plus-1",
+      "locktouch",
+      "search"
+    ],
+    "masterySkill": "in-shadow",
+    "tags": []
+  },
+  {
+    "id": "armored-knight",
+    "name": "Armored Knight",
+    "tier": "specialty",
+    "growths": {
+      "hp": 10,
+      "str": 10,
+      "mag": -5,
+      "spd": -5,
+      "dex": 5,
+      "def": 25,
+      "res": -5,
+      "lck": 0,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Specialty",
+      "level": 20,
+      "renown": 4,
+      "primarySkills": [
+        {
+          "skill": "heavyArmor",
+          "rank": "E+"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "axe",
+          "rank": "C"
+        },
+        {
+          "skill": "spear",
+          "rank": "C"
+        }
+      ]
+    },
+    "skills": [
+      "strike-last-def-plus-3",
+      "combat-arts-plus-1"
+    ],
+    "masterySkill": "great-counter",
+    "tags": [
+      "armored"
+    ]
+  },
+  {
+    "id": "light-cavalry",
+    "name": "Light Cavalry",
+    "tier": "specialty",
+    "growths": {
+      "hp": 10,
+      "str": 5,
+      "mag": -5,
+      "spd": 5,
+      "dex": 0,
+      "def": 5,
+      "res": 0,
+      "lck": 5,
+      "cha": 10
+    },
+    "requirements": {
+      "license": "Specialty",
+      "level": 20,
+      "renown": 4,
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "D"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "spear",
+          "rank": "C"
+        },
+        {
+          "skill": "sword",
+          "rank": "C"
+        }
+      ]
+    },
+    "skills": [
+      "mount-dismount"
+    ],
+    "masterySkill": "bolster-health",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "charioteer",
+    "name": "Charioteer",
+    "tier": "specialty",
+    "growths": {
+      "hp": 10,
+      "str": 5,
+      "mag": -5,
+      "spd": -5,
+      "dex": 15,
+      "def": 10,
+      "res": 0,
+      "lck": 5,
+      "cha": 10
+    },
+    "requirements": {
+      "license": "Specialty",
+      "level": 20,
+      "renown": 4,
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "D"
+        },
+        {
+          "skill": "bow",
+          "rank": "C"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "chariot-armor",
+      "charioteer-tactics",
+      "charioteers-path"
+    ],
+    "masterySkill": "charger",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "armored-ornius-rider",
+    "name": "Armored Ornius Rider",
+    "tier": "specialty",
+    "growths": {
+      "hp": 10,
+      "str": 0,
+      "mag": -5,
+      "spd": 10,
+      "dex": 5,
+      "def": 10,
+      "res": 0,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Specialty",
+      "level": 20,
+      "renown": 4,
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "D"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "axe",
+          "rank": "C"
+        },
+        {
+          "skill": "spear",
+          "rank": "C"
+        }
+      ]
+    },
+    "skills": [
+      "mount-dismount"
+    ],
+    "masterySkill": "sense-threat",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "wing-soldier",
+    "name": "Wing Soldier",
+    "tier": "specialty",
+    "growths": {
+      "hp": 10,
+      "str": 0,
+      "mag": 5,
+      "spd": 0,
+      "dex": 5,
+      "def": 5,
+      "res": 5,
+      "lck": 5,
+      "cha": 10
+    },
+    "requirements": {
+      "license": "Specialty",
+      "level": 20,
+      "renown": 4,
+      "primarySkills": [
+        {
+          "skill": "flying",
+          "rank": "D"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "spear",
+          "rank": "C"
+        },
+        {
+          "skill": "sword",
+          "rank": "C"
+        }
+      ]
+    },
+    "skills": [
+      "mount-dismount"
+    ],
+    "masterySkill": "protecting-wings",
+    "tags": [
+      "mounted",
+      "flying"
+    ]
+  },
+  {
+    "id": "priest",
+    "name": "Priest",
+    "tier": "specialty",
+    "growths": {
+      "hp": 5,
+      "str": -5,
+      "mag": 10,
+      "spd": 5,
+      "dex": 5,
+      "def": -10,
+      "res": 15,
+      "lck": 15,
+      "cha": 10
+    },
+    "requirements": {
+      "license": "Specialty",
+      "level": 20,
+      "renown": 4,
+      "primarySkills": [
+        {
+          "skill": "whiteMagic",
+          "rank": "C"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "white-magic-seeker",
+      "magic-heal-plus-5"
+    ],
+    "masterySkill": "piety",
+    "tags": []
+  },
+  {
+    "id": "shaman",
+    "name": "Shaman",
+    "tier": "specialty",
+    "growths": {
+      "hp": 5,
+      "str": -5,
+      "mag": 15,
+      "spd": 10,
+      "dex": 10,
+      "def": -10,
+      "res": 10,
+      "lck": 10,
+      "cha": 0
+    },
+    "requirements": {
+      "license": "Specialty",
+      "level": 20,
+      "renown": 4,
+      "primarySkills": [
+        {
+          "skill": "blackMagic",
+          "rank": "C"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "black-magic-seeker",
+      "magic-hit-plus-3"
+    ],
+    "masterySkill": "bind-dexterity",
+    "tags": []
+  },
+  {
+    "id": "warrior",
+    "name": "Warrior",
+    "tier": "advanced",
+    "growths": {
+      "hp": 20,
+      "str": 20,
+      "mag": -5,
+      "spd": 0,
+      "dex": 0,
+      "def": 5,
+      "res": -5,
+      "lck": 0,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [],
+      "secondarySkills": [
+        {
+          "skill": "gauntlet",
+          "rank": "B"
+        },
+        {
+          "skill": "axe",
+          "rank": "B"
+        },
+        {
+          "skill": "sword",
+          "rank": "B"
+        }
+      ]
+    },
+    "skills": [
+      "combat-arts-plus-2",
+      "axe-hit-plus-5",
+      "brawl-hit-plus-5"
+    ],
+    "masterySkill": "practiced-art",
+    "tags": []
+  },
+  {
+    "id": "shido",
+    "name": "Shido",
+    "tier": "advanced",
+    "growths": {
+      "hp": 10,
+      "str": 5,
+      "mag": 0,
+      "spd": 15,
+      "dex": 10,
+      "def": 0,
+      "res": -5,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [
+        {
+          "skill": "sword",
+          "rank": "B"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "combat-arts-plus-2",
+      "sword-crit-plus-5"
+    ],
+    "masterySkill": "ever-vigilant",
+    "tags": []
+  },
+  {
+    "id": "dancer",
+    "name": "Dancer",
+    "tier": "advanced",
+    "growths": {
+      "hp": 15,
+      "str": 5,
+      "mag": 0,
+      "spd": 25,
+      "dex": 10,
+      "def": 0,
+      "res": 5,
+      "lck": 10,
+      "cha": 20
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [],
+      "secondarySkills": [
+        {
+          "skill": "bow",
+          "rank": "B"
+        },
+        {
+          "skill": "sword",
+          "rank": "B"
+        }
+      ],
+      "unlock": "Leda – Great Dancer's Successor"
+    },
+    "skills": [
+      "combat-arts-plus-2",
+      "dance"
+    ],
+    "masterySkill": "special-dance",
+    "tags": []
+  },
+  {
+    "id": "blacksmith",
+    "name": "Blacksmith",
+    "tier": "advanced",
+    "growths": {
+      "hp": 15,
+      "str": 10,
+      "mag": 10,
+      "spd": 0,
+      "dex": 5,
+      "def": 10,
+      "res": 10,
+      "lck": 0,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [
+        {
+          "skill": "blackMagic",
+          "rank": "D"
+        },
+        {
+          "skill": "axe",
+          "rank": "C"
+        }
+      ],
+      "secondarySkills": [],
+      "unlock": "Dietrich – Enhance 10 Combat Arts"
+    },
+    "skills": [
+      "black-magic-seeker",
+      "axe-hit-plus-5"
+    ],
+    "masterySkill": "makeshift",
+    "tags": []
+  },
+  {
+    "id": "sniper",
+    "name": "Sniper",
+    "tier": "advanced",
+    "growths": {
+      "hp": 10,
+      "str": 5,
+      "mag": 0,
+      "spd": 10,
+      "dex": 20,
+      "def": 5,
+      "res": 5,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [
+        {
+          "skill": "bow",
+          "rank": "B"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "combat-arts-plus-2",
+      "bow-hit-plus-10"
+    ],
+    "masterySkill": "marksmanship",
+    "tags": []
+  },
+  {
+    "id": "forest-knight",
+    "name": "Forest Knight",
+    "tier": "advanced",
+    "growths": {
+      "hp": 10,
+      "str": 5,
+      "mag": 0,
+      "spd": 10,
+      "dex": 10,
+      "def": 5,
+      "res": 5,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "D"
+        },
+        {
+          "skill": "bow",
+          "rank": "B"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "mount-dismount",
+      "combat-arts-plus-1",
+      "bow-hit-plus-5"
+    ],
+    "masterySkill": "hunters-eye",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "ranger",
+    "name": "Ranger",
+    "tier": "advanced",
+    "growths": {
+      "hp": 10,
+      "str": 5,
+      "mag": 0,
+      "spd": 15,
+      "dex": 15,
+      "def": 0,
+      "res": 10,
+      "lck": 15,
+      "cha": 0
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [],
+      "secondarySkills": [
+        {
+          "skill": "bow",
+          "rank": "B"
+        },
+        {
+          "skill": "sword",
+          "rank": "B"
+        }
+      ],
+      "unlock": "Leda – Elegant Drink Recipes Dietrich – Dread Warrior Challenge"
+    },
+    "skills": [
+      "combat-arts-plus-2",
+      "locktouch",
+      "advanced-search"
+    ],
+    "masterySkill": "countershot",
+    "tags": []
+  },
+  {
+    "id": "cataphract",
+    "name": "Cataphract",
+    "tier": "advanced",
+    "growths": {
+      "hp": 15,
+      "str": 15,
+      "mag": -5,
+      "spd": -10,
+      "dex": 0,
+      "def": 10,
+      "res": -5,
+      "lck": 0,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [
+        {
+          "skill": "heavyArmor",
+          "rank": "E+"
+        },
+        {
+          "skill": "riding",
+          "rank": "D"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "axe",
+          "rank": "B"
+        },
+        {
+          "skill": "spear",
+          "rank": "B"
+        }
+      ],
+      "unlock": "Theodora – Send Supplies"
+    },
+    "skills": [
+      "mount-dismount",
+      "strike-last-def-plus-3",
+      "combat-arts-plus-1"
+    ],
+    "masterySkill": "pavise",
+    "tags": [
+      "mounted",
+      "armored"
+    ]
+  },
+  {
+    "id": "guardian",
+    "name": "Guardian",
+    "tier": "advanced",
+    "growths": {
+      "hp": 10,
+      "str": 10,
+      "mag": 0,
+      "spd": 0,
+      "dex": 5,
+      "def": 10,
+      "res": 15,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [
+        {
+          "skill": "spear",
+          "rank": "B"
+        }
+      ],
+      "secondarySkills": [],
+      "unlock": "Dietrich – Dread Warrior Challenge - Il-Lara Theodora – Send Supplies"
+    },
+    "skills": [
+      "combat-arts-plus-2",
+      "magic-heal-plus-10"
+    ],
+    "masterySkill": "brace",
+    "tags": []
+  },
+  {
+    "id": "elephant-rider",
+    "name": "Elephant Rider",
+    "tier": "advanced",
+    "growths": {
+      "hp": 20,
+      "str": 10,
+      "mag": -5,
+      "spd": 20,
+      "dex": -10,
+      "def": 15,
+      "res": -5,
+      "lck": 5,
+      "cha": 10
+    },
+    "requirements": {
+      "license": "Elephant",
+      "level": 35,
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "C"
+        }
+      ],
+      "secondarySkills": [],
+      "unlock": "Unlocks Part 3"
+    },
+    "skills": [
+      "war-elephant-boots",
+      "elephant-tactics",
+      "elephant-riders-path"
+    ],
+    "masterySkill": "elephant-vanguard",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "dreadnought",
+    "name": "Dreadnought",
+    "tier": "advanced",
+    "growths": {
+      "hp": 15,
+      "str": 15,
+      "mag": -5,
+      "spd": -10,
+      "dex": 5,
+      "def": 30,
+      "res": -10,
+      "lck": 0,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [
+        {
+          "skill": "heavyArmor",
+          "rank": "D"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "axe",
+          "rank": "B"
+        },
+        {
+          "skill": "spear",
+          "rank": "B"
+        }
+      ]
+    },
+    "skills": [
+      "strike-last-def-plus-5",
+      "combat-arts-plus-2"
+    ],
+    "masterySkill": "focused-counter",
+    "tags": [
+      "armored"
+    ]
+  },
+  {
+    "id": "bardinger",
+    "name": "Bardinger",
+    "tier": "advanced",
+    "growths": {
+      "hp": 10,
+      "str": 10,
+      "mag": -5,
+      "spd": 0,
+      "dex": 0,
+      "def": 5,
+      "res": 10,
+      "lck": 5,
+      "cha": 10
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "C"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "spear",
+          "rank": "C"
+        },
+        {
+          "skill": "sword",
+          "rank": "B"
+        }
+      ]
+    },
+    "skills": [
+      "combat-arts-plus-2",
+      "mount-dismount"
+    ],
+    "masterySkill": "aegis",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "dragoon",
+    "name": "Dragoon",
+    "tier": "advanced",
+    "growths": {
+      "hp": 15,
+      "str": 5,
+      "mag": 0,
+      "spd": 0,
+      "dex": 5,
+      "def": 10,
+      "res": 10,
+      "lck": 10,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [
+        {
+          "skill": "flying",
+          "rank": "C"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "axe",
+          "rank": "B"
+        },
+        {
+          "skill": "spear",
+          "rank": "B"
+        }
+      ],
+      "unlock": "Cai – Special Request from Mom Theodora – Send Supplies"
+    },
+    "skills": [
+      "mount-dismount",
+      "combat-arts-plus-1"
+    ],
+    "masterySkill": "besieger",
+    "tags": [
+      "mounted",
+      "flying"
+    ]
+  },
+  {
+    "id": "caladrius",
+    "name": "Caladrius",
+    "tier": "advanced",
+    "growths": {
+      "hp": 15,
+      "str": 0,
+      "mag": 10,
+      "spd": 5,
+      "dex": 10,
+      "def": 10,
+      "res": 10,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "D"
+        },
+        {
+          "skill": "blackMagic",
+          "rank": "B"
+        }
+      ],
+      "secondarySkills": [],
+      "unlock": "Cai – Special Request from Pop"
+    },
+    "skills": [
+      "mount-dismount",
+      "black-magic-seeker",
+      "combat-arts-plus-1"
+    ],
+    "masterySkill": "overtake",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "ovate",
+    "name": "Ovate",
+    "tier": "advanced",
+    "growths": {
+      "hp": 10,
+      "str": -5,
+      "mag": 20,
+      "spd": 5,
+      "dex": 15,
+      "def": -10,
+      "res": 15,
+      "lck": 10,
+      "cha": 0
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [
+        {
+          "skill": "blackMagic",
+          "rank": "B"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "black-magic-seeker",
+      "magic-hit-plus-5"
+    ],
+    "masterySkill": "bind-speed",
+    "tags": []
+  },
+  {
+    "id": "bishop",
+    "name": "Bishop",
+    "tier": "advanced",
+    "growths": {
+      "hp": 10,
+      "str": -5,
+      "mag": 15,
+      "spd": 0,
+      "dex": 0,
+      "def": -10,
+      "res": 20,
+      "lck": 20,
+      "cha": 10
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [
+        {
+          "skill": "whiteMagic",
+          "rank": "B"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "white-magic-seeker",
+      "magic-heal-plus-10"
+    ],
+    "masterySkill": "barrier",
+    "tags": []
+  },
+  {
+    "id": "troubadour",
+    "name": "Troubadour",
+    "tier": "advanced",
+    "growths": {
+      "hp": 10,
+      "str": 0,
+      "mag": 15,
+      "spd": 5,
+      "dex": 0,
+      "def": 5,
+      "res": 15,
+      "lck": 15,
+      "cha": 10
+    },
+    "requirements": {
+      "license": "Advanced",
+      "level": 35,
+      "renown": 8,
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "D"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "whiteMagic",
+          "rank": "B"
+        },
+        {
+          "skill": "blackMagic",
+          "rank": "B"
+        }
+      ],
+      "unlock": "Cai – White-Maned Demon's Request Leda – Elegant Drink Recipes"
+    },
+    "skills": [
+      "mount-dismount",
+      "magic-hit-plus-3",
+      "magic-heal-plus-5"
+    ],
+    "masterySkill": "song-of-courage",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "swordmaster",
+    "name": "Swordmaster",
+    "tier": "master",
+    "growths": {
+      "hp": 15,
+      "str": 10,
+      "mag": 0,
+      "spd": 20,
+      "dex": 15,
+      "def": 0,
+      "res": 0,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "sword",
+          "rank": "A"
+        }
+      ],
+      "secondarySkills": [],
+      "unlock": "Unlock after Mars' Temple Restoration"
+    },
+    "skills": [
+      "combat-arts-plus-3",
+      "sword-crit-plus-7"
+    ],
+    "masterySkill": "astra",
+    "tags": []
+  },
+  {
+    "id": "high-savant",
+    "name": "High Savant",
+    "tier": "master",
+    "growths": {
+      "hp": 10,
+      "str": 15,
+      "mag": 15,
+      "spd": 10,
+      "dex": 5,
+      "def": 5,
+      "res": 5,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "D"
+        },
+        {
+          "skill": "blackMagic",
+          "rank": "D"
+        },
+        {
+          "skill": "sword",
+          "rank": "B"
+        }
+      ],
+      "secondarySkills": [],
+      "unlock": "Unlock after Smyrnos' Temple Restoration"
+    },
+    "skills": [
+      "combat-arts-plus-2",
+      "mount-dismount",
+      "black-magic-seeker"
+    ],
+    "masterySkill": "dark-moon",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "battlemaster",
+    "name": "Battlemaster",
+    "tier": "master",
+    "growths": {
+      "hp": 25,
+      "str": 25,
+      "mag": -5,
+      "spd": -5,
+      "dex": 5,
+      "def": 10,
+      "res": -5,
+      "lck": -5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [],
+      "secondarySkills": [
+        {
+          "skill": "gauntlet",
+          "rank": "A"
+        },
+        {
+          "skill": "axe",
+          "rank": "A"
+        },
+        {
+          "skill": "sword",
+          "rank": "A"
+        }
+      ]
+    },
+    "skills": [
+      "combat-arts-plus-3",
+      "axe-hit-plus-7",
+      "brawl-hit-plus-7"
+    ],
+    "masterySkill": "war-masters-strike",
+    "tags": []
+  },
+  {
+    "id": "war-monk",
+    "name": "War Monk",
+    "tier": "master",
+    "growths": {
+      "hp": 15,
+      "str": 10,
+      "mag": 0,
+      "spd": 15,
+      "dex": 0,
+      "def": 5,
+      "res": 15,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "whiteMagic",
+          "rank": "D"
+        },
+        {
+          "skill": "gauntlet",
+          "rank": "B"
+        }
+      ],
+      "secondarySkills": [],
+      "unlock": "Unlock after Aurora's Temple Restoration"
+    },
+    "skills": [
+      "white-magic-seeker",
+      "combat-arts-plus-3",
+      "brawl-avo-plus-7"
+    ],
+    "masterySkill": "strike-and-heal",
+    "tags": []
+  },
+  {
+    "id": "bow-adept",
+    "name": "Bow Adept",
+    "tier": "master",
+    "growths": {
+      "hp": 15,
+      "str": 5,
+      "mag": 0,
+      "spd": 15,
+      "dex": 20,
+      "def": 5,
+      "res": 5,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "bow",
+          "rank": "A"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "combat-arts-plus-3",
+      "bow-hit-plus-15"
+    ],
+    "masterySkill": "sky-hunter",
+    "tags": []
+  },
+  {
+    "id": "bow-knight",
+    "name": "Bow Knight",
+    "tier": "master",
+    "growths": {
+      "hp": 10,
+      "str": 10,
+      "mag": 0,
+      "spd": 15,
+      "dex": 10,
+      "def": 5,
+      "res": 0,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "D"
+        },
+        {
+          "skill": "bow",
+          "rank": "A"
+        }
+      ],
+      "secondarySkills": [],
+      "unlock": "Unlock after Kalla's Temple Restoration"
+    },
+    "skills": [
+      "combat-arts-plus-2",
+      "mount-dismount",
+      "bow-hit-plus-10"
+    ],
+    "masterySkill": "hunters-cross",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "shadow-seeker",
+    "name": "Shadow Seeker",
+    "tier": "master",
+    "growths": {
+      "hp": 15,
+      "str": 5,
+      "mag": 0,
+      "spd": 15,
+      "dex": 25,
+      "def": 0,
+      "res": 10,
+      "lck": 15,
+      "cha": 0
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [],
+      "secondarySkills": [
+        {
+          "skill": "bow",
+          "rank": "A"
+        },
+        {
+          "skill": "sword",
+          "rank": "A"
+        }
+      ]
+    },
+    "skills": [
+      "locktouch",
+      "combat-arts-plus-3",
+      "master-search"
+    ],
+    "masterySkill": "dropshadow-blade",
+    "tags": []
+  },
+  {
+    "id": "sentinel",
+    "name": "Sentinel",
+    "tier": "master",
+    "growths": {
+      "hp": 15,
+      "str": 15,
+      "mag": 0,
+      "spd": 5,
+      "dex": 5,
+      "def": 10,
+      "res": 15,
+      "lck": 5,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "spear",
+          "rank": "A"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "white-magic-seeker",
+      "magic-heal-plus-10",
+      "combat-arts-plus-3"
+    ],
+    "masterySkill": "resolute-stance",
+    "tags": []
+  },
+  {
+    "id": "castle-knight",
+    "name": "Castle Knight",
+    "tier": "master",
+    "growths": {
+      "hp": 25,
+      "str": 20,
+      "mag": -5,
+      "spd": -15,
+      "dex": 5,
+      "def": 30,
+      "res": -10,
+      "lck": 0,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "heavyArmor",
+          "rank": "C"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "axe",
+          "rank": "A"
+        },
+        {
+          "skill": "spear",
+          "rank": "A"
+        }
+      ]
+    },
+    "skills": [
+      "combat-arts-plus-3",
+      "strike-last-def-plus-7"
+    ],
+    "masterySkill": "intercept",
+    "tags": [
+      "armored"
+    ]
+  },
+  {
+    "id": "orichaldia",
+    "name": "Orichaldia",
+    "tier": "master",
+    "growths": {
+      "hp": 15,
+      "str": 15,
+      "mag": -5,
+      "spd": 0,
+      "dex": 5,
+      "def": 5,
+      "res": 5,
+      "lck": 5,
+      "cha": 10
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "B"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "spear",
+          "rank": "A"
+        },
+        {
+          "skill": "sword",
+          "rank": "A"
+        }
+      ]
+    },
+    "skills": [
+      "mount-dismount",
+      "combat-arts-plus-3"
+    ],
+    "masterySkill": "fierce-spear",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "great-knight",
+    "name": "Great Knight",
+    "tier": "master",
+    "growths": {
+      "hp": 20,
+      "str": 20,
+      "mag": -5,
+      "spd": -10,
+      "dex": 0,
+      "def": 15,
+      "res": -10,
+      "lck": 0,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "heavyArmor",
+          "rank": "D"
+        },
+        {
+          "skill": "riding",
+          "rank": "D"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "axe",
+          "rank": "A"
+        },
+        {
+          "skill": "spear",
+          "rank": "A"
+        }
+      ],
+      "unlock": "Unlock after Credna's Temple Restoration"
+    },
+    "skills": [
+      "combat-arts-plus-2",
+      "mount-dismount"
+    ],
+    "masterySkill": "fierce-shield",
+    "tags": [
+      "mounted",
+      "armored"
+    ]
+  },
+  {
+    "id": "celestial-trooper",
+    "name": "Celestial Trooper",
+    "tier": "master",
+    "growths": {
+      "hp": 15,
+      "str": 5,
+      "mag": -5,
+      "spd": 10,
+      "dex": 5,
+      "def": 5,
+      "res": 15,
+      "lck": 15,
+      "cha": 10
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "flying",
+          "rank": "C"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "spear",
+          "rank": "A"
+        },
+        {
+          "skill": "sword",
+          "rank": "A"
+        }
+      ]
+    },
+    "skills": [
+      "mount-dismount",
+      "combat-arts-plus-1",
+      "flying-avo-plus-7"
+    ],
+    "masterySkill": "lightning-reflexes",
+    "tags": [
+      "mounted",
+      "flying"
+    ]
+  },
+  {
+    "id": "bau-lord",
+    "name": "Bau Lord",
+    "tier": "master",
+    "growths": {
+      "hp": 15,
+      "str": 5,
+      "mag": 0,
+      "spd": 5,
+      "dex": 0,
+      "def": 10,
+      "res": 10,
+      "lck": 10,
+      "cha": 5
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "flying",
+          "rank": "C"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "axe",
+          "rank": "A"
+        },
+        {
+          "skill": "spear",
+          "rank": "A"
+        }
+      ]
+    },
+    "skills": [
+      "combat-arts-plus-2",
+      "mount-dismount"
+    ],
+    "masterySkill": "ambush",
+    "tags": [
+      "mounted",
+      "flying"
+    ]
+  },
+  {
+    "id": "druid",
+    "name": "Druid",
+    "tier": "master",
+    "growths": {
+      "hp": 10,
+      "str": -5,
+      "mag": 30,
+      "spd": 15,
+      "dex": 10,
+      "def": -10,
+      "res": 20,
+      "lck": 10,
+      "cha": 0
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "blackMagic",
+          "rank": "A"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "black-magic-seeker",
+      "magic-hit-plus-7"
+    ],
+    "masterySkill": "bind-resistance",
+    "tags": []
+  },
+  {
+    "id": "wiseman",
+    "name": "Wiseman",
+    "tier": "master",
+    "growths": {
+      "hp": 10,
+      "str": -5,
+      "mag": 20,
+      "spd": 0,
+      "dex": 5,
+      "def": -10,
+      "res": 25,
+      "lck": 20,
+      "cha": 10
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "whiteMagic",
+          "rank": "A"
+        }
+      ],
+      "secondarySkills": []
+    },
+    "skills": [
+      "white-magic-seeker",
+      "magic-heal-plus-15"
+    ],
+    "masterySkill": "dominate-magic",
+    "tags": []
+  },
+  {
+    "id": "valkyrium",
+    "name": "Valkyrium",
+    "tier": "master",
+    "growths": {
+      "hp": 10,
+      "str": 0,
+      "mag": 15,
+      "spd": 5,
+      "dex": 5,
+      "def": 5,
+      "res": 10,
+      "lck": 15,
+      "cha": 10
+    },
+    "requirements": {
+      "license": "Master",
+      "level": 45,
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "D"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "whiteMagic",
+          "rank": "A"
+        },
+        {
+          "skill": "blackMagic",
+          "rank": "A"
+        }
+      ],
+      "unlock": "Unlock after Jura's Temple Restoration"
+    },
+    "skills": [
+      "mount-dismount",
+      "magic-heal-plus-10"
+    ],
+    "masterySkill": "song-of-calm",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "the-blade",
+    "name": "The Blade",
+    "tier": "divine",
+    "growths": {
+      "hp": 15,
+      "str": 10,
+      "mag": 10,
+      "spd": 20,
+      "dex": 20,
+      "def": 5,
+      "res": 5,
+      "lck": 5,
+      "cha": 10
+    },
+    "requirements": {
+      "primarySkills": [
+        {
+          "skill": "sword",
+          "rank": "S"
+        }
+      ],
+      "secondarySkills": [],
+      "unlock": "Obtain the Demonic Swordguard From The Temple of The Diadem. / (Unlocked at Part 3 Section 4)"
+    },
+    "skills": [
+      "combat-arts-plus-3",
+      "sword-crit-plus-10"
+    ],
+    "masterySkill": "divine-insight",
+    "tags": []
+  },
+  {
+    "id": "the-apsara",
+    "name": "The Apsara",
+    "tier": "divine",
+    "growths": {
+      "hp": 15,
+      "str": 5,
+      "mag": 10,
+      "spd": 25,
+      "dex": 15,
+      "def": 5,
+      "res": 5,
+      "lck": 10,
+      "cha": 30
+    },
+    "requirements": {
+      "primarySkills": [
+        {
+          "skill": "bow",
+          "rank": "C"
+        },
+        {
+          "skill": "sword",
+          "rank": "A"
+        }
+      ],
+      "secondarySkills": [],
+      "unlock": "Obtain the Muses' Necklace From The Temple of The Diadem. / (Unlocked at Part 3 Section 4)"
+    },
+    "skills": [
+      "combat-arts-plus-3",
+      "dance"
+    ],
+    "masterySkill": "divine-dance",
+    "tags": []
+  },
+  {
+    "id": "the-eternal",
+    "name": "The Eternal",
+    "tier": "divine",
+    "growths": {
+      "hp": 30,
+      "str": 30,
+      "mag": 0,
+      "spd": 10,
+      "dex": 0,
+      "def": 15,
+      "res": 0,
+      "lck": 0,
+      "cha": 0
+    },
+    "requirements": {
+      "primarySkills": [
+        {
+          "skill": "gauntlet",
+          "rank": "S"
+        },
+        {
+          "skill": "axe",
+          "rank": "S"
+        },
+        {
+          "skill": "sword",
+          "rank": "S"
+        }
+      ],
+      "secondarySkills": [],
+      "unlock": "Obtain the Scales of Judgement From The Temple of The Diadem. / (Unlocked at Part 3 Section 4)"
+    },
+    "skills": [
+      "combat-arts-plus-3",
+      "axe-hit-plus-10",
+      "brawl-hit-plus-10"
+    ],
+    "masterySkill": "divine-might",
+    "tags": []
+  },
+  {
+    "id": "the-godhand",
+    "name": "The Godhand",
+    "tier": "divine",
+    "growths": {
+      "hp": 15,
+      "str": 10,
+      "mag": 10,
+      "spd": 15,
+      "dex": 5,
+      "def": 10,
+      "res": 15,
+      "lck": 5,
+      "cha": 10
+    },
+    "requirements": {
+      "primarySkills": [
+        {
+          "skill": "whiteMagic",
+          "rank": "C"
+        },
+        {
+          "skill": "gauntlet",
+          "rank": "S"
+        }
+      ],
+      "secondarySkills": [],
+      "unlock": "Obtain the Emperor's Sash From The Temple of The Diadem. / (Unlocked at Part 3 Section 4)"
+    },
+    "skills": [
+      "combat-arts-plus-3",
+      "brawl-avo-plus-10",
+      "white-magic-zenith"
+    ],
+    "masterySkill": "divine-adornment",
+    "tags": []
+  },
+  {
+    "id": "the-calamity",
+    "name": "The Calamity",
+    "tier": "divine",
+    "growths": {
+      "hp": 15,
+      "str": 5,
+      "mag": 15,
+      "spd": 25,
+      "dex": 20,
+      "def": 5,
+      "res": 15,
+      "lck": 15,
+      "cha": 5
+    },
+    "requirements": {
+      "primarySkills": [],
+      "secondarySkills": [
+        {
+          "skill": "bow",
+          "rank": "S"
+        },
+        {
+          "skill": "sword",
+          "rank": "S"
+        }
+      ],
+      "unlock": "Obtain the Crystal of Darkness From The Temple of The Diadem. / (Unlocked at Part 3 Section 4)"
+    },
+    "skills": [
+      "locktouch",
+      "combat-arts-plus-3",
+      "ultimate-search"
+    ],
+    "masterySkill": "divine-will",
+    "tags": []
+  },
+  {
+    "id": "the-trident",
+    "name": "The Trident",
+    "tier": "divine",
+    "growths": {
+      "hp": 15,
+      "str": 15,
+      "mag": 5,
+      "spd": 10,
+      "dex": 10,
+      "def": 15,
+      "res": 15,
+      "lck": 5,
+      "cha": 10
+    },
+    "requirements": {
+      "primarySkills": [
+        {
+          "skill": "spear",
+          "rank": "S"
+        }
+      ],
+      "secondarySkills": [],
+      "unlock": "Obtain the Trident From The Temple of The Diadem. / (Unlocked at Part 3 Section 4)"
+    },
+    "skills": [
+      "magic-heal-plus-10",
+      "combat-arts-plus-3",
+      "white-magic-zenith"
+    ],
+    "masterySkill": "divine-wall",
+    "tags": []
+  },
+  {
+    "id": "the-cavalier",
+    "name": "The Cavalier",
+    "tier": "divine",
+    "growths": {
+      "hp": 20,
+      "str": 15,
+      "mag": 5,
+      "spd": 10,
+      "dex": 10,
+      "def": 15,
+      "res": 10,
+      "lck": 5,
+      "cha": 15
+    },
+    "requirements": {
+      "primarySkills": [
+        {
+          "skill": "riding",
+          "rank": "A"
+        }
+      ],
+      "secondarySkills": [
+        {
+          "skill": "axe",
+          "rank": "S"
+        },
+        {
+          "skill": "spear",
+          "rank": "S"
+        },
+        {
+          "skill": "sword",
+          "rank": "S"
+        }
+      ],
+      "unlock": "Obtain the Divinium Saddle From The Temple of The Diadem. / (Unlocked at Part 3 Section 4)"
+    },
+    "skills": [
+      "mount-dismount",
+      "combat-arts-plus-3",
+      "golden-ride"
+    ],
+    "masterySkill": "divine-dexterity",
+    "tags": [
+      "mounted"
+    ]
+  },
+  {
+    "id": "the-avatar",
+    "name": "The Avatar",
+    "tier": "divine",
+    "growths": {
+      "hp": 10,
+      "str": -5,
+      "mag": 30,
+      "spd": 10,
+      "dex": 5,
+      "def": -5,
+      "res": 30,
+      "lck": 20,
+      "cha": 10
+    },
+    "requirements": {
+      "primarySkills": [],
+      "secondarySkills": [
+        {
+          "skill": "whiteMagic",
+          "rank": "S"
+        },
+        {
+          "skill": "blackMagic",
+          "rank": "S"
+        }
+      ],
+      "unlock": "Obtain the Lotus of Reincarnation From The Temple of The Diadem. / (Unlocked at Part 3 Section 4)"
+    },
+    "skills": [
+      "magic-hit-plus-10",
+      "magic-heal-plus-20",
+      "all-magic-zenith"
+    ],
+    "masterySkill": "divine-law",
+    "tags": []
+  },
+  {
+    "id": "noble",
+    "name": "Noble",
+    "tier": "base",
+    "growths": {
+      "hp": 0,
+      "str": 0,
+      "mag": 0,
+      "spd": 0,
+      "dex": 0,
+      "def": 0,
+      "res": 0,
+      "lck": 0,
+      "cha": 0
+    },
+    "requirements": null,
+    "skills": [],
+    "masterySkill": "combat-basics",
+    "tags": []
+  }
+]

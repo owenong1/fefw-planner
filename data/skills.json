@@ -1,0 +1,1772 @@
+[
+  {
+    "id": "diadem-of-balance",
+    "name": "Diadem of Balance",
+    "type": "bloodmark",
+    "effect": "Unit cannot be countered. Trigger % = 3.",
+    "crest": "Cichol"
+  },
+  {
+    "id": "diadem-of-duality",
+    "name": "Diadem of Duality",
+    "type": "bloodmark",
+    "effect": "Grants Atk+3 when attacking. Trigger % = 25.",
+    "crest": "Gautier"
+  },
+  {
+    "id": "diadem-of-fetters",
+    "name": "Diadem of Fetters",
+    "type": "bloodmark",
+    "effect": "Multiplies damage by 1.2 when attacking. Trigger % = 5.",
+    "crest": "The Beast"
+  },
+  {
+    "id": "diadem-of-reflection",
+    "name": "Diadem of Reflection",
+    "type": "bloodmark",
+    "effect": "Grants Hit+30 when attacking. Trigger % = 10.",
+    "crest": "Gloucester"
+  },
+  {
+    "id": "diadem-of-revival",
+    "name": "Diadem of Revival",
+    "type": "bloodmark",
+    "effect": "Restores a little HP to unit when attacking. Trigger % = 20.",
+    "crest": "Fraldarius"
+  },
+  {
+    "id": "diadem-of-valor",
+    "name": "Diadem of Valor",
+    "type": "bloodmark",
+    "effect": "Multiplies damage by 1.5 when attacking. Trigger % = 3.",
+    "crest": "Blaiddyd"
+  },
+  {
+    "id": "diadem-of-the-apostle",
+    "name": "Diadem of the Apostle",
+    "type": "bloodmark",
+    "effect": "Grants Hit+20 when attacking. Trigger % = 20.",
+    "crest": "Aubin"
+  },
+  {
+    "id": "diadem-of-the-auger",
+    "name": "Diadem of the Auger",
+    "type": "bloodmark",
+    "effect": "Grants Hit+100 when attacking. Trigger % = 5.",
+    "crest": "Noa"
+  },
+  {
+    "id": "diadem-of-the-earth",
+    "name": "Diadem of the Earth",
+    "type": "bloodmark",
+    "effect": "Grants Atk+7 when attacking. Trigger % = 3.",
+    "crest": "Dominic"
+  },
+  {
+    "id": "diadem-of-the-endless",
+    "name": "Diadem of the Endless",
+    "type": "bloodmark",
+    "effect": "Restores some HP to unit when attacking. Trigger % = 10.",
+    "crest": "Lamine"
+  },
+  {
+    "id": "diadem-of-the-fanatic",
+    "name": "Diadem of the Fanatic",
+    "type": "bloodmark",
+    "effect": "Grants Atk+5, Hit+5 when attacking. Trigger % = 3.",
+    "crest": "Ernest"
+  },
+  {
+    "id": "diadem-of-the-victor",
+    "name": "Diadem of the Victor",
+    "type": "bloodmark",
+    "effect": "Grants Atk+5 when attacking. Trigger % = 10.",
+    "crest": "Daphnel"
+  },
+  {
+    "id": "advanced-search",
+    "name": "Advanced Search",
+    "type": "class",
+    "effect": "Search results are more likely to be perfect."
+  },
+  {
+    "id": "all-magic-zenith",
+    "name": "All-Magic Zenith",
+    "type": "class",
+    "effect": "Multiplies black magic and white magic uses by 3."
+  },
+  {
+    "id": "axe-hit-plus-10",
+    "name": "Axe Hit +10",
+    "type": "class",
+    "effect": "When equipped with an axe, grants Hit+10."
+  },
+  {
+    "id": "axe-hit-plus-3",
+    "name": "Axe Hit +3",
+    "type": "class",
+    "effect": "When equipped with an axe, grants Hit +3."
+  },
+  {
+    "id": "axe-hit-plus-5",
+    "name": "Axe Hit +5",
+    "type": "class",
+    "effect": "When equipped with an axe, grants Hit +5."
+  },
+  {
+    "id": "axe-hit-plus-7",
+    "name": "Axe Hit +7",
+    "type": "class",
+    "effect": "When equipped with an axe, grants Hit +7."
+  },
+  {
+    "id": "black-magic-seeker",
+    "name": "Black-Magic Seeker",
+    "type": "class",
+    "effect": "Multiplies black magic uses by 2."
+  },
+  {
+    "id": "bow-hit-plus-10",
+    "name": "Bow Hit +10",
+    "type": "class",
+    "effect": "When equipped with a bow, grants Hit +10."
+  },
+  {
+    "id": "bow-hit-plus-15",
+    "name": "Bow Hit +15",
+    "type": "class",
+    "effect": "When equipped with a bow, grants Hit +15."
+  },
+  {
+    "id": "bow-hit-plus-5",
+    "name": "Bow Hit +5",
+    "type": "class",
+    "effect": "When equipped with a bow, grants Hit +5."
+  },
+  {
+    "id": "brawl-avo-plus-10",
+    "name": "Brawl Avo +10",
+    "type": "class",
+    "effect": "When equipped with gauntlets, grants Avo +10."
+  },
+  {
+    "id": "brawl-avo-plus-3",
+    "name": "Brawl Avo +3",
+    "type": "class",
+    "effect": "When equipped with gauntlets, grants Avo +3."
+  },
+  {
+    "id": "brawl-avo-plus-7",
+    "name": "Brawl Avo +7",
+    "type": "class",
+    "effect": "When equipped with gauntlets, grants Avo +7."
+  },
+  {
+    "id": "brawl-hit-plus-10",
+    "name": "Brawl Hit +10",
+    "type": "class",
+    "effect": "When equipped with gauntlets, grants Hit+10."
+  },
+  {
+    "id": "brawl-hit-plus-5",
+    "name": "Brawl Hit +5",
+    "type": "class",
+    "effect": "When equipped with gauntlets, grants Hit +5."
+  },
+  {
+    "id": "brawl-hit-plus-7",
+    "name": "Brawl Hit +7",
+    "type": "class",
+    "effect": "When equipped with gauntlets, grants Hit+7."
+  },
+  {
+    "id": "chariot-armor",
+    "name": "Chariot Armor",
+    "type": "class",
+    "effect": "Grants Shield +5. Unit cannot avoid attacks."
+  },
+  {
+    "id": "charioteer-tactics",
+    "name": "Charioteer Tactics",
+    "type": "class",
+    "effect": "Allows use of the Mount and Dismount commands. (Cavalry) Allows use of the Charge command."
+  },
+  {
+    "id": "charioteers-path",
+    "name": "Charioteer's Path",
+    "type": "class",
+    "effect": "Unit's growth rate increases with level."
+  },
+  {
+    "id": "combat-arts-plus-1",
+    "name": "Combat Arts +1",
+    "type": "class",
+    "effect": "Unit can equip +1 combat arts."
+  },
+  {
+    "id": "combat-arts-plus-2",
+    "name": "Combat Arts +2",
+    "type": "class",
+    "effect": "Unit can equip +2 combat arts."
+  },
+  {
+    "id": "combat-arts-plus-3",
+    "name": "Combat Arts +3",
+    "type": "class",
+    "effect": "Unit can equip +3 combat arts."
+  },
+  {
+    "id": "dance",
+    "name": "Dance",
+    "type": "class",
+    "effect": "Allows the use of the Dance combat art."
+  },
+  {
+    "id": "elephant-riders-path",
+    "name": "Elephant Rider's Path",
+    "type": "class",
+    "effect": "Unit's growth rate increases with level."
+  },
+  {
+    "id": "elephant-tactics",
+    "name": "Elephant Tactics",
+    "type": "class",
+    "effect": "Allows use of the Mount and Dismount commands. Allows use of the Heavy Charge Commands."
+  },
+  {
+    "id": "flying-avo-plus-7",
+    "name": "Flying Avo +7",
+    "type": "class",
+    "effect": "Grants Avo +7."
+  },
+  {
+    "id": "golden-ride",
+    "name": "Golden Ride",
+    "type": "class",
+    "effect": "Neutralizes effective vs. cavalry."
+  },
+  {
+    "id": "locktouch",
+    "name": "Locktouch",
+    "type": "class",
+    "effect": "Allows the opening of chests even without keys."
+  },
+  {
+    "id": "magic-heal-plus-10",
+    "name": "Magic Heal +10",
+    "type": "class",
+    "effect": "When healing an ally with magic, restores +10 HP."
+  },
+  {
+    "id": "magic-heal-plus-15",
+    "name": "Magic Heal +15",
+    "type": "class",
+    "effect": "When healing an ally with magic, restores +15 HP."
+  },
+  {
+    "id": "magic-heal-plus-20",
+    "name": "Magic Heal +20",
+    "type": "class",
+    "effect": "When healing an ally with magic, restores +20 HP."
+  },
+  {
+    "id": "magic-heal-plus-5",
+    "name": "Magic Heal +5",
+    "type": "class",
+    "effect": "When healing an ally with magic, restores +5 HP."
+  },
+  {
+    "id": "magic-hit-plus-10",
+    "name": "Magic Hit +10",
+    "type": "class",
+    "effect": "When equipped with magic, grants Hit +10."
+  },
+  {
+    "id": "magic-hit-plus-3",
+    "name": "Magic Hit +3",
+    "type": "class",
+    "effect": "When equipped with magic, grants Hit +3."
+  },
+  {
+    "id": "magic-hit-plus-5",
+    "name": "Magic Hit +5",
+    "type": "class",
+    "effect": "When equipped with magic, grants Hit +5."
+  },
+  {
+    "id": "magic-hit-plus-7",
+    "name": "Magic Hit +7",
+    "type": "class",
+    "effect": "When equipped with magic, grants Hit +7."
+  },
+  {
+    "id": "master-search",
+    "name": "Master Search",
+    "type": "class",
+    "effect": "Search results are considerably more likely to be perfect."
+  },
+  {
+    "id": "mount-dismount",
+    "name": "Mount/Dismount",
+    "type": "class",
+    "effect": "Allows use of Mount and Dismount commands."
+  },
+  {
+    "id": "search",
+    "name": "Search",
+    "type": "class",
+    "effect": "Search results are more likely to be perfect."
+  },
+  {
+    "id": "strike-last-def-plus-3",
+    "name": "Strike-Last Def +3",
+    "type": "class",
+    "effect": "If foe attacks first, grants Prt +3 to unit during combat."
+  },
+  {
+    "id": "strike-last-def-plus-5",
+    "name": "Strike-Last Def +5",
+    "type": "class",
+    "effect": "If foe attacks first, grants Prt +5 to unit during combat."
+  },
+  {
+    "id": "strike-last-def-plus-7",
+    "name": "Strike-Last Def +7",
+    "type": "class",
+    "effect": "If foe attacks first, grants Prt +7 to unit during combat."
+  },
+  {
+    "id": "sword-crit-plus-10",
+    "name": "Sword Crit +10",
+    "type": "class",
+    "effect": "When equipped with a sword, grants Crit +10."
+  },
+  {
+    "id": "sword-crit-plus-3",
+    "name": "Sword Crit +3",
+    "type": "class",
+    "effect": "When equipped with a sword, grants Crit +3."
+  },
+  {
+    "id": "sword-crit-plus-5",
+    "name": "Sword Crit +5",
+    "type": "class",
+    "effect": "When equipped with a sword, grants Crit +5."
+  },
+  {
+    "id": "sword-crit-plus-7",
+    "name": "Sword Crit +7",
+    "type": "class",
+    "effect": "When equipped with a sword, grants Crit +7."
+  },
+  {
+    "id": "ultimate-search",
+    "name": "Ultimate Search",
+    "type": "class",
+    "effect": "Search results are exceedingly more likely to be perfect."
+  },
+  {
+    "id": "war-elephant-boots",
+    "name": "War-Elephant Boots",
+    "type": "class",
+    "effect": "Unit takes half damage when attacked. Unit cannot avoid attacks."
+  },
+  {
+    "id": "white-magic-seeker",
+    "name": "White-Magic Seeker",
+    "type": "class",
+    "effect": "Multiplies white magic uses by 2."
+  },
+  {
+    "id": "white-magic-zenith",
+    "name": "White-Magic Zenith",
+    "type": "class",
+    "effect": "Multiplies white magic uses by 3."
+  },
+  {
+    "id": "accelerate",
+    "name": "Accelerate",
+    "type": "level",
+    "effect": "After defeating a foe, grants Spd +1 until the end of the map. (Max +10)"
+  },
+  {
+    "id": "accelerate-plus",
+    "name": "Accelerate+",
+    "type": "level",
+    "effect": "After defeating a foe, grants Spd+2 until the end of the map. (Max +10)"
+  },
+  {
+    "id": "additional-intel",
+    "name": "Additional Intel",
+    "type": "level",
+    "effect": "Grants Hit+10 to adjacent allies during their combats. Trigger% = 30."
+  },
+  {
+    "id": "additional-intel-plus",
+    "name": "Additional Intel+",
+    "type": "level",
+    "effect": "Grants Hit+20 to adjacent allies during their combats. Trigger% = 30."
+  },
+  {
+    "id": "all-out-attack",
+    "name": "All-Out Attack",
+    "type": "level",
+    "effect": "Multiplies damage by 1.3 when attacking with a combat art. Trigger % = 30."
+  },
+  {
+    "id": "all-out-attack-plus",
+    "name": "All-Out Attack+",
+    "type": "level",
+    "effect": "Multiplies damage by 1.5 when attacking with a combat art. Trigger % = 30."
+  },
+  {
+    "id": "ardent-nosferatu",
+    "name": "Ardent Nosferatu",
+    "type": "level",
+    "effect": "When using Nosferatu, grants Atk+3, Crit+5 during combat."
+  },
+  {
+    "id": "ardent-nosferatu-plus",
+    "name": "Ardent Nosferatu+",
+    "type": "level",
+    "effect": "When using Nosferatu, grants Atk+5, Crit+10 during combat."
+  },
+  {
+    "id": "at-a-gallop",
+    "name": "At a Gallop",
+    "type": "level",
+    "effect": "(Cavalry) Applies -1 to movement cost for terrain (cannot be reduced to below 1)."
+  },
+  {
+    "id": "at-a-gallop-plus",
+    "name": "At a Gallop+",
+    "type": "level",
+    "effect": "(Cavalry) Applies -2 movement cost for terrain (cannot be reduced below 1)."
+  },
+  {
+    "id": "attuned",
+    "name": "Attuned",
+    "type": "level",
+    "effect": "When Warrior's Clarity triggers, grants Avo+10 until unit's next phase. Trigger % = 10."
+  },
+  {
+    "id": "attuned-plus",
+    "name": "Attuned+",
+    "type": "level",
+    "effect": "When Warrior's Clarity triggers, grants Avo+10 until unit's next phase. Trigger % = 20."
+  },
+  {
+    "id": "bestial-impulse",
+    "name": "Bestial Impulse",
+    "type": "level",
+    "effect": "After combat, grants Crit+2 until a unit makes a critical."
+  },
+  {
+    "id": "cannoning-flair",
+    "name": "Cannoning Flair",
+    "type": "level",
+    "effect": "When using artillery, grants Hit+30 during combat."
+  },
+  {
+    "id": "chariot-stagger",
+    "name": "Chariot Stagger",
+    "type": "level",
+    "effect": "If unit is a charioteer, grants +1 uses to staggering blows."
+  },
+  {
+    "id": "chariot-stagger-plus",
+    "name": "Chariot Stagger+",
+    "type": "level",
+    "effect": "If unit is charioteer, grants +2 uses to staggering blows."
+  },
+  {
+    "id": "continuum",
+    "name": "Continuum",
+    "type": "level",
+    "effect": "When unit avoid an attack, restores 5 HP to unit."
+  },
+  {
+    "id": "continuum-plus",
+    "name": "Continuum+",
+    "type": "level",
+    "effect": "When unit avoid an attack, restores 10 HP to unit."
+  },
+  {
+    "id": "correct-for-drift",
+    "name": "Correct for Drift",
+    "type": "level",
+    "effect": "If unit's hit percent is ≥ to 90%, grants Hit +10 during combat."
+  },
+  {
+    "id": "correct-for-drift-plus",
+    "name": "Correct for Drift+",
+    "type": "level",
+    "effect": "If unit's hit % ≥ 75%, grants Hit+20 during combat."
+  },
+  {
+    "id": "dark-secrets",
+    "name": "Dark Secrets",
+    "type": "level",
+    "effect": "Extends range of Dark Calling"
+  },
+  {
+    "id": "dark-secrets-plus",
+    "name": "Dark Secrets+",
+    "type": "level",
+    "effect": "Extends range of Dark Calling to 3 spaces."
+  },
+  {
+    "id": "devils-luck",
+    "name": "Devil's Luck",
+    "type": "level",
+    "effect": "After defeating a foe, grants Lck+1 until the end of the map. (Max +10)"
+  },
+  {
+    "id": "devils-luck-plus",
+    "name": "Devil's Luck+",
+    "type": "level",
+    "effect": "After defeating a foe, grants Lck+2 until the end of the map. (Max +10)"
+  },
+  {
+    "id": "direct-hit",
+    "name": "Direct Hit",
+    "type": "level",
+    "effect": "Deals +10 damage when attacking with Blaze Arts. Trigger % = 30."
+  },
+  {
+    "id": "distant-healing",
+    "name": "Distant Healing",
+    "type": "level",
+    "effect": "Grants Rng+1 to healing magic."
+  },
+  {
+    "id": "distant-healing-plus",
+    "name": "Distant Healing+",
+    "type": "level",
+    "effect": "Grants Rng+2 to healing magic."
+  },
+  {
+    "id": "dramatic-effect",
+    "name": "Dramatic Effect",
+    "type": "level",
+    "effect": "When Stage Directions triggers, grans Hit+10 to target allies."
+  },
+  {
+    "id": "dramatic-effect-plus",
+    "name": "Dramatic Effect+",
+    "type": "level",
+    "effect": "When Stage Directions triggers, grans Hit/Crit+10 to target allies."
+  },
+  {
+    "id": "fear-nothing",
+    "name": "Fear Nothing",
+    "type": "level",
+    "effect": "If unit attacks first, grants Atk+3 at cost of Avo-30 to unit during combat."
+  },
+  {
+    "id": "fear-nothing-plus",
+    "name": "Fear Nothing+",
+    "type": "level",
+    "effect": "If unit attacks first, grants Atk+6 at cost of Avo-30 to unit during combat."
+  },
+  {
+    "id": "flamekeeper",
+    "name": "Flamekeeper",
+    "type": "level",
+    "effect": "Unit and all allies are unaffected by Underworld Flames and take half damage from attacks while in Underworld Flames."
+  },
+  {
+    "id": "flashing-fang",
+    "name": "Flashing Fang",
+    "type": "level",
+    "effect": "Grants Atk+4, Hit+50 when attacking. Trigger % = 20."
+  },
+  {
+    "id": "flashing-fang-plus",
+    "name": "Flashing Fang+",
+    "type": "level",
+    "effect": "Grants Atk+7, Hit+100 when attacking. Trigger % = 20."
+  },
+  {
+    "id": "flickering-edge",
+    "name": "Flickering Edge",
+    "type": "level",
+    "effect": "When unit avoids an attack, grants Atk+3 during combat."
+  },
+  {
+    "id": "flickering-edge-plus",
+    "name": "Flickering Edge+",
+    "type": "level",
+    "effect": "When unit avoids an attack, grants Atk+5 during combat."
+  },
+  {
+    "id": "full-strength",
+    "name": "Full Strength",
+    "type": "level",
+    "effect": "Multiplies damage by 1.3 when attacking. Trigger % = Str÷2."
+  },
+  {
+    "id": "full-strength-plus",
+    "name": "Full Strength+",
+    "type": "level",
+    "effect": "Multiplies damage by 1.5 when attacking. Trigger % = Str ÷ 2."
+  },
+  {
+    "id": "gift-of-faith",
+    "name": "Gift of Faith",
+    "type": "level",
+    "effect": "When healing an ally with magic, restores +20 HP. Trigger % = Lck."
+  },
+  {
+    "id": "gift-of-faith-plus",
+    "name": "Gift of Faith+",
+    "type": "level",
+    "effect": "When healing an ally with magic, restores +30 HP. Trigger % = Lck."
+  },
+  {
+    "id": "go-no-sen",
+    "name": "Go No Sen",
+    "type": "level",
+    "effect": "In enemy's phase, unit attacks first during combat. Trigger % = 25."
+  },
+  {
+    "id": "halt-advance",
+    "name": "Halt Advance",
+    "type": "level",
+    "effect": "After combat, if unit attacked first, inflicts Spd-2 on foe through their next combat."
+  },
+  {
+    "id": "halt-advance-plus",
+    "name": "Halt Advance+",
+    "type": "level",
+    "effect": "After combat, if unit attacked first, inflicts Spd-3 on foe throughout their next combat."
+  },
+  {
+    "id": "harmonic-soul",
+    "name": "Harmonic Soul",
+    "type": "level",
+    "effect": "When healing an ally with magic, restores a little HP to unit."
+  },
+  {
+    "id": "harmonic-soul-plus",
+    "name": "Harmonic Soul+",
+    "type": "level",
+    "effect": "When healing an ally with magic, restores some HP to unit."
+  },
+  {
+    "id": "improviso",
+    "name": "Improviso",
+    "type": "level",
+    "effect": "After using Blaze Arts during Overblaze, unit can attack."
+  },
+  {
+    "id": "kings-majesty",
+    "name": "King's Majesty",
+    "type": "level",
+    "effect": "If foe is damaged, grants Atk+2, Crit+5 during combat."
+  },
+  {
+    "id": "kings-majesty-plus",
+    "name": "King's Majesty+",
+    "type": "level",
+    "effect": "If foe is damaged, grants Atk+4, Crit+10 during combat."
+  },
+  {
+    "id": "menace",
+    "name": "Menace",
+    "type": "level",
+    "effect": "Halves foes' Ddg during combat. Trigger % = 10."
+  },
+  {
+    "id": "menace-plus",
+    "name": "Menace+",
+    "type": "level",
+    "effect": "Halves foes' Ddg during combat. Trigger % = 20."
+  },
+  {
+    "id": "mounted-push",
+    "name": "Mounted Push",
+    "type": "level",
+    "effect": "(Cavalry) If unit attacks first, grants Hit+10 during combat."
+  },
+  {
+    "id": "mounted-push-plus",
+    "name": "Mounted Push+",
+    "type": "level",
+    "effect": "(Cavalry) If unit attacks first, grants Hit+10, Atk+3 during combat."
+  },
+  {
+    "id": "never-stop",
+    "name": "Never Stop",
+    "type": "level",
+    "effect": "Grants Atk+5 when attacking after Quick Draw triggers. Trigger % = 30."
+  },
+  {
+    "id": "never-stop-plus",
+    "name": "Never Stop+",
+    "type": "level",
+    "effect": "Grants Atk+5 when attacking after Quick Draw triggers. Trigger % = 50."
+  },
+  {
+    "id": "no-mercy",
+    "name": "No Mercy",
+    "type": "level",
+    "effect": "Grants Hit/Crit+5 when making a follow-up."
+  },
+  {
+    "id": "no-mercy-plus",
+    "name": "No Mercy+",
+    "type": "level",
+    "effect": "Grants Hit/Crit+10 when making a follow-up."
+  },
+  {
+    "id": "pass-judgment",
+    "name": "Pass Judgment",
+    "type": "level",
+    "effect": "When Diadem of Balance triggers, grants Atk+4."
+  },
+  {
+    "id": "pass-judgment-plus",
+    "name": "Pass Judgment+",
+    "type": "level",
+    "effect": "When Diadem of Balance triggers, grants Atk+7."
+  },
+  {
+    "id": "peak-form",
+    "name": "Peak Form",
+    "type": "level",
+    "effect": "If unit HP = 100%, grants Atk+3 during combat."
+  },
+  {
+    "id": "peak-form-plus",
+    "name": "Peak Form+",
+    "type": "level",
+    "effect": "If unit's HP = 100%, grants Atk+3, Avo+10 during combat."
+  },
+  {
+    "id": "perception",
+    "name": "Perception",
+    "type": "level",
+    "effect": "If unit can make a follow-up, grants Avo+10 during combat."
+  },
+  {
+    "id": "perception-plus",
+    "name": "Perception+",
+    "type": "level",
+    "effect": "If unit can make a follow-up, grants Avo+20 during combat."
+  },
+  {
+    "id": "pierce",
+    "name": "Pierce",
+    "type": "level",
+    "effect": "Grants Atk+2, Crit+5 when attacking with a bow combat art."
+  },
+  {
+    "id": "pierce-plus",
+    "name": "Pierce+",
+    "type": "level",
+    "effect": "Grants Atk+4, Crit+10 when attacking with a bow combat art."
+  },
+  {
+    "id": "pin-down",
+    "name": "Pin Down",
+    "type": "level",
+    "effect": "Inflicts Mov-3 on adjacent foes."
+  },
+  {
+    "id": "pin-down-plus",
+    "name": "Pin Down+",
+    "type": "level",
+    "effect": "Inflicts Mov-5 on adjacent foes."
+  },
+  {
+    "id": "pray-for-safety",
+    "name": "Pray for Safety",
+    "type": "level",
+    "effect": "Grants Ddg+10 to adjacent allies."
+  },
+  {
+    "id": "pray-for-safety-plus",
+    "name": "Pray for Safety+",
+    "type": "level",
+    "effect": "Grants Ddg+20 to adjacent allies."
+  },
+  {
+    "id": "precision-strike",
+    "name": "Precision Strike",
+    "type": "level",
+    "effect": "If unit is effective against foe, grants Hit+10 during combat."
+  },
+  {
+    "id": "precision-strike-plus",
+    "name": "Precision Strike+",
+    "type": "level",
+    "effect": "If unit is effective against foe, grants Hit+20 during combat."
+  },
+  {
+    "id": "predictive-sense",
+    "name": "Predictive Sense",
+    "type": "level",
+    "effect": "If unit attacks first, grants Hit+20 to magic during combat."
+  },
+  {
+    "id": "raging-counter",
+    "name": "Raging Counter",
+    "type": "level",
+    "effect": "If foe attacks first, grants Atk+3 to unit during combat."
+  },
+  {
+    "id": "raging-counter-plus",
+    "name": "Raging Counter+",
+    "type": "level",
+    "effect": "If foe attacks first, grants Atk+3, Crit+10 to unit during combat."
+  },
+  {
+    "id": "redblades-will",
+    "name": "Redblade's Will",
+    "type": "level",
+    "effect": "Grants Atk+3 during combat against an adjacent foe."
+  },
+  {
+    "id": "redblades-will-plus",
+    "name": "Redblade's Will+",
+    "type": "level",
+    "effect": "Grants Atk+3 during combat against an adjacent foe. Also grants Atk+3 when attacking an adjacent foe (trigger % = 30)."
+  },
+  {
+    "id": "retaliatory-blow",
+    "name": "Retaliatory Blow",
+    "type": "level",
+    "effect": "If foes attacks first, multiplies unit's damage by 1.3 when attacking. Trigger % = 5."
+  },
+  {
+    "id": "retaliatory-blow-plus",
+    "name": "Retaliatory Blow+",
+    "type": "level",
+    "effect": "If foes attacks first, multiplies unit's damage by 1.3 when attacking. Trigger % = 10."
+  },
+  {
+    "id": "robust-health",
+    "name": "Robust Health",
+    "type": "level",
+    "effect": "Grants Shld+3 when attacked. Trigger % = unit's remaining HP."
+  },
+  {
+    "id": "robust-health-plus",
+    "name": "Robust Health+",
+    "type": "level",
+    "effect": "Grants Shld+5 when attacked. Trigger % = unit's remaining HP."
+  },
+  {
+    "id": "scorching-sun",
+    "name": "Scorching Sun",
+    "type": "level",
+    "effect": "Reduces damage done by undead foes to 0. Trigger % = 5."
+  },
+  {
+    "id": "scorching-sun-plus",
+    "name": "Scorching Sun+",
+    "type": "level",
+    "effect": "Reduces damage done by undead foes to 0. Trigger % = 10."
+  },
+  {
+    "id": "seize-the-chance",
+    "name": "Seize the Chance",
+    "type": "level",
+    "effect": "Multiplies damage by 1.3 when attacking. Trigger % = Lck ÷ 2."
+  },
+  {
+    "id": "seize-the-chance-plus",
+    "name": "Seize the Chance+",
+    "type": "level",
+    "effect": "Multiplies damage by 1.5 when attacking. Trigger % = Lck ÷ 2."
+  },
+  {
+    "id": "soar",
+    "name": "Soar",
+    "type": "level",
+    "effect": "If unit is on inaccessible terrain, grants AS+3."
+  },
+  {
+    "id": "soar-plus",
+    "name": "Soar+",
+    "type": "level",
+    "effect": "If unit is on inaccesible terrain, grants AS+5."
+  },
+  {
+    "id": "spirits-guidance",
+    "name": "Spirits' Guidance",
+    "type": "level",
+    "effect": "Grants Spirits' Voices to adjacent allies."
+  },
+  {
+    "id": "spirits-guidance-plus",
+    "name": "Spirits' Guidance+",
+    "type": "level",
+    "effect": "Grants Spirits' Voices to allies within 2 spaces."
+  },
+  {
+    "id": "tacticians-insight",
+    "name": "Tactician's Insight",
+    "type": "level",
+    "effect": "After combat, if unit attacked first, inflicts Avo-5 on foe through unit's next combat."
+  },
+  {
+    "id": "tacticians-insight-plus",
+    "name": "Tactician's Insight+",
+    "type": "level",
+    "effect": "After combat, if unit attacked first, inflicts Avo-10 on foe through unit's next combat."
+  },
+  {
+    "id": "throwing-arm",
+    "name": "Throwing Arm",
+    "type": "level",
+    "effect": "If throwing a spear, grants Hit+10, Atk+2 during combat."
+  },
+  {
+    "id": "throwing-arm-plus",
+    "name": "Throwing Arm+",
+    "type": "level",
+    "effect": "If throwing a spear, grants Hit+20, Atk+4 during combat."
+  },
+  {
+    "id": "top-form",
+    "name": "Top Form",
+    "type": "level",
+    "effect": "Changes the Effect of Hot-Headed to grant +15"
+  },
+  {
+    "id": "top-form-plus",
+    "name": "Top Form+",
+    "type": "level",
+    "effect": "Changes the effect of Hot-Headed to grant +20."
+  },
+  {
+    "id": "upper-hand",
+    "name": "Upper Hand",
+    "type": "level",
+    "effect": "If unit's hit % = 100, grants Atk+3 when attacking."
+  },
+  {
+    "id": "upper-hand-plus",
+    "name": "Upper Hand+",
+    "type": "level",
+    "effect": "If unit's hit % = 100, grants Atk+5 when attacking."
+  },
+  {
+    "id": "vulgar-conduct",
+    "name": "Vulgar Conduct",
+    "type": "level",
+    "effect": "If foe's HP is less than or equal to 50%, grants Hit+20 during combat."
+  },
+  {
+    "id": "vulgar-conduct-plus",
+    "name": "Vulgar Conduct+",
+    "type": "level",
+    "effect": "If foe's HP is less than or equal to 50%, grants Hit+20, Atk+3 during combat."
+  },
+  {
+    "id": "warriors-blood",
+    "name": "Warrior's Blood",
+    "type": "level",
+    "effect": "Grants stat increase based on equipped weapon type."
+  },
+  {
+    "id": "warriors-blood-plus",
+    "name": "Warrior's Blood+",
+    "type": "level",
+    "effect": "Grants a large stat increase based on equipped weapon type."
+  },
+  {
+    "id": "watchfulness",
+    "name": "Watchfulness",
+    "type": "level",
+    "effect": "Grants Spd+2 to adjacent allies."
+  },
+  {
+    "id": "watchfulness-plus",
+    "name": "Watchfulness+",
+    "type": "level",
+    "effect": "Grants Spd+4 to adjacent allies."
+  },
+  {
+    "id": "wind-my-friend",
+    "name": "Wind My Friend",
+    "type": "level",
+    "effect": "If AS is greater than or equal to foe's AS+5, grants Atk+3 during combat."
+  },
+  {
+    "id": "wind-my-friend-plus",
+    "name": "Wind My Friend+",
+    "type": "level",
+    "effect": "If AS ≥ foe’s AS+5, grants Atk+3, and if AS ≥ foe’s AS+8, grants Avo+20 during combat."
+  },
+  {
+    "id": "winds-caprice",
+    "name": "Wind's Caprice",
+    "type": "level",
+    "effect": "Grants one of Avo+1, Avo+5, or Avo+20 during combat."
+  },
+  {
+    "id": "winds-caprice-plus",
+    "name": "Wind's Caprice+",
+    "type": "level",
+    "effect": "Grants one of Avo+1, Avo+5, Avo+20, or Avo+30 during combat."
+  },
+  {
+    "id": "winds-of-victory",
+    "name": "Winds of Victory",
+    "type": "level",
+    "effect": "Grants Hit+15 when attacking. Grants Avo+15 when attacked. Trigger% = Lck."
+  },
+  {
+    "id": "aegis",
+    "name": "Aegis",
+    "type": "mastery",
+    "effect": "Unit takes half damage when attacked with a magical attack. Trigger % = 20."
+  },
+  {
+    "id": "ambush",
+    "name": "Ambush",
+    "type": "mastery",
+    "effect": "If unit is on inaccessible terrain, grants Atk +4."
+  },
+  {
+    "id": "astra",
+    "name": "Astra",
+    "type": "mastery",
+    "effect": null
+  },
+  {
+    "id": "attack-basics",
+    "name": "Attack Basics",
+    "type": "mastery",
+    "effect": "Grants Str +1."
+  },
+  {
+    "id": "attack-get-back",
+    "name": "Attack, Get Back",
+    "type": "mastery",
+    "effect": "When using a combat art, grants Avo +10 during combat."
+  },
+  {
+    "id": "barrier",
+    "name": "Barrier",
+    "type": "mastery",
+    "effect": "Grants Res +3 to adjacent allies."
+  },
+  {
+    "id": "besieger",
+    "name": "Besieger",
+    "type": "mastery",
+    "effect": "If foe is on favorable terrain, grants Hit +20 to unit during combat."
+  },
+  {
+    "id": "bind-dexterity",
+    "name": "Bind Dexterity",
+    "type": "mastery",
+    "effect": "Inflicts Dex-3 on adjacent foes."
+  },
+  {
+    "id": "bind-resistance",
+    "name": "Bind Resistance",
+    "type": "mastery",
+    "effect": "Inflict Res -3 on adjacent foes."
+  },
+  {
+    "id": "bind-speed",
+    "name": "Bind Speed",
+    "type": "mastery",
+    "effect": "Inflict Spd -3 on adjacent foes."
+  },
+  {
+    "id": "blind-resistance",
+    "name": "Blind Resistance",
+    "type": "mastery",
+    "effect": "Inflicts Res -3 on adjacent foes."
+  },
+  {
+    "id": "bolster-health",
+    "name": "Bolster Health",
+    "type": "mastery",
+    "effect": "Grants max HP +3."
+  },
+  {
+    "id": "brace",
+    "name": "Brace",
+    "type": "mastery",
+    "effect": "After defeating a foe, grants Prt +3 until unit's next phase."
+  },
+  {
+    "id": "charger",
+    "name": "Charger",
+    "type": "mastery",
+    "effect": "When using Charge, grants Prt +10 until unit's next phase."
+  },
+  {
+    "id": "combat-basics",
+    "name": "Combat Basics",
+    "type": "mastery",
+    "effect": "Grants Hit/Avo+3"
+  },
+  {
+    "id": "countershot",
+    "name": "Countershot",
+    "type": "mastery",
+    "effect": "When equipped with a bow, unit can counter adjacent foes during combat. Trigger % = 50."
+  },
+  {
+    "id": "crescendo",
+    "name": "Crescendo",
+    "type": "mastery",
+    "effect": "After defeating a foe, grants Hit +3 until the end of the map. (Max +30)"
+  },
+  {
+    "id": "dark-moon",
+    "name": "Dark Moon",
+    "type": "mastery",
+    "effect": "Halves foe's Shld when attacking. Trigger % = 10."
+  },
+  {
+    "id": "defense-basics",
+    "name": "Defense Basics",
+    "type": "mastery",
+    "effect": "Grants Def +1."
+  },
+  {
+    "id": "divine-adornment",
+    "name": "Divine Adornment",
+    "type": "mastery",
+    "effect": "Grants Res +10."
+  },
+  {
+    "id": "divine-dance",
+    "name": "Divine Dance",
+    "type": "mastery",
+    "effect": "Grants Cha +10."
+  },
+  {
+    "id": "divine-dexterity",
+    "name": "Divine Dexterity",
+    "type": "mastery",
+    "effect": "Grants Dex +10."
+  },
+  {
+    "id": "divine-insight",
+    "name": "Divine Insight",
+    "type": "mastery",
+    "effect": "Grants Spd +10."
+  },
+  {
+    "id": "divine-law",
+    "name": "Divine Law",
+    "type": "mastery",
+    "effect": "Grants Mag +10."
+  },
+  {
+    "id": "divine-might",
+    "name": "Divine Might",
+    "type": "mastery",
+    "effect": "Grants Str +10."
+  },
+  {
+    "id": "divine-wall",
+    "name": "Divine Wall",
+    "type": "mastery",
+    "effect": "Grants Def +10."
+  },
+  {
+    "id": "divine-will",
+    "name": "Divine Will",
+    "type": "mastery",
+    "effect": "Grants Lck +10."
+  },
+  {
+    "id": "dominate-magic",
+    "name": "Dominate Magic",
+    "type": "mastery",
+    "effect": "If foe uses magic, unit cannot be countered during combat. Trigger % = 10."
+  },
+  {
+    "id": "dropshadow-blade",
+    "name": "Dropshadow Blade",
+    "type": "mastery",
+    "effect": "If foe is on favorable terrain, ignores those terrain effects."
+  },
+  {
+    "id": "elephant-vanguard",
+    "name": "Elephant Vanguard",
+    "type": "mastery",
+    "effect": "If unit is an elephant rider, grants Hit +10."
+  },
+  {
+    "id": "ever-vigilant",
+    "name": "Ever Vigilant",
+    "type": "mastery",
+    "effect": "After defeating a foe with a critical attack, restores a little HP to unit."
+  },
+  {
+    "id": "fierce-shield",
+    "name": "Fierce Shield",
+    "type": "mastery",
+    "effect": "If unit attacks first, unit takes half damage during combat. Trigger % = 50."
+  },
+  {
+    "id": "fierce-spear",
+    "name": "Fierce Spear",
+    "type": "mastery",
+    "effect": "Unit cannot suffer a follow-up during combat."
+  },
+  {
+    "id": "focused-counter",
+    "name": "Focused Counter",
+    "type": "mastery",
+    "effect": "If foe attacks first, grants Hit +10 to unit during combat."
+  },
+  {
+    "id": "great-counter",
+    "name": "Great Counter",
+    "type": "mastery",
+    "effect": "If foe attacks first, grants Atk +3 to unit during combat."
+  },
+  {
+    "id": "hunters-cross",
+    "name": "Hunter's Cross",
+    "type": "mastery",
+    "effect": null
+  },
+  {
+    "id": "hunters-eye",
+    "name": "Hunter's Eye",
+    "type": "mastery",
+    "effect": "When equipped with a bow, grants Atk +3 when making a follow-up."
+  },
+  {
+    "id": "hunting-basics",
+    "name": "Hunting Basics",
+    "type": "mastery",
+    "effect": "Grants Dex/Spd +1"
+  },
+  {
+    "id": "in-shadow",
+    "name": "In Shadow",
+    "type": "mastery",
+    "effect": "After defeating a foe, grants Avo +10 through unit's next combat."
+  },
+  {
+    "id": "intercept",
+    "name": "Intercept",
+    "type": "mastery",
+    "effect": "Reduces damage taken by 5 when attacked."
+  },
+  {
+    "id": "lightning-reflexes",
+    "name": "Lightning Reflexes",
+    "type": "mastery",
+    "effect": "If unit attacks first, and AS ≥ foe's AS +10, unit's follow-up occurs before foe's counter during combat."
+  },
+  {
+    "id": "magic-basics",
+    "name": "Magic Basics",
+    "type": "mastery",
+    "effect": "Grants Mag/Res+1"
+  },
+  {
+    "id": "makeshift",
+    "name": "Makeshift",
+    "type": "mastery",
+    "effect": "When using a combat art, reduces weapon durability cost to 0 during combat. Trigger % = 10."
+  },
+  {
+    "id": "marksmanship",
+    "name": "Marksmanship",
+    "type": "mastery",
+    "effect": "When equipped with a bow, grants Hit +15."
+  },
+  {
+    "id": "offense-basics",
+    "name": "Offense Basics",
+    "type": "mastery",
+    "effect": "Grants Str/Mag +1."
+  },
+  {
+    "id": "overtake",
+    "name": "Overtake",
+    "type": "mastery",
+    "effect": "After defeating a foe, grant Mov +1 through the end of the next turn. (Max +3)"
+  },
+  {
+    "id": "pavise",
+    "name": "Pavise",
+    "type": "mastery",
+    "effect": "Unit takes half damage when attacked with a physical attack. Trigger % = 20."
+  },
+  {
+    "id": "piety",
+    "name": "Piety",
+    "type": "mastery",
+    "effect": "Grants Lck +3."
+  },
+  {
+    "id": "practiced-art",
+    "name": "Practiced Art",
+    "type": "mastery",
+    "effect": "Grants Hit +10 when attacking, with a combat art."
+  },
+  {
+    "id": "protecting-wings",
+    "name": "Protecting Wings",
+    "type": "mastery",
+    "effect": "Grants Res +3."
+  },
+  {
+    "id": "ravaging-arts",
+    "name": "Ravaging Arts",
+    "type": "mastery",
+    "effect": "If unit makes a critical, deal +6 damage."
+  },
+  {
+    "id": "regroup",
+    "name": "Regroup",
+    "type": "mastery",
+    "effect": "When foe avoids an attack, grants Avo +20 to unit during combat."
+  },
+  {
+    "id": "resolute-stance",
+    "name": "Resolute Stance",
+    "type": "mastery",
+    "effect": "If unit's HP = 100%, grants Shld +5 during combat."
+  },
+  {
+    "id": "sense-threat",
+    "name": "Sense Threat",
+    "type": "mastery",
+    "effect": "If foe is effective against unit, grants Avo +20 to unit during combat."
+  },
+  {
+    "id": "sky-hunter",
+    "name": "Sky Hunter",
+    "type": "mastery",
+    "effect": "If foe is flying, grants Hit +50."
+  },
+  {
+    "id": "song-of-calm",
+    "name": "Song of Calm",
+    "type": "mastery",
+    "effect": null
+  },
+  {
+    "id": "song-of-courage",
+    "name": "Song of Courage",
+    "type": "mastery",
+    "effect": "Grants Dex/Spd +2 to allies in range until unit's next phase."
+  },
+  {
+    "id": "special-dance",
+    "name": "Special Dance",
+    "type": "mastery",
+    "effect": "When using Dance, grants Dex/Spd +3 to target ally for the current phase."
+  },
+  {
+    "id": "strike-and-heal",
+    "name": "Strike and Heal",
+    "type": "mastery",
+    "effect": null
+  },
+  {
+    "id": "war-masters-strike",
+    "name": "War Master's Strike",
+    "type": "mastery",
+    "effect": "Multiplies damage dealt by 1.5."
+  },
+  {
+    "id": "adaptability",
+    "name": "Adaptability",
+    "type": "personal",
+    "effect": "After combat, grants Hit+2 until the end of the map. (Max +30)"
+  },
+  {
+    "id": "barge-through",
+    "name": "Barge Through",
+    "type": "personal",
+    "effect": "(Cavalry) Can move through foe's space. (Cannot move through large-scale foes.)"
+  },
+  {
+    "id": "blindside",
+    "name": "Blindside",
+    "type": "personal",
+    "effect": "If unit attacks first, cannot be countered during combat. Trigger % = 5."
+  },
+  {
+    "id": "blink-of-an-eye",
+    "name": "Blink of an Eye",
+    "type": "personal",
+    "effect": "After using Swap, grants Def+3 until unit's next phase."
+  },
+  {
+    "id": "brave-assist",
+    "name": "Brave Assist",
+    "type": "personal",
+    "effect": "Grants Def+3 to adjacent allies."
+  },
+  {
+    "id": "brawn",
+    "name": "Brawn",
+    "type": "personal",
+    "effect": "Reduces Wt of unit's equipment to 80%."
+  },
+  {
+    "id": "brio",
+    "name": "Brio",
+    "type": "personal",
+    "effect": "Grants Mov+1."
+  },
+  {
+    "id": "caretaker",
+    "name": "Caretaker",
+    "type": "personal",
+    "effect": "Adjacent allies cannot suffer a follow-up during combat. Trigger % = 5."
+  },
+  {
+    "id": "celestial-flow",
+    "name": "Celestial Flow",
+    "type": "personal",
+    "effect": "Grants Avo+3."
+  },
+  {
+    "id": "close-call",
+    "name": "Close Call",
+    "type": "personal",
+    "effect": "If unit's HP ≥ 2 and damage would reduce it to 0, leaves unit with 1 HP. Trigger % = Lck."
+  },
+  {
+    "id": "competitive-zeal",
+    "name": "Competitive Zeal",
+    "type": "personal",
+    "effect": "When equipped with magic, grants Crit+10."
+  },
+  {
+    "id": "cooler-heads",
+    "name": "Cooler Heads",
+    "type": "personal",
+    "effect": "After using Draw Back, unit can use assist magic."
+  },
+  {
+    "id": "dark-calling",
+    "name": "Dark Calling",
+    "type": "personal",
+    "effect": "Inflicts Ddg-5 on adjacent foes."
+  },
+  {
+    "id": "elephant-rush",
+    "name": "Elephant Rush",
+    "type": "personal",
+    "effect": "(Cavalry) If unit is an elephant rider, grants +1 use to staggering blows."
+  },
+  {
+    "id": "expert-counter",
+    "name": "Expert Counter",
+    "type": "personal",
+    "effect": "If foe attacks first, grants Hit+20 to unit during combat."
+  },
+  {
+    "id": "falcon",
+    "name": "Falcon",
+    "type": "personal",
+    "effect": "If unit attacks first, grants AS+3 during combat."
+  },
+  {
+    "id": "goddesss-favor",
+    "name": "Goddess's Favor",
+    "type": "personal",
+    "effect": "After combat, restores 5 HP to unit."
+  },
+  {
+    "id": "graceful-light",
+    "name": "Graceful Light",
+    "type": "personal",
+    "effect": "When healing an ally with magic, reduces magic cost to 0. Trigger % = Lck."
+  },
+  {
+    "id": "guardians-duty",
+    "name": "Guardian's Duty",
+    "type": "personal",
+    "effect": "Reduces damage to 90% when attacked."
+  },
+  {
+    "id": "har-hali-wisdom",
+    "name": "Har Hali Wisdom",
+    "type": "personal",
+    "effect": "If unit is effective against foe, grant Atk+3 during combat."
+  },
+  {
+    "id": "hatchet-man",
+    "name": "Hatchet Man",
+    "type": "personal",
+    "effect": "When equipped with an axe, grants Hit+10."
+  },
+  {
+    "id": "headlong-rush",
+    "name": "Headlong Rush",
+    "type": "personal",
+    "effect": "If unit attacks first, grants AS+3, Hit+10 during combat."
+  },
+  {
+    "id": "healing-knowledge",
+    "name": "Healing Knowledge",
+    "type": "personal",
+    "effect": "When healing an ally with magic, restores +10 HP."
+  },
+  {
+    "id": "heavy-bow-user",
+    "name": "Heavy-Bow User",
+    "type": "personal",
+    "effect": "When equipped with a bow, grants Str+3"
+  },
+  {
+    "id": "heavyweight-class",
+    "name": "Heavyweight Class",
+    "type": "personal",
+    "effect": "Unit cannot change to cavalry or flying. Grants Bld+5."
+  },
+  {
+    "id": "hellbent-axe",
+    "name": "Hellbent Axe",
+    "type": "personal",
+    "effect": "When equipped with an axe, grants Str+3."
+  },
+  {
+    "id": "hot-headed",
+    "name": "Hot-Headed",
+    "type": "personal",
+    "effect": "Grants one of Hit+10, Avo+10, or Crit+10 during combat."
+  },
+  {
+    "id": "hunters-snare",
+    "name": "Hunter's Snare",
+    "type": "personal",
+    "effect": "In enemy's phase, if foes is damaged, unit attacks first during combat. Trigger % = 30."
+  },
+  {
+    "id": "light-of-salvation",
+    "name": "Light of Salvation",
+    "type": "personal",
+    "effect": "Neutralizes Underworld Boon on foes within 2 spaces."
+  },
+  {
+    "id": "management-skills",
+    "name": "Management Skills",
+    "type": "personal",
+    "effect": "Allows storage access to unit and allies within 2 spaces."
+  },
+  {
+    "id": "monkly-havoc",
+    "name": "Monkly Havoc",
+    "type": "personal",
+    "effect": "After defeating a foe, unit recovers HP equal to max HP. Trigger % = Lck / 2"
+  },
+  {
+    "id": "murderous-intent",
+    "name": "Murderous Intent",
+    "type": "personal",
+    "effect": "If unit attacks first, grants Crit+5 during combat."
+  },
+  {
+    "id": "one-chance",
+    "name": "One Chance",
+    "type": "personal",
+    "effect": "If unit and foe cannot make a follow-up, grants Atk+5 to unit during combat."
+  },
+  {
+    "id": "patch-up",
+    "name": "Patch Up",
+    "type": "personal",
+    "effect": "After an adjacent ally's combat, restores a little HP to that ally."
+  },
+  {
+    "id": "power-arts",
+    "name": "Power Arts",
+    "type": "personal",
+    "effect": "Grants Atk +3 when attacking with a combat art,"
+  },
+  {
+    "id": "princess-of-arrows",
+    "name": "Princess of Arrows",
+    "type": "personal",
+    "effect": "When equipped with a bow, grants Hit+20."
+  },
+  {
+    "id": "punishing-squall",
+    "name": "Punishing Squall",
+    "type": "personal",
+    "effect": "If AS ≥ foe's AS+3, grants Hit+20 during combat."
+  },
+  {
+    "id": "python-technique",
+    "name": "Python Technique",
+    "type": "personal",
+    "effect": "When using a gauntlet combat art, unit makes a follow-up regardless of AS during combat. Trigger % = 15."
+  },
+  {
+    "id": "qi-mastery",
+    "name": "Qi Mastery",
+    "type": "personal",
+    "effect": "Grants Avo+40 when attacked. Trigger % = Dex."
+  },
+  {
+    "id": "quick-draw",
+    "name": "Quick Draw",
+    "type": "personal",
+    "effect": "If unit attacks first, grants Atk+3 during combat. Trigger % = 50."
+  },
+  {
+    "id": "racing-attack",
+    "name": "Racing Attack",
+    "type": "personal",
+    "effect": "If unit attacks first, grants Avo +15 during combat."
+  },
+  {
+    "id": "ready-for-battle",
+    "name": "Ready for Battle",
+    "type": "personal",
+    "effect": "For the first combat in enemy's phase, unit attacks first. Trigger % = 50."
+  },
+  {
+    "id": "requiem-style",
+    "name": "Requiem Style",
+    "type": "personal",
+    "effect": "Unit makes a follow up regardless of AS during combat. Trigger % = 5."
+  },
+  {
+    "id": "royal-resolve",
+    "name": "Royal Resolve",
+    "type": "personal",
+    "effect": "Unit takes half damage when attacked. Trigger % = 30."
+  },
+  {
+    "id": "safety-first",
+    "name": "Safety First",
+    "type": "personal",
+    "effect": "If foe cannot counter, grants Hit +10 to unit during combat."
+  },
+  {
+    "id": "sage-advice",
+    "name": "Sage Advice",
+    "type": "personal",
+    "effect": "Grants Dex +3 to adjacent allies."
+  },
+  {
+    "id": "signs-of-growth",
+    "name": "Signs of Growth",
+    "type": "personal",
+    "effect": "When unit levels up, grants enhanced basic stat growth."
+  },
+  {
+    "id": "silver-maiden",
+    "name": "Silver Maiden",
+    "type": "personal",
+    "effect": "Grants Hit/Avo+5 to unit for each adjacent ally."
+  },
+  {
+    "id": "solid-and-sturdy",
+    "name": "Solid and Sturdy",
+    "type": "personal",
+    "effect": "Grants Def+5. Unit is armored. Cannot change to cavalry or flying."
+  },
+  {
+    "id": "spirit-of-silver",
+    "name": "Spirit of Silver",
+    "type": "personal",
+    "effect": "After combat, grants Def+1 until the end of the map. (Max +10) Trigger % = Def."
+  },
+  {
+    "id": "spirits-voices",
+    "name": "Spirits' Voices",
+    "type": "personal",
+    "effect": "If foes uses magic, grants Hit/Avo+10 to unit during combat."
+  },
+  {
+    "id": "stage-directions",
+    "name": "Stage Directions",
+    "type": "personal",
+    "effect": "Grants Ddg+10 to allies within 2 spaces during their combats. Trigger % = ally's Cha ÷ 2."
+  },
+  {
+    "id": "steadfast",
+    "name": "Steadfast",
+    "type": "personal",
+    "effect": "If unit's HP ≥ 50%, grants Avo+10 during combat."
+  },
+  {
+    "id": "steady-aim",
+    "name": "Steady Aim",
+    "type": "personal",
+    "effect": "Grants Rng+1 when attacking with a bow combat art."
+  },
+  {
+    "id": "steady-hands",
+    "name": "Steady Hands",
+    "type": "personal",
+    "effect": "If foe attacks first, grants AS+3, Avo+10 to unit during combat."
+  },
+  {
+    "id": "sturdy-corundum",
+    "name": "Sturdy Corundum",
+    "type": "personal",
+    "effect": "For the first combat in enemy's phase, unit takes half damage."
+  },
+  {
+    "id": "swashbucklers-luck",
+    "name": "Swashbuckler's Luck",
+    "type": "personal",
+    "effect": "Grants Lck+3."
+  },
+  {
+    "id": "tacticians-wit",
+    "name": "Tactician's Wit",
+    "type": "personal",
+    "effect": "Grants Rng+1 to combat arts usable on allies."
+  },
+  {
+    "id": "tyranny",
+    "name": "Tyranny",
+    "type": "personal",
+    "effect": "If foe has a status effect, grants Atk+3, Crit+10 to unit during combat."
+  },
+  {
+    "id": "veterans-mettle",
+    "name": "Veteran's Mettle",
+    "type": "personal",
+    "effect": "Grants Hit+10 during combat against an adjacent foe."
+  },
+  {
+    "id": "warriors-clarity",
+    "name": "Warrior's Clarity",
+    "type": "personal",
+    "effect": "After combat, grants Avo+3 until unit's next phase."
+  },
+  {
+    "id": "wheeled-warrior",
+    "name": "Wheeled Warrior",
+    "type": "personal",
+    "effect": "(Cavalry) If unit is a charioteer, grants Hit+20."
+  },
+  {
+    "id": "with-my-steed",
+    "name": "With My Steed",
+    "type": "personal",
+    "effect": "(Cavalry) If unit attacks first, grants Shld+3, Ddg+30 during combat."
+  },
+  {
+    "id": "yun-shou",
+    "name": "Yun Shou",
+    "type": "personal",
+    "effect": "When equipped with gauntlets, grants Hit +10."
+  },
+  {
+    "id": "zhu-ming",
+    "name": "Zhu Ming",
+    "type": "personal",
+    "effect": "When equipped with magic, grants Hit +10."
+  }
+]
