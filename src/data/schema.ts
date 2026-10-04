@@ -109,3 +109,39 @@ export const paralogueSchema = z.object({
 })
 export type Paralogue = z.infer<typeof paralogueSchema>
 export type Route = z.infer<typeof routeSchema>
+
+const rolePath = z.object({
+  /** Place among every unit in the cast for this role (1 = best), on vsCast. */
+  rank: z.number().int().min(1),
+  /** Points above the cast's average, chapter by chapter, over the chapters the unit is present for. */
+  vsCast: z.number(),
+  score: z.number(),
+  endgame: z.number(),
+  /** Skill ranks the path's exams ask for beyond what its classes train. */
+  train: z.number().min(0),
+  /** Class changes in order. `late` marks a change not made at its tier's usual level. */
+  path: z.array(z.object({ class: z.string(), level: z.number().int(), late: z.boolean() })),
+  /** The profile on this path, one value (0-100) per entry of the file's `axes`. */
+  axes: z.array(z.number()),
+})
+export type RolePath = z.infer<typeof rolePath>
+
+/** Growth simulator results (scripts/import/import_class_paths.py): each unit's recommended class path per role. */
+export const classPathsSchema = z.object({
+  scope: z.object({ route: z.string(), hard: z.boolean(), divine: z.boolean(), runs: z.number().int() }),
+  roles: z.array(z.object({ id: z.string(), label: z.string(), weights: z.record(z.string(), z.number()) })),
+  axes: z.array(z.object({ id: z.string(), label: z.string() })),
+  units: z.array(z.object({
+    unit: z.string(),
+    joinLevel: z.number().int(),
+    joinClass: z.string(),
+    /** Base stats are estimated from growth rates, not published. */
+    estimated: z.boolean(),
+    /** Story chapters the unit is present for, out of the 24 the simulator scores. */
+    chapters: z.number().int(),
+    bestRole: z.string(),
+    roles: z.record(z.string(), rolePath),
+  })),
+})
+export type ClassPaths = z.infer<typeof classPathsSchema>
+export type UnitPaths = ClassPaths['units'][number]

@@ -15,6 +15,7 @@ npx vitest run src/engine/growth.test.ts   # one file
 npx vitest run -t "mid-rank"       # tests matching a name
 npm run import                     # regenerate data/*.json (Python 3, see below)
 python3 scripts/import/fetch_portraits.py [--force]   # download unit icons into src/assets/portraits/ and class icons into src/assets/classes/
+npm run import:paths               # regenerate data/classPaths.json from the growth simulator (Node, about a minute; see below)
 ```
 
 ## Data pipeline
@@ -26,13 +27,14 @@ Game data flows one way:
 - **Do not hand-edit the generated JSON** (`units`, `classes`, `skills`, `routes`, `paralogues`). A re-import overwrites it. Corrections go in `data/overrides.json`, shaped `{ collection: { id: { field: value } } }`, which the importer applies last.
 - The importer writes anything it could not parse, plus disagreements between sources, to `data/import-report.txt`. Read it after every import.
 - `src/data/index.ts` imports the JSON and **casts** it to the schema types without parsing. The Zod schemas in `src/data/schema.ts` are only run by `src/data/data.test.ts`, which also checks that every cross-collection id reference resolves. So `npm test` is the data validator: run it after any change to `data/`, the importer, or the schema.
+- `data/classPaths.json` (the Class Paths page and the card on each unit page) is generated separately, by `scripts/import/import_class_paths.py`. It runs the growth simulator's `export` command, a separate repo ([fefw-growth-sim](https://github.com/owenong1/fefw-growth-sim)) expected at `../fefw_growth_sim` (or `--sim <dir>` / `$FEFW_SIM`), and rewrites its unit and class names as ids. The simulator keeps its own copy of the game data and its own rules, so its numbers are not derived from `data/*.json` here; only the names have to match, and the script fails if one does not. Extra flags pass through to the simulator (`npm run import:paths -- --hard`). Re-run it when the simulator or its data changes; the site build does not need the simulator.
 - A schema change has to be made in three places: `schema.ts`, the importer's output, and the regenerated JSON.
 - Ids are slugs of the display name (`slug()` in the importer). A route's id is its lord's unit id (`cai`, `dietrich`, `theodora`, `leda`), and that same id keys the `--route-<id>` CSS variables in `src/index.css`.
 - `data/SOURCES.md` records where each field comes from. `data/MECHANICS.md` records which game rules are confirmed and which are assumptions; update it when a rule changes, because the engine and UI copy lean on it.
 
 ## Architecture
 
-- `src/data/`: the dataset plus every derived lookup and game rule that depends on data (`combinedGrowths`, `canUseClass`, `recruitmentOn`, `skillOwners`, `classSpoiler`, `timingLabel`). Put new data-derived helpers here rather than in pages.
+- `src/data/`: the dataset plus every derived lookup and game rule that depends on data (`combinedGrowths`, `canUseClass`, `recruitmentOn`, `skillOwners`, `classSpoiler`, `timingLabel`, `roleAxes`). Put new data-derived helpers here rather than in pages.
 - `src/engine/growth.ts`: the RNG checker's maths as pure functions with no React or data imports beyond types. Each stat's total gain is a Poisson-binomial distribution built by convolving one level-up at a time; percentiles are mid-rank; the overall score is the percentile of the summed gain. Rank thresholds live in `RANKS`.
 - `src/lib/`: `settings.tsx` (spoiler level context), `army.ts` (builder state hook), `rngInput.ts` (RNG checker state ↔ URL query string), `display.ts` (labels and colour helpers).
 - `src/pages/`: one component per route in `src/App.tsx`, all nested under `components/Layout.tsx` (nav, global Fuse.js search, spoiler toggle).
@@ -56,6 +58,7 @@ There is no state library. Persistent state is `localStorage` under `fefw:*` key
 Every unit has `spoiler` 0–2 (0 = Part I, 1 = joins in Part II/III, 2 = secret character), and Master/Divine classes count as level 1 through `classSpoiler`. Any new list, dropdown or search result must filter on `useSettings().spoilerLevel`. Two conventions to keep:
 
 - Detail pages reachable by direct link wrap their content in `SpoilerGate` instead of returning a 404.
+- A recommended class path (`PathSteps` in `components/ClassPath.tsx`) names a class above the spoiler level by its tier only ("Master class"), so the path still reads as a path.
 - A select keeps its currently selected option visible even when the spoiler level would hide it (`classSpoiler(c) <= spoilerLevel || c.id === value`), so shared links and earlier choices still render.
 
 ### Styling

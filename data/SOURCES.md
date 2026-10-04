@@ -11,6 +11,7 @@ All game data is © Nintendo / Intelligent Systems. This is a non-commercial fan
 | Paralogues | [Game8 – List of All Paralogues](https://game8.co/games/Fire-Emblem-Fortunes-Weave/archives/624240) | |
 | Personal, class and mastery skills | [Game8 – List of All Abilities](https://game8.co/games/Fire-Emblem-Fortunes-Weave/archives/623691) | |
 | Base stats, starting class, faction, aptitudes, magic lists | [Fextralife wiki](https://fortunesweave.wiki.fextralife.com/Characters) | Base stats only exist for some units so far |
+| Recommended class paths (`classPaths.json`) | [fefw-growth-sim](https://github.com/owenong1/fefw-growth-sim) | Simulated, not sourced: the simulator has its own data (Serenes Forest, Game8, Fire Emblem Wiki) and models enemy stats. Regenerate with `npm run import:paths` |
 
 ## Updating
 

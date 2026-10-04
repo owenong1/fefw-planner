@@ -70,3 +70,8 @@ export function ordinal(n: number) {
   const s = ['th', 'st', 'nd', 'rd'], v = n % 100
   return n + (s[(v - 20) % 10] ?? s[v] ?? s[0])
 }
+
+/** Skill ranks a class path needs trained up at the Arena or with manuals; a dash when its own classes cover every exam. */
+export function trainLabel(train: number) {
+  return train > 0 ? String(train) : '–'
+}

@@ -21,6 +21,12 @@ const TOOLS = [
     to: '/rng',
     ready: true,
   },
+  {
+    title: 'Class Paths',
+    body: 'The class path a growth simulator recommends for every unit as a striker, mage, tank or healer.',
+    to: '/paths',
+    ready: true,
+  },
 ]
 
 export function HomePage() {
@@ -36,7 +42,7 @@ export function HomePage() {
         </p>
       </section>
 
-      <section className="mb-10 grid gap-4 md:grid-cols-3">
+      <section className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {TOOLS.map((t) => {
           const inner = (
             <>

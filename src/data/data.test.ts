@@ -5,9 +5,10 @@ import classesJson from '../../data/classes.json'
 import skillsJson from '../../data/skills.json'
 import routesJson from '../../data/routes.json'
 import paraloguesJson from '../../data/paralogues.json'
-import { classSchema, paralogueSchema, routeSchema, skillSchema, unitSchema } from './schema'
+import classPathsJson from '../../data/classPaths.json'
+import { classPathsSchema, classSchema, paralogueSchema, routeSchema, skillSchema, unitSchema } from './schema'
 import {
-  aptitudeFit, canUseClass, classById, combinedGrowths, isRecruitableOn, paralogueById, routeById, skillById,
+  aptitudeFit, canUseClass, classById, classPaths, combinedGrowths, isRecruitableOn, paralogueById, routeById, skillById,
   unitById, units,
 } from './index'
 
@@ -21,6 +22,10 @@ describe('data files match the schema', () => {
   ] as const)('%s', (_name, json, schema) => {
     const result = z.array(schema as z.ZodType).safeParse(json)
     expect(result.error?.issues ?? []).toEqual([])
+  })
+
+  it('classPaths', () => {
+    expect(classPathsSchema.safeParse(classPathsJson).error?.issues ?? []).toEqual([])
   })
 
   it('ids are unique per collection', () => {
@@ -54,6 +59,23 @@ describe('references resolve', () => {
   for (const p of paralogueById.values()) {
     for (const a of p.availability) if (!routeById.has(a.route)) missing.push(`paralogue ${p.id} → route ${a.route}`)
     for (const u of p.recruitmentFor) if (!unitById.has(u)) missing.push(`paralogue ${p.id} → unit ${u}`)
+  }
+
+  const roleIds = classPaths.roles.map((r) => r.id)
+  const axisIds = classPaths.axes.map((a) => a.id)
+  for (const r of classPaths.roles) {
+    for (const a of Object.keys(r.weights)) if (!axisIds.includes(a)) missing.push(`classPaths role ${r.id} → axis ${a}`)
+  }
+  for (const u of classPaths.units) {
+    if (!unitById.has(u.unit)) missing.push(`classPaths → unit ${u.unit}`)
+    if (!classById.has(u.joinClass)) missing.push(`classPaths ${u.unit}.joinClass → ${u.joinClass}`)
+    if (!roleIds.includes(u.bestRole)) missing.push(`classPaths ${u.unit}.bestRole → ${u.bestRole}`)
+    for (const id of roleIds) {
+      const r = u.roles[id]
+      if (!r) missing.push(`classPaths ${u.unit} has no ${id} path`)
+      else if (r.axes.length !== axisIds.length) missing.push(`classPaths ${u.unit}.${id} has ${r.axes.length} axes`)
+      for (const s of r?.path ?? []) if (!classById.has(s.class)) missing.push(`classPaths ${u.unit}.${id} → class ${s.class}`)
+    }
   }
 
   it('every id reference points at an existing record', () => {

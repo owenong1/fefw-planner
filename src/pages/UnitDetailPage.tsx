@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router'
+import { PathSteps } from '../components/ClassPath'
 import { RecruitmentByRoute } from '../components/Recruitment'
 import { SpoilerGate } from '../components/Spoiler'
 import { GrowthBars } from '../components/Stats'
 import { Avatar, Badge, Card, SectionTitle, Select } from '../components/ui'
 import {
-  APTITUDE_LABELS, aptitudeFit, canUseClass, classById, classes, classRestrictions, classSpoiler, combinedGrowths,
+  APTITUDE_LABELS, aptitudeFit, canUseClass, classById, classes, classPaths, classPathsByUnit, classRestrictions, classSpoiler, combinedGrowths,
   growthTotal, skillById, unitById,
 } from '../data'
 import { CLASS_TIERS, STAT_KEYS, STAT_LABELS } from '../data/constants'
+import { ordinal, trainLabel } from '../lib/display'
 import { useSettings } from '../lib/settings'
 import { NotFoundPage } from './NotFoundPage'
 
@@ -22,6 +24,7 @@ export function UnitDetailPage() {
   const cls = classById.get(clsId)
   const personal = unit.personalSkill ? skillById.get(unit.personalSkill) : undefined
   const growths = combinedGrowths(unit, cls)
+  const paths = classPathsByUnit.get(unit.id)
   const restrictions = classRestrictions(unit)
   const shown = classes.filter((c) => c.tier !== 'base' && (classSpoiler(c) <= spoilerLevel || c.id === clsId))
   const usable = shown.filter((c) => classSpoiler(c) <= spoilerLevel && canUseClass(unit, c))
@@ -197,6 +200,50 @@ export function UnitDetailPage() {
           </Card>
         </div>
       </div>
+
+      {paths && (
+        <div className="mt-4">
+          <Card>
+            <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-4">
+              <SectionTitle>Recommended class paths</SectionTitle>
+              <Link to="/paths" className="text-xs text-muted underline hover:text-ink">How these are worked out</Link>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[640px] text-sm">
+                <thead className="text-xs text-muted">
+                  <tr>
+                    <th className="py-1 pr-3 text-left font-semibold">Role</th>
+                    <th className="px-2 py-1 text-right font-semibold whitespace-nowrap" title={`Place among all ${classPaths.units.length} units in this role`}>Place</th>
+                    <th className="px-2 py-1 text-right font-semibold" title="Campaign average of the role score, 0–100">Score</th>
+                    <th className="px-2 py-1 text-left font-semibold">Path</th>
+                    <th className="py-1 pl-2 text-right font-semibold" title="Skill ranks the path's exams need beyond what its classes train">Train</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {classPaths.roles.map((role) => {
+                    const r = paths.roles[role.id]
+                    return (
+                      <tr key={role.id} className="border-t border-line">
+                        <td className="py-1.5 pr-3 whitespace-nowrap">
+                          <Link to={`/paths?role=${role.id}`} className="font-semibold hover:text-accent">{role.label}</Link>
+                          {paths.bestRole === role.id && <span className="ml-1.5"><Badge tone="accent" title="The role this unit places highest in">Best</Badge></span>}
+                        </td>
+                        <td className="tabular px-2 py-1.5 text-right whitespace-nowrap">{ordinal(r.rank)}</td>
+                        <td className="tabular px-2 py-1.5 text-right">{r.score.toFixed(1)}</td>
+                        <td className="px-2 py-1.5"><PathSteps unit={paths} path={r.path} /></td>
+                        <td className="tabular py-1.5 pl-2 text-right">{trainLabel(r.train)}</td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-xs text-muted">
+              Simulated against modelled enemies{paths.estimated && ', from estimated base stats'}. Scores compare units within a role, not roles with each other.
+            </p>
+          </Card>
+        </div>
+      )}
 
       <div className="mt-4">
         <Card>

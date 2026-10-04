@@ -3,8 +3,9 @@ import classesJson from '../../data/classes.json'
 import skillsJson from '../../data/skills.json'
 import routesJson from '../../data/routes.json'
 import paraloguesJson from '../../data/paralogues.json'
+import classPathsJson from '../../data/classPaths.json'
 import { STAT_KEYS } from './constants'
-import type { Aptitude, GameClass, Paralogue, Recruitment, Route, Skill, Stats, Unit } from './schema'
+import type { Aptitude, ClassPaths, GameClass, Paralogue, Recruitment, Route, Skill, Stats, Unit } from './schema'
 
 // The JSON is validated against the Zod schemas in data.test.ts, so a cast is safe here.
 export const units = unitsJson as Unit[]
@@ -12,6 +13,8 @@ export const classes = classesJson as GameClass[]
 export const skills = skillsJson as Skill[]
 export const routes = routesJson as Route[]
 export const paralogues = paraloguesJson as Paralogue[]
+// Role weights name different axes per role, so the inferred JSON type is a union the cast has to go around.
+export const classPaths = classPathsJson as unknown as ClassPaths
 
 const byId = <T extends { id: string }>(xs: T[]) => new Map(xs.map((x) => [x.id, x]))
 export const unitById = byId(units)
@@ -19,6 +22,7 @@ export const classById = byId(classes)
 export const skillById = byId(skills)
 export const routeById = byId(routes)
 export const paralogueById = byId(paralogues)
+export const classPathsByUnit = new Map(classPaths.units.map((u) => [u.unit, u]))
 
 export const APTITUDE_LABELS: Record<Aptitude, string> = {
   sword: 'Sword', spear: 'Spear', axe: 'Axe', bow: 'Bow', gauntlet: 'Gauntlet',
@@ -95,4 +99,15 @@ export function timingLabel(r: Recruitment) {
   if (r.section) return `${part}, Section ${r.section}`
   if (r.chapter) return r.part === 1 ? `Ch. ${r.chapter}` : `${part}, Ch. ${r.chapter}`
   return part
+}
+
+/** A role's weighted profile axes, heaviest first, with each one's position in a path's `axes`. */
+export function roleAxes(roleId: string) {
+  const role = classPaths.roles.find((r) => r.id === roleId)
+  return Object.entries(role?.weights ?? {})
+    .sort((a, b) => b[1] - a[1])
+    .map(([id, weight]) => {
+      const index = classPaths.axes.findIndex((a) => a.id === id)
+      return { id, weight, index, label: classPaths.axes[index]?.label ?? id }
+    })
 }

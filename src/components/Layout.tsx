@@ -13,6 +13,7 @@ const NAV = [
   { to: '/paralogues', label: 'Paralogues' },
   { to: '/builder', label: 'Army Builder' },
   { to: '/rng', label: 'RNG Checker' },
+  { to: '/paths', label: 'Class Paths' },
 ]
 
 type Hit = { kind: string; name: string; to: string; spoiler: number }

@@ -7,6 +7,7 @@ import { ClassesPage } from './pages/ClassesPage'
 import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { ParaloguesPage } from './pages/ParaloguesPage'
+import { PathsPage } from './pages/PathsPage'
 import { RngPage } from './pages/RngPage'
 import { RoutePage } from './pages/RoutePage'
 import { SkillsPage } from './pages/SkillsPage'
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="routes/:id" element={<RoutePage />} />
           <Route path="builder" element={<BuilderPage />} />
           <Route path="rng" element={<RngPage />} />
+          <Route path="paths" element={<PathsPage />} />
           <Route path="paralogues" element={<ParaloguesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
