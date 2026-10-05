@@ -162,7 +162,7 @@ function Simulator() {
   }
   const ready = (f: Fields) => (!USES.unit.includes(f.cmd) || f.unit !== '') && (f.cmd !== 'path' || f.path.trim() !== '')
 
-  // A link into the simulator (?cmd=char&unit=Sofia) shows its answer without a click, unless it would take a minute.
+  // A link into the simulator (?cmd=char&unit=Sofia) shows its answer without a click, unless it would take minutes.
   const onLoad = useRef(() => {
     if (!slow && ready(fields) && (params.has('cmd') || params.has('unit'))) run(fields)
   })
@@ -232,7 +232,7 @@ function Simulator() {
               </button>
             ))}
           </div>
-          <p className="text-sm text-muted">{command.blurb}{slow && ' Searches every unit, which takes about a minute.'}</p>
+          <p className="text-sm text-muted">{command.blurb}{slow && ' Searches every unit, which takes several minutes.'}</p>
 
           <div className="flex flex-wrap items-end gap-3">
             {uses('unit') && (

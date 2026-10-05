@@ -8,7 +8,7 @@ with. This tool searches the class paths a unit could plausibly certify for
 (which classes, in what order, and at what level each change is made) and at
 each story chapter measures what the unit can do: how fast it kills with
 weapons and with magic, how safely it attacks, physical and magic bulk, avoid,
-how much of an enemy phase it survives, healing and reach. Paths are then
+what it has left after being attacked by one or two enemies, healing and reach. Paths are then
 ranked **per role** (striker, mage, physical tank, magic tank, mixed tank,
 healer), never as one overall score, and each role's leading paths are
 replayed with level-ups actually rolled to decide between them.
@@ -18,7 +18,7 @@ Needs Node 18+. From the repository root:
 ```
 npm run sim -- char Sofia                 # recommended path for each role, with the profile behind it
 npm run sim -- char Sofia --role healer   # ranked paths for one role, chapter by chapter
-npm run sim -- all                        # every unit: score and rank in each role, and its best-fit path (under a minute on 8 cores)
+npm run sim -- all                        # every unit: score and rank in each role, and its best-fit path (about four minutes on 8 cores)
 npm run sim -- all --role tank            # one role's leaderboard
 npm run sim -- classes                    # which classes suit which role
 npm run sim -- export paths.json          # the `all` results and candidate paths as JSON (about 5 MB; the planner site reads this)
@@ -48,14 +48,14 @@ for the share of playthroughs that get it:
 
 | Axis | What it is |
 |---|---|
-| Phys dmg | Kill speed with its best physical weapon: 100 / the attacks it expects to need to kill an enemy (100 = always kills in one attack, 50 = two attacks). Removing 95% of an enemy's HP is still two attacks |
+| Phys dmg | With its best physical weapon, half the chance to kill an enemy in one attack and half kill speed: 100 / the attacks it expects to need (100 = always kills in one attack; a sure two-attack kill is 25). Removing 95% of an enemy's HP is still two attacks |
 | Mag dmg | The same with magic, averaged over a map's worth of attacks because spells run out |
 | Best dmg | The larger of the two |
 | Safe atk | Share of its own HP the unit keeps during that attack (100 = the enemy cannot answer) |
 | Phys bulk | Share of its HP left after a physical enemy attacks it, if every strike lands. This, avoid and survival are measured holding the weapons the unit attacks with |
 | Mag bulk | The same against a magic enemy |
 | Avoid | Chance an enemy's strike misses |
-| Phys surv / Mag surv | An enemy phase of 6 attacks from physical (or magical) enemies, one after another, with hit and crit chances played out: the share of those attacks the unit is still standing for. Bulk and avoid combined, and dying counts |
+| Phys surv / Mag surv | Attacked by one physical (or magical) enemy, then by two, with hit and crit chances played out: the share of its HP it has left on average after each. Bulk and avoid combined, and dying counts as nothing left |
 | Support | HP it can heal per map (12 ally HP bars = 100); being able to Dance counts 60 |
 | Reach | Movement, from Mov 4 (0) to Mov 9 (100); fliers count one extra |
 
@@ -149,10 +149,19 @@ effective weapons; Attack Speed = Spd − max(0, Weight − Build); a follow-up 
 +4 Attack Speed; crits deal triple; swords deal 1.2x on the follow-up; axes
 deal at least 5; bows only reach range 2; magic hits Res.
 
-**Reference enemies.** Up to six generic enemies per chapter, one per archetype
-(armored, fighter, fast swordsman, cavalry, flier, mage) at that chapter's
-enemy level (no flier before enemies reach Specialty classes). Every archetype counts equally, so physical and magical attackers
-and defenders are judged on the same footing. `refs` lists them.
+**Reference enemies.** Thirty-odd generic enemies per chapter (31 to 35), made
+up but plausible, because too few real ones are published to fill a chapter.
+There is one list per enemy tier in `src/sim/data/mechanics.json`
+(`profile.references`), and a chapter uses the list for its enemy level. Each
+enemy is a class, a weapon and a level: every class of the tier that fights
+appears, the common ones with each weapon type they wield (an axe hits harder
+and slower than a sword, a bow cannot answer at range 1, a thrown axe answers
+at both), and levels run from two below the chapter's enemy level to two above
+(upwards only before Lv20, because Lv1 is the floor). Their stats come from the
+enemy model. Every enemy counts equally, so the mix is the weighting: about a
+sixth each of armour, fighters, riders and magic, an eighth each of swordsmen,
+archers and fliers (no flier before enemies reach Specialty classes). `refs`
+lists them.
 
 **Search.** With changes allowed between any two chapters there are far too
 many paths to list, so the search walks the story chapter by chapter and keeps,
@@ -168,10 +177,14 @@ holds the widths.
 
 ## Read this before trusting a number
 
-- **Enemy stats are mostly modeled.** Only 28 enemy stat lines have been
+- **Enemy stats are mostly modeled.** Only 29 enemy stat lines have been
   published (Fire Emblem Wiki), none above Lv45. The reference enemies come
   from a stat model fitted to those lines; out of sample it is off by 3 to 7
   points per stat. Everything in Part III is extrapolation.
+- **The reference enemies are invented.** Which classes, weapons and levels a
+  chapter's enemies have is a guess at a typical army, not a record of any
+  map. No walkthrough or database publishes enemy stats yet beyond the wiki's
+  29 lines.
 - **40 of 63 units have estimated base stats** (marked `*`), from a regression
   on their growth rates. Late joiners' join-time stats are estimates too.
 - **Skill ranks are estimated, not simulated.** The Arena, manuals and exam
@@ -179,7 +192,7 @@ holds the widths.
   needs, not a guarantee. A unit is assumed to keep every weapon type its class
   wields in practice.
 - **Within a role, one or two classes often lead for most of the cast**
-  (Battlemaster for strikers, Druid for mages). The tool is better at telling you which
+  (Swordmaster or Battlemaster for strikers, Castle Knight for tanks, Druid for mages). The tool is better at telling you which
   role a unit suits and which of its paths are as good as each other than at
   separating near-identical paths.
 - **Role weights, the dance value, the reference-enemy mix and the length of an
@@ -248,14 +261,19 @@ Node; keep Node imports out of `engine/` (a test checks).
 | Weapons, magic and heals | Serenes Forest, Game8 | 122 weapons and spells, 5 heals |
 | Character base stats | Fire Emblem Wiki | 23 units; the other 40 are **estimated** from their growth rates (marked `*`) |
 | Join chapter and class of late joiners | Game8 recruit pages and class guide | 10 units, in `src/sim/data/mechanics.json` |
-| Enemy stats | Fire Emblem Wiki | 28 lines |
+| Enemy stats | Fire Emblem Wiki | 29 lines |
 
 ## Improving the data
 
 - **Add real enemies** to `src/sim/data/enemies_observed.json` (name, class, level,
   stats, `boss`, `difficulty`, optional `inventory`). The enemy model refits
   itself on the next run, which sharpens the reference enemies. Partial stat
-  lines are fine.
+  lines are fine. `npm run import:sim-data` picks up every wiki page that
+  carries a boss or chapter stat table, so re-run it as the wiki fills in.
+- **Change the reference enemies** in `profile.references` of
+  `src/sim/data/mechanics.json`: add, drop or re-weight (by repeating at
+  another level) rows of class, weapon and level. Cost grows with the number
+  of rows: every candidate path fights every one of them.
 - **Add a unit's real base stats** by editing its `base` block in
   `src/sim/data/characters.json` and setting `"source": "wiki"`.
 - **Score an ability the parser skips** by giving it an `effects` list in

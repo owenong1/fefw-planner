@@ -466,12 +466,12 @@ function cmdPath(data, args) {
       { h: 'Expected', v: (m) => pct(m.def.expected), right: true },
     ]));
     print(`\nHP dealt = share of the enemy's HP removed, on average, in one attack you start; Kills = chance that attack kills; Attacks = attacks you expect to need to kill it.`);
-    print(`The damage axes are 100 / Attacks, averaged over the enemies. Map avg = the same for magic over ${data.mechanics.profile.combatsPerMap.value} attacks with limited spell uses.`);
+    print(`The damage axes are ${Math.round(data.mechanics.profile.oneAttackKill.value * 100)}% Kills + ${Math.round((1 - data.mechanics.profile.oneAttackKill.value) * 100)}% of 100 / Attacks, averaged over the enemies. Map avg = the same for magic over ${data.mechanics.profile.combatsPerMap.value} attacks with limited spell uses.`);
     print('HP lost = share of your HP gone after one attack the enemy starts, if every strike lands; Their hit = their chance to hit; Expected = HP lost on average with hit and crit chances played out.');
     print(`It defends holding the weapon it attacked with, so the "Their attack" columns and the survival below are averaged over: ${row.held.map((h) => `${h.weapon} ${pct(h.share)}`).join(', ')}.`);
-    const phase = (label, sv) => (sv ? `${label} ${sv.alive.map((p, k) => `${k + 1}: ${pct(p)}`).join('  ')}` : null);
+    const phase = (label, sv) => (sv ? `${label} ${sv.left.map((p, k) => `${k + 1}: ${pct(p)} (alive ${pct(sv.alive[k])})`).join('  ')}` : null);
     const lines = [phase('physical attackers', row.survive.phys), phase('magical attackers ', row.survive.mag)].filter(Boolean);
-    if (lines.length) print(`Chance to still be standing after each attack of an enemy phase (the survival axes are the average):\n  ${lines.join('\n  ')}`);
+    if (lines.length) print(`HP left on average after being attacked by that many enemies in a row (the survival axes are the average):\n  ${lines.join('\n  ')}`);
     if (row.heals && row.heals.length) print(`Healing per map: ${row.heals.map((h) => `${h.name} x${Math.round(h.casts)} (${Math.round(h.amount)} HP each)`).join(', ')} = ${Math.round(row.healed)} HP`);
     if (ctx.duel) duelTable(row);
     return;
@@ -531,7 +531,7 @@ function matchupJson(ctx, row) {
   return {
     checkpoint: row.cp.id, class: row.cls.name,
     profile: Object.fromEntries(shownAxes(ctx).map((a) => [a.name, row.axes[a.i]])),
-    references: row.rows.map((m) => ({ enemy: m.ref.cls.name, archetype: m.ref.archetype, level: m.ref.level,
+    references: row.rows.map((m) => ({ enemy: m.ref.cls.name, archetype: m.ref.archetype, level: m.ref.level, weapon: m.ref.weapon.name,
       physical: m.phys, magic: m.mag, defence: m.def, avoid: m.avoid })),
     held: row.held,
     healing: { perMap: row.healed, casts: row.heals },
@@ -904,8 +904,8 @@ function cmdRefs(data, args) {
       level: e.level, weapon: e.weapon.name, magic: e.magic, stats: Object.fromEntries(STATS.map((s, k) => [s, e.stats[k]])) })) })), null, 1));
     return;
   }
-  print(`Reference enemies: one per archetype at each checkpoint's enemy level, stats from the enemy model (${opts.hard ? 'hard' : 'normal'}).`);
-  print('Every profile axis is measured against these; edit "profile.references" in src/sim/data/mechanics.json to change the mix.\n');
+  print(`Reference enemies: made-up generic enemies around each checkpoint's enemy level, varied by class, weapon and level, with stats from the enemy model (${opts.hard ? 'hard' : 'normal'}).`);
+  print('Every profile axis is measured against these, each counting equally; edit "profile.references" in src/sim/data/mechanics.json to change the mix.\n');
   print(table(list.flatMap(({ cp, refs }) => refs.map((e, k) => ({ cp, e, first: k === 0 }))), [
     { h: 'Id', v: (r) => (r.first ? r.cp.id : '') },
     { h: 'Checkpoint', v: (r) => (r.first ? r.cp.label : '') },

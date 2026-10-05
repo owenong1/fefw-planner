@@ -1,4 +1,4 @@
-import { test } from 'vitest';
+import { test, vi } from 'vitest';
 import assert from 'node:assert/strict';
 import { loadData } from '../../../scripts/sim/load.js';
 import { STATS, SKILLS } from '../engine/data.js';
@@ -6,6 +6,9 @@ import { createContext, searchPaths, rankPaths, rankRolled, recommend, evaluateP
 import { fitEnemyModel, buildRoster } from '../engine/enemies.js';
 import { unitGear, examNeed, initialExposure, trainExposure, rankAt, rankName } from '../engine/gear.js';
 import { AXES } from '../engine/profile.js';
+
+// A search measures every candidate against thirty-odd reference enemies per chapter, which takes a few seconds a unit.
+vi.setConfig({ testTimeout: 60_000 });
 
 const data = loadData();
 const ctx = createContext(data);
@@ -121,12 +124,26 @@ test('enemy roster: hard mode raises stats by the published delta', () => {
   assert.equal(hard.stats[0], normal.stats[0] + data.mechanics.enemies.hardDelta.stats.hp);
 });
 
-test('reference enemies: one per archetype, physical and magical', () => {
-  for (const refs of ctx.refs) {
-    assert.ok(refs.length >= 5);
-    assert.equal(refs.filter((r) => r.magic).length, 1);
-    assert.ok(refs.find((r) => r.magic).loadout.magical);
-  }
+test('reference enemies: at least thirty per checkpoint, varied by class, weapon and level', () => {
+  const tiers = data.mechanics.profile.references.tiers;
+  const bands = data.mechanics.enemies.tierByLevel.bands;
+  ctx.refs.forEach((refs, i) => {
+    const cp = data.checkpoints[i];
+    const tier = bands.filter((band) => cp.enemyLevel >= band.minLevel).pop().tier;
+    assert.equal(refs.length, tiers[tier].length, `${cp.id}: every listed enemy is distinct`);
+    assert.ok(refs.length >= 30);
+    for (const r of refs) {
+      assert.equal(r.cls.tier, tier);
+      assert.ok(r.cls.weapons.includes(r.weapon.type), `${r.cls.name} cannot wield ${r.weapon.name}`);
+      assert.equal(r.magic, r.loadout.magical);
+      assert.ok(Math.abs(r.level - cp.enemyLevel) <= 2);
+    }
+    const magic = refs.filter((r) => r.magic).length / refs.length;
+    assert.ok(magic > 0.12 && magic < 0.25, `${cp.id}: ${magic} of the enemies use magic`);
+    assert.ok(new Set(refs.map((r) => r.weapon.type)).size >= 6);
+    assert.ok(refs.some((r) => !r.magic && r.loadout.hi > 1 && r.loadout.lo === 1), 'someone throws');
+    assert.equal(refs.find((r) => r.archetype === 'fighter').level, cp.enemyLevel);   // the typical ally of the support axis
+  });
   assert.ok(!ctx.refs[0].some((r) => r.archetype === 'flier'));   // no flying class at the Beginner tier
   assert.ok(ctx.refs[10].some((r) => r.archetype === 'flier'));
   const hard = createContext(data, { hard: true });

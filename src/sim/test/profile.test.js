@@ -115,8 +115,9 @@ test('one point of Str that turns two attacks into one moves the damage axis', (
   while (dmg(str).kill < 0.99 && str < 99) str++;
   assert.ok(str < 99);
   const below = dmg(str - 1), at = dmg(str);
-  assert.ok(at.share - below.share < 0.1);        // barely more damage ...
-  assert.ok(at.speed - below.speed > 0.2);        // ... but the kill is now certain
+  // One point of Str, and both halves of the damage axis jump: the kill is now certain.
+  assert.ok(at.kill - below.kill > 0.5);
+  assert.ok(at.speed - below.speed > 0.2);
 });
 
 test('a unit defends with the weapon it attacked with', () => {
@@ -148,11 +149,12 @@ test('abilities that need a combat art count only for a unit that uses arts', ()
   assert.equal(score(ctx, 'Cai'), score(off, 'Cai'));
 });
 
-test('survival plays out a whole enemy phase', () => {
+test('survival is the HP left after one attacker and after two', () => {
   const dist = (pairs, n) => { const d = new Float64Array(n + 1); for (const [k, p] of pairs) d[k] = p; return d; };
-  assert.equal(phaseSurvival(dist([[0, 1]], 30), 30, 6), 1);
-  assert.ok(Math.abs(phaseSurvival(dist([[10, 1]], 30), 30, 6) - 2 / 6) < 1e-9);   // dies to the third attack
-  assert.ok(Math.abs(phaseSurvival(dist([[9, 1]], 30), 30, 6) - 3 / 6) < 1e-9);    // one HP less per hit: one attack more
+  assert.equal(phaseSurvival(dist([[0, 1]], 30), 30, 2), 1);
+  assert.ok(Math.abs(phaseSurvival(dist([[10, 1]], 30), 30, 2) - (20 / 30 + 10 / 30) / 2) < 1e-9);   // 20 HP left after one attacker, 10 after two
+  assert.ok(Math.abs(phaseSurvival(dist([[10, 1]], 30), 30, 3) - (20 / 30 + 10 / 30) / 3) < 1e-9);   // dead to the third
+  assert.ok(Math.abs(phaseSurvival(dist([[0, 0.5], [30, 0.5]], 30), 30, 2) - (0.5 + 0.25) / 2) < 1e-9);   // a coin flip to die each time
   // Bulk decides it: the same unit with more Def lasts longer against physical attackers.
   const soft = profile('Cai', 'Dreadnought', 15, [50, 30, 5, 20, 20, 15, 5, 20, 10]);
   const hard = profile('Cai', 'Dreadnought', 15, [50, 30, 5, 20, 20, 40, 5, 20, 10]);

@@ -21,22 +21,29 @@ function tierForLevel(data, level) {
   for (const band of data.mechanics.enemies.tierByLevel.bands) if (level >= band.minLevel) tier = band.tier;
   return tier;
 }
-const TIER_SLOT = { beginner: 0, specialty: 1, advanced: 2, master: 3 };
-
-/** Reference enemies for every checkpoint: one per archetype, at the checkpoint's enemy level. */
+/**
+ * Reference enemies for every checkpoint: the list for the checkpoint's enemy
+ * tier ("references" in mechanics.json), each row at its own level around the
+ * checkpoint's enemy level.
+ */
 export function buildReferences(data, model, { hard = false } = {}) {
   const e = data.mechanics.enemies;
   const hardArr = hard ? STATS.map((s) => e.hardDelta.stats[s] || 0) : null;
+  const tiers = data.mechanics.profile.references.tiers;
   return data.checkpoints.map((cp) => {
-    const slot = TIER_SLOT[tierForLevel(data, cp.enemyLevel)];
-    const refs = [];
-    for (const arch of data.mechanics.profile.references.archetypes) {
-      const cls = arch.classes[slot] && data.classes.get(arch.classes[slot]);
-      const ref = cls && modeledEnemy(data, model, cls, cp.enemyLevel, false, hardArr);
-      if (!ref) continue;
-      ref.archetype = arch.name;
-      ref.magic = !!arch.magic;
+    const refs = [], seen = new Set();
+    for (const row of tiers[tierForLevel(data, cp.enemyLevel)] || []) {
+      const cls = data.classes.get(row.class);
+      if (!cls) throw new Error(`Reference enemy uses unknown class "${row.class}"`);
+      const level = Math.max(1, cp.enemyLevel + (row.level || 0));
+      const ref = modeledEnemy(data, model, cls, level, false, hardArr, row.weapon);
+      if (!ref) throw new Error(`Reference enemy ${row.class} Lv${level} has no "${row.weapon}" to carry`);
+      const key = `${cls.name}|${ref.weapon.name}|${level}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      ref.archetype = row.archetype;
       ref.loadout = makeLoadout(ref.stats, null, ref.bld, ref.cls, ref.weapon, data.formulas);
+      ref.magic = ref.loadout.magical;
       refs.push(ref);
     }
     return refs;
@@ -50,23 +57,27 @@ const SIZE = 1024;
 let distA = new Float64Array(SIZE), distB = new Float64Array(SIZE);
 let hpA = new Float64Array(SIZE), hpB = new Float64Array(SIZE);
 const outDmg = new Int32Array(SIZE), outP = new Float64Array(SIZE);
-const series = new Float64Array(16);
+const series = new Float64Array(16), hpLeft = new Float64Array(16);
 const KILL_ROUNDS = 4;   // attacks played out exactly before the remaining HP is extrapolated
 
 /**
  * Chance a unit with lethal index `n` is still alive after 1..K attacks that
- * each deal damage drawn from `dist`. Writes them to `series[0..K-1]` and
+ * each deal damage drawn from `dist`. Writes them to `series[0..K-1]` (with
+ * `track`, also the share of its HP it has left on average, the dead counting as
+ * none, to `hpLeft[0..K-1]`) and
  * returns the distribution of its remaining HP after the last one.
  */
-function aliveSeries(dist, n, K) {
+function aliveSeries(dist, n, K, track = false) {
+  const record = (hp, k) => { let sum = 0; for (let h = 1; h <= n; h++) sum += h * hp[h]; hpLeft[k] = sum / n; };
   let m = 0;
   for (let j = 1; j <= n; j++) if (dist[j] > 0) { outDmg[m] = j; outP[m++] = dist[j]; }
   const p0 = dist[0];
   let a = hpA, b = hpB;
   for (let h = 0; h <= n; h++) a[h] = dist[n - h];
   series[0] = 1 - a[0];
+  if (track) record(a, 0);
   for (let k = 1; k < K; k++) {
-    if (series[k - 1] < 1e-7) { series[k] = 0; continue; }
+    if (series[k - 1] < 1e-7) { series[k] = 0; hpLeft[k] = 0; continue; }
     b.fill(0, 0, n + 1);
     b[0] = a[0];
     for (let h = 1; h <= n; h++) {
@@ -77,6 +88,7 @@ function aliveSeries(dist, n, K) {
     }
     const t = a; a = b; b = t;
     series[k] = 1 - a[0] > 0 ? 1 - a[0] : 0;
+    if (track) record(a, k);
   }
   return a;
 }
@@ -99,32 +111,41 @@ export function killSpeed(dist, n) {
   return 1 / attacks;
 }
 
-/** Share of an enemy phase of `K` attacks, each drawn from `dist`, the unit is alive for. */
+/**
+ * How a unit comes out of being attacked by one enemy, by two, ... by `K`, each
+ * attack drawn from `dist`: the share of its HP it has left on average (dead = none),
+ * averaged over those fights.
+ */
 export function phaseSurvival(dist, n, K) {
-  aliveSeries(dist, n, K);
+  aliveSeries(dist, n, K, true);
   let sum = 0;
-  for (let k = 0; k < K; k++) sum += series[k];
+  for (let k = 0; k < K; k++) sum += hpLeft[k];
   return sum / K;
 }
 
 /**
- * Best kill speed of loadout `L` against `E` in attacks it starts, over its
- * ranges (ties go to the range where it takes less in return), or -1 when it
- * cannot beat `floor`. Writes the share of its own HP lost in that exchange to
- * `strike.taken`.
+ * Best attack of loadout `L` against `E` in attacks it starts, over its ranges
+ * (ties go to the range where it takes less in return), or -1 when it cannot
+ * beat `floor`. An attack is worth its chance to kill outright and its kill
+ * speed, `ko` and 1 - `ko` of the score ("oneAttackKill" in mechanics.json).
+ * Writes the share of its own HP lost in that exchange to `strike.taken`.
  */
 const strike = { taken: 0 };
-function bestStrike(L, E, F, info, floor = -1) {
+function bestStrike(L, E, F, ko, info, floor = -1) {
   let best = -1;
   const n = lethalIndex(E.hp);
   for (let d = L.lo; d <= L.hi; d++) {
     resolveRound(L, E, d >= E.lo && d <= E.hi, F, round, d, distA);
-    // Kill speed can never exceed the share of the enemy's HP one attack removes on average.
+    // Neither kill speed nor the chance to kill can exceed the share of the enemy's HP one attack removes on average.
     const share = round.dealt / E.hp;
     if (share < floor - 1e-9 || share < best - 1e-9) continue;
+    // Nor can kill speed exceed 1 / (2 - the chance to kill): an attack that does not kill needs another.
+    const cap = ko * round.kill + (1 - ko) * Math.min(share, 1 / (2 - round.kill));
+    if (cap < floor - 1e-9 || cap < best - 1e-9) continue;
     const speed = killSpeed(distA, n), taken = round.taken / L.hp;
-    if (speed > best + 1e-9 || (speed > best - 1e-9 && taken < strike.taken)) {
-      best = speed;
+    const value = ko * round.kill + (1 - ko) * speed;
+    if (value > best + 1e-9 || (value > best - 1e-9 && taken < strike.taken)) {
+      best = value;
       strike.taken = taken;
       if (info) Object.assign(info, { weapon: L.weapon.name, range: d, dmg: round.dmgI, hit: round.hitI, crit: round.critI, follow: round.followI, share, kill: round.kill, speed, taken });
     }
@@ -202,6 +223,7 @@ export function evalProfile(data, gear, refs, detail = false) {
   const axes = new Float64Array(NA);
   const rows = detail ? [] : null;
   const KC = P.combatsPerMap.value;
+  const ko = P.oneAttackKill.value;
   const physical = gear.loadouts.filter((L) => !L.magical);
   const magical = gear.loadouts.filter((L) => L.magical);
 
@@ -219,7 +241,7 @@ export function evalProfile(data, gear, refs, detail = false) {
     let best = 0, physTaken = 0, bestL = null;
     for (const L of physical) {
       const info = detail ? {} : null;
-      const s = bestStrike(L, E, F, info, best);
+      const s = bestStrike(L, E, F, ko, info, best);
       if (s > best) { best = s; bestL = L; physTaken = strike.taken; if (row) row.phys = info; }
     }
     phys += best;
@@ -228,7 +250,7 @@ export function evalProfile(data, gear, refs, detail = false) {
     shares.length = 0;
     for (const L of magical) {
       const info = detail ? {} : null;
-      const s = bestStrike(L, E, F, info);
+      const s = bestStrike(L, E, F, ko, info);
       shares.push({ s, taken: strike.taken, uses: L.uses, info, L });
     }
     shares.sort((a, b) => b.s - a.s);
@@ -258,16 +280,17 @@ export function evalProfile(data, gear, refs, detail = false) {
   }
 
   // Defence, with the weapons the unit attacks with (one that cannot hurt anything
-  // may be holding any of them). Bulk and avoid are read per enemy. Survival plays
-  // out a whole enemy phase: `enemyPhaseAttacks` attackers, drawn evenly from the
-  // physical (or magical) reference enemies, come at the unit one after another.
+  // may be holding any of them). Bulk and avoid are read per enemy. Survival is the
+  // small fight: one attacker, then two, up to `enemyPhaseAttacks`, drawn evenly from
+  // the physical (or magical) reference enemies, and the HP the unit has left after each.
   const K = P.enemyPhaseAttacks.value;
   if (!held.size) for (const L of gear.loadouts) hold(L, 1);
   let total = 0;
   for (const w of held.values()) total += w;
   const lost = refs.map(() => 0), hit = refs.map(() => 0), expected = refs.map(() => 0);
   const dmg = refs.map(() => 0), follow = refs.map(() => 0);
-  const survive = detail ? { phys: nPhys ? { alive: new Array(K).fill(0) } : null, mag: nMag ? { alive: new Array(K).fill(0) } : null } : null;
+  const blank = () => ({ alive: new Array(K).fill(0), left: new Array(K).fill(0) });
+  const survive = detail ? { phys: nPhys ? blank() : null, mag: nMag ? blank() : null } : null;
   let pSurv = 0, mSurv = 0;
   for (const [L, share] of held) {
     const w = share / total;
@@ -285,11 +308,11 @@ export function evalProfile(data, gear, refs, detail = false) {
     });
     if (nPhys) {
       pSurv += w * phaseSurvival(mixP, n, K);
-      if (survive) for (let k = 0; k < K; k++) survive.phys.alive[k] += w * series[k];
+      if (survive) for (let k = 0; k < K; k++) { survive.phys.alive[k] += w * series[k]; survive.phys.left[k] += w * hpLeft[k]; }
     }
     if (nMag) {
       mSurv += w * phaseSurvival(mixM, n, K);
-      if (survive) for (let k = 0; k < K; k++) survive.mag.alive[k] += w * series[k];
+      if (survive) for (let k = 0; k < K; k++) { survive.mag.alive[k] += w * series[k]; survive.mag.left[k] += w * hpLeft[k]; }
     }
   }
   const holding = detail ? [...held].map(([L, share]) => ({ weapon: L.weapon.name, share: share / total })).sort((x, y) => y.share - x.share) : null;

@@ -1,8 +1,11 @@
-import { test } from 'vitest';
+import { test, vi } from 'vitest';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { loadData } from '../../../scripts/sim/load.js';
 import { runCommand, tableText, describe, CommandError } from '../engine/commands.js';
+
+// A search measures every candidate against thirty-odd reference enemies per chapter, which takes a few seconds a unit.
+vi.setConfig({ testTimeout: 60_000 });
 
 const data = loadData();
 const env = { data, runCast: () => { throw new Error('not a whole-cast test'); }, template: () => '' };

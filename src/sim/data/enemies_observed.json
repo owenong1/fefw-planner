@@ -87,6 +87,32 @@
    "unique": false
   },
   {
+   "class": "Gladiator",
+   "level": 3,
+   "bld": 1,
+   "stats": {
+    "hp": 29,
+    "str": 7,
+    "mag": 2,
+    "spd": 4,
+    "dex": 4,
+    "def": 4,
+    "res": 3,
+    "lck": 1,
+    "cha": 4
+   },
+   "inventory": [
+    "Iron Sword"
+   ],
+   "name": "Bjor",
+   "boss": true,
+   "chapter": "Bjor",
+   "tab": "Hard",
+   "source": "fireemblemwiki.org/wiki/Bjor",
+   "difficulty": "hard",
+   "unique": false
+  },
+  {
    "class": "Brigand",
    "level": 4,
    "bld": 1,

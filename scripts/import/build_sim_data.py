@@ -16,6 +16,7 @@ Usage
 
 src/sim/data/mechanics.json is hand-maintained and is never touched by this script.
 """
+import hashlib
 import json
 import os
 import re
@@ -106,7 +107,9 @@ def fetch_many(jobs):
 def wiki_api(**params):
     params['format'] = 'json'
     url = WIKI_API + '?' + urllib.parse.urlencode(params)
-    return json.loads(fetch(url, 'wiki_api_' + urllib.parse.urlencode(sorted(params.items()))[:180] + '.json'))
+    # The readable part is cut short, so the hash is what keeps two long title lists apart.
+    query = urllib.parse.urlencode(sorted(params.items()))
+    return json.loads(fetch(url, 'wiki_api_%s_%s.json' % (query[:120], hashlib.sha1(query.encode()).hexdigest()[:10])))
 
 
 def wiki_category(cat):
@@ -117,6 +120,17 @@ def wiki_category(cat):
         if 'continue' not in d:
             return titles
         cont = {'cmcontinue': d['continue']['cmcontinue']}
+
+
+def wiki_embeds(template):
+    """Every page that uses a template, whatever category it is filed under."""
+    titles, cont = [], {}
+    while True:
+        d = wiki_api(action='query', list='embeddedin', eititle='Template:' + template, eilimit=500, einamespace=0, **cont)
+        titles += [m['title'] for m in d['query']['embeddedin']]
+        if 'continue' not in d:
+            return titles
+        cont = {'eicontinue': d['continue']['eicontinue']}
 
 
 def wiki_text(titles):
@@ -555,7 +569,7 @@ def stat_value(raw, extras=True):
 
 
 def items(raw):
-    return [i.strip() for i in re.findall(r'\{\{Item\|18\|([^|}]+)', raw or '')]
+    return [i.strip() for i in re.findall(r'\{\{[Ii]tem\|18\|([^|}]+)', raw or '')]
 
 
 def parse_unit(params, extras=True):
@@ -592,7 +606,10 @@ def build_from_wiki(char_names):
     enemies = wiki_category("Category:Enemies in Fire Emblem: Fortune's Weave")
     chapters = wiki_category("Category:Chapters of Fire Emblem: Fortune's Weave")
     by_name = sorted(char_names) + [n + " (Fortune's Weave)" for n in sorted(char_names)]
-    texts = wiki_text(sorted(set(playable + stat_pages + enemies + chapters + by_name)))
+    # Boss and chapter pages are not all categorised yet, so also take every page that carries a stat table.
+    stat_tables = [t for name in ('BossStats FE18', 'ChapUnitCellFE18', 'CharStats FE18') for t in wiki_embeds(name)]
+    enemies = sorted(set(enemies + [t for t in stat_tables if t not in playable + stat_pages + chapters]))
+    texts = wiki_text(sorted(set(playable + stat_pages + enemies + chapters + stat_tables + by_name)))
 
     def char_key(title):
         return re.sub(r'\s*\(.*\)$', '', title.split('/')[0])

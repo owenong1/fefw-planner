@@ -14,7 +14,7 @@ type Progress = (done: number, total: number) => void
 const data = loadSimData()
 const post = (reply: Reply) => self.postMessage(reply)
 
-/** Finished cast runs, newest last. A run takes most of a minute, and `all`, `classes` and `visuals` share them. */
+/** Finished cast runs, newest last. A run takes several minutes, and `all`, `classes` and `visuals` share them. */
 const castCache: { key: string; roles: string[]; jobs: Job[] }[] = []
 const CACHE_SIZE = 4
 

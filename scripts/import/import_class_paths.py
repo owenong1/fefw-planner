@@ -4,7 +4,7 @@ Usage: python3 scripts/import/import_class_paths.py [--exports <dir>] [simulator
 
 The simulator (src/sim/, run from the terminal by scripts/sim/cli.js) searches
 every unit's class paths and recommends one per role. This runs its `export`
-command once per variant (six runs, about four minutes in all; needs Node 18+)
+command once per variant (six runs, about 25 minutes in all; needs Node 18+)
 and rewrites unit and class names as this site's ids. A variant is a plan and
 a way of playing:
 

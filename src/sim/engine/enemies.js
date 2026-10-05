@@ -116,12 +116,17 @@ function enemyWeapon(data, cls, level, inventory) {
   return null;
 }
 
-export function modeledEnemy(data, model, cls, level, boss, hardArr) {
+/**
+ * A generic enemy of a class at a level. `want` names what it carries: a weapon
+ * type (the standard enemy weapon of that type for its level) or one weapon;
+ * without it the enemy carries its class's main weapon type.
+ */
+export function modeledEnemy(data, model, cls, level, boss, hardArr, want = null) {
   const stats = modelStats(model, cls, level, boss);
   if (hardArr) for (let i = 0; i < N; i++) stats[i] += hardArr[i];
   const e = data.mechanics.enemies;
   const bld = Math.round(e.defaultBld.value + e.bldPerLevel.value * (level - 1)) + (boss ? 1 : 0);
-  const weapon = enemyWeapon(data, cls, level, null);
+  const weapon = want ? data.weapons.get(want) || standardWeapon(data, want, level) : enemyWeapon(data, cls, level, null);
   if (!weapon) return null;
   return {
     name: boss ? `${cls.name} boss` : cls.name, cls, level, boss, source: 'model',

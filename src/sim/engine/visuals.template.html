@@ -302,14 +302,14 @@ if (typeof D === 'string') {
   const stack = (parts) => `<div><div class="stack">${parts.map((p) => `<i style="flex:${p.n} 1 0;background:var(${p.c})" data-tip="${esc(`<b>${p.n}</b> ${p.label}`)}"></i>`).join('')}</div><div class="keys">${parts.map((p) => `<span><i style="background:var(${p.c})"></i><b class="num">${p.n}</b> ${p.label}</span>`).join('')}</div></div>`;
 
   const AXIS_TEXT = {
-    physDmg: 'Kill speed with the best physical weapon: 100 ÷ the attacks it expects to need. 100 kills in one attack, 50 in two.',
+    physDmg: 'With the best physical weapon, half the chance to kill in one attack and half kill speed (100 ÷ the attacks it expects to need). 100 always kills in one attack; a sure two-attack kill is 25.',
     magDmg: 'The same with magic, averaged over a map of attacks because spells run out.',
     bestDmg: 'The larger of physical and magic damage.',
     safety: 'Share of its own HP the unit keeps while making that attack. 100 means the enemy cannot answer.',
     physBulk: 'Share of HP left after a physical enemy attacks, if every strike lands. Measured holding the weapons the unit attacks with.',
     magBulk: 'The same against a magic enemy.',
     avoid: 'Chance an enemy strike misses.',
-    physSurv: 'A full enemy phase of physical attackers, one after another: the share of those attacks the unit is still standing for.',
+    physSurv: 'Attacked by one physical enemy, then by two: the share of its HP the unit has left on average, with hit and crit chances played out. Dead counts as none.',
     magSurv: 'The same against magical attackers.',
     support: `HP healed per map (${D.profile.healBars} ally HP bars = 100). Being able to Dance counts ${D.profile.dance}.`,
     reach: `Movement, from Mov ${D.profile.movFloor} (0) to Mov ${D.profile.movCeil} (100). Fliers count ${D.profile.flyingMov} extra. No role weights it.`,
@@ -444,7 +444,7 @@ if (typeof D === 'string') {
       { color: 'var(--ink2)', points: CP.map((c, i) => [i, c.enemyLevel]) },
       { color: 'var(--pos)', points: CP.map((c, i) => [i, c.playerLevel]) },
     ],
-    tip: (i) => `<b>${esc(CP[i].label)}</b>${tipRow('Your units', 'Lv' + CP[i].playerLevel, 'var(--pos)')}${tipRow('Enemies', 'Lv' + CP[i].enemyLevel, 'var(--ink2)')}${CP[i].bossLevel != null ? tipRow('Boss', 'Lv' + CP[i].bossLevel, 'var(--muted)') : ''}<div style="margin-top:4px;color:var(--ink2)">Reference enemies: ${CP[i].refs.map((r) => `${esc(r.class)} (${esc(r.archetype)})`).join(', ')}</div>`,
+    tip: (i) => `<b>${esc(CP[i].label)}</b>${tipRow('Your units', 'Lv' + CP[i].playerLevel, 'var(--pos)')}${tipRow('Enemies', 'Lv' + CP[i].enemyLevel, 'var(--ink2)')}${CP[i].bossLevel != null ? tipRow('Boss', 'Lv' + CP[i].bossLevel, 'var(--muted)') : ''}<div style="margin-top:4px;color:var(--ink2)">${CP[i].refs.length} reference enemies: ${[...new Set(CP[i].refs.map((r) => esc(r.class)))].join(', ')}</div>`,
   });
   const drawAvg = () => lineChart($('#c-avg'), {
     label: 'Cast average score per role in each chapter', y0: 0, y1: 100, ticks: [0, 25, 50, 75, 100],

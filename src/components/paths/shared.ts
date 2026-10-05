@@ -4,14 +4,14 @@ const { profile } = classPaths
 
 /** What each profile axis measures, in a sentence. */
 export const AXIS_TEXT: Record<string, string> = {
-  physDmg: 'Kill speed with the best physical weapon: 100 ÷ the attacks it expects to need. 100 kills in one attack, 50 in two.',
+  physDmg: 'With the best physical weapon, half the chance to kill in one attack and half kill speed (100 ÷ the attacks it expects to need). 100 always kills in one attack; a sure two-attack kill is 25.',
   magDmg: 'The same with magic, averaged over a map of attacks because spells run out.',
   bestDmg: 'The larger of physical and magic damage.',
   safety: 'Share of its own HP the unit keeps while making that attack. 100 means the enemy cannot answer.',
   physBulk: 'Share of HP left after a physical enemy attacks, if every strike lands. Measured holding the weapons the unit attacks with.',
   magBulk: 'The same against a magic enemy.',
   avoid: 'Chance an enemy strike misses.',
-  physSurv: 'A full enemy phase of physical attackers, one after another: the share of those attacks the unit is still standing for.',
+  physSurv: 'Attacked by one physical enemy, then by two: the share of its HP the unit has left on average, with hit and crit chances played out. Dead counts as none.',
   magSurv: 'The same against magical attackers.',
   support: `HP healed per map (${profile.healBars} ally HP bars = 100). Being able to Dance counts ${profile.dance}.`,
   reach: `Movement, from Mov ${profile.movFloor} (0) to Mov ${profile.movCeil} (100). Fliers count ${profile.flyingMov} extra. No role weights it.`,

@@ -207,7 +207,7 @@ export function ChaptersSection({ view }: { view: PathsView }) {
                 <TipRow label="Your units" value={`Lv${checkpoints[i].playerLevel}`} color="var(--viz-pos)" />
                 <TipRow label="Enemies" value={`Lv${checkpoints[i].enemyLevel}`} color="var(--ink)" />
                 {checkpoints[i].bossLevel != null && <TipRow label="Boss" value={`Lv${checkpoints[i].bossLevel}`} color="var(--muted)" />}
-                <div className="mt-1 text-muted">Reference enemies: {checkpoints[i].refs.map((r) => `${enemy(r.class)} (${r.archetype})`).join(', ')}</div>
+                <div className="mt-1 text-muted">{checkpoints[i].refs.length} reference enemies: {[...new Set(checkpoints[i].refs.map((r) => enemy(r.class)))].join(', ')}</div>
               </>
             )}
           />

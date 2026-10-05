@@ -1,5 +1,5 @@
 // Whole-cast runs (`all`, `classes`, `visuals`): every unit is searched and
-// its leading paths rolled, which takes a few seconds per unit, so the units
+// its leading paths rolled, which takes ten seconds or more per unit, so the units
 // are shared out over worker threads. The caller stays synchronous: it sleeps
 // on a shared counter and collects each unit's result as it arrives.
 
