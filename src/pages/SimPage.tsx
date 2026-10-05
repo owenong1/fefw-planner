@@ -37,11 +37,11 @@ const USES: Record<string, CommandId[]> = {
 /** Form state. Everything is a string because it lives in the URL; '' means "leave the option off". */
 type Fields = {
   cmd: CommandId; unit: string; path: string; role: string; at: string; top: string
-  route: string; hard: string; divine: string; maxGap: string; free: string; detours: string
+  route: string; hard: string; divine: string; noArts: string; maxGap: string; free: string; detours: string
   from: string; to: string; runs: string; offense: string; json: string; csv: string
 }
 const EMPTY: Fields = {
-  cmd: 'char', unit: '', path: '', role: '', at: '', top: '', route: '', hard: '', divine: '', maxGap: '', free: '',
+  cmd: 'char', unit: '', path: '', role: '', at: '', top: '', route: '', hard: '', divine: '', noArts: '', maxGap: '', free: '',
   detours: '', from: '', to: '', runs: '', offense: '', json: '', csv: '',
 }
 const KEYS = Object.keys(EMPTY) as (keyof Fields)[]
@@ -72,6 +72,7 @@ function buildArgv(f: Fields): string[] {
   if (uses('search')) {
     opt('route', f.route)
     flag('divine', f.divine)
+    flag('no-arts', f.noArts)
     if (f.free) flag('free-reclass', f.free)
     else opt('max-gap', f.maxGap)
     opt('detours', f.detours)
@@ -289,6 +290,7 @@ function Simulator() {
                 <div className="flex flex-wrap gap-x-4 gap-y-2 pb-1.5">
                   {uses('hard') && <Check label="Hard difficulty" checked={!!fields.hard} onChange={(v) => update({ hard: v ? '1' : '' })} />}
                   {uses('search') && <Check label="Divine classes" checked={!!fields.divine} onChange={(v) => update({ divine: v ? '1' : '' })} title="Also search Divine classes (one more decision late in Part III)" />}
+                  {uses('search') && <Check label="No combat arts" checked={!!fields.noArts} onChange={(v) => update({ noArts: v ? '1' : '' })} title="Abilities that need a combat art are not counted (by default they count as if the unit always attacked with one)" />}
                   {uses('search') && <Check label="Free reclassing" checked={!!fields.free} onChange={(v) => update({ free: v ? '1' : '' })} title="Allow any class change regardless of skill ranks" />}
                   {uses('csv') && (fields.cmd === 'all' || fields.role) && !fields.json && <Check label="Also as CSV" checked={!!fields.csv} onChange={(v) => update({ csv: v ? '1' : '' })} />}
                   {uses('json') && <Check label="JSON output" checked={!!fields.json} onChange={(v) => update({ json: v ? '1' : '' })} title="Machine-readable output instead of tables" />}

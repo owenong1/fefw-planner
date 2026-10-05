@@ -5,15 +5,25 @@
 import type { ClassPaths, PathCandidates, RolePath } from './schema'
 
 /**
- * The stretches of the campaign the paths are picked for. Each is a search of its own (the importer runs the
- * simulator once per plan, from checkpoint `from` on): the path that is best from Part II on is not the one that is
- * best overall. Every plan but the first is a file the page fetches when it is chosen.
+ * The stretches of the campaign the paths are optimised for. Each is a search of its own (the importer runs the
+ * simulator once per plan, scoring from checkpoint `from` on): the path that makes a unit best in the late game is
+ * not the one that is best overall.
  */
 export const PLANS = [
   { id: '', label: 'The whole campaign', from: null },
   { id: 'p2', label: 'Part II onwards', from: 'P2-01' },
-  { id: 'p3', label: 'Part III onwards', from: 'P3-01' },
+  { id: 'p3', label: 'Part III onwards (late game)', from: 'P3-01' },
 ] as const
+/**
+ * How the units are played, also a search each: attacking with combat arts whenever they can, so abilities that
+ * need an art always count, or never, so they count for nothing. The truth for a unit lies between the two.
+ */
+export const ARTS = [
+  { id: '', label: 'Always used' },
+  { id: 'noarts', label: 'Never used' },
+] as const
+/** A variant's part of its file names: `classPaths<suffix>.json`. The first of each list is the file in the bundle. */
+export const variantSuffix = (plan: string, arts: string) => `${plan && `.${plan}`}${arts && `.${arts}`}`
 
 /** One unit's path for a role and how it profiles: what the page needs of a `RolePath`, stored or re-scored. */
 export type RoleResult = Pick<RolePath, 'path' | 'train' | 'axes' | 'chapters'>

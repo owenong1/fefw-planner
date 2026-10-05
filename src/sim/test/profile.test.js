@@ -5,6 +5,7 @@ import { SKILLS } from '../engine/data.js';
 import { createContext, evaluatePath, roleScore } from '../engine/search.js';
 import { AXES, evalProfile, healCapacity, killSpeed, phaseSurvival } from '../engine/profile.js';
 import { unitLoadouts } from '../engine/gear.js';
+import { abilityCaveats, effectsAt } from '../engine/abilities.js';
 
 const data = loadData();
 const ctx = createContext(data);
@@ -129,6 +130,22 @@ test('a unit defends with the weapon it attacked with', () => {
   const bow = profile('Cai', 'Sniper', 15, fighter);
   assert.deepEqual(new Set(bow.held.map((h) => h.weapon)), new Set(bow.rows.map((r) => r.phys.weapon)));
   assert.ok(Math.abs(bow.axes[ax('avoid')] - 100 * bow.rows.reduce((sum, r) => sum + r.avoid, 0) / bow.rows.length) < 1e-9);
+});
+
+test('abilities that need a combat art count only for a unit that uses arts', () => {
+  const tobias = unit('Tobias');
+  const arts = effectsAt(tobias, 40), none = effectsAt(tobias, 40, false);
+  assert.ok(arts.some((e) => e.art));
+  assert.ok(none.length < arts.length && none.every((e) => !e.art));
+  assert.ok(abilityCaveats(tobias).length > 0);
+  assert.deepEqual(abilityCaveats(tobias, false), []);
+  // The same path scores lower without them, and nothing changes for a unit that has no such ability.
+  const steps = [{ level: 5, name: 'Gladiator' }, { level: 20, name: 'Brigand' }, { level: 35, name: 'Warrior' }];
+  const off = createContext(data, { arts: false });
+  const score = (c, u) => roleScore(c, evaluatePath(c, unit(u), steps, {}), 'striker').score;
+  assert.ok(score(ctx, 'Tobias') > score(off, 'Tobias') + 1);
+  assert.ok(!unit('Cai').abilityList.some((a) => a.effects.some((e) => e.art)));
+  assert.equal(score(ctx, 'Cai'), score(off, 'Cai'));
 });
 
 test('survival plays out a whole enemy phase', () => {

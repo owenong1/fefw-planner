@@ -12,7 +12,7 @@ import {
   aptitudeFit, canUseClass, classById, classPaths, combinedGrowths, isRecruitableOn, paralogueById, routeById, skillById,
   unitById, units,
 } from './index'
-import { bestRoles, buildView, normalizeWeights, rescore, standingsOver, type RoleResult, PLANS } from './pathModel'
+import { bestRoles, buildView, normalizeWeights, rescore, standingsOver, type RoleResult, ARTS, PLANS, variantSuffix } from './pathModel'
 
 describe('data files match the schema', () => {
   it.each([
@@ -236,37 +236,46 @@ describe('class path standings and re-weighting', () => {
   })
 })
 
-describe('class paths picked for part of the campaign', () => {
+describe('class path variants', () => {
   // Read as text, like the candidates: these files are fetched by the page, never imported.
-  const files = import.meta.glob<string>('../../data/{classPaths,pathCandidates}.p*.json', { query: '?raw', import: 'default', eager: true })
+  const files = import.meta.glob<string>('../../data/{classPaths,pathCandidates}.*.json', { query: '?raw', import: 'default', eager: true })
   const last = classPaths.checkpoints.length - 1
   for (const plan of PLANS) {
-    if (!plan.id) continue
-    it(plan.label, () => {
-      const paths = JSON.parse(files[`../../data/classPaths.${plan.id}.json`]) as ClassPaths
-      const candidates = JSON.parse(files[`../../data/pathCandidates.${plan.id}.json`]) as PathCandidates
-      expect(classPathsSchema.safeParse(paths).error?.issues ?? []).toEqual([])
-      expect(pathCandidatesSchema.safeParse(candidates).error?.issues ?? []).toEqual([])
-      // Same chapters, roles, axes and units as the whole campaign's file, so the page can swap one for the other.
-      expect(paths.checkpoints).toEqual(classPaths.checkpoints)
-      expect(paths.roles).toEqual(classPaths.roles)
-      expect(paths.axes).toEqual(classPaths.axes)
-      expect(paths.units.map((u) => u.unit)).toEqual(classPaths.units.map((u) => u.unit))
-      const start = classPaths.checkpoints.findIndex((c) => c.id === plan.from)
-      expect(start).toBeGreaterThan(0)
-      for (const u of paths.units) {
-        expect(u.firstChapter, u.unit).toBeGreaterThanOrEqual(start)
-        expect(u.firstChapter + u.chapters, u.unit).toBe(last + 1)
-        for (const r of paths.roles) {
-          expect(u.roles[r.id].chapters.length, u.unit).toBe(u.chapters)
-          for (const s of u.roles[r.id].path) expect(classById.has(s.class), s.class).toBe(true)
+    for (const arts of ARTS) {
+      const suffix = variantSuffix(plan.id, arts.id)
+      if (!suffix) continue
+      it(`${plan.label}, combat arts ${arts.label.toLowerCase()}`, () => {
+        const paths = JSON.parse(files[`../../data/classPaths${suffix}.json`]) as ClassPaths
+        const candidates = JSON.parse(files[`../../data/pathCandidates${suffix}.json`]) as PathCandidates
+        expect(classPathsSchema.safeParse(paths).error?.issues ?? []).toEqual([])
+        expect(pathCandidatesSchema.safeParse(candidates).error?.issues ?? []).toEqual([])
+        // Same chapters, roles, axes and units as the first variant's file, so the page can swap one for the other.
+        expect(paths.checkpoints).toEqual(classPaths.checkpoints)
+        expect(paths.roles).toEqual(classPaths.roles)
+        expect(paths.axes).toEqual(classPaths.axes)
+        expect(paths.units.map((u) => u.unit)).toEqual(classPaths.units.map((u) => u.unit))
+        expect(paths.scope.arts).toBe(!arts.id)
+        if (arts.id) expect(paths.units.flatMap((u) => u.caveats)).toEqual([])
+        const start = Math.max(0, classPaths.checkpoints.findIndex((c) => c.id === plan.from))
+        expect(start > 0).toBe(!!plan.id)
+        for (const u of paths.units) {
+          expect(u.firstChapter, u.unit).toBeGreaterThanOrEqual(start)
+          expect(u.firstChapter + u.chapters, u.unit).toBe(last + 1)
+          for (const r of paths.roles) {
+            expect(u.roles[r.id].chapters.length, u.unit).toBe(u.chapters)
+            for (const s of u.roles[r.id].path) expect(classById.has(s.class), s.class).toBe(true)
+          }
+          expect(candidates.units[u.unit]?.length, u.unit).toBeGreaterThan(0)
+          for (const c of candidates.units[u.unit]) expect(c.ch.length, u.unit).toBe(u.chapters * paths.axes.length)
         }
-        expect(candidates.units[u.unit]?.length, u.unit).toBeGreaterThan(0)
-        for (const c of candidates.units[u.unit]) expect(c.ch.length, u.unit).toBe(u.chapters * paths.axes.length)
-      }
-      const view = buildView(paths, null, {}, start, last)
-      expect(view.start).toBe(start)
-      expect(view.ranged).toBe(false)
-    })
+        const view = buildView(paths, null, {}, start, last)
+        expect(view.start).toBe(start)
+        expect(view.ranged).toBe(false)
+      })
+    }
   }
+  it('the first variant is the one in the bundle', () => {
+    expect(variantSuffix(PLANS[0].id, ARTS[0].id)).toBe('')
+    expect(classPaths.scope.arts).toBe(true)
+  })
 })

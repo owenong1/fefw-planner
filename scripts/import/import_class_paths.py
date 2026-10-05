@@ -4,18 +4,24 @@ Usage: python3 scripts/import/import_class_paths.py [--exports <dir>] [simulator
 
 The simulator (src/sim/, run from the terminal by scripts/sim/cli.js) searches
 every unit's class paths and recommends one per role. This runs its `export`
-command once per plan in PLANS (about two minutes in all; needs Node 18+) and
-rewrites unit and class names as this site's ids. A plan is the stretch of the
-campaign the paths are picked for: the whole of it, or Part II or Part III
-onwards (the simulator's `--from`), which is a search of its own because the
-best path for the late game is not the best one overall. The whole campaign
-goes in classPaths.json and pathCandidates.json, the others in
-classPaths.<plan>.json and pathCandidates.<plan>.json. The plans are also
-listed in src/data/pathModel.ts.
+command once per variant (six runs, about four minutes in all; needs Node 18+)
+and rewrites unit and class names as this site's ids. A variant is a plan and
+a way of playing:
+
+- PLANS: the stretch of the campaign the paths are optimised for: the whole of
+  it, or Part II or Part III onwards (the simulator's `--from`). Each is a
+  search of its own, because the best path for the late game is not the best
+  one overall.
+- ARTS: whether units attack with combat arts (abilities that need one count
+  on every attack) or never do (`--no-arts`: those abilities count for nothing).
+
+The whole campaign with arts goes in classPaths.json and pathCandidates.json,
+the others in classPaths<.plan><.noarts>.json and the matching pathCandidates
+file. Both lists are repeated in src/data/pathModel.ts.
 
 `--exports` reads exports made earlier instead of running the simulator:
-export.json, export.p2.json and export.p3.json in that directory. Anything
-else is passed to the simulator, e.g. `--hard` or `--route cai`.
+export<.plan><.noarts>.json in that directory. Anything else is passed to the
+simulator, e.g. `--hard` or `--route cai`.
 
 The export's candidate paths (what the Class Paths page re-scores when a role's
 weights are edited) are several megabytes, so they go in a file of their own
@@ -30,6 +36,8 @@ import tempfile
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 # Plan id (the file suffix) -> the checkpoint the simulator scores from; None is the whole campaign.
 PLANS = {'': None, 'p2': 'P2-01', 'p3': 'P3-01'}
+# File suffix -> the simulator options for that way of playing.
+ARTS = {'': [], '.noarts': ['--no-arts']}
 sys.path.insert(0, os.path.dirname(__file__))
 from import_sources import slug  # noqa: E402
 
@@ -55,16 +63,17 @@ def run_sim(extra):
 def main():
     args = sys.argv[1:]
     source = take(args, '--exports')
-    if '--from' in args:
-        sys.exit('--from is set per plan by this importer; see PLANS.')
+    if '--from' in args or '--no-arts' in args:
+        sys.exit('--from and --no-arts are set per variant by this importer; see PLANS and ARTS.')
     for plan, start in PLANS.items():
-        suffix = f'.{plan}' if plan else ''
-        if source:
-            with open(os.path.join(source, f'export{suffix}.json'), encoding='utf-8') as f:
-                export = json.load(f)
-        else:
-            export = run_sim([*args, *(['--from', start] if start else [])])
-        write(export, suffix)
+        for arts, flags in ARTS.items():
+            suffix = (f'.{plan}' if plan else '') + arts
+            if source:
+                with open(os.path.join(source, f'export{suffix}.json'), encoding='utf-8') as f:
+                    export = json.load(f)
+            else:
+                export = run_sim([*args, *flags, *(['--from', start] if start else [])])
+            write(export, suffix)
 
 
 def write(export, suffix):

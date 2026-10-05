@@ -7,7 +7,7 @@ import { findByName, STATS, ROUTES, TIERS, SKILLS } from './data.js';
 import { createContext, searchPaths, rankPaths, rankRolled, evaluatePath, roleScore, roleNames, monteCarlo, classMarginals, decisionPlan } from './search.js';
 import { AXES, AXIS_LABEL } from './profile.js';
 import { rankAt, rankName } from './gear.js';
-import { activeAbilities, abilityCaveats } from './abilities.js';
+import { activeAbilities, abilityCaveats, isScored } from './abilities.js';
 
 /** A mistake in the command itself (unknown unit, bad option): reported, not a crash. */
 export class CommandError extends Error {}
@@ -66,6 +66,8 @@ Options
                      any = add them all.
   --hard             Hard-difficulty enemies
   --divine           Also search Divine classes (one more decision late in Part III)
+  --no-arts          Units never attack with combat arts: abilities that need one are not
+                     counted (by default they count as if the unit always used an art)
   --role <name>      striker | mage | tank | magetank | mixedtank | healer (see "roles" in
                      src/sim/data/mechanics.json), or duel for the old single score (slow)
   --max-gap <n>      Largest exam shortfall, in skill ranks, a class change may have
@@ -87,7 +89,7 @@ Options
 
 function parseArgs(argv) {
   const opts = { _: [] };
-  const flags = new Set(['hard', 'divine', 'free-reclass', 'json', 'help', 'watch']);
+  const flags = new Set(['hard', 'divine', 'no-arts', 'free-reclass', 'json', 'help', 'watch']);
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (!a.startsWith('--')) { opts._.push(a); continue; }
@@ -116,7 +118,7 @@ function searchOptions(data, args) {
     if (!(maxGap >= 0)) fail('--max-gap must be a number of skill ranks, 0 or more');
   }
   return {
-    route, role, hard: !!args.hard, divine: !!args.divine, maxGap,
+    route, role, hard: !!args.hard, divine: !!args.divine, arts: !args['no-arts'], maxGap,
     freeReclass: !!args['free-reclass'], from: args.from, to: args.to,
     offense: offenseOption(args.offense),
     detours: intOption(args.detours, undefined, 'detours'),
@@ -190,6 +192,7 @@ function scopeLine(ctx, opts) {
   const classes = { common: 'classes every route unlocks', any: 'all classes incl. route exclusives' }[opts.route] || `classes on ${opts.route}'s route`;
   const parts = [classes, `difficulty: ${opts.hard ? 'hard' : 'normal'}`];
   if (opts.divine) parts.push('divine classes on');
+  if (opts.arts === false) parts.push('no combat arts');
   if (opts.detours != null) parts.push(`${opts.detours} sideways change(s)`);
   if (opts.freeReclass) parts.push('free reclassing');
   else if (opts.maxGap != null) parts.push(`exam gap up to ${opts.maxGap} rank(s)`);
@@ -219,14 +222,16 @@ function roleAxes(data, role) {
   return Object.entries(data.mechanics.roles.list[role].weights).sort((a, b) => b[1] - a[1]).map(([name]) => ({ name, i: AXES.indexOf(name) }));
 }
 
-function abilityLines(char) {
+function abilityLines(char, arts = true) {
   const lines = [];
-  const scored = char.abilityList.filter((a) => !a.reason);
+  const scored = char.abilityList.filter((a) => isScored(a, arts));
+  const artOnly = char.abilityList.filter((a) => !a.reason && !isScored(a, arts));
   const skipped = char.abilityList.filter((a) => a.reason && !char.abilityList.some((b) => b.replaces.includes(a.name)));
   const when = (a) => (a.kind === 'personal' ? 'personal' : a.level == null ? 'level not published, assumed learned' : `Lv${a.level}`);
   if (scored.length) lines.push(`Abilities scored:     ${scored.map((a) => `${a.name} (${when(a)}): ${a.text}`).join('\n                      ')}`);
   if (skipped.length) lines.push(`Abilities not scored: ${skipped.map((a) => `${a.name} - ${a.reason}`).join('; ')}`);
-  for (const c of abilityCaveats(char)) lines.push(`Caveat:               ${c} The arts themselves are not modelled.`);
+  if (artOnly.length) lines.push(`Not counted (no combat arts): ${artOnly.map((a) => a.name).join(', ')}`);
+  for (const c of abilityCaveats(char, arts)) lines.push(`Caveat:               ${c} The arts themselves are not modelled.`);
   return lines;
 }
 
@@ -248,7 +253,7 @@ function unitHeader(ctx, char, opts) {
   const lines = [`${char.name} - joins ${joinLabel(char)}${char.base.joinsAt ? ` at ${ctx.data.checkpoints.find((c) => c.id === char.base.joinsAt).label}` : ''} (base stats: ${char.base.source})`];
   lines.push(`Growths  ${STATS.map((s) => `${s} ${char.growths[s]}`).join('  ')}`);
   lines.push(`Skills   good at: ${char.preferred.join(', ') || '-'}   bad at: ${char.nonIdeal.join(', ') || '-'}${char.locks.size ? `   cannot be: ${[...char.locks].join(', ')}` : ''}`);
-  lines.push(...abilityLines(char));
+  lines.push(...abilityLines(char, opts.arts));
   if (!char.spellBook) lines.push('Spell list not published yet: the standard spell lines are assumed.');
   if (char.notes) lines.push(char.notes);
   lines.push(scopeLine(ctx, opts));
@@ -437,7 +442,7 @@ function cmdPath(data, args) {
     print(`${char.name} as Lv${row.cp.playerLevel} ${row.cls.name} at ${row.cp.label} (${row.cp.id})  |  ${scopeLine(ctx, opts)}`);
     print(`Stats   ${STATS.map((s, i) => `${s} ${row.stats[i].toFixed(1)}`).join('  ')}  bld ${row.bld}  mov ${row.mov}   (expected; the table below is read at these, rounded)`);
     print(`Ranks   ${SKILLS.map((s, i) => [s, rankAt(data, row.expo[i])]).filter(([, r]) => r > 0).map(([s, r]) => `${s} ${rankName(data, r)}`).join('  ') || '-'}   (estimated)`);
-    const active = activeAbilities(char, row.cp.playerLevel).filter((a) => !a.reason);
+    const active = activeAbilities(char, row.cp.playerLevel).filter((a) => isScored(a, opts.arts));
     if (active.length) print(`Active  ${active.map((a) => a.name).join(', ')}`);
     print(`Profile ${shownAxes(ctx).map((a) => `${AXIS_LABEL[a.name]} ${Math.round(row.axes[a.i])}`).join('  ')}\n`);
     print('AGAINST THE REFERENCE ENEMIES');
@@ -626,7 +631,7 @@ async function cmdAll(data, args) {
     }
   }
   print(`\n* base stats estimated (not published yet).  ${LEGEND}`);
-  const caveats = rows.flatMap((r) => abilityCaveats(r.char));
+  const caveats = rows.flatMap((r) => abilityCaveats(r.char, opts.arts));
   if (caveats.length) print(`Caveats: ${caveats.join(' ')}`);
   print(`Score and profile are campaign averages over the chapters a unit is present for${single ? '; vs cast is the score against the cast average in those same chapters, and sets the order' : ''}. ${NOTES}`);
   if (args.csv) {
@@ -641,13 +646,13 @@ async function cmdAll(data, args) {
 }
 
 /** How much data went in and how firm it is, for the pages that explain the results. */
-function castCounts(data, rows) {
+function castCounts(data, rows, arts = true) {
   return {
     units: rows.length, classes: data.classes.size, weapons: data.weapons.size, heals: data.heals.size,
     observedEnemies: data.observed.length, paths: rows.reduce((n, r) => n + r.result.paths.length, 0),
     estimatedBases: rows.filter((r) => r.char.base.source === 'estimated').length,
     abilities: rows.reduce((n, r) => n + r.char.abilityList.length, 0),
-    abilitiesScored: rows.reduce((n, r) => n + r.char.abilityList.filter((a) => !a.reason).length, 0),
+    abilitiesScored: rows.reduce((n, r) => n + r.char.abilityList.filter((a) => isScored(a, arts)).length, 0),
     basis: basisCounts(data.mechanics),
   };
 }
@@ -688,8 +693,8 @@ async function cmdExport(data, args) {
   // late: the change is not made at its tier's usual level (shown as "Warrior (Lv38)" elsewhere).
   const stepsOut = (char, steps) => steps.map((s) => ({ name: s.name, level: s.level, late: s.level !== usual(s.name) && s.level !== char.base.level }));
   const out = {
-    scope: { route: opts.route, hard: opts.hard, divine: opts.divine, runs: opts.runs },
-    counts: castCounts(data, rows),
+    scope: { route: opts.route, hard: opts.hard, divine: opts.divine, arts: opts.arts, runs: opts.runs },
+    counts: castCounts(data, rows, opts.arts),
     tiers: [...prog.tiers, ...(opts.divine ? [{ tier: 'divine', level: prog.divineLevel }] : [])],
     maxExamGap: opts.freeReclass ? null : opts.maxGap ?? mech.skills.maxExamGap.value,
     profile: profileConstants(mech),
@@ -712,7 +717,7 @@ async function cmdExport(data, args) {
       // The unit is present from this checkpoint (an index into `checkpoints`) to the last one scored.
       firstChapter: cpIndex.get(r.result.checkpoints[0].cp.id), bestRole: r.role,
       // What the scores take for granted about how the unit is played.
-      caveats: abilityCaveats(r.char),
+      caveats: abilityCaveats(r.char, opts.arts),
       roles: Object.fromEntries(roles.map((role) => {
         const e = r.roles[role];
         return [role, {
@@ -837,7 +842,7 @@ async function visualsPayload(data, args) {
     generated: new Date().toISOString(),
     seconds: 0,
     scope: scopeLine(ctx, opts),
-    counts: castCounts(data, rows),
+    counts: castCounts(data, rows, opts.arts),
     roles: roles.map((id) => ({ id, label: roleLabel(data, id), weights: mech.roles.list[id].weights })),
     axes: axes.map((a) => ({ id: a.name, label: AXIS_LABEL[a.name] })),
     tolerance: mech.roles.tolerance.value,

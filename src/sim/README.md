@@ -198,6 +198,10 @@ holds the widths.
 - **Expected levels per chapter** are interpolated between a handful of known
   join levels and boss levels.
 - **Gauntlets give +10 Avoid** (the game says "high Avoid", no number).
+- **Combat-art abilities are all or nothing.** An ability that needs a combat
+  art (Tobias's Power Arts, Inyoni's Pierce) counts on every attack the unit
+  starts, at no cost; `--no-arts` leaves those abilities out instead. The arts
+  themselves are not modelled, so a real unit sits between the two runs.
 - **A unit defends with the weapon it attacked with.** It cannot swap between
   its attack and the enemy phase, so each weapon is held for the share of the
   reference enemies it is the unit's best attack against, and bulk, avoid and

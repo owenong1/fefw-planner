@@ -3,6 +3,7 @@
   "route": "common",
   "hard": false,
   "divine": false,
+  "arts": true,
   "runs": 100
  },
  "counts": {

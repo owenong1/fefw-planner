@@ -166,7 +166,7 @@ function profileExact(ctx, char, cls, level, expo, cpIndex, gear, personal, deta
     const hit = ctx.cache.get(key);
     if (hit) return hit;
   }
-  const g = unitLoadouts(data, char, cls, level, personal, null, expo, gear);
+  const g = unitLoadouts(data, char, cls, level, personal, null, expo, gear, ctx.opts.arts !== false);
   g.cls = cls;
   const res = evalProfile(data, g, ctx.refs[cpIndex], detail);
   if (ctx.duel) {

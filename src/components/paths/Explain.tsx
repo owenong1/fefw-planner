@@ -10,8 +10,8 @@ import { ClassIcon, Select } from '../ui'
 import { GrowthStack, NOTE, Panel, RoleChip, Section } from './parts'
 import { AXIS_TEXT, chapterAxis } from './shared'
 
-// The same in every plan; what differs (units, class values, paths kept) is read from the plan on show.
-const { counts, checkpoints, axes, tiers, scope } = classPaths
+// The same in every variant; what differs (units, class values, counts, scope) is read from the one on show.
+const { checkpoints, axes, tiers } = classPaths
 const nf = (n: number) => n.toLocaleString('en-US')
 const TH = 'border-b border-line px-2 py-1.5 text-xs font-semibold text-muted whitespace-nowrap'
 
@@ -85,9 +85,10 @@ function Stack({ parts }: { parts: { n: number; label: string; color: string }[]
 
 /** How much data went in, and how much of it is published rather than estimated or assumed. */
 export function InputsSection({ data }: { data: ClassPaths }) {
+  const { counts } = data
   const facts: [string, string][] = [
     [String(counts.units), 'units'], [String(counts.classes), 'classes'], [String(counts.weapons), 'weapons and spells'],
-    [String(checkpoints.length), 'chapters measured'], [nf(data.counts.paths), 'class paths kept and compared'],
+    [String(checkpoints.length), 'chapters measured'], [nf(counts.paths), 'class paths kept and compared'],
   ]
   return (
     <Section id="inputs" title="What goes in">
@@ -307,11 +308,13 @@ export function ClassesSection({ data }: { data: ClassPaths }) {
 const SCOPE_ROUTE: Record<string, string> = { common: 'classes every route unlocks', any: 'every class, route exclusives included' }
 
 /** What to keep in mind before reading a number as fact. `caveats` are the play-style assumptions of the units on show. */
-export function CaveatsSection({ caveats }: { caveats: string[] }) {
+export function CaveatsSection({ data, caveats }: { data: ClassPaths; caveats: string[] }) {
+  const { counts, scope } = data
   const items: [string, ReactNode][] = [
     ['These are simulated, not played.', <>
       The search used {SCOPE_ROUTE[scope.route] ?? `classes on ${scope.route}'s route`}, {scope.hard ? 'hard' : 'normal'} difficulty,
       {scope.divine ? ' Divine classes included' : ' no Divine classes'}
+      {!scope.arts && ', no combat arts'}
       {scope.runs > 0 && `, with each role's leading paths replayed ${scope.runs} times with level-ups rolled`}.
     </>],
     ['Enemy stats are mostly modelled.', `Only ${counts.observedEnemies} enemy stat lines are published, none above Lv45. Out of sample the model is off by 3 to 7 points per stat, and Part III is extrapolation.`],

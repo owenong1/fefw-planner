@@ -27,6 +27,8 @@ const NOT_SCORED = [
 // with one: it applies whenever the unit starts the fight. The art's own might,
 // hit and cost are not modelled. The ability carries the assumption (`assumes`)
 // so every front end can say that the unit has to use its arts to earn the score.
+// Such an effect is marked `art`, and a run without arts (--no-arts) leaves it out:
+// the two runs are the unit that always attacks with an art and the one that never does.
 const COMBAT_ART = /when attacking with (?:an? )?(?:(sword|axe|bow|spear|gauntlet|magic) )?combat arts?/i;
 
 const lower = (s) => s.toLowerCase();
@@ -42,7 +44,7 @@ function parseTrigger(text) {
 
 function blankEffect() {
   return {
-    phase: 0, weapon: null, weaponName: null, type: null, cls: null, range: 0,
+    phase: 0, art: false, weapon: null, weaponName: null, type: null, cls: null, range: 0,
     foeMagic: false, effective: false, asLead: null, canFollow: false, noFollow: false,
     minHit: null, foeCantCounter: false, trig: null,
     mods: {}, foeMods: {}, followMods: {}, dmgMult: 1, takenMult: 1, followAlways: false,
@@ -76,7 +78,7 @@ function parseClause(clause, inherited) {
   if (/to magic during combat/i.test(clause)) e.weapon = 'magic';
   if (/adjacent foe\b/i.test(clause)) e.range = 1;
   if (/throwing a spear/i.test(clause)) { e.weapon = 'spear'; e.range = 2; }
-  if ((m = COMBAT_ART.exec(clause))) { e.phase = 1; if (m[1]) e.weapon = lower(m[1]); }
+  if ((m = COMBAT_ART.exec(clause))) { e.phase = 1; e.art = true; if (m[1]) e.weapon = lower(m[1]); }
   if (/If foes? uses magic/i.test(clause)) e.foeMagic = true;
   if (/unit is effective against foe/i.test(clause)) e.effective = true;
   if ((m = /AS (?:≥|is greater than or equal to) foe.s AS ?\+ ?(\d+)/i.exec(clause))) e.asLead = +m[1];
@@ -133,7 +135,7 @@ export function parseAbilityText(text) {
     if (!e) continue;
     if (!e.trig && global) e.trig = global;
     // "Also grants ..." and ", and if ..." clauses keep the earlier clause's phase / weapon scope.
-    inherited = { phase: e.phase, weapon: e.weapon, type: e.type, cls: e.cls };
+    inherited = { phase: e.phase, art: e.art, weapon: e.weapon, type: e.type, cls: e.cls };
     effects.push(e);
   }
   if (!effects.length) return { effects, reason: 'not a plain modifier', assumes: null };
@@ -165,6 +167,11 @@ export function prepareAbilities(char) {
 }
 
 /** Abilities a unit has at `level`, upgrades applied. */
+/** Does the ability count toward the score: always, or only for a unit that attacks with combat arts? */
+export function isScored(ability, arts = true) {
+  return !ability.reason && (arts || ability.effects.some((e) => !e.art));
+}
+
 export function activeAbilities(char, level) {
   const have = char.abilityList.filter((a) => a.kind === 'personal' || a.level == null || a.level <= level);
   const replaced = new Set(have.flatMap((a) => a.replaces));
@@ -175,7 +182,8 @@ export function activeAbilities(char, level) {
  * What a unit's score takes for granted about how it is played, one sentence
  * per assumption: "Pierce and Pierce+ are counted as if Inyoni always attacks with bow combat arts."
  */
-export function abilityCaveats(char) {
+export function abilityCaveats(char, arts = true) {
+  if (!arts) return [];
   const by = new Map();
   for (const a of char.abilityList) if (a.assumes && !a.reason) by.set(a.assumes, [...(by.get(a.assumes) || []), a.name]);
   return [...by].map(([assumes, names]) => {
@@ -191,15 +199,17 @@ export function classLocks(char) {
   return locks;
 }
 
-const cache = new WeakMap();
+const cache = [new WeakMap(), new WeakMap()];
 
-/** Flat list of scored effects active at `level` (cached per character). */
-export function effectsAt(char, level) {
-  let byLevel = cache.get(char);
-  if (!byLevel) cache.set(char, (byLevel = new Map()));
+/** Flat list of scored effects active at `level` (cached per character); without `arts`, the combat-art ones are left out. */
+export function effectsAt(char, level, arts = true) {
+  const byChar = cache[arts ? 1 : 0];
+  let byLevel = byChar.get(char);
+  if (!byLevel) byChar.set(char, (byLevel = new Map()));
   let list = byLevel.get(level);
   if (!list) {
     list = activeAbilities(char, level).flatMap((a) => a.effects);
+    if (!arts) list = list.filter((e) => !e.art);
     byLevel.set(level, list);
   }
   return list;

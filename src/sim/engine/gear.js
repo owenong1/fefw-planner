@@ -174,11 +174,12 @@ const UNARMED = { name: '(unarmed)', type: 'none', mt: 0, hit: -999, crit: 0, wt
 /**
  * One loadout per usable weapon (each tagged with `uses`), plus the heals.
  * `personal` are personal stats (class bonus not yet added); `vars` their variance or null.
- * Pass `gear` (unitGear output) to reuse it across several stat lines.
+ * Pass `gear` (unitGear output) to reuse it across several stat lines. `arts` false leaves out
+ * the abilities that need a combat art.
  */
-export function unitLoadouts(data, char, cls, level, personal, vars, expo, gear = unitGear(data, char, cls, level, expo)) {
+export function unitLoadouts(data, char, cls, level, personal, vars, expo, gear = unitGear(data, char, cls, level, expo), arts = true) {
   const stats = withClassBonus(personal, cls);
-  const effects = effectsAt(char, level);
+  const effects = effectsAt(char, level, arts);
   const list = gear.weapons.length ? gear.weapons : [{ weapon: UNARMED, uses: Infinity }];
   const loadouts = list.map(({ weapon, uses }) => {
     const L = makeLoadout(stats, vars, gear.bld, cls, weapon, data.formulas, effectsFor(effects, cls, weapon));

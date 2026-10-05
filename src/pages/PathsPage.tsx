@@ -1,10 +1,5 @@
 import { Fragment, useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router'
-import candidatesUrl from '../../data/pathCandidates.json?url'
-import candidatesP2Url from '../../data/pathCandidates.p2.json?url'
-import candidatesP3Url from '../../data/pathCandidates.p3.json?url'
-import pathsP2Url from '../../data/classPaths.p2.json?url'
-import pathsP3Url from '../../data/classPaths.p3.json?url'
 import { PathSteps } from '../components/ClassPath'
 import { CaveatsSection, ChaptersSection, ClassesSection, HowSection, InputsSection, RolesSection } from '../components/paths/Explain'
 import { NOTE, RoleChip } from '../components/paths/parts'
@@ -12,7 +7,7 @@ import { UnitDetail } from '../components/paths/UnitDetail'
 import { WeightEditor } from '../components/paths/WeightEditor'
 import { Avatar, Badge, Empty, PageHeader, Select } from '../components/ui'
 import { classById, classPaths, classSpoiler, roleAxes, unitById } from '../data'
-import { buildView, PLANS } from '../data/pathModel'
+import { ARTS, buildView, PLANS, variantSuffix } from '../data/pathModel'
 import type { ClassPaths, PathCandidates } from '../data/schema'
 import { signed, trainLabel, vsCastTint } from '../lib/display'
 import { useSettings } from '../lib/settings'
@@ -24,13 +19,9 @@ const SECTIONS = [
 ]
 const TH = 'px-2 py-2 font-semibold whitespace-nowrap'
 
-type PlanId = (typeof PLANS)[number]['id']
-/** Each plan's results and candidate paths. The whole campaign's results are in the bundle; the rest are fetched. */
-const PLAN_FILES: Record<PlanId, { paths: string | null; candidates: string }> = {
-  '': { paths: null, candidates: candidatesUrl },
-  p2: { paths: pathsP2Url, candidates: candidatesP2Url },
-  p3: { paths: pathsP3Url, candidates: candidatesP3Url },
-}
+// Every variant's results and candidate paths, by URL. The first variant's results are in the bundle; the rest are fetched.
+const FILES = import.meta.glob<string>(['../../data/{classPaths,pathCandidates}*.json', '!../../data/classPaths.json'], { query: '?url', import: 'default', eager: true })
+const fileUrl = (name: string, suffix: string) => FILES[`../../data/${name}${suffix}.json`] ?? null
 
 /** A data file fetched by URL once it is wanted (`url` null: not yet): another plan's results, or the candidate paths behind the weight sliders, which are several megabytes. */
 function useJson<T>(url: string | null) {
@@ -50,11 +41,15 @@ function useJson<T>(url: string | null) {
 export function PathsPage() {
   const { spoilerLevel } = useSettings()
   const [params, setParams] = useSearchParams()
-  // ?plan= is the stretch of the campaign the paths are picked for. Until its file has loaded the whole campaign's stay on show.
+  // ?plan= is the stretch of the campaign the paths are optimised for and ?arts= whether combat arts are used: a variant,
+  // each with its own results file. Until that has loaded the first variant's results stay on show.
   const planId = PLANS.find((p) => p.id === params.get('plan'))?.id ?? ''
-  const fetched = useJson<ClassPaths>(PLAN_FILES[planId].paths)
+  const artsId = ARTS.find((a) => a.id === params.get('arts'))?.id ?? ''
+  const wanted = variantSuffix(planId, artsId)
+  const fetched = useJson<ClassPaths>(wanted ? fileUrl('classPaths', wanted) : null)
   const data = fetched.data ?? classPaths
   const plan = PLANS.find((p) => p.id === (fetched.data ? planId : ''))!
+  const arts = ARTS.find((a) => a.id === (fetched.data ? artsId : ''))!
   const { checkpoints, units } = data
   const first = classPaths.roles[0].id
   const roleParam = params.get('role')
@@ -69,11 +64,14 @@ export function PathsPage() {
   const start = Math.max(0, checkpoints.findIndex((c) => c.id === plan.from))
   const from = Math.max(start, index('from', start))
   const to = Math.max(from, index('to', last))
-  const setQuery = (next: { role?: string; plan?: PlanId; from?: number; to?: number }) => {
-    const q = { role: viewId, plan: planId, from, to, ...next }
+  const setQuery = (next: { role?: string; plan?: string; arts?: string; from?: number; to?: number }) => {
+    const q = { role: viewId, plan: planId, arts: artsId, from, to, ...next }
+    // Another plan has other chapters, so the chapter range starts over.
+    if (q.plan !== planId) return setParams({ ...(q.role !== first && { role: q.role }), ...(q.plan && { plan: q.plan }), ...(q.arts && { arts: q.arts }) }, { replace: true })
     setParams({
       ...(q.role !== first && { role: q.role }),
       ...(q.plan && { plan: q.plan }),
+      ...(q.arts && { arts: q.arts }),
       ...(q.from > start && { from: checkpoints[q.from].id }),
       ...(q.to < last && { to: checkpoints[Math.max(q.from, q.to)].id }),
     }, { replace: true })
@@ -81,7 +79,7 @@ export function PathsPage() {
 
   // Slider positions per role the reader has touched. They only take effect once the candidate paths have loaded.
   const [sliders, setSliders] = useState<Record<string, number[]>>({})
-  const { data: candidates, status } = useJson<PathCandidates>(Object.keys(sliders).length > 0 ? PLAN_FILES[plan.id].candidates : null)
+  const { data: candidates, status } = useJson<PathCandidates>(Object.keys(sliders).length > 0 ? fileUrl('pathCandidates', variantSuffix(plan.id, arts.id)) : null)
   const view = buildView(data, candidates, sliders, from, to)
   const { ranged } = view
 
@@ -112,7 +110,7 @@ export function PathsPage() {
   const hidden = ranked.length - visible.length
   const absent = units.length - ranked.length
   const caveats = visible.flatMap(({ u }) => u.caveats)
-  const simQuery = `cmd=all${role && role.id !== first ? `&role=${role.id}` : ''}${from > 0 ? `&from=${checkpoints[from].id}` : ''}${to < last ? `&to=${checkpoints[to].id}` : ''}`
+  const simQuery = `cmd=all${role && role.id !== first ? `&role=${role.id}` : ''}${from > 0 ? `&from=${checkpoints[from].id}` : ''}${to < last ? `&to=${checkpoints[to].id}` : ''}${arts.id ? '&noArts=1' : ''}`
   const columns = (role ? 7 + shownAxes.length : 7 + view.roles.length)
   const anyEdited = view.roles.some((r) => r.edited)
 
@@ -143,8 +141,12 @@ export function PathsPage() {
         </div>
         <div className="mb-4 flex flex-wrap items-end gap-x-4 gap-y-3">
           <Select
-            label="Best path for" value={planId} onChange={(v) => { setParams({ ...(viewId !== first && { role: viewId }), ...(v && { plan: v }) }, { replace: true }); setOpen(null) }}
+            label="Optimised for" value={planId} onChange={(v) => { setQuery({ plan: v }); setOpen(null) }}
             options={PLANS.map((p) => ({ value: p.id, label: p.label }))}
+          />
+          <Select
+            label="Combat arts" value={artsId} onChange={(v) => { setQuery({ arts: v }); setOpen(null) }}
+            options={ARTS.map((a) => ({ value: a.id, label: a.label }))}
           />
           <Select
             label="From chapter" value={String(from)} onChange={(v) => setQuery({ from: +v, to: Math.max(+v, to) })}
@@ -188,17 +190,18 @@ export function PathsPage() {
           {' '}Click a unit for its path, profile and chapter-by-chapter score.
           {plan.id && (
             <>
-              {' '}These paths are the ones that score best from {checkpoints[start].label} on. The classes taken before then are still part of the path, chosen for
-              what they leave the unit with and not for how it fights in them.
+              {' '}Every path here is optimised for {checkpoints[start].label} onwards: only those chapters are scored, so a unit's earlier classes are chosen for
+              what they build towards and not for how it fights in them.
             </>
           )}
-          {fetched.status === 'loading' && ' Loading that plan…'}
-          {fetched.status === 'error' && ' That plan could not be loaded, so these are the whole campaign\'s paths.'}
+          {arts.id && ' Units never attack with combat arts here, so abilities that need one count for nothing.'}
+          {fetched.status === 'loading' && ' Loading those results…'}
+          {fetched.status === 'error' && ' Those results could not be loaded, so these are the whole campaign\'s, with combat arts.'}
           {ranged && (
             <>
               {' '}Score, vs cast and place count {checkpoints[from].label}{to > from && ` to ${checkpoints[to].label}`} only
               {absent > 0 && `, which leaves out ${absent} ${absent === 1 ? 'unit that has' : 'units that have'} not joined by then`}. The paths and the profile columns are
-              still {plan.id ? `the ones picked for ${plan.label}` : "the whole campaign's"}: <Link to={`/sim?${simQuery}`} className="underline">run the simulator over these chapters</Link> for the paths that are best in
+              still {plan.id ? `the ones optimised for ${checkpoints[start].label} onwards` : "the whole campaign's"}: <Link to={`/sim?${simQuery}`} className="underline">run the simulator over these chapters</Link> for the paths that are best in
               them alone.
             </>
           )}
@@ -307,7 +310,7 @@ export function PathsPage() {
       </RolesSection>
       <ChaptersSection view={view} />
       <ClassesSection data={data} />
-      <CaveatsSection caveats={caveats} />
+      <CaveatsSection data={data} caveats={caveats} />
     </div>
   )
 }
