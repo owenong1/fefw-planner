@@ -208,15 +208,19 @@ export function evalProfile(data, gear, refs, detail = false) {
   let phys = 0, mag = 0, safe = 0;
   const nMag = refs.filter((r) => r.magic).length, nPhys = refs.length - nMag;
   const shares = [];
+  // The weapon the unit attacks with is the one it is left holding when the enemy answers
+  // ("heldWeapon" in mechanics.json): weapon -> the share of the reference enemies it is used on.
+  const held = new Map();
+  const hold = (L, w) => held.set(L, (held.get(L) || 0) + w);
   for (const ref of refs) {
     const E = ref.loadout;
     const row = detail ? { ref, phys: null, mag: null, def: null } : null;
 
-    let best = 0, physTaken = 0;
+    let best = 0, physTaken = 0, bestL = null;
     for (const L of physical) {
       const info = detail ? {} : null;
       const s = bestStrike(L, E, F, info, best);
-      if (s > best) { best = s; physTaken = strike.taken; if (row) row.phys = info; }
+      if (s > best) { best = s; bestL = L; physTaken = strike.taken; if (row) row.phys = info; }
     }
     phys += best;
 
@@ -225,7 +229,7 @@ export function evalProfile(data, gear, refs, detail = false) {
     for (const L of magical) {
       const info = detail ? {} : null;
       const s = bestStrike(L, E, F, info);
-      shares.push({ s, taken: strike.taken, uses: L.uses, info });
+      shares.push({ s, taken: strike.taken, uses: L.uses, info, L });
     }
     shares.sort((a, b) => b.s - a.s);
     let left = KC, sum = 0, magTaken = 0;
@@ -239,55 +243,64 @@ export function evalProfile(data, gear, refs, detail = false) {
     mag += sum / KC;
     // Safety of the unit's own attack, for whichever kind of damage is its better one here.
     safe += 1 - (sum / KC > best ? magTaken / (KC - left || 1) : physTaken);
+    if (sum / KC > best) {
+      let casts = KC;
+      for (const c of shares) {
+        const n = Math.min(casts, c.uses);
+        hold(c.L, n / (KC - left));
+        casts -= n;
+        if (casts <= 0) break;
+      }
+    } else if (bestL) hold(bestL, 1);
     if (row && shares.length) row.mag = { ...shares[0].info, average: sum / KC, casts: Math.min(KC, shares[0].uses) };
 
     if (row) rows.push(row);
   }
 
-  // Defence. Bulk and avoid are read per enemy with the weapon that suits it best.
-  // Survival plays out a whole enemy phase: the unit holds one weapon while
-  // `enemyPhaseAttacks` attackers, drawn evenly from the physical (or magical)
-  // reference enemies, come at it one after another.
+  // Defence, with the weapons the unit attacks with (one that cannot hurt anything
+  // may be holding any of them). Bulk and avoid are read per enemy. Survival plays
+  // out a whole enemy phase: `enemyPhaseAttacks` attackers, drawn evenly from the
+  // physical (or magical) reference enemies, come at the unit one after another.
   const K = P.enemyPhaseAttacks.value;
-  const lost = refs.map(() => 1), hit = refs.map(() => 1), expected = refs.map(() => 1);
-  const phase = gear.loadouts.map((L) => {
+  if (!held.size) for (const L of gear.loadouts) hold(L, 1);
+  let total = 0;
+  for (const w of held.values()) total += w;
+  const lost = refs.map(() => 0), hit = refs.map(() => 0), expected = refs.map(() => 0);
+  const dmg = refs.map(() => 0), follow = refs.map(() => 0);
+  const survive = detail ? { phys: nPhys ? { alive: new Array(K).fill(0) } : null, mag: nMag ? { alive: new Array(K).fill(0) } : null } : null;
+  let pSurv = 0, mSurv = 0;
+  for (const [L, share] of held) {
+    const w = share / total;
     const n = lethalIndex(L.hp);
     const mixP = new Float64Array(n + 1), mixM = new Float64Array(n + 1);
-    let meanP = 0, meanM = 0;
     refs.forEach((ref, r) => {
       worstHit(L, ref.loadout, F, hitOut);
-      if (hitOut.expected < expected[r]) expected[r] = hitOut.expected;
-      if (hitOut.hit < hit[r]) hit[r] = hitOut.hit;
-      if (hitOut.lost < lost[r] || (rows && !rows[r].def)) {
-        lost[r] = Math.min(lost[r], hitOut.lost);
-        if (rows) rows[r].def = { weapon: L.weapon.name, dmg: hitOut.dmg, follow: hitOut.follow, lost: lost[r], hit: hitOut.hit };
-      }
-      const mix = ref.magic ? mixM : mixP, share = 1 / (ref.magic ? nMag : nPhys);
-      for (let j = 0; j <= n; j++) mix[j] += share * distB[j];
-      if (ref.magic) meanM += share * hitOut.expected; else meanP += share * hitOut.expected;
+      lost[r] += w * hitOut.lost;
+      hit[r] += w * hitOut.hit;
+      expected[r] += w * hitOut.expected;
+      dmg[r] += w * hitOut.dmg;
+      follow[r] += w * hitOut.follow;
+      const mix = ref.magic ? mixM : mixP, each = 1 / (ref.magic ? nMag : nPhys);
+      for (let j = 0; j <= n; j++) mix[j] += each * distB[j];
     });
-    return { L, n, mixP, mixM, meanP, meanM };
-  });
-  // The weapon to hold is the one that survives the phase best. Only weapons that lose
-  // close to the least HP per attack on average can be that one; the rest are not played out.
-  const survive = detail ? { phys: null, mag: null } : null;
-  const best = (mix, mean, key) => {
-    const least = Math.min(...phase.map((p) => p[mean]));
-    let top = 0;
-    for (const p of phase) {
-      if (p[mean] > least * 1.1 + 1e-9) continue;
-      const s = phaseSurvival(p[mix], p.n, K);
-      if (s > top || (survive && !survive[key])) { top = Math.max(top, s); if (survive) survive[key] = { weapon: p.L.weapon.name, alive: Array.from(series.subarray(0, K)) }; }
+    if (nPhys) {
+      pSurv += w * phaseSurvival(mixP, n, K);
+      if (survive) for (let k = 0; k < K; k++) survive.phys.alive[k] += w * series[k];
     }
-    return top;
-  };
-  const pSurv = nPhys ? best('mixP', 'meanP', 'phys') : 0;
-  const mSurv = nMag ? best('mixM', 'meanM', 'mag') : 0;
+    if (nMag) {
+      mSurv += w * phaseSurvival(mixM, n, K);
+      if (survive) for (let k = 0; k < K; k++) survive.mag.alive[k] += w * series[k];
+    }
+  }
+  const holding = detail ? [...held].map(([L, share]) => ({ weapon: L.weapon.name, share: share / total })).sort((x, y) => y.share - x.share) : null;
   let pBulk = 0, mBulk = 0, avoid = 0;
   refs.forEach((ref, r) => {
     if (ref.magic) mBulk += 1 - lost[r]; else pBulk += 1 - lost[r];
     avoid += 1 - hit[r];
-    if (rows) { rows[r].def.expected = expected[r]; rows[r].avoid = 1 - hit[r]; }
+    if (rows) {
+      rows[r].def = { weapon: holding[0].weapon, dmg: dmg[r], follow: follow[r], lost: lost[r], hit: hit[r], expected: expected[r] };
+      rows[r].avoid = 1 - hit[r];
+    }
   });
   const n = refs.length || 1;
   axes[PHYS_DMG] = 100 * phys / n;
@@ -309,5 +322,5 @@ export function evalProfile(data, gear, refs, detail = false) {
 
   const mov = effectiveMov(data, gear.cls, gear.effects) + (gear.cls.flying ? P.flyingMov : 0);
   axes[REACH] = 100 * clamp01((mov - P.movFloor) / (P.movCeil - P.movFloor));
-  return { axes, rows, healed, heals: healDetail, mov, survive };
+  return { axes, rows, healed, heals: healDetail, mov, survive, held: holding };
 }

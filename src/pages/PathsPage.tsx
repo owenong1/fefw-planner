@@ -1,6 +1,10 @@
 import { Fragment, useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router'
 import candidatesUrl from '../../data/pathCandidates.json?url'
+import candidatesP2Url from '../../data/pathCandidates.p2.json?url'
+import candidatesP3Url from '../../data/pathCandidates.p3.json?url'
+import pathsP2Url from '../../data/classPaths.p2.json?url'
+import pathsP3Url from '../../data/classPaths.p3.json?url'
 import { PathSteps } from '../components/ClassPath'
 import { CaveatsSection, ChaptersSection, ClassesSection, HowSection, InputsSection, RolesSection } from '../components/paths/Explain'
 import { NOTE, RoleChip } from '../components/paths/parts'
@@ -8,8 +12,8 @@ import { UnitDetail } from '../components/paths/UnitDetail'
 import { WeightEditor } from '../components/paths/WeightEditor'
 import { Avatar, Badge, Empty, PageHeader, Select } from '../components/ui'
 import { classById, classPaths, classSpoiler, roleAxes, unitById } from '../data'
-import { buildView } from '../data/pathModel'
-import type { PathCandidates } from '../data/schema'
+import { buildView, PLANS } from '../data/pathModel'
+import type { ClassPaths, PathCandidates } from '../data/schema'
 import { signed, trainLabel, vsCastTint } from '../lib/display'
 import { useSettings } from '../lib/settings'
 
@@ -20,24 +24,38 @@ const SECTIONS = [
 ]
 const TH = 'px-2 py-2 font-semibold whitespace-nowrap'
 
-/** The candidate paths behind the weight sliders: several megabytes, so fetched only once `wanted`. */
-function useCandidates(wanted: boolean) {
-  const [state, setState] = useState<{ status: 'idle' | 'ready' | 'error'; data: PathCandidates | null }>({ status: 'idle', data: null })
+type PlanId = (typeof PLANS)[number]['id']
+/** Each plan's results and candidate paths. The whole campaign's results are in the bundle; the rest are fetched. */
+const PLAN_FILES: Record<PlanId, { paths: string | null; candidates: string }> = {
+  '': { paths: null, candidates: candidatesUrl },
+  p2: { paths: pathsP2Url, candidates: candidatesP2Url },
+  p3: { paths: pathsP3Url, candidates: candidatesP3Url },
+}
+
+/** A data file fetched by URL once it is wanted (`url` null: not yet): another plan's results, or the candidate paths behind the weight sliders, which are several megabytes. */
+function useJson<T>(url: string | null) {
+  const [state, setState] = useState<{ url: string; data: T | null } | null>(null)
   useEffect(() => {
-    if (!wanted) return
+    if (!url) return
     let live = true
-    fetch(candidatesUrl)
+    fetch(url)
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
-      .then((data: PathCandidates) => live && setState({ status: 'ready', data }), () => live && setState({ status: 'error', data: null }))
+      .then((data: T) => live && setState({ url, data }), () => live && setState({ url, data: null }))
     return () => { live = false }
-  }, [wanted])
-  return { data: state.data, status: wanted && state.status === 'idle' ? 'loading' as const : state.status }
+  }, [url])
+  const current = state?.url === url ? state : null
+  return { data: current?.data ?? null, status: !url ? 'idle' as const : !current ? 'loading' as const : current.data ? 'ready' as const : 'error' as const }
 }
 
 export function PathsPage() {
   const { spoilerLevel } = useSettings()
   const [params, setParams] = useSearchParams()
-  const { checkpoints, units } = classPaths
+  // ?plan= is the stretch of the campaign the paths are picked for. Until its file has loaded the whole campaign's stay on show.
+  const planId = PLANS.find((p) => p.id === params.get('plan'))?.id ?? ''
+  const fetched = useJson<ClassPaths>(PLAN_FILES[planId].paths)
+  const data = fetched.data ?? classPaths
+  const plan = PLANS.find((p) => p.id === (fetched.data ? planId : ''))!
+  const { checkpoints, units } = data
   const first = classPaths.roles[0].id
   const roleParam = params.get('role')
   const viewId = roleParam === FIT || classPaths.roles.some((r) => r.id === roleParam) ? roleParam! : first
@@ -48,21 +66,23 @@ export function PathsPage() {
     const i = checkpoints.findIndex((c) => c.id === params.get(key))
     return i < 0 ? fallback : i
   }
-  const from = index('from', 0)
+  const start = Math.max(0, checkpoints.findIndex((c) => c.id === plan.from))
+  const from = Math.max(start, index('from', start))
   const to = Math.max(from, index('to', last))
-  const setQuery = (next: { role?: string; from?: number; to?: number }) => {
-    const q = { role: viewId, from, to, ...next }
+  const setQuery = (next: { role?: string; plan?: PlanId; from?: number; to?: number }) => {
+    const q = { role: viewId, plan: planId, from, to, ...next }
     setParams({
       ...(q.role !== first && { role: q.role }),
-      ...(q.from > 0 && { from: checkpoints[q.from].id }),
+      ...(q.plan && { plan: q.plan }),
+      ...(q.from > start && { from: checkpoints[q.from].id }),
       ...(q.to < last && { to: checkpoints[Math.max(q.from, q.to)].id }),
     }, { replace: true })
   }
 
   // Slider positions per role the reader has touched. They only take effect once the candidate paths have loaded.
   const [sliders, setSliders] = useState<Record<string, number[]>>({})
-  const { data: candidates, status } = useCandidates(Object.keys(sliders).length > 0)
-  const view = buildView(classPaths, candidates, sliders, from, to)
+  const { data: candidates, status } = useJson<PathCandidates>(Object.keys(sliders).length > 0 ? PLAN_FILES[plan.id].candidates : null)
+  const view = buildView(data, candidates, sliders, from, to)
   const { ranged } = view
 
   const [query, setQueryText] = useState('')
@@ -123,16 +143,20 @@ export function PathsPage() {
         </div>
         <div className="mb-4 flex flex-wrap items-end gap-x-4 gap-y-3">
           <Select
+            label="Best path for" value={planId} onChange={(v) => { setParams({ ...(viewId !== first && { role: viewId }), ...(v && { plan: v }) }, { replace: true }); setOpen(null) }}
+            options={PLANS.map((p) => ({ value: p.id, label: p.label }))}
+          />
+          <Select
             label="From chapter" value={String(from)} onChange={(v) => setQuery({ from: +v, to: Math.max(+v, to) })}
-            options={checkpoints.map((c, i) => ({ value: String(i), label: c.label }))}
+            options={checkpoints.flatMap((c, i) => (i >= start ? [{ value: String(i), label: c.label }] : []))}
           />
           <Select
             label="To chapter" value={String(to)} onChange={(v) => setQuery({ to: +v })}
             options={checkpoints.flatMap((c, i) => (i >= from ? [{ value: String(i), label: c.label }] : []))}
           />
           {ranged && (
-            <button onClick={() => setQuery({ from: 0, to: last })} className="rounded-lg border border-line bg-surface px-3 py-1.5 text-sm font-medium hover:border-accent">
-              Whole campaign
+            <button onClick={() => setQuery({ from: start, to: last })} className="rounded-lg border border-line bg-surface px-3 py-1.5 text-sm font-medium hover:border-accent">
+              All its chapters
             </button>
           )}
           <label className="flex flex-col gap-1 text-xs font-medium text-muted">
@@ -162,11 +186,19 @@ export function PathsPage() {
             </>
           )}
           {' '}Click a unit for its path, profile and chapter-by-chapter score.
+          {plan.id && (
+            <>
+              {' '}These paths are the ones that score best from {checkpoints[start].label} on. The classes taken before then are still part of the path, chosen for
+              what they leave the unit with and not for how it fights in them.
+            </>
+          )}
+          {fetched.status === 'loading' && ' Loading that plan…'}
+          {fetched.status === 'error' && ' That plan could not be loaded, so these are the whole campaign\'s paths.'}
           {ranged && (
             <>
               {' '}Score, vs cast and place count {checkpoints[from].label}{to > from && ` to ${checkpoints[to].label}`} only
               {absent > 0 && `, which leaves out ${absent} ${absent === 1 ? 'unit that has' : 'units that have'} not joined by then`}. The paths and the profile columns are
-              still the whole campaign's: <Link to={`/sim?${simQuery}`} className="underline">run the simulator over these chapters</Link> for the paths that are best in
+              still {plan.id ? `the ones picked for ${plan.label}` : "the whole campaign's"}: <Link to={`/sim?${simQuery}`} className="underline">run the simulator over these chapters</Link> for the paths that are best in
               them alone.
             </>
           )}
@@ -261,7 +293,7 @@ export function PathsPage() {
       </section>
 
       <HowSection view={view} />
-      <InputsSection />
+      <InputsSection data={data} />
       <RolesSection view={view}>
         <WeightEditor
           view={view} sliders={sliders} status={status} initialRole={role?.id ?? first}
@@ -274,7 +306,7 @@ export function PathsPage() {
         />
       </RolesSection>
       <ChaptersSection view={view} />
-      <ClassesSection />
+      <ClassesSection data={data} />
       <CaveatsSection caveats={caveats} />
     </div>
   )

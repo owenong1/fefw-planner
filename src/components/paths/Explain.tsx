@@ -2,6 +2,7 @@ import { useState, type ReactNode } from 'react'
 import { Link } from 'react-router'
 import { classById, classPaths, classSpoiler, unitById } from '../../data'
 import type { PathsView } from '../../data/pathModel'
+import type { ClassPaths } from '../../data/schema'
 import { classFitTint, roleColor, TIER_INFO } from '../../lib/display'
 import { useSettings } from '../../lib/settings'
 import { Legend, LineChart, TipRow } from '../LineChart'
@@ -9,14 +10,15 @@ import { ClassIcon, Select } from '../ui'
 import { GrowthStack, NOTE, Panel, RoleChip, Section } from './parts'
 import { AXIS_TEXT, chapterAxis } from './shared'
 
-const { counts, checkpoints, axes, tiers, units, scope } = classPaths
+// The same in every plan; what differs (units, class values, paths kept) is read from the plan on show.
+const { counts, checkpoints, axes, tiers, scope } = classPaths
 const nf = (n: number) => n.toLocaleString('en-US')
 const TH = 'border-b border-line px-2 py-1.5 text-xs font-semibold text-muted whitespace-nowrap'
 
 /** The five steps behind every score, and the first of them worked through for one unit. */
 export function HowSection({ view }: { view: PathsView }) {
   const { spoilerLevel } = useSettings()
-  const shown = units.filter((u) => unitById.get(u.unit)!.spoiler <= spoilerLevel && unitById.get(u.unit)!.growths)
+  const shown = view.data.units.filter((u) => unitById.get(u.unit)!.spoiler <= spoilerLevel && unitById.get(u.unit)!.growths)
     .sort((a, b) => unitById.get(a.unit)!.name.localeCompare(unitById.get(b.unit)!.name))
   const [unitId, setUnitId] = useState(shown[0]?.unit ?? '')
   const [picked, setPicked] = useState<string | null>(null)
@@ -82,10 +84,10 @@ function Stack({ parts }: { parts: { n: number; label: string; color: string }[]
 }
 
 /** How much data went in, and how much of it is published rather than estimated or assumed. */
-export function InputsSection() {
+export function InputsSection({ data }: { data: ClassPaths }) {
   const facts: [string, string][] = [
     [String(counts.units), 'units'], [String(counts.classes), 'classes'], [String(counts.weapons), 'weapons and spells'],
-    [String(checkpoints.length), 'chapters measured'], [nf(counts.paths), 'class paths kept and compared'],
+    [String(checkpoints.length), 'chapters measured'], [nf(data.counts.paths), 'class paths kept and compared'],
   ]
   return (
     <Section id="inputs" title="What goes in">
@@ -234,7 +236,7 @@ export function ChaptersSection({ view }: { view: PathsView }) {
 }
 
 /** What passing through each class costs a unit, per role and tier. */
-export function ClassesSection() {
+export function ClassesSection({ data }: { data: ClassPaths }) {
   const { spoilerLevel } = useSettings()
   const { roles } = classPaths
   return (
@@ -245,7 +247,7 @@ export function ClassesSection() {
       <div className="inline-flex items-center gap-2 text-xs text-muted">
         costs 6+ points <i className="block h-2.5 w-28 rounded-[3px]" style={{ background: `linear-gradient(90deg, ${classFitTint(-6)}, ${classFitTint(0)})` }} /> always best
       </div>
-      {classPaths.classTiers.map((t) => {
+      {data.classTiers.map((t) => {
         const best = (c: (typeof t.classes)[number]) => Math.max(...roles.map((r) => c.roles[r.id]?.gap ?? -99))
         const list = t.classes.filter((c) => classSpoiler(classById.get(c.class)!) <= spoilerLevel).sort((a, b) => best(b) - best(a))
         if (!list.length) return <p key={t.tier} className={NOTE}>The {t.tier} classes are hidden by your spoiler setting.</p>

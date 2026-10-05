@@ -463,7 +463,8 @@ function cmdPath(data, args) {
     print(`\nHP dealt = share of the enemy's HP removed, on average, in one attack you start; Kills = chance that attack kills; Attacks = attacks you expect to need to kill it.`);
     print(`The damage axes are 100 / Attacks, averaged over the enemies. Map avg = the same for magic over ${data.mechanics.profile.combatsPerMap.value} attacks with limited spell uses.`);
     print('HP lost = share of your HP gone after one attack the enemy starts, if every strike lands; Their hit = their chance to hit; Expected = HP lost on average with hit and crit chances played out.');
-    const phase = (label, sv) => (sv ? `${label} ${sv.alive.map((p, k) => `${k + 1}: ${pct(p)}`).join('  ')}  (holding ${sv.weapon})` : null);
+    print(`It defends holding the weapon it attacked with, so the "Their attack" columns and the survival below are averaged over: ${row.held.map((h) => `${h.weapon} ${pct(h.share)}`).join(', ')}.`);
+    const phase = (label, sv) => (sv ? `${label} ${sv.alive.map((p, k) => `${k + 1}: ${pct(p)}`).join('  ')}` : null);
     const lines = [phase('physical attackers', row.survive.phys), phase('magical attackers ', row.survive.mag)].filter(Boolean);
     if (lines.length) print(`Chance to still be standing after each attack of an enemy phase (the survival axes are the average):\n  ${lines.join('\n  ')}`);
     if (row.heals && row.heals.length) print(`Healing per map: ${row.heals.map((h) => `${h.name} x${Math.round(h.casts)} (${Math.round(h.amount)} HP each)`).join(', ')} = ${Math.round(row.healed)} HP`);
@@ -527,6 +528,7 @@ function matchupJson(ctx, row) {
     profile: Object.fromEntries(shownAxes(ctx).map((a) => [a.name, row.axes[a.i]])),
     references: row.rows.map((m) => ({ enemy: m.ref.cls.name, archetype: m.ref.archetype, level: m.ref.level,
       physical: m.phys, magic: m.mag, defence: m.def, avoid: m.avoid })),
+    held: row.held,
     healing: { perMap: row.healed, casts: row.heals },
     duel: row.duel ? { score: row.duel.score, matchups: row.duel.rows.map((m) => ({ enemy: m.enemy.name, level: m.enemy.level,
       source: m.enemy.source, weapon: m.enemy.weapon.name, share: m.enemy.share, playerPhase: m.pp, enemyPhase: m.ep })) } : undefined,

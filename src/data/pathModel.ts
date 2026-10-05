@@ -4,6 +4,17 @@
 
 import type { ClassPaths, PathCandidates, RolePath } from './schema'
 
+/**
+ * The stretches of the campaign the paths are picked for. Each is a search of its own (the importer runs the
+ * simulator once per plan, from checkpoint `from` on): the path that is best from Part II on is not the one that is
+ * best overall. Every plan but the first is a file the page fetches when it is chosen.
+ */
+export const PLANS = [
+  { id: '', label: 'The whole campaign', from: null },
+  { id: 'p2', label: 'Part II onwards', from: 'P2-01' },
+  { id: 'p3', label: 'Part III onwards', from: 'P3-01' },
+] as const
+
 /** One unit's path for a role and how it profiles: what the page needs of a `RolePath`, stored or re-scored. */
 export type RoleResult = Pick<RolePath, 'path' | 'train' | 'axes' | 'chapters'>
 export interface Standing { rank: number; vsCast: number; score: number; endgame: number }
@@ -28,7 +39,8 @@ export function castAverage(units: Units, results: Map<string, RoleResult>, chec
  * Each unit's standing in a role over the chapters `from`..`to` only (checkpoint indices): `score` is the average
  * over the chapters in range the unit is present for, `vsCast` its margin over the cast's average in those same
  * chapters, and `rank` its place on that margin. `endgame` is its score in the range's last chapter. Units absent
- * for the whole range are left out. This re-reads the paths it is given; it does not search for better ones.
+ * for the whole range are left out. This re-reads the paths it is given; it does not search for better ones
+ * (a plan in `PLANS` does).
  */
 export function standingsOver(units: Units, results: Map<string, RoleResult>, from: number, to: number) {
   const avg = castAverage(units, results, to + 1)
@@ -116,12 +128,16 @@ export interface RoleView {
   baseline: { results: Map<string, RoleResult>; standings: Map<string, Standing> } | null
 }
 export interface PathsView {
+  /** The plan's results, which everything else here is read from. */
+  data: ClassPaths
   roles: RoleView[]
   /** Each unit's best-fit role under these weights and chapters. */
   best: Map<string, string>
+  /** The first checkpoint the plan counts; `from` is never before it. */
+  start: number
   from: number
   to: number
-  /** Only part of the campaign is counted. */
+  /** Only part of the plan's chapters is counted. */
   ranged: boolean
 }
 
@@ -133,7 +149,8 @@ export interface PathsView {
  */
 export function buildView(data: ClassPaths, candidates: PathCandidates | null, sliders: Record<string, number[]>, from: number, to: number): PathsView {
   const { units, axes } = data
-  const ranged = from > 0 || to < data.checkpoints.length - 1
+  const start = Math.min(...units.map((u) => u.firstChapter))
+  const ranged = from > start || to < data.checkpoints.length - 1
   const roles = data.roles.map((role): RoleView => {
     const custom = sliders[role.id] ? normalizeWeights(axes, sliders[role.id]) : null
     const same = !custom || axes.every((a) => Math.abs((custom[a.id] ?? 0) - (role.weights[a.id] ?? 0)) < 1e-6)
@@ -152,5 +169,5 @@ export function buildView(data: ClassPaths, candidates: PathCandidates | null, s
   const best = ranged || roles.some((r) => r.edited)
     ? bestRoles(units, Object.fromEntries(roles.map((r) => [r.id, r.standings])))
     : new Map(units.map((u) => [u.unit, u.bestRole]))
-  return { roles, best, from, to, ranged }
+  return { data, roles, best, start, from, to, ranged }
 }

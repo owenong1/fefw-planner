@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { z } from 'zod'
-import type { PathCandidates } from './schema'
+import type { ClassPaths, PathCandidates } from './schema'
 import unitsJson from '../../data/units.json'
 import classesJson from '../../data/classes.json'
 import skillsJson from '../../data/skills.json'
@@ -12,7 +12,7 @@ import {
   aptitudeFit, canUseClass, classById, classPaths, combinedGrowths, isRecruitableOn, paralogueById, routeById, skillById,
   unitById, units,
 } from './index'
-import { bestRoles, buildView, normalizeWeights, rescore, standingsOver, type RoleResult } from './pathModel'
+import { bestRoles, buildView, normalizeWeights, rescore, standingsOver, type RoleResult, PLANS } from './pathModel'
 
 describe('data files match the schema', () => {
   it.each([
@@ -234,4 +234,39 @@ describe('class path standings and re-weighting', () => {
     const best = bestRoles(units, standings)
     for (const u of units) expect(standings[best.get(u.unit) as 'a' | 'b'].get(u.unit)!.rank).toBe(Math.min(standings.a.get(u.unit)!.rank, standings.b.get(u.unit)!.rank))
   })
+})
+
+describe('class paths picked for part of the campaign', () => {
+  // Read as text, like the candidates: these files are fetched by the page, never imported.
+  const files = import.meta.glob<string>('../../data/{classPaths,pathCandidates}.p*.json', { query: '?raw', import: 'default', eager: true })
+  const last = classPaths.checkpoints.length - 1
+  for (const plan of PLANS) {
+    if (!plan.id) continue
+    it(plan.label, () => {
+      const paths = JSON.parse(files[`../../data/classPaths.${plan.id}.json`]) as ClassPaths
+      const candidates = JSON.parse(files[`../../data/pathCandidates.${plan.id}.json`]) as PathCandidates
+      expect(classPathsSchema.safeParse(paths).error?.issues ?? []).toEqual([])
+      expect(pathCandidatesSchema.safeParse(candidates).error?.issues ?? []).toEqual([])
+      // Same chapters, roles, axes and units as the whole campaign's file, so the page can swap one for the other.
+      expect(paths.checkpoints).toEqual(classPaths.checkpoints)
+      expect(paths.roles).toEqual(classPaths.roles)
+      expect(paths.axes).toEqual(classPaths.axes)
+      expect(paths.units.map((u) => u.unit)).toEqual(classPaths.units.map((u) => u.unit))
+      const start = classPaths.checkpoints.findIndex((c) => c.id === plan.from)
+      expect(start).toBeGreaterThan(0)
+      for (const u of paths.units) {
+        expect(u.firstChapter, u.unit).toBeGreaterThanOrEqual(start)
+        expect(u.firstChapter + u.chapters, u.unit).toBe(last + 1)
+        for (const r of paths.roles) {
+          expect(u.roles[r.id].chapters.length, u.unit).toBe(u.chapters)
+          for (const s of u.roles[r.id].path) expect(classById.has(s.class), s.class).toBe(true)
+        }
+        expect(candidates.units[u.unit]?.length, u.unit).toBeGreaterThan(0)
+        for (const c of candidates.units[u.unit]) expect(c.ch.length, u.unit).toBe(u.chapters * paths.axes.length)
+      }
+      const view = buildView(paths, null, {}, start, last)
+      expect(view.start).toBe(start)
+      expect(view.ranged).toBe(false)
+    })
+  }
 })

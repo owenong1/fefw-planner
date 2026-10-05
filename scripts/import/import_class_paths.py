@@ -1,12 +1,21 @@
-"""Builds data/classPaths.json and data/pathCandidates.json from the growth simulator's results.
+"""Builds data/classPaths*.json and data/pathCandidates*.json from the growth simulator's results.
 
-Usage: python3 scripts/import/import_class_paths.py [--from <export.json>] [simulator options]
+Usage: python3 scripts/import/import_class_paths.py [--exports <dir>] [simulator options]
 
 The simulator (src/sim/, run from the terminal by scripts/sim/cli.js) searches
 every unit's class paths and recommends one per role. This runs its `export`
-command (about a minute; needs Node 18+) and rewrites unit and class names as
-this site's ids. `--from` reads an export made earlier instead of running it.
-Anything else is passed to the simulator, e.g. `--hard` or `--route cai`.
+command once per plan in PLANS (about two minutes in all; needs Node 18+) and
+rewrites unit and class names as this site's ids. A plan is the stretch of the
+campaign the paths are picked for: the whole of it, or Part II or Part III
+onwards (the simulator's `--from`), which is a search of its own because the
+best path for the late game is not the best one overall. The whole campaign
+goes in classPaths.json and pathCandidates.json, the others in
+classPaths.<plan>.json and pathCandidates.<plan>.json. The plans are also
+listed in src/data/pathModel.ts.
+
+`--exports` reads exports made earlier instead of running the simulator:
+export.json, export.p2.json and export.p3.json in that directory. Anything
+else is passed to the simulator, e.g. `--hard` or `--route cai`.
 
 The export's candidate paths (what the Class Paths page re-scores when a role's
 weights are edited) are several megabytes, so they go in a file of their own
@@ -19,8 +28,8 @@ import sys
 import tempfile
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-OUT = os.path.join(ROOT, 'data', 'classPaths.json')
-CANDIDATES = os.path.join(ROOT, 'data', 'pathCandidates.json')
+# Plan id (the file suffix) -> the checkpoint the simulator scores from; None is the whole campaign.
+PLANS = {'': None, 'p2': 'P2-01', 'p3': 'P3-01'}
 sys.path.insert(0, os.path.dirname(__file__))
 from import_sources import slug  # noqa: E402
 
@@ -45,13 +54,22 @@ def run_sim(extra):
 
 def main():
     args = sys.argv[1:]
-    source = take(args, '--from')
-    if source:
-        with open(source, encoding='utf-8') as f:
-            export = json.load(f)
-    else:
-        export = run_sim(args)
+    source = take(args, '--exports')
+    if '--from' in args:
+        sys.exit('--from is set per plan by this importer; see PLANS.')
+    for plan, start in PLANS.items():
+        suffix = f'.{plan}' if plan else ''
+        if source:
+            with open(os.path.join(source, f'export{suffix}.json'), encoding='utf-8') as f:
+                export = json.load(f)
+        else:
+            export = run_sim([*args, *(['--from', start] if start else [])])
+        write(export, suffix)
 
+
+def write(export, suffix):
+    out = os.path.join(ROOT, 'data', f'classPaths{suffix}.json')
+    out_candidates = os.path.join(ROOT, 'data', f'pathCandidates{suffix}.json')
     with open(os.path.join(ROOT, 'data', 'units.json'), encoding='utf-8') as f:
         unit_ids = {u['id'] for u in json.load(f)}
     with open(os.path.join(ROOT, 'data', 'classes.json'), encoding='utf-8') as f:
@@ -88,12 +106,12 @@ def main():
     text = json.dumps({k: (f'@@{k}@@' if k in compact else v) for k, v in head.items()}, indent=1)[:-2]
     for k, rows in compact.items():
         text = text.replace(f'"@@{k}@@"', '[\n' + ',\n'.join('  ' + line(x) for x in head[k]) + '\n ]')
-    with open(OUT, 'w', encoding='utf-8') as f:
+    with open(out, 'w', encoding='utf-8') as f:
         f.write(text + ',\n "units": [\n' + ',\n'.join('  ' + line(u) for u in units) + '\n ]\n}\n')
-    with open(CANDIDATES, 'w', encoding='utf-8') as f:
+    with open(out_candidates, 'w', encoding='utf-8') as f:
         f.write('{\n "units": {\n' + ',\n'.join(f'  {json.dumps(k)}: {line(candidates[k])}' for k in sorted(candidates)) + '\n }\n}\n')
-    print(f'Wrote {os.path.relpath(OUT, ROOT)}: {len(units)} units, {len(head["roles"])} roles')
-    print(f'Wrote {os.path.relpath(CANDIDATES, ROOT)}: {sum(len(c) for c in candidates.values())} candidate paths')
+    print(f'Wrote {os.path.relpath(out, ROOT)}: {len(units)} units, {len(head["roles"])} roles')
+    print(f'Wrote {os.path.relpath(out_candidates, ROOT)}: {sum(len(c) for c in candidates.values())} candidate paths')
 
 
 if __name__ == '__main__':

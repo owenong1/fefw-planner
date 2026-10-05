@@ -52,7 +52,7 @@ for the share of playthroughs that get it:
 | Mag dmg | The same with magic, averaged over a map's worth of attacks because spells run out |
 | Best dmg | The larger of the two |
 | Safe atk | Share of its own HP the unit keeps during that attack (100 = the enemy cannot answer) |
-| Phys bulk | Share of its HP left after a physical enemy attacks it, if every strike lands |
+| Phys bulk | Share of its HP left after a physical enemy attacks it, if every strike lands. This, avoid and survival are measured holding the weapons the unit attacks with |
 | Mag bulk | The same against a magic enemy |
 | Avoid | Chance an enemy's strike misses |
 | Phys surv / Mag surv | An enemy phase of 6 attacks from physical (or magical) enemies, one after another, with hit and crit chances played out: the share of those attacks the unit is still standing for. Bulk and avoid combined, and dying counts |
@@ -198,6 +198,12 @@ holds the widths.
 - **Expected levels per chapter** are interpolated between a handful of known
   join levels and boss levels.
 - **Gauntlets give +10 Avoid** (the game says "high Avoid", no number).
+- **A unit defends with the weapon it attacked with.** It cannot swap between
+  its attack and the enemy phase, so each weapon is held for the share of the
+  reference enemies it is the unit's best attack against, and bulk, avoid and
+  survival average over those. A unit that ends its turn without attacking
+  could hold anything; that is not modelled. The legacy `duel` role still
+  picks its enemy-phase weapon freely.
 - **Standard gear only**: wooden to silver weapons plus the thrown spears and
   axes (Javelin to Pilum, Hand Axe to Sagaris), unlocked by level and skill
   rank. No relics, special shop weapons, forging or combat arts.

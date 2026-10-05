@@ -118,6 +118,19 @@ test('one point of Str that turns two attacks into one moves the damage axis', (
   assert.ok(at.speed - below.speed > 0.2);        // ... but the kill is now certain
 });
 
+test('a unit defends with the weapon it attacked with', () => {
+  // A Warrior can hold gauntlets for their Avoid, but only for the enemies it attacks with them.
+  const war = profile('Cai', 'Warrior', 15, fighter);
+  const picks = war.rows.map((r) => r.phys.weapon);
+  assert.ok(new Set(picks).size > 1);
+  assert.ok(Math.abs(war.held.reduce((sum, h) => sum + h.share, 0) - 1) < 1e-9);
+  for (const h of war.held) assert.ok(Math.abs(h.share - picks.filter((w) => w === h.weapon).length / picks.length) < 1e-9);
+  // With one weapon the defensive numbers are that weapon's own.
+  const bow = profile('Cai', 'Sniper', 15, fighter);
+  assert.deepEqual(new Set(bow.held.map((h) => h.weapon)), new Set(bow.rows.map((r) => r.phys.weapon)));
+  assert.ok(Math.abs(bow.axes[ax('avoid')] - 100 * bow.rows.reduce((sum, r) => sum + r.avoid, 0) / bow.rows.length) < 1e-9);
+});
+
 test('survival plays out a whole enemy phase', () => {
   const dist = (pairs, n) => { const d = new Float64Array(n + 1); for (const [k, p] of pairs) d[k] = p; return d; };
   assert.equal(phaseSurvival(dist([[0, 1]], 30), 30, 6), 1);

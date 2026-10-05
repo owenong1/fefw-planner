@@ -6,7 +6,7 @@ import { useSettings } from '../../lib/settings'
 import { NOTE, Panel, RoleChip } from './parts'
 import { defaultSliders } from './shared'
 
-const { axes, units } = classPaths
+const { axes } = classPaths
 
 /**
  * Sliders for one role's weights. Moving one re-scores every unit's candidate paths for that role in the browser,
@@ -32,7 +32,7 @@ export function WeightEditor({
   const summary = useMemo(() => {
     if (!role.baseline) return null
     const { results: stored, standings: before } = role.baseline
-    const moved = units.flatMap((u) => {
+    const moved = view.data.units.flatMap((u) => {
       const was = before.get(u.unit), now = role.standings.get(u.unit)
       if (!was || !now) return []
       return [{ unit: unitById.get(u.unit)!, was: was.rank, now: now.rank, path: JSON.stringify(stored.get(u.unit)!.path) !== JSON.stringify(role.results.get(u.unit)!.path) }]
@@ -45,7 +45,7 @@ export function WeightEditor({
       up: [...shown].sort((x, y) => (y.was - y.now) - (x.was - x.now)).filter((m) => m.was > m.now).slice(0, 3),
       down: [...shown].sort((x, y) => (x.was - x.now) - (y.was - y.now)).filter((m) => m.was < m.now).slice(0, 3),
     }
-  }, [role, spoilerLevel])
+  }, [role, view.data, spoilerLevel])
   const list = (ms: NonNullable<typeof summary>['up']) => ms.map((m) => `${m.unit.name} #${m.was} → #${m.now}`).join(', ')
 
   return (
@@ -103,7 +103,7 @@ export function WeightEditor({
         )}
       </p>
       <p className={NOTE}>
-        Edited weights are re-scored in your browser from the {classPaths.units.reduce((n, u) => n + u.paths, 0).toLocaleString('en-US')} paths the search kept, narrowed to the
+        Edited weights are re-scored in your browser from the {view.data.units.reduce((n, u) => n + u.paths, 0).toLocaleString('en-US')} paths the search kept, narrowed to the
         ones that could lead under some weighting, using expected stats. Level-ups are not re-rolled, so near-ties are settled by score and then by the least training.
         The class table below keeps the original weights. The edit lasts until you leave the page.
       </p>
