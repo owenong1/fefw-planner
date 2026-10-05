@@ -23,7 +23,11 @@ export function PathsPage() {
       <PageHeader
         title="Class Paths"
         subtitle="The class path the growth simulator recommends for each unit in each role. A unit's growth rates are its own plus its current class's, so the classes it passes through decide the stats it ends up with."
-      />
+      >
+        <Link to={`/sim?cmd=all${role.id === classPaths.roles[0].id ? '' : `&role=${role.id}`}`} className="rounded-lg border border-line bg-surface px-3 py-1.5 text-sm font-medium hover:border-accent">
+          Re-run with other rules
+        </Link>
+      </PageHeader>
       <div className="mb-4 overflow-x-auto pb-1">
         <Segmented
           label="Role"
@@ -106,6 +110,10 @@ export function PathsPage() {
           <li>Train is the number of skill ranks the path's exams ask for beyond what its classes teach, to make up at the Arena or with manuals.</li>
           <li>A level beside a class means the change is taken later than the tier's usual level (5 / 20 / 35 / 45).</li>
           <li>Within a role, one or two classes often lead for most of the cast, and near-identical paths are hard to separate.</li>
+          <li>
+            The <Link to="/sim" className="underline">simulator</Link> runs the same search in your browser: other routes, hard difficulty, Divine classes, one unit's
+            ranked paths chapter by chapter, or a path of your own.
+          </li>
         </ul>
       </div>
     </div>

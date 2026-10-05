@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fortune's Weave Path Atlas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one reading column. The explanation runs in the order a number is made
+   (growth -> path -> combat -> profile -> role), then the results it produces.
+   Colour jobs: role = identity (six fixed hues), vs-cast = diverging blue/red,
+   class fit and data firmness = one-hue blue ramp. */
+:root {
+  --page: #f2f4f7; --surface: #fcfcfb; --raised: #ffffff;
+  --ink: #0e1116; --ink2: #4a4f57; --muted: #7d828a;
+  --grid: #e3e5e8; --axis: #c2c6cc; --border: rgba(14,17,22,.12);
+  --r1: #eb6834; --r2: #4a3aa7; --r3: #1baf7a; --r4: #eda100; --r5: #e87ba4; --r6: #008300;
+  --r7: #2a78d6; --r8: #e34948; --other: #898781;
+  --pos: #2a78d6; --neg: #e34948; --mid: #eceef1;
+  --t1: #184f95; --t2: #3987e5; --t3: #9ec5f4;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0e0f11; --surface: #1a1a19; --raised: #222322;
+    --ink: #ffffff; --ink2: #c5c7cb; --muted: #8b8f96;
+    --grid: #2b2c2e; --axis: #3a3b3e; --border: rgba(255,255,255,.12);
+    --r1: #d95926; --r2: #9085e9; --r3: #199e70; --r4: #c98500; --r5: #d55181; --r6: #008300;
+    --r7: #3987e5; --r8: #e66767; --other: #898781;
+    --pos: #3987e5; --neg: #e66767; --mid: #303133;
+    --t1: #86b6ef; --t2: #3987e5; --t3: #184f95;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0e0f11; --surface: #1a1a19; --raised: #222322;
+  --ink: #ffffff; --ink2: #c5c7cb; --muted: #8b8f96;
+  --grid: #2b2c2e; --axis: #3a3b3e; --border: rgba(255,255,255,.12);
+  --r1: #d95926; --r2: #9085e9; --r3: #199e70; --r4: #c98500; --r5: #d55181; --r6: #008300;
+  --r7: #3987e5; --r8: #e66767; --other: #898781;
+  --pos: #3987e5; --neg: #e66767; --mid: #303133;
+  --t1: #86b6ef; --t2: #3987e5; --t3: #184f95;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.55 var(--sans); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; }
+header.top { padding-block: 36px 18px; }
+header.top h1 { font-size: 30px; line-height: 1.15; margin: 0 0 6px; letter-spacing: -.01em; text-wrap: balance; }
+header.top p { margin: 0; color: var(--ink2); max-width: 68ch; }
+.meta { font: 12px var(--mono); color: var(--muted); margin-top: 10px; }
+nav.toc { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--page); border-bottom: 1px solid var(--border); }
+nav.toc .wrap { display: flex; gap: 4px 18px; flex-wrap: wrap; padding-block: 10px; }
+nav.toc a { color: var(--ink2); text-decoration: none; font-weight: 500; font-size: 14px; }
+nav.toc a:hover, nav.toc a:focus-visible { color: var(--ink); text-decoration: underline; }
+main { display: flex; flex-direction: column; gap: 44px; padding-block: 30px 60px; }
+section { display: flex; flex-direction: column; gap: 18px; min-width: 0; scroll-margin-top: 56px; }
+h2 { font-size: 21px; margin: 0; letter-spacing: -.005em; }
+h3 { font-size: 15px; margin: 0; font-weight: 600; }
+p { margin: 0; }
+.lede { color: var(--ink2); max-width: 72ch; }
+.note { color: var(--muted); font-size: 13px; max-width: 80ch; }
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.cols > * { min-width: 0; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.scroll { overflow-x: auto; }
+
+/* pipeline */
+.pipe { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; counter-reset: step; }
+.pipe li { list-style: none; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px; position: relative; counter-increment: step; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.pipe li::before { content: counter(step); font: 500 12px var(--mono); color: var(--muted); }
+.pipe li b { font-size: 14px; }
+.pipe li span { color: var(--ink2); font-size: 13px; line-height: 1.45; }
+.pipe li:not(:last-child)::after { content: "→"; position: absolute; right: -10px; top: 10px; color: var(--muted); font-size: 13px; z-index: 1; }
+ol.pipe { margin: 0; padding: 0; }
+@media (max-width: 900px) { .pipe { grid-template-columns: 1fr; } .pipe li:not(:last-child)::after { content: "↓"; right: 12px; top: auto; bottom: -15px; } }
+
+/* inputs */
+.facts { display: flex; flex-wrap: wrap; gap: 8px 26px; }
+.facts div { display: flex; flex-direction: column; }
+.facts b { font: 500 22px var(--mono); }
+.facts span { color: var(--muted); font-size: 12px; }
+.trust { display: grid; grid-template-columns: minmax(110px, max-content) 1fr; gap: 10px 14px; align-items: center; }
+.trust .lab { font-size: 13px; font-weight: 500; }
+.stack { display: flex; gap: 2px; height: 14px; }
+.stack i { display: block; min-width: 3px; border-radius: 3px; }
+.keys { display: flex; flex-wrap: wrap; gap: 2px 14px; font-size: 12px; color: var(--ink2); margin-top: 4px; }
+.keys span { display: inline-flex; align-items: center; gap: 5px; }
+.keys i, .chip i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; flex: none; }
+.chip { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 13px; }
+
+/* growth bars */
+.grow { display: grid; grid-template-columns: 34px 1fr max-content; gap: 6px 10px; align-items: center; }
+.grow .k { font: 500 12px var(--mono); text-transform: uppercase; color: var(--ink2); letter-spacing: .04em; }
+.grow .track { position: relative; height: 12px; display: flex; gap: 2px; background: linear-gradient(var(--grid), var(--grid)) left center / 100% 1px no-repeat; }
+.grow .track i { display: block; height: 100%; border-radius: 0 3px 3px 0; }
+.grow .track .base { background: var(--muted); border-radius: 0; }
+.grow .track .lost { background: repeating-linear-gradient(135deg, var(--muted) 0 2px, transparent 2px 5px); border: 1px solid var(--muted); }
+.grow .track .mark { position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--axis); }
+.grow .v { font: 12px var(--mono); color: var(--ink2); white-space: nowrap; }
+.grow .v b { color: var(--ink); font-weight: 500; }
+
+/* controls */
+.controls { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+.seg { display: flex; flex-wrap: wrap; gap: 4px; }
+.seg button, select, input[type="search"] { font: 500 13px var(--sans); color: var(--ink); background: var(--raised); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; }
+.seg button { cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.seg button i { width: 9px; height: 9px; border-radius: 3px; }
+.seg button[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.seg button:hover { border-color: var(--ink2); }
+:focus-visible { outline: 2px solid var(--pos); outline-offset: 2px; }
+label.inl { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink2); }
+input[type="search"] { min-width: 0; width: 200px; }
+
+/* tables */
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; font-weight: 600; font-size: 12px; color: var(--ink2); padding: 6px 8px; border-bottom: 1px solid var(--axis); white-space: nowrap; vertical-align: bottom; }
+td { padding: 5px 8px; border-bottom: 1px solid var(--grid); vertical-align: middle; white-space: nowrap; }
+th.r, td.r { text-align: right; }
+td.path { white-space: normal; min-width: 200px; color: var(--ink2); }
+tr.unit { cursor: pointer; }
+tr.unit:hover td { background: color-mix(in oklab, var(--ink) 4%, transparent); }
+tr.unit button { all: unset; cursor: pointer; font-weight: 600; }
+tr.unit button:focus-visible { outline: 2px solid var(--pos); outline-offset: 2px; }
+th.on { color: var(--ink); box-shadow: inset 0 -2px 0 var(--ink); }
+td.cell { padding: 3px; }
+.heat { display: flex; flex-direction: column; align-items: flex-end; border-radius: 4px; padding: 3px 7px; line-height: 1.25; color: var(--ink); min-width: 52px; }
+th .chip { white-space: normal; text-align: left; line-height: 1.2; }
+.heat b { font: 500 13px var(--mono); }
+.heat small { font: 11px var(--mono); color: var(--ink2); }
+sup.est { color: var(--muted); font-weight: 400; }
+tr.detail > td { background: var(--raised); white-space: normal; padding: 16px; border-bottom: 2px solid var(--axis); }
+.detail-in { position: sticky; left: 16px; width: var(--dw, 100%); max-width: 100%; }
+.detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
+.detail-grid > div { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.steps { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.steps span { border: 1px solid var(--border); border-left-width: 4px; border-radius: 4px; padding: 3px 9px; font-weight: 500; background: var(--surface); }
+.steps em { color: var(--muted); font-style: normal; }
+.kv { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.kv div { display: flex; flex-direction: column; }
+.kv b { font: 500 17px var(--mono); }
+.kv span { font-size: 12px; color: var(--muted); }
+.axes { display: grid; grid-template-columns: max-content 1fr 34px max-content; gap: 5px 10px; align-items: center; font-size: 13px; }
+.axes .bar { height: 10px; background: linear-gradient(var(--grid), var(--grid)) left center / 100% 1px no-repeat; }
+.axes .bar i { display: block; height: 100%; border-radius: 0 4px 4px 0; min-width: 1px; }
+.axes .w { font: 11px var(--mono); color: var(--muted); }
+.axes .n { font: 12px var(--mono); text-align: right; }
+.wcell { border-radius: 4px; padding: 4px 6px; text-align: center; font: 500 12px var(--mono); color: #fff; }
+dl.gloss { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 13px; }
+dl.gloss dt { font-weight: 600; }
+dl.gloss dd { margin: 0; color: var(--ink2); }
+@media (max-width: 560px) { dl.gloss { grid-template-columns: 1fr; gap: 0; } dl.gloss dd { margin-bottom: 8px; } }
+.sliders { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 8px 28px; }
+.sliders label { display: grid; grid-template-columns: 78px 1fr 44px; gap: 10px; align-items: center; font-size: 13px; }
+.sliders input[type="range"] { width: 100%; min-width: 0; accent-color: var(--role, var(--pos)); }
+.sliders output { font: 500 12px var(--mono); text-align: right; }
+.sliders label.zero { color: var(--muted); }
+.ed { font: 500 10px var(--mono); text-transform: uppercase; letter-spacing: .05em; border: 1px solid var(--axis); border-radius: 3px; padding: 0 4px; color: var(--ink2); margin-left: 2px; }
+.w-sum { font-size: 13px; color: var(--ink2); max-width: 90ch; }
+.w-sum b { color: var(--ink); }
+.scale { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink2); }
+.scale i { display: block; width: 120px; height: 10px; border-radius: 3px; }
+.plot { position: relative; min-width: 0; }
+.plot svg { display: block; }
+.plot text { font: 11px var(--mono); fill: var(--muted); }
+#tip { position: fixed; z-index: 20; pointer-events: none; background: var(--raised); color: var(--ink); border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; font-size: 12px; line-height: 1.5; box-shadow: 0 6px 20px rgba(0,0,0,.18); max-width: 320px; }
+#tip b { font-weight: 600; }
+#tip .row { display: flex; justify-content: space-between; gap: 16px; }
+#tip .row span:last-child { font-family: var(--mono); }
+ul.caveats { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; color: var(--ink2); max-width: 85ch; }
+ul.caveats b { color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <h1>Fortune's Weave Path Atlas</h1>
+  <p>How the growth simulator turns growth rates into a class path for every unit, and what it found. Colour always means the same thing: a role, a place against the cast, or how well a class fits.</p>
+  <div class="meta" id="meta"></div>
+</div></header>
+<nav class="toc" aria-label="Sections"><div class="wrap">
+  <a href="#how">How a number is made</a><a href="#inputs">What goes in</a><a href="#roles">Axes and roles</a><a href="#chapters">Chapters</a><a href="#results">Results by unit</a><a href="#classes">Classes</a><a href="#caveats">Before trusting a number</a>
+</div></nav>
+<main class="wrap" id="app"></main>
+<div id="tip" hidden></div>
+<script>
+const D = "__DATA__";
+const $ = (s, el = document) => el.querySelector(s);
+const app = $('#app');
+if (typeof D === 'string') {
+  app.innerHTML = '<p class="lede">This is the page template. Run <code>npm run visuals</code> to fill it with data and write out/visuals.html.</p>';
+} else (function () {
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const f1 = (x) => x.toFixed(1);
+  const sgn = (x) => (x > 0.049 ? '+' : x < -0.049 ? '−' : '') + Math.abs(x).toFixed(1);
+  const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+  const nf = (n) => n.toLocaleString('en-US');
+
+  // Role colour follows the role's id, not its position, so adding or removing a role never repaints the others.
+  const KNOWN = ['striker', 'mage', 'tank', 'magetank', 'mixedtank', 'healer'];
+  const slot = {}; let extra = 7;
+  D.roles.forEach((r) => { const k = KNOWN.indexOf(r.id); slot[r.id] = k >= 0 ? k + 1 : extra <= 8 ? extra++ : 0; });
+  const rc = (id) => (slot[id] ? `var(--r${slot[id]})` : 'var(--other)');
+  const roleBy = Object.fromEntries(D.roles.map((r) => [r.id, r]));
+  const chip = (id) => `<span class="chip"><i style="background:${rc(id)}"></i>${esc(roleBy[id].label)}${roleBy[id].custom ? '<span class="ed">edited</span>' : ''}</span>`;
+  const axisIndex = Object.fromEntries(D.axes.map((a, i) => [a.id, i]));
+  const CP = D.checkpoints, C = D.counts;
+  const vsBg = (v) => `color-mix(in oklab, var(${v >= 0 ? '--pos' : '--neg'}) ${Math.round(clamp(Math.abs(v) / 15, 0, 1) * 70)}%, var(--mid))`;
+  const fitBg = (gap) => `color-mix(in oklab, var(--pos) ${Math.round(clamp(1 + gap / 6, 0, 1) * 72)}%, var(--mid))`;
+
+  // ---------------------------------------------------------------- tooltip
+  const tip = $('#tip');
+  function showTip(html, e) {
+    tip.innerHTML = html; tip.hidden = false;
+    const w = tip.offsetWidth, h = tip.offsetHeight;
+    let x = e.clientX + 14, y = e.clientY + 14;
+    if (x + w > innerWidth - 8) x = e.clientX - w - 14;
+    if (y + h > innerHeight - 8) y = e.clientY - h - 14;
+    tip.style.left = Math.max(8, x) + 'px'; tip.style.top = Math.max(8, y) + 'px';
+  }
+  document.addEventListener('pointermove', (e) => {
+    if (e.target.closest && e.target.closest('.plot')) return;
+    const t = e.target.closest && e.target.closest('[data-tip]');
+    if (t) showTip(t.dataset.tip, e); else tip.hidden = true;
+  });
+  const tipRow = (label, value, color) => `<div class="row"><span>${color ? `<i style="display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px;background:${color}"></i>` : ''}${label}</span><span>${value}</span></div>`;
+
+  // ---------------------------------------------------------------- line chart over the chapters
+  const charts = [];
+  const partOf = (cp) => cp.label.replace(/\s+\S+$/, '');
+  function lineChart(el, cfg) {
+    const draw = () => {
+      const W = Math.max(260, el.clientWidth), H = cfg.height || 240, m = { t: 24, r: 14, b: 26, l: 34 };
+      const n = CP.length, iw = W - m.l - m.r, ih = H - m.t - m.b;
+      const x = (i) => m.l + (n === 1 ? iw / 2 : (i * iw) / (n - 1));
+      const y = (v) => m.t + ih - ((v - cfg.y0) / (cfg.y1 - cfg.y0)) * ih;
+      let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.label)}">`;
+      for (const t of cfg.ticks) {
+        s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(t)}" y2="${y(t)}" stroke="var(--grid)" stroke-width="1"/><text x="${m.l - 6}" y="${y(t) + 4}" text-anchor="end">${t}</text>`;
+      }
+      CP.forEach((cp, i) => {
+        if (i === 0 || partOf(cp) !== partOf(CP[i - 1])) {
+          if (i) s += `<line x1="${x(i) - iw / (n - 1) / 2}" x2="${x(i) - iw / (n - 1) / 2}" y1="${m.t - 12}" y2="${m.t + ih}" stroke="var(--axis)" stroke-width="1"/>`;
+          s += `<text x="${i ? x(i) - iw / (n - 1) / 2 + 6 : m.l}" y="${m.t - 10}" style="fill:var(--ink2);font-weight:500">${esc(partOf(cp))}</text>`;
+        }
+      });
+      const step = Math.ceil(n / Math.max(1, Math.floor(iw / 26)));
+      CP.forEach((cp, i) => { if (i % step === 0) s += `<text x="${x(i)}" y="${H - 8}" text-anchor="middle">${Number(cp.id.split('-')[1]) || esc(cp.id)}</text>`; });
+      for (const r of cfg.refs || []) {
+        s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(r.v)}" y2="${y(r.v)}" stroke="var(--axis)" stroke-width="1" stroke-dasharray="2 4"/><text x="${W - m.r}" y="${y(r.v) - 4}" text-anchor="end">${esc(r.label)}</text>`;
+      }
+      for (const se of cfg.series) {
+        if (!se.points.length) continue;
+        s += `<path d="${se.points.map((p, k) => `${k ? 'L' : 'M'}${x(p[0]).toFixed(1)} ${y(p[1]).toFixed(1)}`).join('')}" fill="none" stroke="${se.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"${se.dash ? ` stroke-dasharray="${se.dash}"` : ''}/>`;
+        if (se.points.length === 1) s += `<circle cx="${x(se.points[0][0])}" cy="${y(se.points[0][1])}" r="4" fill="${se.color}"/>`;
+      }
+      s += `<g class="hov"></g><rect x="${m.l}" y="${m.t}" width="${iw}" height="${ih}" fill="transparent"/></svg>`;
+      el.innerHTML = s;
+      const hov = $('.hov', el), rect = $('rect', el);
+      rect.addEventListener('pointermove', (e) => {
+        const b = el.getBoundingClientRect();
+        const i = clamp(Math.round(((e.clientX - b.left - m.l) / iw) * (n - 1)), 0, n - 1);
+        let g = `<line x1="${x(i)}" x2="${x(i)}" y1="${m.t}" y2="${m.t + ih}" stroke="var(--axis)" stroke-width="1"/>`;
+        for (const se of cfg.series) {
+          const p = se.points.find((q) => q[0] === i);
+          if (p) g += `<circle cx="${x(i)}" cy="${y(p[1])}" r="4" fill="${se.color}" stroke="var(--surface)" stroke-width="2"/>`;
+        }
+        hov.innerHTML = g;
+        showTip(cfg.tip(i), e);
+      });
+      rect.addEventListener('pointerleave', () => { hov.innerHTML = ''; tip.hidden = true; });
+    };
+    draw();
+    const at = charts.findIndex((c) => c.el === el || !c.el.isConnected);
+    if (at >= 0) charts[at] = { el, draw }; else charts.push({ el, draw });
+  }
+  let resizeTimer;
+  addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { $('#r-table').style.setProperty('--dw', `${$('#r-table').parentElement.clientWidth - 46}px`); charts.forEach((c) => c.el.isConnected && c.draw()); }, 120); });
+
+  // ---------------------------------------------------------------- growth bars
+  function growthBars(u, roleId) {
+    const cls = u.roles[roleId].firstClass, keys = Object.keys(u.growths);
+    const max = Math.max(100, ...keys.map((k) => Math.max(u.growths[k], u.growths[k] + (cls.growths[k] || 0))));
+    const pct = (v) => `${((v / max) * 100).toFixed(2)}%`;
+    return `<div class="grow">${keys.map((k) => {
+      const own = u.growths[k], add = cls.growths[k] || 0, total = Math.max(0, own + add);
+      const base = add < 0 ? total : own;
+      return `<span class="k">${k}</span><div class="track"><i class="base" style="width:${pct(base)}"></i>${add > 0 ? `<i style="width:${pct(add)};background:${rc(roleId)}"></i>` : add < 0 ? `<i class="lost" style="width:${pct(own - total)}"></i>` : ''}${max > 100 ? `<span class="mark" style="left:${pct(100)}"></span>` : ''}</div><span class="v">${own} ${add < 0 ? '−' : '+'} ${Math.abs(add)} = <b>${total}%</b></span>`;
+    }).join('')}</div>
+    <div class="keys"><span><i style="background:var(--muted)"></i>${esc(u.name)}'s own growth</span><span><i style="background:${rc(roleId)}"></i>added by ${esc(cls.name)}</span><span><i style="background:repeating-linear-gradient(135deg,var(--muted) 0 2px,transparent 2px 5px);border:1px solid var(--muted)"></i>taken away by ${esc(cls.name)}</span></div>`;
+  }
+
+  // ---------------------------------------------------------------- sections
+  $('#meta').textContent = `${D.scope}  ·  built ${new Date(D.generated).toLocaleString()}  ·  search took ${D.seconds}s`;
+  const tierLine = D.tiers.map((t) => `Lv${t.level}`).join(' / ');
+  const realBases = C.units - C.estimatedBases;
+  const basis = C.basis || {};
+  const stack = (parts) => `<div><div class="stack">${parts.map((p) => `<i style="flex:${p.n} 1 0;background:var(${p.c})" data-tip="${esc(`<b>${p.n}</b> ${p.label}`)}"></i>`).join('')}</div><div class="keys">${parts.map((p) => `<span><i style="background:var(${p.c})"></i><b class="num">${p.n}</b> ${p.label}</span>`).join('')}</div></div>`;
+
+  const AXIS_TEXT = {
+    physDmg: 'Kill speed with the best physical weapon: 100 ÷ the attacks it expects to need. 100 kills in one attack, 50 in two.',
+    magDmg: 'The same with magic, averaged over a map of attacks because spells run out.',
+    bestDmg: 'The larger of physical and magic damage.',
+    safety: 'Share of its own HP the unit keeps while making that attack. 100 means the enemy cannot answer.',
+    physBulk: 'Share of HP left after a physical enemy attacks, if every strike lands.',
+    magBulk: 'The same against a magic enemy.',
+    avoid: 'Chance an enemy strike misses.',
+    physSurv: 'A full enemy phase of physical attackers, one after another: the share of those attacks the unit is still standing for.',
+    magSurv: 'The same against magical attackers.',
+    support: `HP healed per map (${D.profile.healBars} ally HP bars = 100). Being able to Dance counts ${D.profile.dance}.`,
+    reach: `Movement, from Mov ${D.profile.movFloor} (0) to Mov ${D.profile.movCeil} (100). Fliers count ${D.profile.flyingMov} extra. No role weights it.`,
+  };
+
+  app.innerHTML = `
+  <section id="how">
+    <h2>How a number is made</h2>
+    <p class="lede">Every score on this page comes out of the same five steps. A unit's growth rates are its own plus its current class's, so the classes it passes through decide the stats it ends up with.</p>
+    <ol class="pipe">
+      <li><b>Growth</b><span>On each level-up every stat rises by 1 with a chance of unit growth + class growth.</span></li>
+      <li><b>Class path</b><span>Classes change at ${tierLine} or later. Each change must pass an exam${D.maxExamGap == null ? '' : ` within ${D.maxExamGap} skill rank of what the unit would have`}.</span></li>
+      <li><b>Combat</b><span>At each of ${CP.length} chapters the unit fights that chapter's reference enemies. Every exchange is resolved exactly, with no dice.</span></li>
+      <li><b>Profile</b><span>The fights become ${D.axes.length} axes from 0 to 100: damage, safety, bulk, avoid, survival, support, reach.</span></li>
+      <li><b>Role score</b><span>A role weights the axes. Paths are ranked inside a role, and units are placed against the cast's average in each chapter.</span></li>
+    </ol>
+    <div class="panel">
+      <div class="controls"><h3>Step 1 for one unit</h3>
+        <label class="inl" for="g-unit">Unit <select id="g-unit">${[...D.units].sort((a, b) => a.name.localeCompare(b.name)).map((u) => `<option>${esc(u.name)}</option>`).join('')}</select></label>
+        <label class="inl" for="g-role">Path for <select id="g-role">${D.roles.map((r) => `<option value="${r.id}">${esc(r.label)}</option>`).join('')}</select></label>
+      </div>
+      <div id="g-out"></div>
+    </div>
+  </section>
+
+  <section id="inputs">
+    <h2>What goes in</h2>
+    <div class="cols">
+      <div class="panel">
+        <h3>The data</h3>
+        <div class="facts">
+          <div><b>${C.units}</b><span>units</span></div><div><b>${C.classes}</b><span>classes</span></div>
+          <div><b>${C.weapons}</b><span>weapons and spells</span></div><div><b>${CP.length}</b><span>chapters measured</span></div>
+          <div><b>${nf(C.paths)}</b><span>class paths kept and compared</span></div>
+        </div>
+        <p class="note">Growths, classes and weapons come from Serenes Forest and Game8. Base stats and enemy stat lines come from the Fire Emblem Wiki.</p>
+      </div>
+      <div class="panel">
+        <h3>How firm it is</h3>
+        <div class="trust">
+          <span class="lab">Unit base stats</span>${stack([{ n: realBases, label: 'published', c: '--t1' }, { n: C.estimatedBases, label: 'estimated from growth rates (marked *)', c: '--t3' }])}
+          <span class="lab">Abilities</span>${stack([{ n: C.abilitiesScored, label: 'scored', c: '--t1' }, { n: C.abilities - C.abilitiesScored, label: 'not scored (need allies, positioning or combat arts)', c: '--t3' }])}
+          <span class="lab">Rules</span>${stack([{ n: basis.documented || 0, label: 'documented by the game', c: '--t1' }, { n: basis.observed || 0, label: 'observed', c: '--t2' }, { n: basis.assumed || 0, label: 'assumed', c: '--t3' }])}
+        </div>
+        <p class="note">Enemies: ${C.observedEnemies} stat lines are published. Every reference enemy is drawn from a model fitted to those lines.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="roles">
+    <h2>Axes and roles</h2>
+    <p class="lede">A role is a weighting of the profile axes. Each role keeps one colour everywhere on this page. Scores compare paths and units inside a role; a unit's scores in two different roles are not comparable.</p>
+    <div class="panel scroll"><table id="w-table"></table></div>
+    <div class="panel" id="w-panel">
+      <div class="controls"><h3>Try different weights</h3><div class="seg" id="w-role" role="group" aria-label="Role to edit"></div><div class="seg"><button id="w-reset">Reset this role</button></div></div>
+      <p class="note">Drag an axis to 0 to drop it, or raise one that the role ignores. The numbers on the right are each axis's share of the score. Every unit's path, score and place in the cast for that role update as you drag, here and in the results below.</p>
+      <div class="sliders" id="w-sliders"></div>
+      <p class="w-sum" id="w-sum"></p>
+      <p class="note">Edited weights are re-scored in the browser from the ${nf(D.units.reduce((n, u) => n + u.cands.length, 0))} paths that could lead under some weighting, using expected stats. Level-ups are not re-rolled, so near-ties are settled by score and then by the least training. The class table keeps the original weights. To make a change permanent, edit the role in data/mechanics.json and rebuild.</p>
+    </div>
+    <div class="panel"><h3>What each axis measures</h3><dl class="gloss">${D.axes.map((a) => `<dt>${esc(a.label)}</dt><dd>${esc(AXIS_TEXT[a.id] || '')}</dd>`).join('')}</dl></div>
+  </section>
+
+  <section id="chapters">
+    <h2>Chapters</h2>
+    <p class="lede">Everything is measured chapter by chapter. Levels rise through the story, class tiers open along the way, and the same unit scores very differently early and late.</p>
+    <div class="cols">
+      <div class="panel"><h3>Expected level by chapter</h3>
+        <div class="keys"><span><i style="background:var(--pos)"></i>your units</span><span><i style="background:var(--ink2)"></i>enemies</span><span><i style="background:var(--muted)"></i>boss (dashed)</span></div>
+        <div class="plot" id="c-level"></div>
+        <p class="note">Dotted lines mark the level each class tier opens. Hover a chapter for its reference enemies.</p></div>
+      <div class="panel"><h3>Cast average score by chapter, per role</h3>
+        <div class="keys">${D.roles.map((r) => `<span><i style="background:${rc(r.id)}"></i>${esc(r.label)}</span>`).join('')}</div>
+        <div class="plot" id="c-avg"></div>
+        <p class="note">Each line is the average, over every unit present, of its recommended path for that role. Because chapters differ this much, units are ranked on how far they sit above this line, not on a raw campaign average.</p></div>
+    </div>
+  </section>
+
+  <section id="results">
+    <h2>Results by unit</h2>
+    <p class="lede">Each role cell shows the unit's place in the cast (#1 is best) and its points above or below the cast average. Click a unit for its path, profile and chapter-by-chapter score.</p>
+    <div class="controls">
+      <div class="seg" id="r-view" role="group" aria-label="Rank by"></div>
+      <input type="search" id="r-q" placeholder="Find a unit or class" aria-label="Find a unit or class">
+      <span class="scale">below cast <i style="background:linear-gradient(90deg, color-mix(in oklab, var(--neg) 70%, var(--mid)), var(--mid), color-mix(in oklab, var(--pos) 70%, var(--mid)))"></i> above cast (±15 points)</span>
+    </div>
+    <div class="panel scroll" style="padding:6px"><table id="r-table"></table></div>
+    <p class="note">* base stats estimated from growth rates. Train = skill ranks the path's exams ask for beyond what the unit's classes give it. Flags: r route-exclusive class, ~ the sources disagree on a class's growths.</p>
+  </section>
+
+  <section id="classes">
+    <h2>Classes</h2>
+    <p class="lede">For each role, the points a unit loses on average by passing through this class instead of its best option at that tier. 0.0 means the class is always the best choice. The small figure is how many units it is the best option for.</p>
+    <div class="controls"><span class="scale">costs 6+ points <i style="background:linear-gradient(90deg, var(--mid), color-mix(in oklab, var(--pos) 72%, var(--mid)))"></i> always best</span></div>
+    <div id="k-out" style="display:flex;flex-direction:column;gap:16px"></div>
+  </section>
+
+  <section id="caveats">
+    <h2>Before trusting a number</h2>
+    <ul class="caveats">
+      <li><b>Enemy stats are mostly modelled.</b> Only ${C.observedEnemies} enemy stat lines are published, none above Lv45. Out of sample the model is off by 3 to 7 points per stat, and Part III is extrapolation.</li>
+      <li><b>${C.estimatedBases} of ${C.units} units have estimated base stats</b>, from a regression on their growth rates. They carry a * everywhere.</li>
+      <li><b>Skill ranks are estimated, not simulated.</b> Train is a guide to how much Arena or manual work a path needs, not a guarantee.</li>
+      <li><b>One or two classes often lead a role for most of the cast.</b> The tool is better at telling you which role a unit suits than at separating near-identical paths.</li>
+      <li><b>${C.abilities - C.abilitiesScored} of ${C.abilities} abilities are not scored</b> because they depend on allies, positioning, combat arts or earlier fights in the map.</li>
+      <li><b>Role weights, the Dance value and the enemy mix are judgment calls.</b> They all live in data/mechanics.json.</li>
+      <li><b>Not modelled:</b> combat arts, gambits, mastery abilities, mounts, shields, terrain, supports and stat caps.</li>
+    </ul>
+  </section>`;
+
+  // growth example
+  const gUnit = $('#g-unit'), gRole = $('#g-role');
+  const unitBy = Object.fromEntries(D.units.map((u) => [u.name, u]));
+  function drawGrowth() {
+    const u = unitBy[gUnit.value], cls = u.roles[gRole.value].firstClass;
+    $('#g-out').innerHTML = `<p class="note" style="margin-bottom:10px">${esc(u.name)} in ${esc(cls.name)}, the first class of the recommended ${esc(roleBy[gRole.value].label.toLowerCase())} path. Each bar is the chance that stat rises on a level-up.</p>${growthBars(u, gRole.value)}`;
+  }
+  gUnit.value = D.units[0].name; gRole.value = D.units[0].bestRole;
+  gUnit.onchange = () => { gRole.value = unitBy[gUnit.value].bestRole; drawGrowth(); };
+  gRole.onchange = drawGrowth;
+  drawGrowth();
+
+  // chapter charts
+  const maxLevel = Math.max(...CP.map((c) => Math.max(c.playerLevel, c.enemyLevel, c.bossLevel || 0)));
+  const levelTop = Math.ceil(maxLevel / 10) * 10;
+  lineChart($('#c-level'), {
+    label: 'Expected player, enemy and boss level in each chapter', y0: 0, y1: levelTop,
+    ticks: Array.from({ length: levelTop / 10 + 1 }, (_, i) => i * 10),
+    refs: D.tiers.map((t) => ({ v: t.level, label: `${t.tier} Lv${t.level}` })),
+    series: [
+      { color: 'var(--muted)', dash: '4 4', points: CP.map((c, i) => [i, c.bossLevel]).filter((p) => p[1] != null) },
+      { color: 'var(--ink2)', points: CP.map((c, i) => [i, c.enemyLevel]) },
+      { color: 'var(--pos)', points: CP.map((c, i) => [i, c.playerLevel]) },
+    ],
+    tip: (i) => `<b>${esc(CP[i].label)}</b>${tipRow('Your units', 'Lv' + CP[i].playerLevel, 'var(--pos)')}${tipRow('Enemies', 'Lv' + CP[i].enemyLevel, 'var(--ink2)')}${CP[i].bossLevel != null ? tipRow('Boss', 'Lv' + CP[i].bossLevel, 'var(--muted)') : ''}<div style="margin-top:4px;color:var(--ink2)">Reference enemies: ${CP[i].refs.map((r) => `${esc(r.class)} (${esc(r.archetype)})`).join(', ')}</div>`,
+  });
+  const drawAvg = () => lineChart($('#c-avg'), {
+    label: 'Cast average score per role in each chapter', y0: 0, y1: 100, ticks: [0, 25, 50, 75, 100],
+    series: D.roles.map((r) => ({ color: rc(r.id), points: CP.map((c, i) => [i, c.castAvg[r.id]]).filter((p) => p[1] != null) })),
+    tip: (i) => `<b>${esc(CP[i].label)}</b>${D.roles.filter((r) => CP[i].castAvg[r.id] != null).sort((a, b) => CP[i].castAvg[b.id] - CP[i].castAvg[a.id]).map((r) => tipRow(esc(r.label), f1(CP[i].castAvg[r.id]), rc(r.id))).join('')}`,
+  });
+  drawAvg();
+
+  // ---------------------------------------------------------------- results table
+  const state = { view: 'fit', q: '', open: null, role: null };
+  const viewEl = $('#r-view'), tableEl = $('#r-table');
+  viewEl.innerHTML = `<button data-v="fit">Best-fit role</button>${D.roles.map((r) => `<button data-v="${r.id}"><i style="background:${rc(r.id)}"></i>${esc(r.label)}</button>`).join('')}`;
+
+  function detail(u, roleId) {
+    const e = u.roles[roleId], role = roleBy[roleId];
+    const stepsHtml = e.path.split(' > ').map((s) => `<span style="border-left-color:${rc(roleId)}">${esc(s)}</span>`).join('<em>→</em>');
+    return `<div class="controls" style="margin-bottom:14px"><div class="seg" role="group" aria-label="Role shown">${D.roles.map((r) => `<button data-role="${r.id}" aria-pressed="${r.id === roleId}"><i style="background:${rc(r.id)}"></i>${esc(r.label)}${r.id === u.bestRole ? ' (best fit)' : ''}</button>`).join('')}</div></div>
+    <div class="detail-grid">
+      <div>
+        <h3>${esc(u.name)} as ${esc(role.label.toLowerCase())}</h3>
+        <div class="steps">${stepsHtml}</div>
+        <div class="kv">
+          <div><b>#${e.rank}</b><span>of ${D.units.length} in this role</span></div>
+          <div><b>${sgn(e.vsCast)}</b><span>vs cast average</span></div>
+          <div><b>${f1(e.score)}</b><span>campaign score</span></div>
+          <div><b>${e.endgame == null ? '–' : f1(e.endgame)}</b><span>final chapter</span></div>
+          <div><b>${e.train ? e.train : '–'}</b><span>ranks to train</span></div>
+        </div>
+        <p class="note">Joins as ${esc(u.join.replace(' *', ''))}${u.estimated ? ' (base stats estimated)' : ''}. Present for ${u.chapters} chapters; ${nf(u.paths)} paths compared.${e.flags ? ` Flags: ${esc(e.flags)}.` : ''}</p>
+        <h3 style="margin-top:6px">Growth in the first class</h3>
+        ${growthBars(u, roleId)}
+      </div>
+      <div>
+        <h3>Profile on this path</h3>
+        <div class="axes">${D.axes.map((a, i) => { const w = role.weights[a.id]; return `<span>${esc(a.label)}</span><div class="bar" data-tip="${esc(`<b>${esc(a.label)} ${f1(e.axes[i])}</b><br>${esc(AXIS_TEXT[a.id] || '')}`)}"><i style="width:${clamp(e.axes[i], 0, 100)}%;background:${w ? rc(roleId) : 'var(--axis)'}"></i></div><span class="n">${Math.round(e.axes[i])}</span><span class="w">${w ? '×' + w : ''}</span>`; }).join('')}</div>
+        <div class="keys"><span><i style="background:${rc(roleId)}"></i>counts toward this role (× weight)</span><span><i style="background:var(--axis)"></i>shown for reference</span></div>
+        <h3 style="margin-top:6px">Score by chapter</h3>
+        <div class="keys"><span><i style="background:${rc(roleId)}"></i>${esc(u.name)}</span><span><i style="background:var(--muted)"></i>cast average (dashed)</span></div>
+        <div class="plot" data-chart></div>
+      </div>
+    </div>`;
+  }
+
+  const fitDetail = () => tableEl.style.setProperty('--dw', `${tableEl.parentElement.clientWidth - 46}px`);
+  function drawTable() {
+    fitDetail();
+    const role = state.view === 'fit' ? null : state.view;
+    [...viewEl.children].forEach((b) => b.setAttribute('aria-pressed', b.dataset.v === state.view));
+    const q = state.q.trim().toLowerCase();
+    let rows = D.units.filter((u) => { const r = role || u.bestRole; return !q || `${u.name} ${u.join} ${u.roles[r].path} ${roleBy[u.bestRole].label}`.toLowerCase().includes(q); });
+    const order = (u) => D.roles.findIndex((r) => r.id === u.bestRole);
+    rows = [...rows].sort(role ? (a, b) => a.roles[role].rank - b.roles[role].rank : (a, b) => order(a) - order(b) || a.roles[a.bestRole].rank - b.roles[b.bestRole].rank);
+    const cols = 8 + D.roles.length;
+    tableEl.innerHTML = `<thead><tr><th>Unit</th><th>Joins as</th><th>Best fit</th>${D.roles.map((r) => `<th class="r${r.id === role ? ' on' : ''}">${chip(r.id)}</th>`).join('')}<th>${role ? esc(roleBy[role].label) + ' path' : 'Best-fit path'}</th><th class="r">Score</th><th class="r">Final</th><th class="r">Train</th><th>Flags</th></tr></thead><tbody>${rows.map((u) => {
+      const r = role || u.bestRole, e = u.roles[r], open = state.open === u.name;
+      return `<tr class="unit" data-u="${esc(u.name)}"><td><button aria-expanded="${open}">${esc(u.name)}</button>${u.estimated ? '<sup class="est" title="base stats estimated"> *</sup>' : ''}</td><td>${esc(u.join.replace(' *', ''))}</td><td>${chip(u.bestRole)}</td>${D.roles.map((ro) => { const x = u.roles[ro.id]; return `<td class="cell"><div class="heat" style="background:${vsBg(x.vsCast)}" data-tip="${esc(`<b>${esc(u.name)}</b> as ${esc(ro.label.toLowerCase())}${tipRow('Place in cast', '#' + x.rank)}${tipRow('vs cast average', sgn(x.vsCast))}${tipRow('Score', f1(x.score))}<div style="color:var(--ink2);margin-top:4px">${esc(x.path)}</div>`)}"><b>#${x.rank}</b><small>${sgn(x.vsCast)}</small></div></td>`; }).join('')}<td class="path">${esc(e.path)}</td><td class="r num">${f1(e.score)}</td><td class="r num">${e.endgame == null ? '–' : f1(e.endgame)}</td><td class="r num">${e.train ? e.train : '–'}</td><td class="num">${esc(e.flags || '')}</td></tr>${open ? `<tr class="detail"><td colspan="${cols}"><div class="detail-in">${detail(u, state.role || r)}</div></td></tr>` : ''}`;
+    }).join('') || `<tr><td colspan="${cols}" style="padding:18px;color:var(--muted)">No unit or class matches "${esc(state.q)}".</td></tr>`}</tbody>`;
+    const plot = $('[data-chart]', tableEl);
+    if (plot) {
+      const u = unitBy[state.open], rid = state.role || role || u.bestRole, e = u.roles[rid];
+      const own = new Map(e.chapters);
+      lineChart(plot, {
+        label: `${u.name}: score by chapter against the cast average`, y0: 0, y1: 100, ticks: [0, 25, 50, 75, 100], height: 200,
+        series: [
+          { color: 'var(--muted)', dash: '4 4', points: CP.map((c, i) => [i, c.castAvg[rid]]).filter((p) => p[1] != null) },
+          { color: rc(rid), points: e.chapters },
+        ],
+        tip: (i) => `<b>${esc(CP[i].label)}</b>${own.has(i) ? tipRow(esc(u.name), f1(own.get(i)), rc(rid)) : `<div style="color:var(--ink2)">${esc(u.name)} has not joined yet</div>`}${CP[i].castAvg[rid] != null ? tipRow('Cast average', f1(CP[i].castAvg[rid]), 'var(--muted)') : ''}`,
+      });
+    }
+  }
+  viewEl.addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; state.view = b.dataset.v; state.role = null; drawTable(); });
+  $('#r-q').addEventListener('input', (e) => { state.q = e.target.value; drawTable(); });
+  tableEl.addEventListener('click', (e) => {
+    const rb = e.target.closest('button[data-role]');
+    if (rb) { state.role = rb.dataset.role; drawTable(); return; }
+    if (e.target.closest('tr.detail')) return;
+    const tr = e.target.closest('tr.unit'); if (!tr) return;
+    state.open = state.open === tr.dataset.u ? null : tr.dataset.u; state.role = null; drawTable();
+  });
+  drawTable();
+
+  // ---------------------------------------------------------------- editable role weights
+  const NAx = D.axes.length;
+  const base = Object.fromEntries(D.roles.map((r) => [r.id, { weights: { ...r.weights }, recs: D.units.map((u) => u.roles[r.id]), avg: CP.map((c) => c.castAvg[r.id]) }]));
+  const sliderVals = Object.fromEntries(D.roles.map((r) => [r.id, D.axes.map((a) => Math.round((r.weights[a.id] || 0) * 1000) / 10)]));
+  let editing = D.roles[0].id;
+  for (const u of D.units) {
+    for (const c of u.cands) {
+      c.avg = new Array(NAx).fill(0);
+      c.ch.forEach((v, k) => { c.avg[k % NAx] += v / 10 / u.cps.length; });
+    }
+  }
+  /** Re-score one role with new weights ({axis: share}), or put back the original results when weights is null. */
+  function applyWeights(roleId, weights) {
+    const role = roleBy[roleId], b = base[roleId];
+    if (!weights) {
+      role.weights = { ...b.weights }; role.custom = false;
+      D.units.forEach((u, i) => { u.roles[roleId] = b.recs[i]; });
+      CP.forEach((c, i) => { c.castAvg[roleId] = b.avg[i]; });
+    } else {
+      role.weights = weights; role.custom = true;
+      const w = D.axes.map((a) => weights[a.id] || 0);
+      const dot = (arr, from) => { let t = 0; for (let a = 0; a < NAx; a++) t += w[a] * arr[from + a]; return t; };
+      const sum = CP.map(() => 0), cnt = CP.map(() => 0);
+      for (const u of D.units) {
+        const scored = u.cands.map((c) => ({ c, s: dot(c.avg, 0) }));
+        const top = Math.max(...scored.map((x) => x.s));
+        const { c, s: score } = scored.filter((x) => x.s > top - 0.05).sort((x, y) => x.c.train - y.c.train || y.s - x.s)[0];
+        const chapters = u.cps.map((ci, k) => [ci, dot(c.ch, k * NAx) / 10]);
+        chapters.forEach(([ci, v]) => { sum[ci] += v; cnt[ci]++; });
+        u.roles[roleId] = { rank: 0, vsCast: 0, score, endgame: chapters[chapters.length - 1][1], train: c.train, path: c.path, flags: c.flags,
+          firstClass: { name: c.first, growths: D.classGrowths[c.first] }, axes: c.avg, chapters };
+      }
+      CP.forEach((c, i) => { c.castAvg[roleId] = cnt[i] ? sum[i] / cnt[i] : null; });
+      for (const u of D.units) { const e = u.roles[roleId]; e.vsCast = e.chapters.reduce((t, [ci, v]) => t + v - CP[ci].castAvg[roleId], 0) / e.chapters.length; }
+      [...D.units].sort((x, y) => y.roles[roleId].vsCast - x.roles[roleId].vsCast).forEach((u, i) => { u.roles[roleId].rank = i + 1; });
+    }
+    for (const u of D.units) {
+      u.bestRole = D.roles.reduce((best, r) => (!best || u.roles[r.id].rank < u.roles[best].rank
+        || (u.roles[r.id].rank === u.roles[best].rank && u.roles[r.id].vsCast > u.roles[best].vsCast) ? r.id : best), null);
+    }
+  }
+  function drawWeights() {
+    $('#w-table').innerHTML = `<thead><tr><th>Role</th>${D.axes.map((a) => `<th class="r" data-tip="${esc(esc(AXIS_TEXT[a.id] || a.label))}">${esc(a.label)}</th>`).join('')}</tr></thead>
+      <tbody>${D.roles.map((r) => `<tr><td>${chip(r.id)}</td>${D.axes.map((a) => `<td class="cell">${r.weights[a.id] ? `<div class="wcell" style="background:color-mix(in oklab, ${rc(r.id)} ${Math.round(45 + r.weights[a.id] * 55)}%, var(--ink))" data-tip="${esc(`${esc(r.label)}: <b>${Math.round(r.weights[a.id] * 100)}%</b> of the score is ${esc(a.label)}`)}">${Math.round(r.weights[a.id] * 1000) / 10}%</div>` : ''}</td>`).join('')}</tr>`).join('')}</tbody>`;
+    [...$('#w-role').children].forEach((bt) => bt.setAttribute('aria-pressed', bt.dataset.r === editing));
+  }
+  function drawSummary() {
+    const role = roleBy[editing], b = base[editing], el = $('#w-sum');
+    if (!sliderVals[editing].some((v) => v > 0)) { el.innerHTML = 'Give at least one axis some weight. The results still show the last weights that had one.'; return; }
+    if (!role.custom) { el.innerHTML = `<b>${esc(role.label)}</b> is on its original weights.`; return; }
+    const moved = D.units.map((u, i) => ({ u, was: b.recs[i].rank, now: u.roles[editing].rank, path: b.recs[i].path !== u.roles[editing].path }));
+    const up = [...moved].sort((x, y) => (y.was - y.now) - (x.was - x.now)).filter((m) => m.was > m.now).slice(0, 3);
+    const down = [...moved].sort((x, y) => (x.was - x.now) - (y.was - y.now)).filter((m) => m.was < m.now).slice(0, 3);
+    const list = (ms) => ms.map((m) => `${esc(m.u.name)} #${m.was} → #${m.now}`).join(', ');
+    const leader = moved.find((m) => m.now === 1);
+    el.innerHTML = `<b>${esc(role.label)}</b> is now ${D.axes.filter((a) => role.weights[a.id]).map((a) => `${Math.round(role.weights[a.id] * 100)}% ${esc(a.label)}`).join(' + ')}. `
+      + `<b>${moved.filter((m) => m.path).length} of ${D.units.length}</b> units get a different path. Top of the role: <b>${esc(leader.u.name)}</b> (${esc(leader.u.roles[editing].path)}).`
+      + (up.length ? ` Biggest climbs: ${list(up)}.` : '') + (down.length ? ` Biggest drops: ${list(down)}.` : '') + ' <a href="#results" style="color:inherit">See the results</a>';
+  }
+  function drawSliders() {
+    const vals = sliderVals[editing], total = vals.reduce((t, v) => t + v, 0);
+    const box = $('#w-sliders');
+    box.style.setProperty('--role', rc(editing));
+    box.innerHTML = D.axes.map((a, i) => `<label class="${vals[i] ? '' : 'zero'}" for="w-${a.id}"><span>${esc(a.label)}</span><input type="range" id="w-${a.id}" data-i="${i}" min="0" max="100" step="2.5" value="${vals[i]}"><output>${total ? Math.round((vals[i] / total) * 100) : 0}%</output></label>`).join('');
+  }
+  function weightsChanged() {
+    const vals = sliderVals[editing], total = vals.reduce((t, v) => t + v, 0);
+    [...$('#w-sliders').children].forEach((lab, i) => { lab.className = vals[i] ? '' : 'zero'; $('output', lab).textContent = `${total ? Math.round((vals[i] / total) * 100) : 0}%`; });
+    if (total > 0) {
+      const weights = {};
+      D.axes.forEach((a, i) => { if (vals[i]) weights[a.id] = vals[i] / total; });
+      const same = D.axes.every((a) => Math.abs((weights[a.id] || 0) - (base[editing].weights[a.id] || 0)) < 1e-6);
+      applyWeights(editing, same ? null : weights);
+      drawWeights(); drawAvg(); drawTable(); drawGrowth();
+    }
+    drawSummary();
+  }
+  $('#w-role').innerHTML = D.roles.map((r) => `<button data-r="${r.id}"><i style="background:${rc(r.id)}"></i>${esc(r.label)}</button>`).join('');
+  $('#w-role').addEventListener('click', (e) => { const bt = e.target.closest('button'); if (!bt) return; editing = bt.dataset.r; drawWeights(); drawSliders(); drawSummary(); });
+  $('#w-sliders').addEventListener('input', (e) => { sliderVals[editing][Number(e.target.dataset.i)] = Number(e.target.value); weightsChanged(); });
+  $('#w-reset').addEventListener('click', () => { sliderVals[editing] = D.axes.map((a) => Math.round((base[editing].weights[a.id] || 0) * 1000) / 10); drawSliders(); weightsChanged(); });
+  drawWeights(); drawSliders(); drawSummary();
+
+  // ---------------------------------------------------------------- classes
+  $('#k-out').innerHTML = D.classTiers.map((t) => {
+    const best = (c) => Math.max(...D.roles.map((r) => (c.roles[r.id] ? c.roles[r.id].gap : -99)));
+    const list = [...t.classes].sort((a, b) => best(b) - best(a));
+    return `<div class="panel scroll"><h3 style="text-transform:capitalize">${esc(t.tier)}</h3><table><thead><tr><th>Class</th><th>Type</th><th class="r">Mov</th>${D.roles.map((r) => `<th class="r">${chip(r.id)}</th>`).join('')}</tr></thead><tbody>${list.map((c) => `<tr><td><b>${esc(c.name)}</b></td><td>${esc(c.types.join(' / '))}</td><td class="r num">${c.mov}</td>${D.roles.map((r) => { const x = c.roles[r.id]; return x ? `<td class="cell"><div class="heat" style="background:${fitBg(x.gap)}" data-tip="${esc(`<b>${esc(c.name)}</b> for ${esc(r.label.toLowerCase())}${tipRow('Points lost on average', f1(Math.abs(x.gap)))}${tipRow('Best option for', `${x.best} of ${x.n} units`)}`)}"><b>${x.gap > -0.05 ? '0.0' : '−' + f1(Math.abs(x.gap))}</b><small>${x.best}/${x.n}</small></div></td>` : '<td class="r" style="color:var(--muted)">–</td>'; }).join('')}</tr>`).join('')}</tbody></table></div>`;
+  }).join('');
+})();
+</script>
+</body>
+</html>

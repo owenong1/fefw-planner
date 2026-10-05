@@ -1,0 +1,4927 @@
+{
+ "sources": {
+  "growths": "serenesforest.net/fortunes-weave (primary), game8.co growth guide (growthsGame8 where they disagree)",
+  "classes": "game8.co class pages (tier, type, movement, weapons, bonuses, abilities)",
+  "weapons": "game8.co weapon lists, gaps filled from serenesforest.net",
+  "abilities": "game8.co character pages (personal ability, abilities learned by level, spell list)",
+  "bases": "fireemblemwiki.org CharStats; \"estimated\" bases come from a growth regression over 18 low-level units",
+  "enemies": "fireemblemwiki.org chapter and boss pages"
+ },
+ "baseEstimateFit": {
+  "hp": {
+   "intercept": 17.357,
+   "slope": 0.1813
+  },
+  "str": {
+   "intercept": -0.867,
+   "slope": 0.2191
+  },
+  "mag": {
+   "intercept": 0.153,
+   "slope": 0.1796
+  },
+  "spd": {
+   "intercept": 2.369,
+   "slope": 0.1055
+  },
+  "dex": {
+   "intercept": -0.686,
+   "slope": 0.164
+  },
+  "def": {
+   "intercept": -0.583,
+   "slope": 0.1741
+  },
+  "res": {
+   "intercept": -0.729,
+   "slope": 0.1644
+  },
+  "lck": {
+   "intercept": 2.413,
+   "slope": 0.096
+  },
+  "cha": {
+   "intercept": 0.287,
+   "slope": 0.1498
+  }
+ },
+ "characters": [
+  {
+   "name": "Eshmel",
+   "gender": null,
+   "growths": {
+    "hp": 50,
+    "str": 45,
+    "mag": 45,
+    "spd": 45,
+    "dex": 45,
+    "def": 35,
+    "res": 35,
+    "lck": 40,
+    "cha": 50
+   },
+   "base": {
+    "level": 40,
+    "class": "Guardian",
+    "bld": 5,
+    "stats": {
+     "hp": 47,
+     "str": 32,
+     "mag": 24,
+     "spd": 25,
+     "dex": 28,
+     "def": 20,
+     "res": 15,
+     "lck": 25,
+     "cha": 29
+    },
+    "source": "wiki",
+    "recruit": "Prologue: Descent Chapter 1 stage Descent, automatically from the start",
+    "inventory": [
+     "The Nameless",
+     "Vulnerary"
+    ]
+   },
+   "preferred": [
+    "Authority",
+    "Spear"
+   ],
+   "nonIdeal": [],
+   "abilities": [
+    {
+     "name": "Light of Salvation",
+     "text": "Neutralizes Underworld Boon on foes within 2 spaces.",
+     "kind": "personal"
+    },
+    {
+     "name": "Scorching Sun+",
+     "text": "Reduces damage done by undead foes to 0. Trigger % = 10.",
+     "kind": "level",
+     "level": null
+    },
+    {
+     "name": "Scorching Sun",
+     "text": "Reduces damage done by undead foes to 0. Trigger % = 5.",
+     "kind": "level",
+     "level": null
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "C"
+     },
+     {
+      "name": "Recover",
+      "rank": "B"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Hong Hua",
+   "gender": "female",
+   "growths": {
+    "hp": 40,
+    "str": 30,
+    "mag": 45,
+    "spd": 45,
+    "dex": 45,
+    "def": 30,
+    "res": 45,
+    "lck": 30,
+    "cha": 40
+   },
+   "base": {
+    "level": 40,
+    "class": "Ovate",
+    "bld": 3,
+    "stats": {
+     "hp": 44,
+     "str": 15,
+     "mag": 30,
+     "spd": 23,
+     "dex": 26,
+     "def": 21,
+     "res": 26,
+     "lck": 18,
+     "cha": 24
+    },
+    "source": "wiki",
+    "recruit": "Prologue: Descent Chapter 1 stage Descent, automatically from the start",
+    "inventory": [
+     "Vulnerary",
+     "Bolganone"
+    ]
+   },
+   "preferred": [
+    "Black Magic",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Axe",
+    "Heavy Armor"
+   ],
+   "abilities": [
+    {
+     "name": "Zhu Ming",
+     "text": "When equipped with magic, grants Hit +10.",
+     "kind": "personal"
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Bolganone",
+      "rank": "D"
+     },
+     {
+      "name": "Wandering Wall",
+      "rank": "C"
+     },
+     {
+      "name": "Glass Wheel",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Troy",
+   "gender": "female",
+   "growths": {
+    "hp": 40,
+    "str": 45,
+    "mag": 45,
+    "spd": 50,
+    "dex": 40,
+    "def": 30,
+    "res": 30,
+    "lck": 30,
+    "cha": 30
+   },
+   "base": {
+    "level": 40,
+    "class": "War Monk",
+    "bld": 5,
+    "stats": {
+     "hp": 47,
+     "str": 29,
+     "mag": 32,
+     "spd": 28,
+     "dex": 26,
+     "def": 21,
+     "res": 24,
+     "lck": 24,
+     "cha": 21
+    },
+    "source": "wiki",
+    "recruit": "Prologue: Descent Chapter 2, automatically upon reaching Alcineus Span",
+    "inventory": [
+     "Zerberus",
+     "Silver Gauntlets",
+     "Vulnerary",
+     "Heal"
+    ]
+   },
+   "preferred": [
+    "Black Magic",
+    "Gauntlet",
+    "White Magic"
+   ],
+   "nonIdeal": [],
+   "abilities": [
+    {
+     "name": "Yun Shou",
+     "text": "When equipped with gauntlets, grants Hit +10.",
+     "kind": "personal"
+    }
+   ],
+   "spells": {
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Physic",
+      "rank": "C"
+     },
+     {
+      "name": "Restore",
+      "rank": "B"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Cai",
+   "gender": "male",
+   "growths": {
+    "hp": 45,
+    "str": 45,
+    "mag": 40,
+    "spd": 45,
+    "dex": 45,
+    "def": 35,
+    "res": 35,
+    "lck": 40,
+    "cha": 40
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 2,
+    "stats": {
+     "hp": 27,
+     "str": 10,
+     "mag": 7,
+     "spd": 8,
+     "dex": 8,
+     "def": 6,
+     "res": 5,
+     "lck": 6,
+     "cha": 5
+    },
+    "source": "wiki",
+    "recruit": "Part I: Cai's Path Chapter 1, automatically from the start",
+    "inventory": [
+     "Wooden Spear"
+    ]
+   },
+   "preferred": [
+    "Riding",
+    "Spear",
+    "Sword",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Bow",
+    "Flying"
+   ],
+   "abilities": [
+    {
+     "name": "Brio",
+     "text": "Grants Mov+1.",
+     "kind": "personal"
+    },
+    {
+     "name": "Flamekeeper",
+     "text": "Unit and all allies are unaffected by Underworld Flames and take half damage from attacks while in Underworld Flames.",
+     "kind": "level",
+     "level": 5
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "B"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Dietrich",
+   "gender": "male",
+   "growths": {
+    "hp": 50,
+    "str": 45,
+    "mag": 30,
+    "spd": 50,
+    "dex": 60,
+    "def": 40,
+    "res": 30,
+    "lck": 50,
+    "cha": 60
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 9,
+     "mag": 6,
+     "spd": 8,
+     "dex": 9,
+     "def": 6,
+     "res": 4,
+     "lck": 7,
+     "cha": 9
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Infantry",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Murderous Intent",
+     "text": "If unit attacks first, grants Crit+5 during combat.",
+     "kind": "personal"
+    },
+    {
+     "name": "Bestial Impulse",
+     "text": "After combat, grants Crit+2 until a unit makes a critical.",
+     "kind": "level",
+     "level": 5
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Blizzard",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Theodora",
+   "gender": "female",
+   "growths": {
+    "hp": 70,
+    "str": 50,
+    "mag": 30,
+    "spd": 40,
+    "dex": 40,
+    "def": 40,
+    "res": 30,
+    "lck": 30,
+    "cha": 50
+   },
+   "base": {
+    "level": 6,
+    "class": "Soldier",
+    "bld": 1,
+    "stats": {
+     "hp": 33,
+     "str": 7,
+     "mag": 7,
+     "spd": 7,
+     "dex": 8,
+     "def": 8,
+     "res": 6,
+     "lck": 7,
+     "cha": 10
+    },
+    "source": "wiki",
+    "recruit": "Automatically from preparations",
+    "inventory": [
+     "Mahadu's Spear",
+     "Bronze Spear",
+     "Vulnerary"
+    ]
+   },
+   "preferred": [
+    "Authority",
+    "Spear",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Black Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Royal Resolve",
+     "text": "Unit takes half damage when attacked. Trigger % = 30.",
+     "kind": "personal"
+    },
+    {
+     "name": "Unstoppable Force",
+     "text": "Multiplies damage by 3 when attacking obstacles.",
+     "kind": "level",
+     "level": null
+    },
+    {
+     "name": "Direct Hit",
+     "text": "Deals +10 damage when attacking with Blaze Arts. Trigger % = 30.",
+     "kind": "level",
+     "level": 5
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "C"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Leda",
+   "gender": "female",
+   "growths": {
+    "hp": 40,
+    "str": 35,
+    "mag": 35,
+    "spd": 65,
+    "dex": 50,
+    "def": 30,
+    "res": 35,
+    "lck": 25,
+    "cha": 55
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 25,
+     "str": 7,
+     "mag": 6,
+     "spd": 9,
+     "dex": 8,
+     "def": 5,
+     "res": 5,
+     "lck": 5,
+     "cha": 9
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Bow",
+    "Infantry",
+    "Sword",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Spear"
+   ],
+   "abilities": [
+    {
+     "name": "Blindside",
+     "text": "If unit attacks first, cannot be countered during combat. Trigger % = 5.",
+     "kind": "personal"
+    },
+    {
+     "name": "Improviso",
+     "text": "After using Blaze Arts during Overblaze, unit can attack.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Tialla",
+   "gender": "female",
+   "growths": {
+    "hp": 30,
+    "str": 25,
+    "mag": 45,
+    "spd": 35,
+    "dex": 40,
+    "def": 20,
+    "res": 40,
+    "lck": 50,
+    "cha": 45
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 24,
+     "str": 5,
+     "mag": 8,
+     "spd": 6,
+     "dex": 6,
+     "def": 4,
+     "res": 6,
+     "lck": 7,
+     "cha": 5
+    },
+    "source": "wiki",
+    "recruit": "Part I: Cai's Path Chapter 1, automatically from the start",
+    "inventory": [
+     "Vulnerary"
+    ]
+   },
+   "preferred": [
+    "Authority",
+    "Black Magic",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Sword"
+   ],
+   "abilities": [
+    {
+     "name": "Tactician's Wit",
+     "text": "Grants Rng+1 to combat arts usable on allies.",
+     "kind": "personal"
+    },
+    {
+     "name": "Tactician's Insight",
+     "text": "After combat, if unit attacked first, inflicts Avo-5 on foe through unit's next combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Tactician's Insight+",
+     "text": "After combat, if unit attacked first, inflicts Avo-10 on foe through unit's next combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Wind",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "A"
+     },
+     {
+      "name": "Excalibur",
+      "rank": "S"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Physic",
+      "rank": "C"
+     },
+     {
+      "name": "Recover",
+      "rank": "B"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "A"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Peter",
+   "gender": "male",
+   "growths": {
+    "hp": 40,
+    "str": 35,
+    "mag": 20,
+    "spd": 45,
+    "dex": 60,
+    "def": 30,
+    "res": 25,
+    "lck": 35,
+    "cha": 30
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 25,
+     "str": 9,
+     "mag": 3,
+     "spd": 6,
+     "dex": 10,
+     "def": 5,
+     "res": 4,
+     "lck": 5,
+     "cha": 4
+    },
+    "source": "wiki",
+    "recruit": "Part I: Cai's Path Chapter 1, automatically from the start",
+    "inventory": [
+     "Wooden Bow"
+    ]
+   },
+   "preferred": [
+    "Bow",
+    "Infantry"
+   ],
+   "nonIdeal": [
+    "Heavy Armor"
+   ],
+   "abilities": [
+    {
+     "name": "Steady Aim",
+     "text": "Grants Rng+1 when attacking with a bow combat art.",
+     "kind": "personal"
+    },
+    {
+     "name": "Correct for Drift",
+     "text": "If unit's hit percent is ≥ to 90%, grants Hit +10 during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Correct for Drift+",
+     "text": "If unit's hit % ≥ 75%, grants Hit+20 during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     },
+     {
+      "name": "Restore",
+      "rank": "C"
+     },
+     {
+      "name": "Freeze",
+      "rank": "B"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Ultand",
+   "gender": "female",
+   "growths": {
+    "hp": 45,
+    "str": 40,
+    "mag": 40,
+    "spd": 35,
+    "dex": 40,
+    "def": 35,
+    "res": 45,
+    "lck": 55,
+    "cha": 50
+   },
+   "base": {
+    "level": 6,
+    "class": "Diviner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 8,
+     "mag": 10,
+     "spd": 7,
+     "dex": 7,
+     "def": 7,
+     "res": 6,
+     "lck": 10,
+     "cha": 11
+    },
+    "source": "wiki",
+    "recruit": "Automatically from preparations",
+    "inventory": [
+     "Fire",
+     "Heal"
+    ]
+   },
+   "preferred": [
+    "Flying",
+    "Spear",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Sword"
+   ],
+   "abilities": [
+    {
+     "name": "Patch Up",
+     "text": "After an adjacent ally's combat, restores a little HP to that ally.",
+     "kind": "personal"
+    },
+    {
+     "name": "Pray for Safety",
+     "text": "Grants Ddg+10 to adjacent allies.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Pray for Safety+",
+     "text": "Grants Ddg+20 to adjacent allies.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Wind",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "C"
+     },
+     {
+      "name": "Emergis",
+      "rank": "B"
+     },
+     {
+      "name": "Ward",
+      "rank": "A"
+     },
+     {
+      "name": "Aura",
+      "rank": "S"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Fabio",
+   "gender": "male",
+   "growths": {
+    "hp": 40,
+    "str": 25,
+    "mag": 50,
+    "spd": 35,
+    "dex": 40,
+    "def": 30,
+    "res": 45,
+    "lck": 35,
+    "cha": 30
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 25,
+     "str": 6,
+     "mag": 10,
+     "spd": 7,
+     "dex": 6,
+     "def": 4,
+     "res": 8,
+     "lck": 6,
+     "cha": 5
+    },
+    "source": "wiki",
+    "recruit": "Part I: Dietrich's Path Chapter 1, automatically from the start",
+    "inventory": [
+     "Vulnerary",
+     "Miasma Δ",
+     "Heal"
+    ]
+   },
+   "preferred": [
+    "Authority",
+    "Black Magic"
+   ],
+   "nonIdeal": [
+    "Bow"
+   ],
+   "abilities": [
+    {
+     "name": "Dark Calling",
+     "text": "Inflicts Ddg-5 on adjacent foes.",
+     "kind": "personal"
+    },
+    {
+     "name": "Dark Secrets",
+     "text": "Extends range of Dark Calling",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Dark Secrets+",
+     "text": "Extends range of Dark Calling to 3 spaces.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Miasma Δ",
+      "rank": "D"
+     },
+     {
+      "name": "Mire B",
+      "rank": "C"
+     },
+     {
+      "name": "Death Γ",
+      "rank": "B"
+     },
+     {
+      "name": "Luna Λ",
+      "rank": "A"
+     },
+     {
+      "name": "Dark Spikes T",
+      "rank": "S"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Recover",
+      "rank": "B"
+     },
+     {
+      "name": "Ward",
+      "rank": "A"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Esmeralda",
+   "gender": "female",
+   "growths": {
+    "hp": 55,
+    "str": 55,
+    "mag": 20,
+    "spd": 35,
+    "dex": 35,
+    "def": 45,
+    "res": 25,
+    "lck": 35,
+    "cha": 30
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 2,
+    "stats": {
+     "hp": 28,
+     "str": 12,
+     "mag": 4,
+     "spd": 6,
+     "dex": 5,
+     "def": 7,
+     "res": 3,
+     "lck": 7,
+     "cha": 6
+    },
+    "source": "wiki",
+    "recruit": "Part I: Dietrich's Path Chapter 2, automatically from the start",
+    "inventory": [
+     "Bronze Spear"
+    ]
+   },
+   "preferred": [
+    "Axe",
+    "Heavy Armor",
+    "Spear"
+   ],
+   "nonIdeal": [
+    "Black Magic",
+    "Sword"
+   ],
+   "abilities": [
+    {
+     "name": "Brawn",
+     "text": "Reduces Wt of unit's equipment to 80%.",
+     "kind": "personal"
+    },
+    {
+     "name": "Throwing Arm",
+     "text": "If throwing a spear, grants Hit+10, Atk+2 during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Throwing Arm+",
+     "text": "If throwing a spear, grants Hit+20, Atk+4 during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     },
+     {
+      "name": "Restore",
+      "rank": "C"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "B"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Mikaela",
+   "gender": "female",
+   "growths": {
+    "hp": 50,
+    "str": 45,
+    "mag": 30,
+    "spd": 40,
+    "dex": 35,
+    "def": 40,
+    "res": 25,
+    "lck": 30,
+    "cha": 40
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 9,
+     "mag": 6,
+     "spd": 7,
+     "dex": 5,
+     "def": 6,
+     "res": 3,
+     "lck": 5,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Bow",
+    "Infantry"
+   ],
+   "nonIdeal": [
+    "Black Magic",
+    "Flying",
+    "Riding",
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Veteran's Mettle",
+     "text": "Grants Hit+10 during combat against an adjacent foe.",
+     "kind": "personal"
+    },
+    {
+     "name": "Redblade's Will",
+     "text": "Grants Atk+3 during combat against an adjacent foe.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Redblade's Will+",
+     "text": "Grants Atk+3 during combat against an adjacent foe. Also grants Atk+3 when attacking an adjacent foe (trigger % = 30).",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Bonaventure",
+   "gender": "male",
+   "growths": {
+    "hp": 35,
+    "str": 35,
+    "mag": 45,
+    "spd": 40,
+    "dex": 50,
+    "def": 30,
+    "res": 40,
+    "lck": 35,
+    "cha": 40
+   },
+   "base": {
+    "level": 6,
+    "class": "Diviner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 8,
+     "mag": 11,
+     "spd": 9,
+     "dex": 10,
+     "def": 7,
+     "res": 9,
+     "lck": 6,
+     "cha": 9
+    },
+    "source": "wiki",
+    "recruit": "Automatically from preparations",
+    "inventory": [
+     "Bronze Sword",
+     "Vulnerary",
+     "Wind",
+     "Heal"
+    ]
+   },
+   "preferred": [
+    "Authority",
+    "Black Magic",
+    "Riding",
+    "Sword",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Flying",
+    "Heavy Armor"
+   ],
+   "abilities": [
+    {
+     "name": "Sage Advice",
+     "text": "Grants Dex +3 to adjacent allies.",
+     "kind": "personal"
+    },
+    {
+     "name": "Additional Intel",
+     "text": "Grants Hit+10 to adjacent allies during their combats. Trigger% = 30.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Additional Intel+",
+     "text": "Grants Hit+20 to adjacent allies during their combats. Trigger% = 30.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
+     },
+     {
+      "name": "Sagittae",
+      "rank": "S"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Torch",
+      "rank": "C"
+     },
+     {
+      "name": "Recover",
+      "rank": "B"
+     },
+     {
+      "name": "Silence",
+      "rank": "A"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Tobias",
+   "gender": "male",
+   "growths": {
+    "hp": 55,
+    "str": 60,
+    "mag": 15,
+    "spd": 25,
+    "dex": 30,
+    "def": 45,
+    "res": 20,
+    "lck": 40,
+    "cha": 35
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 27,
+     "str": 12,
+     "mag": 3,
+     "spd": 5,
+     "dex": 4,
+     "def": 7,
+     "res": 3,
+     "lck": 6,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Heavy Armor",
+    "Riding"
+   ],
+   "nonIdeal": [
+    "Sword"
+   ],
+   "abilities": [
+    {
+     "name": "Power Arts",
+     "text": "Grants Atk +3 when attacking with a combat art,",
+     "kind": "personal"
+    },
+    {
+     "name": "All-Out Attack",
+     "text": "Multiplies damage by 1.3 when attacking with a combat art. Trigger % = 30.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "All-Out Attack+",
+     "text": "Multiplies damage by 1.5 when attacking with a combat art. Trigger % = 30.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Thunder",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Lilian",
+   "gender": "female",
+   "growths": {
+    "hp": 35,
+    "str": 35,
+    "mag": 30,
+    "spd": 40,
+    "dex": 55,
+    "def": 30,
+    "res": 35,
+    "lck": 50,
+    "cha": 25
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 24,
+     "str": 7,
+     "mag": 6,
+     "spd": 7,
+     "dex": 8,
+     "def": 5,
+     "res": 5,
+     "lck": 7,
+     "cha": 4
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Bow",
+    "Infantry"
+   ],
+   "nonIdeal": [
+    "Gauntlet"
+   ],
+   "abilities": [
+    {
+     "name": "Safety First",
+     "text": "If foe cannot counter, grants Hit +10 to unit during combat.",
+     "kind": "personal"
+    },
+    {
+     "name": "Upper Hand",
+     "text": "If unit's hit % = 100, grants Atk+3 when attacking.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Upper Hand+",
+     "text": "If unit's hit % = 100, grants Atk+5 when attacking.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Lysander",
+   "gender": "male",
+   "growths": {
+    "hp": 45,
+    "str": 40,
+    "mag": 25,
+    "spd": 50,
+    "dex": 35,
+    "def": 40,
+    "res": 25,
+    "lck": 30,
+    "cha": 30
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 8,
+     "mag": 5,
+     "spd": 8,
+     "dex": 5,
+     "def": 6,
+     "res": 3,
+     "lck": 5,
+     "cha": 5
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Flying",
+    "Riding",
+    "Spear"
+   ],
+   "nonIdeal": [
+    "Gauntlet",
+    "Heavy Armor",
+    "Sword"
+   ],
+   "abilities": [
+    {
+     "name": "Racing Attack",
+     "text": "If unit attacks first, grants Avo +15 during combat.",
+     "kind": "personal"
+    },
+    {
+     "name": "Accelerate",
+     "text": "After defeating a foe, grants Spd +1 until the end of the map. (Max +10)",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Accelerate+",
+     "text": "After defeating a foe, grants Spd+2 until the end of the map. (Max +10)",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Laia",
+      "rank": "C"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Buccar",
+   "gender": "male",
+   "growths": {
+    "hp": 50,
+    "str": 50,
+    "mag": 20,
+    "spd": 25,
+    "dex": 40,
+    "def": 45,
+    "res": 20,
+    "lck": 30,
+    "cha": 35
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 2,
+    "stats": {
+     "hp": 29,
+     "str": 12,
+     "mag": 4,
+     "spd": 5,
+     "dex": 6,
+     "def": 8,
+     "res": 3,
+     "lck": 6,
+     "cha": 6
+    },
+    "source": "wiki",
+    "recruit": "Part I: Leda's Path Chapter 1, automatically from the start",
+    "inventory": [
+     "Bronze Axe"
+    ]
+   },
+   "preferred": [
+    "Axe",
+    "Heavy Armor",
+    "Riding",
+    "Spear"
+   ],
+   "nonIdeal": [
+    "Black Magic",
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Guardian's Duty",
+     "text": "Reduces damage to 90% when attacked.",
+     "kind": "personal"
+    },
+    {
+     "name": "Retaliatory Blow",
+     "text": "If foes attacks first, multiplies unit's damage by 1.3 when attacking. Trigger % = 5.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Retaliatory Blow+",
+     "text": "If foes attacks first, multiplies unit's damage by 1.3 when attacking. Trigger % = 10.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Sirocco",
+   "gender": "male",
+   "growths": {
+    "hp": 40,
+    "str": 40,
+    "mag": 40,
+    "spd": 45,
+    "dex": 50,
+    "def": 35,
+    "res": 35,
+    "lck": 50,
+    "cha": 45
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 8,
+     "mag": 8,
+     "spd": 9,
+     "dex": 8,
+     "def": 6,
+     "res": 7,
+     "lck": 8,
+     "cha": 8
+    },
+    "source": "wiki",
+    "recruit": "Part I: Leda's Path Chapter 1, automatically from the start",
+    "inventory": [
+     "Bronze Sword",
+     "Wind",
+     "Heal"
+    ]
+   },
+   "preferred": [
+    "Authority",
+    "Black Magic",
+    "Sword",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Heavy Armor"
+   ],
+   "abilities": [
+    {
+     "name": "Goddess's Favor",
+     "text": "After combat, restores 5 HP to unit.",
+     "kind": "personal"
+    },
+    {
+     "name": "Wind's Caprice",
+     "text": "Grants one of Avo+1, Avo+5, or Avo+20 during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Wind's Caprice+",
+     "text": "Grants one of Avo+1, Avo+5, Avo+20, or Avo+30 during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Recover",
+      "rank": "C"
+     },
+     {
+      "name": "Restore",
+      "rank": "B"
+     },
+     {
+      "name": "Fortify",
+      "rank": "A"
+     },
+     {
+      "name": "Warp",
+      "rank": "S"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Olympia",
+   "gender": "female",
+   "growths": {
+    "hp": 35,
+    "str": 35,
+    "mag": 50,
+    "spd": 35,
+    "dex": 35,
+    "def": 30,
+    "res": 40,
+    "lck": 40,
+    "cha": 40
+   },
+   "base": {
+    "level": 5,
+    "class": "Diviner",
+    "bld": 1,
+    "stats": {
+     "hp": 25,
+     "str": 6,
+     "mag": 12,
+     "spd": 8,
+     "dex": 7,
+     "def": 6,
+     "res": 6,
+     "lck": 8,
+     "cha": 9
+    },
+    "source": "wiki",
+    "recruit": "Part I: Leda's Path Chapter 3, automatically at the end",
+    "inventory": []
+   },
+   "preferred": [
+    "Axe",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Spear"
+   ],
+   "abilities": [
+    {
+     "name": "Competitive Zeal",
+     "text": "When equipped with magic, grants Crit+10.",
+     "kind": "personal"
+    },
+    {
+     "name": "Ardent Nosferatu",
+     "text": "When using Nosferatu, grants Atk+3, Crit+5 during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Ardent Nosferatu+",
+     "text": "When using Nosferatu, grants Atk+5, Crit+10 during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Thunder",
+      "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Thoron",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "D"
+     },
+     {
+      "name": "Emergis",
+      "rank": "C"
+     },
+     {
+      "name": "Physic",
+      "rank": "B"
+     },
+     {
+      "name": "Silence",
+      "rank": "A"
+     },
+     {
+      "name": "Berserk",
+      "rank": "S"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Mu",
+   "gender": "female",
+   "growths": {
+    "hp": 50,
+    "str": 50,
+    "mag": 25,
+    "spd": 50,
+    "dex": 50,
+    "def": 40,
+    "res": 30,
+    "lck": 30,
+    "cha": 40
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 23,
+     "str": 7,
+     "mag": 3,
+     "spd": 7,
+     "dex": 8,
+     "def": 5,
+     "res": 5,
+     "lck": 4,
+     "cha": 4
+    },
+    "source": "wiki",
+    "recruit": "Part I: Leda's Path Chapter 1, automatically from the start",
+    "inventory": [
+     "Wooden Gauntlets"
+    ]
+   },
+   "preferred": [
+    "Axe",
+    "Gauntlet",
+    "Sword",
+    "White Magic"
+   ],
+   "nonIdeal": [],
+   "abilities": [
+    {
+     "name": "Signs of Growth",
+     "text": "When unit levels up, grants enhanced basic stat growth.",
+     "kind": "personal"
+    },
+    {
+     "name": "Warrior's Blood",
+     "text": "Grants stat increase based on equipped weapon type.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Warrior's Blood+",
+     "text": "Grants a large stat increase based on equipped weapon type.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     }
+    ]
+   },
+   "notes": "Growths include Signs of Growth (+20 to all growth rates)."
+  },
+  {
+   "name": "Gaitz",
+   "gender": null,
+   "growths": {
+    "hp": 50,
+    "str": 50,
+    "mag": 20,
+    "spd": 40,
+    "dex": 45,
+    "def": 45,
+    "res": 25,
+    "lck": 40,
+    "cha": 45
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 10,
+     "mag": 4,
+     "spd": 7,
+     "dex": 7,
+     "def": 7,
+     "res": 3,
+     "lck": 6,
+     "cha": 7
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Riding",
+    "Spear"
+   ],
+   "nonIdeal": [
+    "Black Magic",
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Brave Assist",
+     "text": "Grants Def+3 to adjacent allies.",
+     "kind": "personal"
+    },
+    {
+     "name": "Flashing Fang",
+     "text": "Grants Atk+4, Hit+50 when attacking. Trigger % = 20.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Flashing Fang+",
+     "text": "Grants Atk+7, Hit+100 when attacking. Trigger % = 20.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Dante",
+   "gender": "female",
+   "growths": {
+    "hp": 30,
+    "str": 30,
+    "mag": 45,
+    "spd": 40,
+    "dex": 40,
+    "def": 20,
+    "res": 40,
+    "lck": 45,
+    "cha": 30
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 23,
+     "str": 6,
+     "mag": 8,
+     "spd": 7,
+     "dex": 6,
+     "def": 3,
+     "res": 6,
+     "lck": 7,
+     "cha": 5
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Authority",
+    "Black Magic",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Gauntlet"
+   ],
+   "abilities": [
+    {
+     "name": "Stage Directions",
+     "text": "Grants Ddg+10 to allies within 2 spaces during their combats. Trigger % = ally's Cha ÷ 2.",
+     "kind": "personal"
+    },
+    {
+     "name": "Dramatic Effect",
+     "text": "When Stage Directions triggers, grans Hit+10 to target allies.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Dramatic Effect+",
+     "text": "When Stage Directions triggers, grans Hit/Crit+10 to target allies.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Recover",
+      "rank": "B"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Ursula",
+   "gender": "female",
+   "growths": {
+    "hp": 40,
+    "str": 35,
+    "mag": 35,
+    "spd": 50,
+    "dex": 50,
+    "def": 35,
+    "res": 30,
+    "lck": 40,
+    "cha": 45
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 25,
+     "str": 7,
+     "mag": 6,
+     "spd": 8,
+     "dex": 8,
+     "def": 6,
+     "res": 4,
+     "lck": 6,
+     "cha": 7
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Bow",
+    "Gauntlet",
+    "Sword"
+   ],
+   "nonIdeal": [],
+   "abilities": [
+    {
+     "name": "Management Skills",
+     "text": "Allows storage access to unit and allies within 2 spaces.",
+     "kind": "personal"
+    },
+    {
+     "name": "Seize the Chance",
+     "text": "Multiplies damage by 1.3 when attacking. Trigger % = Lck ÷ 2.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Seize the Chance+",
+     "text": "Multiplies damage by 1.5 when attacking. Trigger % = Lck ÷ 2.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Simon",
+   "gender": "male",
+   "growths": {
+    "hp": 50,
+    "str": 50,
+    "mag": 20,
+    "spd": 35,
+    "dex": 40,
+    "def": 40,
+    "res": 25,
+    "lck": 50,
+    "cha": 35
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 10,
+     "mag": 4,
+     "spd": 6,
+     "dex": 6,
+     "def": 6,
+     "res": 3,
+     "lck": 7,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Infantry",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Close Call",
+     "text": "If unit's HP ≥ 2 and damage would reduce it to 0, leaves unit with 1 HP. Trigger % = Lck.",
+     "kind": "personal"
+    },
+    {
+     "name": "Devil's Luck",
+     "text": "After defeating a foe, grants Lck+1 until the end of the map. (Max +10)",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Devil's Luck+",
+     "text": "After defeating a foe, grants Lck+2 until the end of the map. (Max +10)",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Thunder",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Diego",
+   "gender": "male",
+   "growths": {
+    "hp": 45,
+    "str": 40,
+    "mag": 20,
+    "spd": 45,
+    "dex": 60,
+    "def": 35,
+    "res": 20,
+    "lck": 35,
+    "cha": 30
+   },
+   "base": {
+    "level": 6,
+    "class": "Hunter",
+    "bld": 2,
+    "stats": {
+     "hp": 27,
+     "str": 11,
+     "mag": 5,
+     "spd": 9,
+     "dex": 11,
+     "def": 6,
+     "res": 4,
+     "lck": 8,
+     "cha": 6
+    },
+    "source": "wiki",
+    "recruit": "Automatically from preparations",
+    "inventory": [
+     "Bronze Bow",
+     "Bronze Sword",
+     "Vulnerary"
+    ]
+   },
+   "preferred": [
+    "Bow",
+    "Infantry",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "Black Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Caretaker",
+     "text": "Adjacent allies cannot suffer a follow-up during combat. Trigger % = 5.",
+     "kind": "personal"
+    },
+    {
+     "name": "No Mercy",
+     "text": "Grants Hit/Crit+5 when making a follow-up.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "No Mercy+",
+     "text": "Grants Hit/Crit+10 when making a follow-up.",
+     "kind": "level",
+     "level": 35
+    }
+   ]
+  },
+  {
+   "name": "Ninae",
+   "gender": "female",
+   "growths": {
+    "hp": 45,
+    "str": 45,
+    "mag": 35,
+    "spd": 35,
+    "dex": 45,
+    "def": 35,
+    "res": 45,
+    "lck": 50,
+    "cha": 40
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 9,
+     "mag": 6,
+     "spd": 6,
+     "dex": 7,
+     "def": 6,
+     "res": 7,
+     "lck": 7,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Riding",
+    "Spear",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Bow"
+   ],
+   "abilities": [
+    {
+     "name": "Spirits' Voices",
+     "text": "If foes uses magic, grants Hit/Avo+10 to unit during combat.",
+     "kind": "personal"
+    },
+    {
+     "name": "Spirits' Guidance",
+     "text": "Grants Spirits' Voices to adjacent allies.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Spirits' Guidance+",
+     "text": "Grants Spirits' Voices to allies within 2 spaces.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Physic",
+      "rank": "B"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Sha Lan",
+   "gender": "female",
+   "growths": {
+    "hp": 35,
+    "str": 30,
+    "mag": 45,
+    "spd": 35,
+    "dex": 50,
+    "def": 30,
+    "res": 45,
+    "lck": 35,
+    "cha": 40
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 24,
+     "str": 6,
+     "mag": 8,
+     "spd": 6,
+     "dex": 8,
+     "def": 5,
+     "res": 7,
+     "lck": 6,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Authority",
+    "Spear",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Sword"
+   ],
+   "abilities": [
+    {
+     "name": "Cooler Heads",
+     "text": "After using Draw Back, unit can use assist magic.",
+     "kind": "personal"
+    },
+    {
+     "name": "Watchfulness",
+     "text": "Grants Spd+2 to adjacent allies.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Watchfulness+",
+     "text": "Grants Spd+4 to adjacent allies.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     },
+     {
+      "name": "Wandering Wall",
+      "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Recover",
+      "rank": "B"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Nezha",
+   "gender": "male",
+   "growths": {
+    "hp": 45,
+    "str": 45,
+    "mag": 25,
+    "spd": 45,
+    "dex": 50,
+    "def": 35,
+    "res": 25,
+    "lck": 30,
+    "cha": 25
+   },
+   "growthsGame8": {
+    "hp": 45,
+    "str": 55,
+    "mag": 25,
+    "spd": 45,
+    "dex": 50,
+    "def": 35,
+    "res": 25,
+    "lck": 30,
+    "cha": 25
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 9,
+     "mag": 5,
+     "spd": 7,
+     "dex": 8,
+     "def": 6,
+     "res": 3,
+     "lck": 5,
+     "cha": 4
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Gauntlet",
+    "Infantry",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "Spear"
+   ],
+   "abilities": [
+    {
+     "name": "Quick Draw",
+     "text": "If unit attacks first, grants Atk+3 during combat. Trigger % = 50.",
+     "kind": "personal"
+    },
+    {
+     "name": "Never Stop",
+     "text": "Grants Atk+5 when attacking after Quick Draw triggers. Trigger % = 30.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Never Stop+",
+     "text": "Grants Atk+5 when attacking after Quick Draw triggers. Trigger % = 50.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Guzran",
+   "gender": "male",
+   "growths": {
+    "hp": 45,
+    "str": 45,
+    "mag": 20,
+    "spd": 50,
+    "dex": 45,
+    "def": 35,
+    "res": 20,
+    "lck": 45,
+    "cha": 30
+   },
+   "base": {
+    "level": 5,
+    "class": "Gladiator",
+    "bld": 2,
+    "stats": {
+     "hp": 27,
+     "str": 11,
+     "mag": 4,
+     "spd": 11,
+     "dex": 8,
+     "def": 7,
+     "res": 3,
+     "lck": 10,
+     "cha": 6
+    },
+    "source": "wiki",
+    "recruit": "Part of recruitment tutorial in Chapter 3; give Mature Ghosh and recruit",
+    "inventory": [
+     "Bronze Sword",
+     "Vulnerary"
+    ]
+   },
+   "preferred": [
+    "Gauntlet",
+    "Infantry",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "Black Magic",
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Hot-Headed",
+     "text": "Grants one of Hit+10, Avo+10, or Crit+10 during combat.",
+     "kind": "personal"
+    },
+    {
+     "name": "Top Form",
+     "text": "Changes the Effect of Hot-Headed to grant +15",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Top Form+",
+     "text": "Changes the effect of Hot-Headed to grant +20.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Io",
+   "gender": "male",
+   "growths": {
+    "hp": 45,
+    "str": 40,
+    "mag": 25,
+    "spd": 35,
+    "dex": 45,
+    "def": 40,
+    "res": 25,
+    "lck": 35,
+    "cha": 35
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 8,
+     "mag": 5,
+     "spd": 6,
+     "dex": 7,
+     "def": 6,
+     "res": 3,
+     "lck": 6,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Riding",
+    "Spear"
+   ],
+   "nonIdeal": [
+    "Flying",
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "With My Steed",
+     "text": "(Cavalry) If unit attacks first, grants Shld+3, Ddg+30 during combat.",
+     "kind": "personal"
+    },
+    {
+     "name": "Mounted Push",
+     "text": "(Cavalry) If unit attacks first, grants Hit+10 during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Mounted Push+",
+     "text": "(Cavalry) If unit attacks first, grants Hit+10, Atk+3 during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Catania",
+   "gender": "female",
+   "growths": {
+    "hp": 35,
+    "str": 35,
+    "mag": 35,
+    "spd": 55,
+    "dex": 50,
+    "def": 30,
+    "res": 35,
+    "lck": 40,
+    "cha": 45
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 24,
+     "str": 7,
+     "mag": 6,
+     "spd": 8,
+     "dex": 8,
+     "def": 5,
+     "res": 5,
+     "lck": 6,
+     "cha": 7
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Flying",
+    "Spear",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "Heavy Armor"
+   ],
+   "abilities": [
+    {
+     "name": "Punishing Squall",
+     "text": "If AS ≥ foe's AS+3, grants Hit+20 during combat.",
+     "kind": "personal"
+    },
+    {
+     "name": "Wind My Friend",
+     "text": "If AS is greater than or equal to foe's AS+5, grants Atk+3 during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Wind My Friend+",
+     "text": "If AS ≥ foe’s AS+5, grants Atk+3, and if AS ≥ foe’s AS+8, grants Avo+20 during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Nydine",
+   "gender": "female",
+   "growths": {
+    "hp": 45,
+    "str": 40,
+    "mag": 30,
+    "spd": 45,
+    "dex": 40,
+    "def": 30,
+    "res": 25,
+    "lck": 35,
+    "cha": 35
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 8,
+     "mag": 6,
+     "spd": 7,
+     "dex": 6,
+     "def": 5,
+     "res": 3,
+     "lck": 6,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Flying",
+    "Riding"
+   ],
+   "nonIdeal": [
+    "Gauntlet",
+    "Heavy Armor"
+   ],
+   "abilities": [
+    {
+     "name": "Barge Through",
+     "text": "(Cavalry) Can move through foe's space. (Cannot move through large-scale foes.)",
+     "kind": "personal"
+    },
+    {
+     "name": "At a Gallop",
+     "text": "(Cavalry) Applies -1 to movement cost for terrain (cannot be reduced to below 1).",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "At a Gallop+",
+     "text": "(Cavalry) Applies -2 movement cost for terrain (cannot be reduced below 1).",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Thunder",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Benditz",
+   "gender": "male",
+   "growths": {
+    "hp": 50,
+    "str": 35,
+    "mag": 20,
+    "spd": 35,
+    "dex": 50,
+    "def": 35,
+    "res": 25,
+    "lck": 30,
+    "cha": 35
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 7,
+     "mag": 4,
+     "spd": 6,
+     "dex": 8,
+     "def": 6,
+     "res": 3,
+     "lck": 5,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Authority",
+    "Bow",
+    "Riding"
+   ],
+   "nonIdeal": [
+    "Infantry"
+   ],
+   "abilities": [
+    {
+     "name": "Wheeled Warrior",
+     "text": "(Cavalry) If unit is a charioteer, grants Hit+20.",
+     "kind": "personal"
+    },
+    {
+     "name": "Chariot Stagger",
+     "text": "If unit is a charioteer, grants +1 uses to staggering blows.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Chariot Stagger+",
+     "text": "If unit is charioteer, grants +2 uses to staggering blows.",
+     "kind": "level",
+     "level": 35
+    }
+   ]
+  },
+  {
+   "name": "Alexandra",
+   "gender": "female",
+   "growths": {
+    "hp": 30,
+    "str": 35,
+    "mag": 35,
+    "spd": 55,
+    "dex": 45,
+    "def": 30,
+    "res": 40,
+    "lck": 50,
+    "cha": 50
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 23,
+     "str": 7,
+     "mag": 6,
+     "spd": 8,
+     "dex": 7,
+     "def": 5,
+     "res": 6,
+     "lck": 7,
+     "cha": 8
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Flying",
+    "Spear",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "Axe",
+    "Black Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Silver Maiden",
+     "text": "Grants Hit/Avo+5 to unit for each adjacent ally.",
+     "kind": "personal"
+    },
+    {
+     "name": "Soar",
+     "text": "If unit is on inaccessible terrain, grants AS+3.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Soar+",
+     "text": "If unit is on inaccesible terrain, grants AS+5.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Yang Jie",
+   "gender": "male",
+   "growths": {
+    "hp": 50,
+    "str": 30,
+    "mag": 40,
+    "spd": 35,
+    "dex": 35,
+    "def": 30,
+    "res": 40,
+    "lck": 40,
+    "cha": 25
+   },
+   "growthsGame8": {
+    "hp": 50,
+    "str": 35,
+    "mag": 40,
+    "spd": 35,
+    "dex": 35,
+    "def": 30,
+    "res": 40,
+    "lck": 40,
+    "cha": 25
+   },
+   "base": {
+    "level": 8,
+    "class": "Diviner",
+    "bld": 1,
+    "stats": {
+     "hp": 27,
+     "str": 7,
+     "mag": 12,
+     "spd": 6,
+     "dex": 8,
+     "def": 6,
+     "res": 8,
+     "lck": 8,
+     "cha": 6
+    },
+    "source": "wiki",
+    "recruit": "Meet conditions and recruit",
+    "inventory": [
+     "Wooden Axe",
+     "Vulnerary"
+    ]
+   },
+   "preferred": [
+    "Axe",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Riding",
+    "Sword"
+   ],
+   "abilities": [
+    {
+     "name": "Monkly Havoc",
+     "text": "After defeating a foe, unit recovers HP equal to max HP. Trigger % = Lck / 2",
+     "kind": "personal"
+    },
+    {
+     "name": "Robust Health",
+     "text": "Grants Shld+3 when attacked. Trigger % = unit's remaining HP.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Robust Health+",
+     "text": "Grants Shld+5 when attacked. Trigger % = unit's remaining HP.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Physic",
+      "rank": "B"
+     },
+     {
+      "name": "Recover",
+      "rank": "A"
+     },
+     {
+      "name": "Aura",
+      "rank": "S"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Noctula",
+   "gender": "female",
+   "growths": {
+    "hp": 50,
+    "str": 45,
+    "mag": 20,
+    "spd": 45,
+    "dex": 40,
+    "def": 40,
+    "res": 20,
+    "lck": 35,
+    "cha": 30
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 9,
+     "mag": 4,
+     "spd": 7,
+     "dex": 6,
+     "def": 6,
+     "res": 3,
+     "lck": 6,
+     "cha": 5
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Gauntlet",
+    "Infantry"
+   ],
+   "nonIdeal": [
+    "Black Magic",
+    "Sword",
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Warrior's Clarity",
+     "text": "After combat, grants Avo+3 until unit's next phase.",
+     "kind": "personal"
+    },
+    {
+     "name": "Attuned",
+     "text": "When Warrior's Clarity triggers, grants Avo+10 until unit's next phase. Trigger % = 10.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Attuned+",
+     "text": "When Warrior's Clarity triggers, grants Avo+10 until unit's next phase. Trigger % = 20.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Thunder",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Sofia",
+   "gender": "female",
+   "growths": {
+    "hp": 35,
+    "str": 30,
+    "mag": 45,
+    "spd": 30,
+    "dex": 40,
+    "def": 25,
+    "res": 40,
+    "lck": 30,
+    "cha": 40
+   },
+   "growthsGame8": {
+    "hp": 35,
+    "str": 30,
+    "mag": 45,
+    "spd": 40,
+    "dex": 30,
+    "def": 25,
+    "res": 40,
+    "lck": 30,
+    "cha": 40
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 24,
+     "str": 6,
+     "mag": 8,
+     "spd": 6,
+     "dex": 6,
+     "def": 4,
+     "res": 6,
+     "lck": 5,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Bow",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Axe"
+   ],
+   "abilities": [
+    {
+     "name": "Healing Knowledge",
+     "text": "When healing an ally with magic, restores +10 HP.",
+     "kind": "personal"
+    },
+    {
+     "name": "Distant Healing",
+     "text": "Grants Rng+1 to healing magic.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Distant Healing+",
+     "text": "Grants Rng+2 to healing magic.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Physic",
+      "rank": "B"
+     },
+     {
+      "name": "Recover",
+      "rank": "A"
+     },
+     {
+      "name": "Aura",
+      "rank": "S"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Peppe",
+   "gender": "male",
+   "growths": {
+    "hp": 30,
+    "str": 30,
+    "mag": 25,
+    "spd": 60,
+    "dex": 45,
+    "def": 30,
+    "res": 30,
+    "lck": 45,
+    "cha": 30
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 23,
+     "str": 6,
+     "mag": 5,
+     "spd": 9,
+     "dex": 7,
+     "def": 5,
+     "res": 4,
+     "lck": 7,
+     "cha": 5
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Bow",
+    "Infantry",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Hunter's Snare",
+     "text": "In enemy's phase, if foes is damaged, unit attacks first during combat. Trigger % = 30.",
+     "kind": "personal"
+    },
+    {
+     "name": "King's Majesty",
+     "text": "If foe is damaged, grants Atk+2, Crit+5 during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "King's Majesty+",
+     "text": "If foe is damaged, grants Atk+4, Crit+10 during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Seteth",
+   "gender": "male",
+   "growths": {
+    "hp": 45,
+    "str": 45,
+    "mag": 30,
+    "spd": 40,
+    "dex": 45,
+    "def": 40,
+    "res": 35,
+    "lck": 30,
+    "cha": 50
+   },
+   "base": {
+    "level": 3,
+    "class": "Commoner",
+    "bld": 2,
+    "stats": {
+     "hp": 27,
+     "str": 11,
+     "mag": 7,
+     "spd": 8,
+     "dex": 8,
+     "def": 6,
+     "res": 6,
+     "lck": 6,
+     "cha": 9
+    },
+    "source": "wiki",
+    "recruit": "Meet conditions and recruit",
+    "inventory": [
+     "Assal"
+    ]
+   },
+   "preferred": [
+    "Authority",
+    "Axe",
+    "Flying",
+    "Spear"
+   ],
+   "nonIdeal": [],
+   "abilities": [
+    {
+     "name": "Ready for Battle",
+     "text": "For the first combat in enemy's phase, unit attacks first. Trigger % = 50.",
+     "kind": "personal"
+    },
+    {
+     "name": "Pass Judgment",
+     "text": "When Diadem of Balance triggers, grants Atk+4.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Pass Judgment+",
+     "text": "When Diadem of Balance triggers, grants Atk+7.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Loretta",
+   "gender": "female",
+   "growths": {
+    "hp": 35,
+    "str": 35,
+    "mag": 35,
+    "spd": 55,
+    "dex": 40,
+    "def": 30,
+    "res": 40,
+    "lck": 30,
+    "cha": 30
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 24,
+     "str": 7,
+     "mag": 6,
+     "spd": 8,
+     "dex": 6,
+     "def": 5,
+     "res": 6,
+     "lck": 5,
+     "cha": 5
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Flying",
+    "Spear",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "Heavy Armor"
+   ],
+   "abilities": [
+    {
+     "name": "Steadfast",
+     "text": "If unit's HP ≥ 50%, grants Avo+10 during combat.",
+     "kind": "personal"
+    },
+    {
+     "name": "Peak Form",
+     "text": "If unit HP = 100%, grants Atk+3 during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Peak Form+",
+     "text": "If unit's HP = 100%, grants Atk+3, Avo+10 during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Jester",
+   "gender": "male",
+   "growths": {
+    "hp": 40,
+    "str": 35,
+    "mag": 15,
+    "spd": 60,
+    "dex": 45,
+    "def": 35,
+    "res": 25,
+    "lck": 40,
+    "cha": 40
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 25,
+     "str": 7,
+     "mag": 3,
+     "spd": 9,
+     "dex": 7,
+     "def": 6,
+     "res": 3,
+     "lck": 6,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Bow",
+    "Infantry",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "Axe"
+   ],
+   "abilities": [
+    {
+     "name": "Blink of an Eye",
+     "text": "After using Swap, grants Def+3 until unit's next phase.",
+     "kind": "personal"
+    },
+    {
+     "name": "Flickering Edge",
+     "text": "When unit avoids an attack, grants Atk+3 during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Flickering Edge+",
+     "text": "When unit avoids an attack, grants Atk+5 during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ]
+  },
+  {
+   "name": "Goliath",
+   "gender": "male",
+   "growths": {
+    "hp": 55,
+    "str": 60,
+    "mag": 5,
+    "spd": 15,
+    "dex": 30,
+    "def": 50,
+    "res": 20,
+    "lck": 35,
+    "cha": 20
+   },
+   "base": {
+    "level": 3,
+    "class": "Commoner",
+    "bld": 3,
+    "stats": {
+     "hp": 33,
+     "str": 15,
+     "mag": 2,
+     "spd": 5,
+     "dex": 4,
+     "def": 9,
+     "res": 2,
+     "lck": 6,
+     "cha": 4
+    },
+    "source": "wiki",
+    "recruit": "Meet conditions and recruit",
+    "inventory": [
+     "Bronze Axe"
+    ]
+   },
+   "preferred": [
+    "Axe",
+    "Heavy Armor"
+   ],
+   "nonIdeal": [
+    "Black Magic",
+    "Flying",
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Heavyweight Class",
+     "text": "Unit cannot change to cavalry or flying. Grants Bld+5.",
+     "kind": "personal"
+    },
+    {
+     "name": "Pin Down",
+     "text": "Inflicts Mov-3 on adjacent foes.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Pin Down+",
+     "text": "Inflicts Mov-5 on adjacent foes.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Blizzard",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Ludia",
+   "gender": "female",
+   "growths": {
+    "hp": 40,
+    "str": 35,
+    "mag": 20,
+    "spd": 55,
+    "dex": 45,
+    "def": 30,
+    "res": 20,
+    "lck": 30,
+    "cha": 30
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 25,
+     "str": 7,
+     "mag": 4,
+     "spd": 8,
+     "dex": 7,
+     "def": 5,
+     "res": 3,
+     "lck": 5,
+     "cha": 5
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Infantry",
+    "Spear",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "Axe",
+    "Black Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Falcon",
+     "text": "If unit attacks first, grants AS+3 during combat.",
+     "kind": "personal"
+    },
+    {
+     "name": "Perception",
+     "text": "If unit can make a follow-up, grants Avo+10 during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Perception+",
+     "text": "If unit can make a follow-up, grants Avo+20 during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Dadao",
+   "gender": "male",
+   "growths": {
+    "hp": 50,
+    "str": 55,
+    "mag": 20,
+    "spd": 30,
+    "dex": 35,
+    "def": 45,
+    "res": 20,
+    "lck": 25,
+    "cha": 30
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 11,
+     "mag": 4,
+     "spd": 6,
+     "dex": 5,
+     "def": 7,
+     "res": 3,
+     "lck": 5,
+     "cha": 5
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Heavy Armor"
+   ],
+   "nonIdeal": [
+    "Black Magic",
+    "Spear",
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "One Chance",
+     "text": "If unit and foe cannot make a follow-up, grants Atk+5 to unit during combat.",
+     "kind": "personal"
+    },
+    {
+     "name": "Full Strength",
+     "text": "Multiplies damage by 1.3 when attacking. Trigger % = Str÷2.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Full Strength+",
+     "text": "Multiplies damage by 1.5 when attacking. Trigger % = Str ÷ 2.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Thunder",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Fianna",
+   "gender": "female",
+   "growths": {
+    "hp": 30,
+    "str": 35,
+    "mag": 55,
+    "spd": 30,
+    "dex": 40,
+    "def": 20,
+    "res": 45,
+    "lck": 25,
+    "cha": 40
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 23,
+     "str": 7,
+     "mag": 10,
+     "spd": 6,
+     "dex": 6,
+     "def": 3,
+     "res": 7,
+     "lck": 5,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Black Magic",
+    "Riding",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Gauntlet",
+    "Sword"
+   ],
+   "abilities": [
+    {
+     "name": "Graceful Light",
+     "text": "When healing an ally with magic, reduces magic cost to 0. Trigger % = Lck.",
+     "kind": "personal"
+    },
+    {
+     "name": "Gift of Faith",
+     "text": "When healing an ally with magic, restores +20 HP. Trigger % = Lck.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Gift of Faith+",
+     "text": "When healing an ally with magic, restores +30 HP. Trigger % = Lck.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "C"
+     },
+     {
+      "name": "Recover",
+      "rank": "B"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Halvin",
+   "gender": "female",
+   "growths": {
+    "hp": 35,
+    "str": 35,
+    "mag": 30,
+    "spd": 45,
+    "dex": 60,
+    "def": 30,
+    "res": 25,
+    "lck": 40,
+    "cha": 35
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 24,
+     "str": 7,
+     "mag": 6,
+     "spd": 7,
+     "dex": 9,
+     "def": 5,
+     "res": 3,
+     "lck": 6,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Bow",
+    "Riding"
+   ],
+   "nonIdeal": [
+    "Axe"
+   ],
+   "abilities": [
+    {
+     "name": "Adaptability",
+     "text": "After combat, grants Hit+2 until the end of the map. (Max +30)",
+     "kind": "personal"
+    },
+    {
+     "name": "Halt Advance",
+     "text": "After combat, if unit attacked first, inflicts Spd-2 on foe through their next combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Halt Advance+",
+     "text": "After combat, if unit attacked first, inflicts Spd-3 on foe throughout their next combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Zarcone",
+   "gender": "male",
+   "growths": {
+    "hp": 40,
+    "str": 30,
+    "mag": 20,
+    "spd": 35,
+    "dex": 60,
+    "def": 30,
+    "res": 25,
+    "lck": 30,
+    "cha": 15
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 25,
+     "str": 6,
+     "mag": 4,
+     "spd": 6,
+     "dex": 9,
+     "def": 5,
+     "res": 3,
+     "lck": 5,
+     "cha": 3
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "Black Magic",
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Hatchet Man",
+     "text": "When equipped with an axe, grants Hit+10.",
+     "kind": "personal"
+    },
+    {
+     "name": "Vulgar Conduct",
+     "text": "If foe's HP is less than or equal to 50%, grants Hit+20 during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Vulgar Conduct+",
+     "text": "If foe's HP is less than or equal to 50%, grants Hit+20, Atk+3 during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Thunder",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Majide",
+   "gender": "male",
+   "growths": {
+    "hp": 65,
+    "str": 50,
+    "mag": 15,
+    "spd": 20,
+    "dex": 30,
+    "def": 40,
+    "res": 10,
+    "lck": 25,
+    "cha": 5
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 29,
+     "str": 10,
+     "mag": 3,
+     "spd": 4,
+     "dex": 4,
+     "def": 6,
+     "res": 1,
+     "lck": 5,
+     "cha": 1
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Gauntlet"
+   ],
+   "nonIdeal": [
+    "Black Magic",
+    "Flying",
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Hellbent Axe",
+     "text": "When equipped with an axe, grants Str+3.",
+     "kind": "personal"
+    },
+    {
+     "name": "Fear Nothing",
+     "text": "If unit attacks first, grants Atk+3 at cost of Avo-30 to unit during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Fear Nothing+",
+     "text": "If unit attacks first, grants Atk+6 at cost of Avo-30 to unit during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Kiroc",
+   "gender": "male",
+   "growths": {
+    "hp": 55,
+    "str": 40,
+    "mag": 15,
+    "spd": 55,
+    "dex": 50,
+    "def": 30,
+    "res": 15,
+    "lck": 30,
+    "cha": 25
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 27,
+     "str": 8,
+     "mag": 3,
+     "spd": 8,
+     "dex": 8,
+     "def": 5,
+     "res": 2,
+     "lck": 5,
+     "cha": 4
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Bow"
+   ],
+   "nonIdeal": [],
+   "abilities": [
+    {
+     "name": "Tyranny",
+     "text": "If foe has a status effect, grants Atk+3, Crit+10 to unit during combat.",
+     "kind": "personal"
+    },
+    {
+     "name": "Menace",
+     "text": "Halves foes' Ddg during combat. Trigger % = 10.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Menace+",
+     "text": "Halves foes' Ddg during combat. Trigger % = 20.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Thunder",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Jasmine",
+   "gender": "female",
+   "growths": {
+    "hp": 50,
+    "str": 40,
+    "mag": 20,
+    "spd": 30,
+    "dex": 45,
+    "def": 45,
+    "res": 25,
+    "lck": 40,
+    "cha": 45
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 8,
+     "mag": 4,
+     "spd": 6,
+     "dex": 7,
+     "def": 7,
+     "res": 3,
+     "lck": 6,
+     "cha": 7
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Heavy Armor",
+    "Spear"
+   ],
+   "nonIdeal": [
+    "Flying",
+    "Sword"
+   ],
+   "abilities": [
+    {
+     "name": "Expert Counter",
+     "text": "If foe attacks first, grants Hit+20 to unit during combat.",
+     "kind": "personal"
+    },
+    {
+     "name": "Raging Counter",
+     "text": "If foe attacks first, grants Atk+3 to unit during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Raging Counter+",
+     "text": "If foe attacks first, grants Atk+3, Crit+10 to unit during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ]
+  },
+  {
+   "name": "Nuzzuo",
+   "gender": "male",
+   "growths": {
+    "hp": 50,
+    "str": 50,
+    "mag": 15,
+    "spd": 55,
+    "dex": 45,
+    "def": 20,
+    "res": 15,
+    "lck": 25,
+    "cha": 35
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 10,
+     "mag": 3,
+     "spd": 8,
+     "dex": 7,
+     "def": 3,
+     "res": 2,
+     "lck": 5,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Bow",
+    "Gauntlet",
+    "Sword"
+   ],
+   "nonIdeal": [],
+   "abilities": [
+    {
+     "name": "Har Hali Wisdom",
+     "text": "If unit is effective against foe, grant Atk+3 during combat.",
+     "kind": "personal"
+    },
+    {
+     "name": "Precision Strike",
+     "text": "If unit is effective against foe, grants Hit+10 during combat.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Precision Strike+",
+     "text": "If unit is effective against foe, grants Hit+20 during combat.",
+     "kind": "level",
+     "level": 35
+    }
+   ]
+  },
+  {
+   "name": "Inyoni",
+   "gender": "female",
+   "growths": {
+    "hp": 40,
+    "str": 50,
+    "mag": 20,
+    "spd": 35,
+    "dex": 40,
+    "def": 40,
+    "res": 30,
+    "lck": 40,
+    "cha": 30
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 25,
+     "str": 10,
+     "mag": 4,
+     "spd": 6,
+     "dex": 6,
+     "def": 6,
+     "res": 4,
+     "lck": 6,
+     "cha": 5
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Bow"
+   ],
+   "nonIdeal": [
+    "Black Magic",
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Heavy-Bow User",
+     "text": "When equipped with a bow, grants Str+3",
+     "kind": "personal"
+    },
+    {
+     "name": "Pierce",
+     "text": "Grants Atk+2, Crit+5 when attacking with a bow combat art.",
+     "kind": "level",
+     "level": 20
+    },
+    {
+     "name": "Pierce+",
+     "text": "Grants Atk+4, Crit+10 when attacking with a bow combat art.",
+     "kind": "level",
+     "level": 35
+    }
+   ],
+   "spells": {
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Creek",
+   "gender": "male",
+   "growths": {
+    "hp": 45,
+    "str": 50,
+    "mag": 15,
+    "spd": 60,
+    "dex": 50,
+    "def": 35,
+    "res": 20,
+    "lck": 30,
+    "cha": 35
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 10,
+     "mag": 3,
+     "spd": 9,
+     "dex": 8,
+     "def": 6,
+     "res": 3,
+     "lck": 5,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Riding",
+    "Sword"
+   ],
+   "nonIdeal": [],
+   "abilities": [
+    {
+     "name": "Steady Hands",
+     "text": "If foe attacks first, grants AS+3, Avo+10 to unit during combat.",
+     "kind": "personal"
+    }
+   ]
+  },
+  {
+   "name": "Nathan",
+   "gender": "male",
+   "growths": {
+    "hp": 55,
+    "str": 60,
+    "mag": 15,
+    "spd": 25,
+    "dex": 60,
+    "def": 45,
+    "res": 15,
+    "lck": 25,
+    "cha": 30
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 27,
+     "str": 12,
+     "mag": 3,
+     "spd": 5,
+     "dex": 9,
+     "def": 7,
+     "res": 2,
+     "lck": 5,
+     "cha": 5
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Heavy Armor",
+    "Riding",
+    "Spear"
+   ],
+   "nonIdeal": [],
+   "abilities": [
+    {
+     "name": "Headlong Rush",
+     "text": "If unit attacks first, grants AS+3, Hit+10 during combat.",
+     "kind": "personal"
+    }
+   ]
+  },
+  {
+   "name": "Bertrand",
+   "gender": "male",
+   "growths": {
+    "hp": 50,
+    "str": 55,
+    "mag": 15,
+    "spd": 45,
+    "dex": 50,
+    "def": 45,
+    "res": 20,
+    "lck": 30,
+    "cha": 50
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 11,
+     "mag": 3,
+     "spd": 7,
+     "dex": 8,
+     "def": 7,
+     "res": 3,
+     "lck": 5,
+     "cha": 8
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Authority",
+    "Axe",
+    "Gauntlet",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "Black Magic",
+    "White Magic"
+   ],
+   "abilities": [
+    {
+     "name": "Requiem Style",
+     "text": "Unit makes a follow up regardless of AS during combat. Trigger % = 5.",
+     "kind": "personal"
+    },
+    {
+     "name": "Go No Sen",
+     "text": "In enemy's phase, unit attacks first during combat. Trigger % = 25.",
+     "kind": "level",
+     "level": null
+    }
+   ]
+  },
+  {
+   "name": "Talimun",
+   "gender": "male",
+   "growths": {
+    "hp": 45,
+    "str": 40,
+    "mag": 45,
+    "spd": 40,
+    "dex": 45,
+    "def": 35,
+    "res": 40,
+    "lck": 60,
+    "cha": 50
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 8,
+     "mag": 8,
+     "spd": 7,
+     "dex": 7,
+     "def": 6,
+     "res": 6,
+     "lck": 8,
+     "cha": 8
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Authority",
+    "Black Magic",
+    "Sword"
+   ],
+   "nonIdeal": [
+    "Heavy Armor"
+   ],
+   "abilities": [
+    {
+     "name": "Swashbuckler's Luck",
+     "text": "Grants Lck+3.",
+     "kind": "personal"
+    },
+    {
+     "name": "Cannoning Flair",
+     "text": "When using artillery, grants Hit+30 during combat.",
+     "kind": "level",
+     "level": null
+    },
+    {
+     "name": "Winds of Victory",
+     "text": "Grants Hit+15 when attacking. Grants Avo+15 when attacked. Trigger% = Lck.",
+     "kind": "level",
+     "level": null
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Anatolia",
+   "gender": "female",
+   "growths": {
+    "hp": 40,
+    "str": 35,
+    "mag": 50,
+    "spd": 50,
+    "dex": 45,
+    "def": 35,
+    "res": 40,
+    "lck": 40,
+    "cha": 50
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 25,
+     "str": 7,
+     "mag": 9,
+     "spd": 8,
+     "dex": 7,
+     "def": 6,
+     "res": 6,
+     "lck": 6,
+     "cha": 8
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Black Magic",
+    "Gauntlet",
+    "Infantry"
+   ],
+   "nonIdeal": [
+    "Heavy Armor"
+   ],
+   "abilities": [
+    {
+     "name": "Celestial Flow",
+     "text": "Grants Avo+3.",
+     "kind": "personal"
+    },
+    {
+     "name": "Continuum",
+     "text": "When unit avoid an attack, restores 5 HP to unit.",
+     "kind": "level",
+     "level": null
+    },
+    {
+     "name": "Continuum+",
+     "text": "When unit avoid an attack, restores 10 HP to unit.",
+     "kind": "level",
+     "level": null
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Glass Wheel",
+      "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Wandering Wall",
+      "rank": "C"
+     },
+     {
+      "name": "Earth's Jaws",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Orchel",
+   "gender": "female",
+   "growths": {
+    "hp": 30,
+    "str": 60,
+    "mag": 45,
+    "spd": 10,
+    "dex": 20,
+    "def": 60,
+    "res": 60,
+    "lck": 20,
+    "cha": 60
+   },
+   "base": {
+    "level": 6,
+    "class": "Diviner",
+    "bld": 3,
+    "stats": {
+     "hp": 23,
+     "str": 17,
+     "mag": 10,
+     "spd": 4,
+     "dex": 4,
+     "def": 14,
+     "res": 14,
+     "lck": 6,
+     "cha": 13
+    },
+    "source": "wiki",
+    "recruit": "Automatically from preparations",
+    "inventory": [
+     "Bronze Axe",
+     "Vulnerary",
+     "Fire",
+     "Seraphim",
+     "Heal"
+    ]
+   },
+   "preferred": [
+    "Axe",
+    "Black Magic",
+    "White Magic"
+   ],
+   "nonIdeal": [
+    "Flying",
+    "Riding",
+    "Sword"
+   ],
+   "abilities": [
+    {
+     "name": "Solid and Sturdy",
+     "text": "Grants Def+5. Unit is armored. Cannot change to cavalry or flying.",
+     "kind": "personal"
+    },
+    {
+     "name": "Predictive Sense",
+     "text": "If unit attacks first, grants Hit+20 to magic during combat.",
+     "kind": "level",
+     "level": null
+    },
+    {
+     "name": "Harmonic Soul",
+     "text": "When healing an ally with magic, restores a little HP to unit.",
+     "kind": "level",
+     "level": null
+    },
+    {
+     "name": "Harmonic Soul+",
+     "text": "When healing an ally with magic, restores some HP to unit.",
+     "kind": "level",
+     "level": null
+    },
+    {
+     "name": "Self-Repair",
+     "text": "At start of unit's phase during Overblaze, restores a lot of HP to unit.",
+     "kind": "level",
+     "level": null
+    }
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Physic",
+      "rank": "C"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "C"
+     },
+     {
+      "name": "Starlight",
+      "rank": "B"
+     },
+     {
+      "name": "Recover",
+      "rank": "B"
+     },
+     {
+      "name": "Aura",
+      "rank": "A"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Centurio",
+   "gender": "male",
+   "growths": {
+    "hp": 45,
+    "str": 45,
+    "mag": 25,
+    "spd": 40,
+    "dex": 50,
+    "def": 50,
+    "res": 30,
+    "lck": 30,
+    "cha": 30
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 26,
+     "str": 9,
+     "mag": 5,
+     "spd": 7,
+     "dex": 8,
+     "def": 8,
+     "res": 4,
+     "lck": 5,
+     "cha": 5
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Axe",
+    "Heavy Armor",
+    "Spear"
+   ],
+   "nonIdeal": [],
+   "abilities": [
+    {
+     "name": "Sturdy Corundum",
+     "text": "For the first combat in enemy's phase, unit takes half damage.",
+     "kind": "personal"
+    }
+   ]
+  },
+  {
+   "name": "Aswan",
+   "gender": "female",
+   "growths": {
+    "hp": 40,
+    "str": 35,
+    "mag": 10,
+    "spd": 40,
+    "dex": 50,
+    "def": 30,
+    "res": 15,
+    "lck": 30,
+    "cha": 20
+   },
+   "base": {
+    "level": 39,
+    "class": "Sniper",
+    "bld": 4,
+    "stats": {
+     "hp": 39,
+     "str": 21,
+     "mag": 11,
+     "spd": 18,
+     "dex": 24,
+     "def": 20,
+     "res": 13,
+     "lck": 20,
+     "cha": 8
+    },
+    "source": "wiki",
+    "recruit": "Part II: Chapter 3, by talking to her. (Aswan will leave the party until Part III)",
+    "inventory": [
+     "Idah's Bow"
+    ]
+   },
+   "preferred": [
+    "Authority",
+    "Bow",
+    "Infantry"
+   ],
+   "nonIdeal": [],
+   "abilities": [
+    {
+     "name": "Princess of Arrows",
+     "text": "When equipped with a bow, grants Hit+20.",
+     "kind": "personal"
+    }
+   ]
+  },
+  {
+   "name": "Tahonia",
+   "gender": "female",
+   "growths": {
+    "hp": 65,
+    "str": 50,
+    "mag": 5,
+    "spd": 20,
+    "dex": 40,
+    "def": 45,
+    "res": 35,
+    "lck": 20,
+    "cha": 40
+   },
+   "base": {
+    "level": 1,
+    "class": "Commoner",
+    "bld": 1,
+    "stats": {
+     "hp": 29,
+     "str": 10,
+     "mag": 1,
+     "spd": 4,
+     "dex": 6,
+     "def": 7,
+     "res": 5,
+     "lck": 4,
+     "cha": 6
+    },
+    "source": "estimated"
+   },
+   "preferred": [
+    "Gauntlet"
+   ],
+   "nonIdeal": [],
+   "abilities": []
+  },
+  {
+   "name": "Klapka",
+   "gender": "male",
+   "growths": {
+    "hp": 40,
+    "str": 40,
+    "mag": 10,
+    "spd": 25,
+    "dex": 45,
+    "def": 50,
+    "res": 15,
+    "lck": 25,
+    "cha": 35
+   },
+   "base": {
+    "level": 63,
+    "class": "Guardian",
+    "bld": 7,
+    "stats": {
+     "hp": 57,
+     "str": 37,
+     "mag": 6,
+     "spd": 18,
+     "dex": 35,
+     "def": 47,
+     "res": 16,
+     "lck": 19,
+     "cha": 25
+    },
+    "source": "wiki",
+    "recruit": "Survives Part 3 Salvation Arc Fifth Section",
+    "inventory": [
+     "Ji+2",
+     "Laia"
+    ]
+   },
+   "preferred": [
+    "Infantry",
+    "Spear",
+    "White Magic"
+   ],
+   "nonIdeal": [],
+   "abilities": [
+    {
+     "name": "Spirit of Silver",
+     "text": "After combat, grants Def+1 until the end of the map. (Max +10) Trigger % = Def.",
+     "kind": "personal"
+    }
+   ],
+   "spells": {
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -206,7 +206,10 @@ export function UnitDetailPage() {
           <Card>
             <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-4">
               <SectionTitle>Recommended class paths</SectionTitle>
-              <Link to="/paths" className="text-xs text-muted underline hover:text-ink">How these are worked out</Link>
+              <span className="flex gap-3 text-xs text-muted">
+                <Link to="/paths" className="underline hover:text-ink">How these are worked out</Link>
+                <Link to={`/sim?cmd=char&unit=${encodeURIComponent(unit.name)}`} className="underline hover:text-ink">Open in the simulator</Link>
+              </span>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[640px] text-sm">
@@ -225,7 +228,13 @@ export function UnitDetailPage() {
                     return (
                       <tr key={role.id} className="border-t border-line">
                         <td className="py-1.5 pr-3 whitespace-nowrap">
-                          <Link to={`/paths?role=${role.id}`} className="font-semibold hover:text-accent">{role.label}</Link>
+                          <Link
+                            to={`/sim?cmd=char&unit=${encodeURIComponent(unit.name)}&role=${role.id}`}
+                            title="Ranked paths and chapter-by-chapter numbers in the simulator"
+                            className="font-semibold hover:text-accent"
+                          >
+                            {role.label}
+                          </Link>
                           {paths.bestRole === role.id && <span className="ml-1.5"><Badge tone="accent" title="The role this unit places highest in">Best</Badge></span>}
                         </td>
                         <td className="tabular px-2 py-1.5 text-right whitespace-nowrap">{ordinal(r.rank)}</td>

@@ -26,3 +26,6 @@ dist-ssr
 # cached source pages for scripts/import
 .cache
 __pycache__
+
+# reports written by the simulator's CLI (npm run sim visuals)
+/out

@@ -10,6 +10,7 @@ import { ParaloguesPage } from './pages/ParaloguesPage'
 import { PathsPage } from './pages/PathsPage'
 import { RngPage } from './pages/RngPage'
 import { RoutePage } from './pages/RoutePage'
+import { SimPage } from './pages/SimPage'
 import { SkillsPage } from './pages/SkillsPage'
 import { UnitDetailPage } from './pages/UnitDetailPage'
 import { UnitsPage } from './pages/UnitsPage'
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="builder" element={<BuilderPage />} />
           <Route path="rng" element={<RngPage />} />
           <Route path="paths" element={<PathsPage />} />
+          <Route path="sim" element={<SimPage />} />
           <Route path="paralogues" element={<ParaloguesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

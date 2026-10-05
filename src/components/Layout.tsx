@@ -14,6 +14,7 @@ const NAV = [
   { to: '/builder', label: 'Army Builder' },
   { to: '/rng', label: 'RNG Checker' },
   { to: '/paths', label: 'Class Paths' },
+  { to: '/sim', label: 'Simulator' },
 ]
 
 type Hit = { kind: string; name: string; to: string; spoiler: number }

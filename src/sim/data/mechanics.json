@@ -1,0 +1,298 @@
+{
+  "_about": "Hand-maintained rules and assumptions. tools/build_data.py never overwrites this file. Every entry carries a 'basis': 'documented' = stated by the game or a guide, 'observed' = taken from real unit data, 'assumed' = our best guess, change it if you learn better.",
+
+  "formulas": {
+    "attackSpeed": {
+      "basis": "documented",
+      "note": "AS = Spd - max(0, weapon Wt - Bld). Avoid uses the same value. (Game8 Attack Speed Guide)"
+    },
+    "followUpThreshold": { "value": 4, "basis": "documented" },
+    "critMultiplier": { "value": 3, "basis": "documented" },
+    "swordFollowUpMultiplier": { "value": 1.2, "basis": "documented" },
+    "axeMinDamage": { "value": 5, "basis": "documented" },
+    "hit": {
+      "dex": 1,
+      "lck": 0,
+      "basis": "assumed",
+      "note": "Hit = weapon Hit + Dex. The game only says Hit is 'affected by Dex'; the coefficient follows Three Houses."
+    },
+    "crit": {
+      "dex": 0.5,
+      "lck": 0,
+      "basis": "assumed",
+      "note": "Crit = weapon Crit + Dex/2. The game only says Crit is 'affected by Dex'."
+    },
+    "dodge": {
+      "lck": 1,
+      "basis": "assumed",
+      "note": "Dodge = Lck. The game only says Dodge is 'affected by Lck'."
+    },
+    "playerBldPerLevel": {
+      "value": 0.07,
+      "basis": "observed",
+      "note": "Bld is not a level-up stat but rises over the game: Lv1 units have Bld 1-2, Lv39-40 units 3-5, a Lv63 unit 7. Modeled as +0.07 per level from the unit's join value."
+    },
+    "gauntletAvoid": {
+      "value": 10,
+      "basis": "assumed",
+      "note": "Gauntlets have 'inherently high Avoid'; the size of the bonus is not published."
+    },
+    "displayedHitIsTrueHit": {
+      "value": true,
+      "basis": "assumed",
+      "note": "Rolls use the displayed percentage (single RN). Unknown whether the game averages two RNs."
+    }
+  },
+
+  "progression": {
+    "basis": "documented",
+    "note": "Recommended unit levels for each license tier (Game8 class change guide). Master licenses unlock in Part III.",
+    "tiers": [
+      { "tier": "beginner", "level": 5 },
+      { "tier": "specialty", "level": 20 },
+      { "tier": "advanced", "level": 35 },
+      { "tier": "master", "level": 45 }
+    ],
+    "divineLevel": 55,
+    "divineNote": "Divine licenses are one-per-playthrough key items found late in Part III; the level is assumed and divine classes are only searched with --divine.",
+    "maxLevel": 99
+  },
+
+  "checkpoints": {
+    "basis": "assumed",
+    "note": "One checkpoint per story chapter. playerLevel is the level a regularly used unit is expected to have; enemyLevel is the generic enemy level and bosses sit at bossLevel. Anchors from real data: Part I Ch.1 enemies Lv1 / boss Lv4, Ch.2 boss Lv6, Ch.3 boss Lv7, Ch.4 boss Lv11, a Lv30 unit joining in Ch.9, a Lv39 unit joining in Part II Ch.3, Lv40 generics and a Lv45 boss in the prologue preview, a Lv63 unit joining after Part III section 5. Everything between the anchors is interpolated.",
+    "list": [
+      { "id": "P1-01", "label": "Part I Ch.1", "playerLevel": 1, "enemyLevel": 1, "bossLevel": 4 },
+      { "id": "P1-02", "label": "Part I Ch.2", "playerLevel": 4, "enemyLevel": 3, "bossLevel": 6 },
+      { "id": "P1-03", "label": "Part I Ch.3", "playerLevel": 6, "enemyLevel": 5, "bossLevel": 7 },
+      { "id": "P1-04", "label": "Part I Ch.4", "playerLevel": 9, "enemyLevel": 8, "bossLevel": 11 },
+      { "id": "P1-05", "label": "Part I Ch.5", "playerLevel": 12, "enemyLevel": 11, "bossLevel": 14 },
+      { "id": "P1-06", "label": "Part I Ch.6", "playerLevel": 16, "enemyLevel": 15, "bossLevel": 18 },
+      { "id": "P1-07", "label": "Part I Ch.7", "playerLevel": 20, "enemyLevel": 19, "bossLevel": 22 },
+      { "id": "P1-08", "label": "Part I Ch.8", "playerLevel": 24, "enemyLevel": 23, "bossLevel": 26 },
+      { "id": "P1-09", "label": "Part I Ch.9", "playerLevel": 28, "enemyLevel": 27, "bossLevel": 30 },
+      { "id": "P1-10", "label": "Part I Ch.10", "playerLevel": 31, "enemyLevel": 30, "bossLevel": 33 },
+      { "id": "P1-11", "label": "Part I Ch.11", "playerLevel": 33, "enemyLevel": 32, "bossLevel": 35 },
+      { "id": "P1-12", "label": "Part I Ch.12", "playerLevel": 35, "enemyLevel": 34, "bossLevel": 37 },
+      { "id": "P2-01", "label": "Part II Ch.1", "playerLevel": 37, "enemyLevel": 36, "bossLevel": 39 },
+      { "id": "P2-02", "label": "Part II Ch.2", "playerLevel": 38, "enemyLevel": 37, "bossLevel": 40 },
+      { "id": "P2-03", "label": "Part II Ch.3", "playerLevel": 40, "enemyLevel": 39, "bossLevel": 42 },
+      { "id": "P2-04", "label": "Part II Ch.4", "playerLevel": 41, "enemyLevel": 40, "bossLevel": 43 },
+      { "id": "P2-05", "label": "Part II Ch.5", "playerLevel": 43, "enemyLevel": 42, "bossLevel": 45 },
+      { "id": "P2-06", "label": "Part II Ch.6", "playerLevel": 44, "enemyLevel": 44, "bossLevel": 47 },
+      { "id": "P3-01", "label": "Part III Sec.1", "playerLevel": 47, "enemyLevel": 46, "bossLevel": 49 },
+      { "id": "P3-02", "label": "Part III Sec.2", "playerLevel": 50, "enemyLevel": 49, "bossLevel": 52 },
+      { "id": "P3-03", "label": "Part III Sec.3", "playerLevel": 53, "enemyLevel": 52, "bossLevel": 55 },
+      { "id": "P3-04", "label": "Part III Sec.4", "playerLevel": 57, "enemyLevel": 56, "bossLevel": 59 },
+      { "id": "P3-05", "label": "Part III Sec.5", "playerLevel": 61, "enemyLevel": 60, "bossLevel": 63 },
+      { "id": "P3-06", "label": "Part III Sec.6", "playerLevel": 64, "enemyLevel": 63, "bossLevel": 66 }
+    ]
+  },
+
+  "enemies": {
+    "tierByLevel": {
+      "basis": "observed",
+      "note": "Generic enemies seen so far use Beginner classes below Lv20 (Gladiator Lv1/Lv10), Specialty at Lv20, Advanced at Lv35-40 and a Master-class boss at Lv45.",
+      "bands": [
+        { "minLevel": 1, "tier": "beginner" },
+        { "minLevel": 20, "tier": "specialty" },
+        { "minLevel": 35, "tier": "advanced" },
+        { "minLevel": 45, "tier": "master" }
+      ]
+    },
+    "bossWeight": {
+      "value": 0.25,
+      "basis": "assumed",
+      "note": "Weight of each modeled boss relative to a modeled generic (1.0). Real (observed) enemies get observedWeight."
+    },
+    "observedWeight": {
+      "value": 2,
+      "basis": "assumed",
+      "note": "A real enemy counts this many times as much as its modeled counterpart (a real boss weighs observedWeight * bossWeight)."
+    },
+    "observedLevelWindow": {
+      "value": 1,
+      "basis": "assumed",
+      "note": "A real enemy joins a checkpoint's roster when its level is within this many levels of the checkpoint's enemy or boss level."
+    },
+    "hardDelta": {
+      "basis": "observed",
+      "note": "Hard minus Normal for the one boss published on both difficulties (Lind, Lv45 High Savant). Applied flat to every enemy with --hard.",
+      "stats": { "hp": 2, "str": 2, "mag": 2, "spd": 2, "dex": 1, "def": 1, "res": 1, "lck": 1, "cha": 1 }
+    },
+    "defaultBld": { "value": 2, "basis": "observed", "note": "Lv1 generics show Bld 2; Lv40 generics Bld 2-3." },
+    "bldPerLevel": { "value": 0.03, "basis": "observed" },
+    "weaponPriority": {
+      "basis": "assumed",
+      "note": "A modeled enemy wields its class's main weapon type: the largest Skill EXP bonus on the class page, ties broken in this order.",
+      "order": ["black", "white", "axe", "spear", "bow", "sword", "gauntlet"]
+    }
+  },
+
+  "arsenal": {
+    "basis": "assumed",
+    "note": "Standard gear a unit is assumed to own at a given level, and what generic enemies carry. Player unlock levels follow the weapon-rank requirements of each license tier (D by Lv5, C by Lv20, B by Lv35, A by Lv45); enemy levels follow observed inventories (wooden Lv1, bronze Lv4-10, iron Lv20-35, silver Lv40). Relics, forged +N weapons and low-use spells are left out.",
+    "tiers": [
+      { "prefix": "Wooden", "player": 1, "enemy": 1 },
+      { "prefix": "Bronze", "player": 3, "enemy": 4 },
+      { "prefix": "Iron", "player": 6, "enemy": 14 },
+      { "prefix": "Da Mina", "player": 20, "enemy": null },
+      { "prefix": "Silver", "player": 35, "enemy": 40 }
+    ],
+    "spells": {
+      "Fire": { "player": 1, "enemy": 1 },
+      "Wind": { "player": 1, "enemy": null },
+      "Blizzard": { "player": 6, "enemy": null },
+      "Thunder": { "player": 20, "enemy": 14 },
+      "Cutting Gale": { "player": 20, "enemy": null },
+      "Bolganone": { "player": 35, "enemy": 28 },
+      "Ice Blade": { "player": 35, "enemy": 40 },
+      "Thoron": { "player": 45, "enemy": null },
+      "Excalibur": { "player": 45, "enemy": null },
+      "Nosferatu": { "player": 20, "enemy": 1 },
+      "Seraphim": { "player": 35, "enemy": 28 },
+      "Aura": { "player": 45, "enemy": 45 }
+    },
+    "thrown": {
+      "note": "Thrown weapons (range 1-2) every unit is assumed to carry alongside its melee weapons once it has the level and the skill rank. Player unlock levels are assumed to follow the standard tiers. Without these no melee class could attack from range 2, and abilities such as Esmeralda's Throwing Arm could never apply.",
+      "Javelin": { "player": 6, "enemy": null },
+      "Short Spear": { "player": 20, "enemy": null },
+      "Pilum": { "player": 35, "enemy": null },
+      "Hand Axe": { "player": 6, "enemy": null },
+      "Short Axe": { "player": 20, "enemy": null },
+      "Sagaris": { "player": 35, "enemy": null }
+    },
+    "fallbackHeals": {
+      "note": "Player units use their own published spell list (data/characters.json) at the ranks it gives. A unit whose list is not published yet falls back to the 'spells' above, gated by level and skill rank, and to these heals.",
+      "Heal": "D",
+      "Recover": "B"
+    }
+  },
+
+  "scoring": {
+    "basis": "assumed",
+    "note": "Legacy duel score (--role duel only). How one checkpoint's results become a 0-100 score. Offense = dealPP * (share of enemy HP removed when the unit attacks) + koPP * (chance to kill in that one attack) + dealEP * (share removed when countering an enemy's attack). Bulk looks at the share of the unit's own HP lost per combat (takenEP of it from being attacked, the rest from counters taken when attacking): losing bulkCeil or less scores 100, losing bulkFloor or more scores 0, linear between. Score = 100 * (offense*Offense + bulk*Bulk). Override the offense/bulk split with --offense.",
+    "offense": 0.6,
+    "bulk": 0.4,
+    "dealPP": 0.4,
+    "koPP": 0.3,
+    "dealEP": 0.3,
+    "takenEP": 0.75,
+    "bulkCeil": 0.15,
+    "bulkFloor": 0.5
+  },
+
+  "skills": {
+    "basis": "assumed",
+    "note": "Skill ranks are not simulated by the game data we have, so they are estimated from exposure: every level spent in a class that trains a skill (a weapon it wields, or Riding / Flying / Heavy Armor / Infantry for its type; a Commoner trains every weapon) adds 1 - the unit is assumed to keep every weapon type its class wields in practice - times 'preferred' for a skill the unit is proficient in and 'nonIdeal' for one it is bad at. A rank is reached at the exposure listed. Thresholds are set so a unit that trains one skill from its Beginner class meets the C / B / A exams at the recommended Lv20 / 35 / 45. Ranks gate weapons (Iron D, Da Mina C, Silver B), each unit's own spells, and class exams.",
+    "ranks": [
+      { "rank": "E", "exposure": 0 },
+      { "rank": "E+", "exposure": 2 },
+      { "rank": "D", "exposure": 4 },
+      { "rank": "C", "exposure": 15 },
+      { "rank": "B", "exposure": 28 },
+      { "rank": "A", "exposure": 38 },
+      { "rank": "S", "exposure": 50 }
+    ],
+    "preferred": 1.3,
+    "nonIdeal": 0.6,
+    "maxExamGap": {
+      "value": 1,
+      "note": "A class is offered only if every exam requirement is within this many ranks of the unit's estimated rank; the shortfall is what Arena training and manuals would have to cover and is reported as the path's training need. --free-reclass lifts the limit."
+    },
+    "lateJoinerSkills": {
+      "note": "A unit that joins already promoted is given the ranks its join class's exam asks for, plus exposure in the skills that class trains as if it had held the class since the previous tier."
+    }
+  },
+
+  "lateJoiners": {
+    "basis": "documented",
+    "note": "Units whose published stat line is not their join state. 'from' is the first checkpoint they can be fielded at (Game8 recruit pages); 'class' is the class Game8's class guide starts them from (assumed where the join class itself is not published). Their level is that checkpoint's enemy level and their stats are grown from the Lv1 estimate (or the published guest line) with their own growth rates - an estimate, flagged '*'.",
+    "units": {
+      "Gaitz": { "from": "P1-12", "class": "Bardinger" },
+      "Creek": { "from": "P2-03", "class": "Bardinger" },
+      "Nathan": { "from": "P2-04", "class": "Bardinger" },
+      "Bertrand": { "from": "P3-01", "class": "Warrior" },
+      "Talimun": { "from": "P3-01", "class": "Ovate" },
+      "Anatolia": { "from": "P3-01", "class": "Ovate" },
+      "Orchel": { "from": "P3-01", "class": "Bishop" },
+      "Centurio": { "from": "P3-02", "class": "Dreadnought" },
+      "Aswan": { "from": "P3-05", "class": "Sniper" },
+      "Tahonia": { "from": "P3-05", "class": "Battlemaster" }
+    }
+  },
+
+  "abilities": {
+    "basis": "assumed",
+    "note": "Personal abilities and abilities learned by level are read from their in-game text (src/abilities.js). Every learned ability is assumed to be active at once (the game may limit equipped abilities). A 'Trigger %' effect is applied at its average value. Conditions on HP assume the unit is at full HP. Effects that depend on position, allies, combat arts, status effects or earlier combats in the map are not scored; `char` lists them.",
+    "adjacentAllies": { "value": 0, "note": "Allies assumed adjacent for 'for each adjacent ally' effects." }
+  },
+
+  "profile": {
+    "basis": "assumed",
+    "note": "A unit is described by separate 0-100 axes, each measured at every checkpoint against that checkpoint's reference enemies. physDmg / magDmg: kill speed with its best physical / magical option in attacks the unit starts - 100 / the number of attacks it expects to need to kill a reference enemy (hit, crit and follow-up chances played out), averaged over the reference enemies, so damage counts by the kills it buys and not by the HP it removes. safety: share of the unit's own HP it keeps during that attack (100 = the enemy cannot answer, as against a bow or spell from range 2). physBulk / magBulk: share of the unit's own HP left after one attack a physical / magical reference enemy starts, if every strike lands. avoid: chance a reference enemy's strike misses. physSurv / magSurv: an enemy phase of 'enemyPhaseAttacks' attacks by physical / magical reference enemies, played out one after another with hit and crit chances - the share of those attacks the unit is still standing for. Bulk and avoid combined, so an armored unit and a dodging unit are compared on whether they live. Every axis is measured at 'statLines' whole-number stat lines and averaged. support: HP healed per map as a share of 'healBars' ally HP bars (plus 'dance' for a class that can Dance). reach: movement, from 'movFloor' (0) to 'movCeil' (100), fliers count 'flyingMov' extra. bestDmg is the larger of physDmg and magDmg.",
+    "references": {
+      "note": "One generic enemy of each archetype at the checkpoint's enemy level, with stats from the fitted enemy model and the class's standard weapon. Classes are listed per enemy tier (beginner, specialty, advanced, master); null = no such enemy at that tier. 'magic' marks the attacker used for magBulk; the rest are used for physBulk. Every archetype counts equally for damage and avoid.",
+      "archetypes": [
+        { "name": "armor", "classes": ["Soldier", "Armored Knight", "Dreadnought", "Castle Knight"] },
+        { "name": "fighter", "classes": ["Gladiator", "Brigand", "Warrior", "Battlemaster"] },
+        { "name": "skirmisher", "classes": ["Hunter", "Myrmidon", "Shido", "Swordmaster"] },
+        { "name": "rider", "classes": ["Ornius Rider", "Light Cavalry", "Bardinger", "Orichaldia"] },
+        { "name": "flier", "classes": [null, "Wing Soldier", "Dragoon", "Bau Lord"] },
+        { "name": "mage", "classes": ["Diviner", "Shaman", "Ovate", "Druid"], "magic": true }
+      ]
+    },
+    "combatsPerMap": { "value": 10, "note": "Attacks a unit makes per map. Spells have limited uses (doubled or tripled by Seeker / Zenith class abilities); magDmg averages the best spells that fit into this many attacks, and an attack with no spell left counts as zero." },
+    "enemyPhaseAttacks": { "value": 6, "note": "Attacks a front-line unit is assumed to face in one enemy phase. physSurv / magSurv play that many attacks out one after another, each from a physical / magical reference enemy picked at random, and score the share of them the unit is still standing for." },
+    "statLines": { "value": 4, "note": "Level-up luck is not averaged away: a unit is measured at this many whole-number stat lines per chapter, spread from unlucky to lucky in every stat, and the axes are the average over them. Kill and survival thresholds therefore count for the share of playthroughs that actually reach them." },
+    "healCastsPerMap": { "value": 10, "note": "Most heals one unit can cast in a map (one per turn)." },
+    "healFormula": { "magDiv": 3, "note": "HP restored = spell power + Mag / 3 (+ class and personal heal bonuses). The game only says healing scales with Mag; the divisor follows Three Houses." },
+    "healAreaTargets": { "value": 3, "note": "Allies an area heal (Fortify) is assumed to reach." },
+    "healBars": { "value": 12, "note": "Healing this many full HP bars of a typical ally (the fighter reference's HP) per map scores support 100." },
+    "dance": { "value": 60, "note": "Support score given for being able to Dance (an extra action for an ally each turn). No published numbers; a judgment call." },
+    "movFloor": 4,
+    "movCeil": 9,
+    "flyingMov": 1
+  },
+
+  "search": {
+    "basis": "assumed",
+    "note": "How class paths are searched. A unit may change class between any two chapters, to a class of its current tier or higher whose license level it has reached and whose exam is within maxExamGap: so promotions can be taken late and a tier can hold more than one class. The search keeps, for every class the unit could hold at a chapter, the 'beam' best histories per role and drops the rest.",
+    "detours": { "value": 1, "note": "Sideways class changes (to another class of the same tier) allowed along one path (--detours). Moving up a tier is always allowed." },
+    "minLevels": { "value": 5, "note": "Levels a unit spends in a class before it changes again: a class is not put on for a single chapter. The class a unit joins in is exempt." },
+    "beam": { "value": 2, "note": "Histories kept per class and role at every chapter. Higher = more alternatives listed and a more thorough search, slower." },
+    "margin": { "value": 5, "note": "A history is only kept as one of its class's best if, in at least one role, it is within this many points (campaign average) of the leading history. Each class's single best history per role is always kept." },
+    "tidy": { "value": 3, "note": "After the search, each role's best this-many paths are retried with each class change dropped and with each taken as early as the rules allow; legal variants join the list." },
+    "screen": { "value": 3, "note": "Candidates for a class change are first measured at their expected stats only; this many times 'beam' of them per class and role go on to the full measurement." },
+    "parents": { "value": 3, "note": "For each class and role, how many of the best-scoring states are tried as the state that changes into it." },
+    "parentMargin": { "value": 0.5, "note": "A state is only tried as a parent if its score so far is within this many points, per chapter still to play, of the best eligible parent: the most a better stat spread could plausibly make up." }
+  },
+
+  "roles": {
+    "basis": "assumed",
+    "note": "A role is a weighting of the profile axes; paths are ranked per role, never across roles. Weights are a judgment call - edit them or add roles. No role weights reach: as a flat bonus it outweighed the small combat differences between classes and put every unit on a mount, so roles are judged on combat alone and reach is shown beside them. 'duel' is the old single score (one-on-one duels against every enemy in the chapter roster) kept for comparison; it is slow.",
+    "rolled": {
+      "runs": 100, "top": 6, "winShare": 0.75, "minGap": 0.25,
+      "note": "How a role's leading paths are told apart. The 'top' paths by score are each replayed 'runs' times with level-ups actually rolled, every path with the same dice. The leader is the path with the best rolled average; another path is as good as the leader when the leader beats it in fewer than 'winShare' of those playthroughs, or by less than 'minGap' points on average. Of the paths that are as good, the one needing the least training is recommended. --runs 0 skips the replay and falls back to 'tolerance'."
+    },
+    "tolerance": { "value": 1.0, "note": "Only used when nothing is rolled (--runs 0): paths within this many points of a role's best path are treated as equally good; among them the one needing the least training is recommended." },
+    "list": {
+      "striker": { "label": "Physical striker", "weights": { "physDmg": 0.7, "safety": 0.15, "physBulk": 0.15 } },
+      "mage": { "label": "Mage", "weights": { "magDmg": 0.7, "safety": 0.15, "magBulk": 0.15 } },
+      "tank": { "label": "Physical tank", "weights": { "physSurv": 0.5, "magSurv": 0.25, "bestDmg": 0.25 } },
+      "magetank": { "label": "Magic tank", "weights": { "magSurv": 0.5, "physSurv": 0.25, "bestDmg": 0.25 } },
+      "mixedtank": { "label": "Mixed tank", "weights": { "physSurv": 0.375, "magSurv": 0.375, "bestDmg": 0.25 } },
+      "healer": { "label": "Healer / support", "weights": { "support": 0.8, "physBulk": 0.1, "magBulk": 0.1 } },
+      "duel": { "label": "Duel score (legacy)", "weights": { "duel": 1 } }
+    }
+  },
+
+  "notModeled": [
+    "Combat arts, Blaze arts, gambits/battalions and bloodmarks. Personal and level-up abilities are applied only where their text is a plain combat or healing modifier; the rest are listed per unit by `char`.",
+    "Mounts' bonus stats and growths, shields, terrain, supports, weapon forging and durability.",
+    "Mastery abilities and abilities learned by skill rank (only always-on class abilities such as 'Axe Hit +5' are applied).",
+    "Certification odds and the Arena: skill ranks are estimated from time spent in each class (see 'skills'), not simulated.",
+    "Stat caps (none published) and the level-scaling growth of Charioteer / Elephant Rider. Elephant Rider is excluded because its attack has no published stats.",
+    "Canto and other mount abilities, attack range beyond choosing the best range, ally buffs and enemy debuffs."
+  ]
+}

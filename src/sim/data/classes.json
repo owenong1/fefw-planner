@@ -1,0 +1,4596 @@
+{
+ "sources": {
+  "growths": "serenesforest.net/fortunes-weave (primary), game8.co growth guide (growthsGame8 where they disagree)",
+  "classes": "game8.co class pages (tier, type, movement, weapons, bonuses, abilities)",
+  "weapons": "game8.co weapon lists, gaps filled from serenesforest.net",
+  "abilities": "game8.co character pages (personal ability, abilities learned by level, spell list)",
+  "bases": "fireemblemwiki.org CharStats; \"estimated\" bases come from a growth regression over 18 low-level units",
+  "enemies": "fireemblemwiki.org chapter and boss pages"
+ },
+ "classes": [
+  {
+   "name": "Commoner",
+   "tier": "base",
+   "types": [
+    "infantry"
+   ],
+   "mov": 4,
+   "weapons": [
+    "black",
+    "white",
+    "sword",
+    "spear",
+    "axe",
+    "bow",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 0,
+    "str": 0,
+    "mag": 0,
+    "spd": 0,
+    "dex": 0,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [],
+   "growths": {
+    "hp": 0,
+    "str": 0,
+    "mag": 0,
+    "spd": 0,
+    "dex": 0,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   }
+  },
+  {
+   "name": "Gladiator",
+   "tier": "beginner",
+   "types": [
+    "infantry"
+   ],
+   "mov": 4,
+   "weapons": [
+    "sword",
+    "axe",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 1,
+    "str": 1,
+    "mag": 0,
+    "spd": 0,
+    "dex": 0,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Attack Basics",
+     "text": "Grants Str +1.",
+     "kind": "master"
+    }
+   ],
+   "exam": {
+    "license": "Beginner",
+    "level": 5,
+    "renown": 1,
+    "primary": [],
+    "secondary": [
+     {
+      "skill": "Gauntlet",
+      "rank": "D"
+     },
+     {
+      "skill": "Axe",
+      "rank": "D"
+     },
+     {
+      "skill": "Sword",
+      "rank": "D"
+     }
+    ]
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "sword": 1,
+    "axe": 1,
+    "gauntlet": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": 10,
+    "mag": 0,
+    "spd": 0,
+    "dex": 0,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   }
+  },
+  {
+   "name": "Hunter",
+   "tier": "beginner",
+   "types": [
+    "infantry"
+   ],
+   "mov": 4,
+   "weapons": [
+    "sword",
+    "bow"
+   ],
+   "bonus": {
+    "hp": 0,
+    "str": 0,
+    "mag": 0,
+    "spd": 1,
+    "dex": 1,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Hunting Basics",
+     "text": "Grants Dex/Spd +1",
+     "kind": "master"
+    }
+   ],
+   "exam": {
+    "license": "Beginner",
+    "level": 5,
+    "renown": 1,
+    "primary": [],
+    "secondary": [
+     {
+      "skill": "Bow",
+      "rank": "D"
+     },
+     {
+      "skill": "Sword",
+      "rank": "D"
+     }
+    ]
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "sword": 1,
+    "bow": 1,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": 0,
+    "mag": 0,
+    "spd": 10,
+    "dex": 10,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   }
+  },
+  {
+   "name": "Soldier",
+   "tier": "beginner",
+   "types": [
+    "armored",
+    "infantry"
+   ],
+   "mov": 4,
+   "weapons": [
+    "sword",
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 0,
+    "str": 1,
+    "mag": 0,
+    "spd": 0,
+    "dex": 0,
+    "def": 1,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Defense Basics",
+     "text": "Grants Def +1.",
+     "kind": "master"
+    }
+   ],
+   "exam": {
+    "license": "Beginner",
+    "level": 5,
+    "renown": 1,
+    "primary": [],
+    "secondary": [
+     {
+      "skill": "Axe",
+      "rank": "D"
+     },
+     {
+      "skill": "Spear",
+      "rank": "D"
+     }
+    ]
+   },
+   "typeText": "Heavy Armor Infantry",
+   "skillExp": {
+    "spear": 1,
+    "axe": 1,
+    "armor": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": 5,
+    "mag": 0,
+    "spd": -5,
+    "dex": 5,
+    "def": 10,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   }
+  },
+  {
+   "name": "Ornius Rider",
+   "tier": "beginner",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "sword",
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 0,
+    "str": 0,
+    "mag": 0,
+    "spd": 3,
+    "dex": 2,
+    "def": 0,
+    "res": 0,
+    "lck": 1,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Offense Basics",
+     "text": "Grants Str/Mag +1.",
+     "kind": "master"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Beginner",
+    "level": 5,
+    "renown": 1,
+    "primary": [
+     {
+      "skill": "Riding",
+      "rank": "E+"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Axe",
+      "rank": "D"
+     },
+     {
+      "skill": "Spear",
+      "rank": "D"
+     }
+    ]
+   },
+   "typeText": "Cavalry",
+   "skillExp": {
+    "spear": 1,
+    "riding": 1,
+    "flying": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": 0,
+    "mag": 0,
+    "spd": 10,
+    "dex": 0,
+    "def": 0,
+    "res": 5,
+    "lck": 5,
+    "cha": 0
+   },
+   "growthsGame8": {
+    "hp": 10,
+    "str": 0,
+    "mag": 0,
+    "spd": 10,
+    "dex": 5,
+    "def": 0,
+    "res": 5,
+    "lck": 5,
+    "cha": 0
+   }
+  },
+  {
+   "name": "Diviner",
+   "tier": "beginner",
+   "types": [
+    "infantry"
+   ],
+   "mov": 4,
+   "weapons": [
+    "black",
+    "white",
+    "sword",
+    "axe",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 0,
+    "str": 0,
+    "mag": 1,
+    "spd": 0,
+    "dex": 0,
+    "def": 0,
+    "res": 1,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Magic Basics",
+     "text": "Grants Mag/Res+1",
+     "kind": "master"
+    }
+   ],
+   "exam": {
+    "license": "Beginner",
+    "level": 5,
+    "renown": 1,
+    "primary": [],
+    "secondary": [
+     {
+      "skill": "White Magic",
+      "rank": "D"
+     },
+     {
+      "skill": "Black Magic",
+      "rank": "D"
+     }
+    ]
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "black magic": 1,
+    "white magic": 1
+   },
+   "growths": {
+    "hp": 5,
+    "str": -5,
+    "mag": 15,
+    "spd": 0,
+    "dex": 5,
+    "def": -5,
+    "res": 10,
+    "lck": 0,
+    "cha": 0
+   }
+  },
+  {
+   "name": "Myrmidon",
+   "tier": "specialty",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "sword",
+    "spear"
+   ],
+   "bonus": {
+    "hp": 1,
+    "str": 0,
+    "mag": 0,
+    "spd": 2,
+    "dex": 0,
+    "def": 0,
+    "res": -1,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Ravaging Arts",
+     "text": "If unit makes a critical, deal +6 damage.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +1",
+     "text": "Unit can equip +1 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Sword Crit +3",
+     "text": "When equipped with a sword, grants Crit +3.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "sword",
+      "stat": "crit",
+      "value": 3
+     }
+    }
+   ],
+   "exam": {
+    "license": "Specialty",
+    "level": 20,
+    "renown": 4,
+    "primary": [
+     {
+      "skill": "Sword",
+      "rank": "C"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "sword": 2,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": 0,
+    "mag": 0,
+    "spd": 15,
+    "dex": 10,
+    "def": 0,
+    "res": 0,
+    "lck": 5,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Brigand",
+   "tier": "specialty",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "sword",
+    "axe",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 3,
+    "str": 2,
+    "mag": 0,
+    "spd": 0,
+    "dex": 0,
+    "def": 1,
+    "res": -1,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Regroup",
+     "text": "When foe avoids an attack, grants Avo +20 to unit during combat.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +1",
+     "text": "Unit can equip +1 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Axe Hit +3",
+     "text": "When equipped with an axe, grants Hit +3.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "axe",
+      "stat": "hit",
+      "value": 3
+     }
+    }
+   ],
+   "exam": {
+    "license": "Specialty",
+    "level": 20,
+    "renown": 4,
+    "primary": [],
+    "secondary": [
+     {
+      "skill": "Axe",
+      "rank": "C"
+     },
+     {
+      "skill": "Sword",
+      "rank": "C"
+     }
+    ]
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "axe": 2
+   },
+   "growths": {
+    "hp": 15,
+    "str": 15,
+    "mag": -5,
+    "spd": 5,
+    "dex": 0,
+    "def": 5,
+    "res": 0,
+    "lck": 0,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Pugilist",
+   "tier": "specialty",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 2,
+    "str": 1,
+    "mag": 0,
+    "spd": 1,
+    "dex": 0,
+    "def": 2,
+    "res": -1,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Attack, Get Back",
+     "text": "When using a combat art, grants Avo +10 during combat.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +1",
+     "text": "Unit can equip +1 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Brawl Avo +3",
+     "text": "When equipped with gauntlets, grants Avo +3.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "gauntlet",
+      "stat": "avo",
+      "value": 3
+     }
+    }
+   ],
+   "exam": {
+    "license": "Specialty",
+    "level": 20,
+    "renown": 4,
+    "primary": [
+     {
+      "skill": "Gauntlet",
+      "rank": "C"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "gauntlet": 2,
+    "infantry": 2
+   },
+   "growths": {
+    "hp": 15,
+    "str": 10,
+    "mag": -5,
+    "spd": 10,
+    "dex": 5,
+    "def": 10,
+    "res": 0,
+    "lck": 0,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Archer",
+   "tier": "specialty",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "bow"
+   ],
+   "bonus": {
+    "hp": 0,
+    "str": 0,
+    "mag": 0,
+    "spd": 2,
+    "dex": 2,
+    "def": 1,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Crescendo",
+     "text": "After defeating a foe, grants Hit +3 until the end of the map. (Max +30)",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +1",
+     "text": "Unit can equip +1 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Bow Hit +5",
+     "text": "When equipped with a bow, grants Hit +5.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "bow",
+      "stat": "hit",
+      "value": 5
+     }
+    }
+   ],
+   "exam": {
+    "license": "Specialty",
+    "level": 20,
+    "renown": 4,
+    "primary": [
+     {
+      "skill": "Bow",
+      "rank": "C"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "bow": 2,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": 0,
+    "mag": 0,
+    "spd": 10,
+    "dex": 15,
+    "def": 5,
+    "res": 0,
+    "lck": 5,
+    "cha": 5
+   },
+   "growthsGame8": {
+    "hp": 10,
+    "str": 5,
+    "mag": 0,
+    "spd": 10,
+    "dex": 10,
+    "def": 5,
+    "res": 0,
+    "lck": 5,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Rogue",
+   "tier": "specialty",
+   "types": [
+    "infantry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "sword",
+    "bow"
+   ],
+   "bonus": {
+    "hp": 0,
+    "str": 0,
+    "mag": 0,
+    "spd": 3,
+    "dex": 1,
+    "def": 0,
+    "res": 1,
+    "lck": 1,
+    "cha": -1
+   },
+   "abilities": [
+    {
+     "name": "In Shadow",
+     "text": "After defeating a foe, grants Avo +10 through unit's next combat.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +1",
+     "text": "Unit can equip +1 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Locktouch",
+     "text": "Allows the opening of chests even without keys.",
+     "kind": "class"
+    },
+    {
+     "name": "Search",
+     "text": "Search results are more likely to be perfect.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Specialty",
+    "level": 20,
+    "renown": 4,
+    "primary": [],
+    "secondary": [
+     {
+      "skill": "Bow",
+      "rank": "C"
+     },
+     {
+      "skill": "Sword",
+      "rank": "C"
+     }
+    ]
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "sword": 1,
+    "bow": 1,
+    "infantry": 2
+   },
+   "growths": {
+    "hp": 10,
+    "str": 0,
+    "mag": 0,
+    "spd": 15,
+    "dex": 10,
+    "def": 0,
+    "res": 5,
+    "lck": 5,
+    "cha": 0
+   }
+  },
+  {
+   "name": "Armored Knight",
+   "tier": "specialty",
+   "types": [
+    "armored",
+    "infantry"
+   ],
+   "mov": 4,
+   "weapons": [
+    "sword",
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 2,
+    "str": 1,
+    "mag": 0,
+    "spd": -2,
+    "dex": 0,
+    "def": 4,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Great Counter",
+     "text": "If foe attacks first, grants Atk +3 to unit during combat.",
+     "kind": "master"
+    },
+    {
+     "name": "Strike-Last Def +3",
+     "text": "If foe attacks first, grants Prt +3 to unit during combat.",
+     "kind": "class",
+     "effect": {
+      "when": "foeInitiates",
+      "stat": "prt",
+      "value": 3
+     }
+    },
+    {
+     "name": "Combat Arts +1",
+     "text": "Unit can equip +1 combat arts.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Specialty",
+    "level": 20,
+    "renown": 4,
+    "primary": [
+     {
+      "skill": "Heavy Armor",
+      "rank": "E+"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Axe",
+      "rank": "C"
+     },
+     {
+      "skill": "Spear",
+      "rank": "C"
+     }
+    ]
+   },
+   "typeText": "Heavy Armor Infantry",
+   "skillExp": {
+    "spear": 1,
+    "axe": 1,
+    "armor": 2
+   },
+   "growths": {
+    "hp": 10,
+    "str": 10,
+    "mag": -5,
+    "spd": -5,
+    "dex": 5,
+    "def": 25,
+    "res": -5,
+    "lck": 0,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Light Cavalry",
+   "tier": "specialty",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "sword",
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 1,
+    "str": 1,
+    "mag": 0,
+    "spd": 1,
+    "dex": 0,
+    "def": 2,
+    "res": 0,
+    "lck": 0,
+    "cha": 1
+   },
+   "abilities": [
+    {
+     "name": "Bolster Health",
+     "text": "Grants max HP +3.",
+     "kind": "master"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Specialty",
+    "level": 20,
+    "renown": 4,
+    "primary": [
+     {
+      "skill": "Riding",
+      "rank": "D"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Spear",
+      "rank": "C"
+     },
+     {
+      "skill": "Sword",
+      "rank": "C"
+     }
+    ]
+   },
+   "typeText": "Cavalry",
+   "skillExp": {
+    "spear": 1,
+    "riding": 2
+   },
+   "growths": {
+    "hp": 10,
+    "str": 5,
+    "mag": -5,
+    "spd": 5,
+    "dex": 0,
+    "def": 5,
+    "res": 0,
+    "lck": 5,
+    "cha": 10
+   }
+  },
+  {
+   "name": "Charioteer",
+   "tier": "specialty",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "bow"
+   ],
+   "bonus": {
+    "hp": 3,
+    "str": 1,
+    "mag": 0,
+    "spd": -2,
+    "dex": 3,
+    "def": 3,
+    "res": 0,
+    "lck": 0,
+    "cha": 1
+   },
+   "abilities": [
+    {
+     "name": "Charger",
+     "text": "When using Charge, grants Prt +10 until unit's next phase.",
+     "kind": "master"
+    },
+    {
+     "name": "Chariot Armor",
+     "text": "Grants Shield +5. Unit cannot avoid attacks.",
+     "kind": "class"
+    },
+    {
+     "name": "Charioteer Tactics",
+     "text": "Allows use of the Mount and Dismount commands. (Cavalry) Allows use of the Charge command.",
+     "kind": "class"
+    },
+    {
+     "name": "Charioteer's Path",
+     "text": "Unit's growth rate increases with level.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Specialty",
+    "level": 20,
+    "renown": 4,
+    "primary": [
+     {
+      "skill": "Riding",
+      "rank": "D"
+     },
+     {
+      "skill": "Bow",
+      "rank": "C"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Cavalry",
+   "skillExp": {
+    "bow": 2,
+    "riding": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": 5,
+    "mag": -5,
+    "spd": -5,
+    "dex": 15,
+    "def": 10,
+    "res": 0,
+    "lck": 5,
+    "cha": 10
+   }
+  },
+  {
+   "name": "Armored Ornius Rider",
+   "tier": "specialty",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 7,
+   "weapons": [
+    "sword",
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 1,
+    "str": 0,
+    "mag": 0,
+    "spd": 2,
+    "dex": 0,
+    "def": 2,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Sense Threat",
+     "text": "If foe is effective against unit, grants Avo +20 to unit during combat.",
+     "kind": "master"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Specialty",
+    "level": 20,
+    "renown": 4,
+    "primary": [
+     {
+      "skill": "Riding",
+      "rank": "D"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Axe",
+      "rank": "C"
+     },
+     {
+      "skill": "Spear",
+      "rank": "C"
+     }
+    ]
+   },
+   "typeText": "Cavalry",
+   "skillExp": {
+    "gauntlet": 1,
+    "black magic": 1,
+    "white magic": 2
+   },
+   "growths": {
+    "hp": 10,
+    "str": 0,
+    "mag": -5,
+    "spd": 10,
+    "dex": 5,
+    "def": 10,
+    "res": 0,
+    "lck": 5,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Wing Soldier",
+   "tier": "specialty",
+   "types": [
+    "flying"
+   ],
+   "mov": 6,
+   "weapons": [
+    "sword",
+    "spear"
+   ],
+   "bonus": {
+    "hp": 0,
+    "str": 0,
+    "mag": 0,
+    "spd": 4,
+    "dex": 1,
+    "def": 1,
+    "res": 2,
+    "lck": 0,
+    "cha": 1
+   },
+   "abilities": [
+    {
+     "name": "Protecting Wings",
+     "text": "Grants Res +3.",
+     "kind": "master"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Specialty",
+    "level": 20,
+    "renown": 4,
+    "primary": [
+     {
+      "skill": "Flying",
+      "rank": "D"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Spear",
+      "rank": "C"
+     },
+     {
+      "skill": "Sword",
+      "rank": "C"
+     }
+    ]
+   },
+   "gender": "female",
+   "typeText": "Flier",
+   "skillExp": {
+    "sword": 1,
+    "spear": 1,
+    "flying": 2
+   },
+   "growths": {
+    "hp": 10,
+    "str": 0,
+    "mag": 5,
+    "spd": 0,
+    "dex": 5,
+    "def": 5,
+    "res": 5,
+    "lck": 5,
+    "cha": 10
+   }
+  },
+  {
+   "name": "Shaman",
+   "tier": "specialty",
+   "types": [
+    "infantry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "black",
+    "white",
+    "sword",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 0,
+    "str": 0,
+    "mag": 2,
+    "spd": 1,
+    "dex": 1,
+    "def": 0,
+    "res": 2,
+    "lck": 0,
+    "cha": -1
+   },
+   "abilities": [
+    {
+     "name": "Bind Dexterity",
+     "text": "Inflicts Dex-3 on adjacent foes.",
+     "kind": "master"
+    },
+    {
+     "name": "Black-Magic Seeker",
+     "text": "Multiplies black magic uses by 2.",
+     "kind": "class"
+    },
+    {
+     "name": "Magic Hit +3",
+     "text": "When equipped with magic, grants Hit +3.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Specialty",
+    "level": 20,
+    "renown": 4,
+    "primary": [
+     {
+      "skill": "Black Magic",
+      "rank": "C"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "spear": 1,
+    "axe": 1,
+    "riding": 1,
+    "flying": 1
+   },
+   "growths": {
+    "hp": 5,
+    "str": -5,
+    "mag": 15,
+    "spd": 10,
+    "dex": 10,
+    "def": -10,
+    "res": 10,
+    "lck": 10,
+    "cha": 0
+   }
+  },
+  {
+   "name": "Priest",
+   "tier": "specialty",
+   "types": [
+    "infantry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "black",
+    "white",
+    "axe",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 0,
+    "str": 0,
+    "mag": 1,
+    "spd": 0,
+    "dex": 0,
+    "def": 0,
+    "res": 3,
+    "lck": 2,
+    "cha": 1
+   },
+   "abilities": [
+    {
+     "name": "Piety",
+     "text": "Grants Lck +3.",
+     "kind": "master"
+    },
+    {
+     "name": "White-Magic Seeker",
+     "text": "Multiplies white magic uses by 2.",
+     "kind": "class"
+    },
+    {
+     "name": "Magic Heal +5",
+     "text": "When healing an ally with magic, restores +5 HP.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Specialty",
+    "level": 20,
+    "renown": 4,
+    "primary": [
+     {
+      "skill": "White Magic",
+      "rank": "C"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "gauntlet": 1,
+    "black magic": 1,
+    "white magic": 2
+   },
+   "growths": {
+    "hp": 5,
+    "str": -5,
+    "mag": 10,
+    "spd": 5,
+    "dex": 5,
+    "def": -10,
+    "res": 15,
+    "lck": 15,
+    "cha": 10
+   }
+  },
+  {
+   "name": "Shido",
+   "tier": "advanced",
+   "types": [
+    "infantry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "sword",
+    "spear"
+   ],
+   "bonus": {
+    "hp": 3,
+    "str": 0,
+    "mag": 0,
+    "spd": 7,
+    "dex": 3,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Ever Vigilant",
+     "text": "After defeating a foe with a critical attack, restores a little HP to unit.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +2",
+     "text": "Unit can equip +2 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Sword Crit +5",
+     "text": "When equipped with a sword, grants Crit +5.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "sword",
+      "stat": "crit",
+      "value": 5
+     }
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [
+     {
+      "skill": "Sword",
+      "rank": "B"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "sword": 3,
+    "spear": 1,
+    "infantry": 2
+   },
+   "growths": {
+    "hp": 10,
+    "str": 5,
+    "mag": 0,
+    "spd": 15,
+    "dex": 10,
+    "def": 0,
+    "res": -5,
+    "lck": 5,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Warrior",
+   "tier": "advanced",
+   "types": [
+    "infantry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "sword",
+    "axe",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 4,
+    "str": 4,
+    "mag": 0,
+    "spd": 1,
+    "dex": 0,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Combat Arts +2",
+     "text": "Unit can equip +2 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Axe Hit +5",
+     "text": "When equipped with an axe, grants Hit +5.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "axe",
+      "stat": "hit",
+      "value": 5
+     }
+    },
+    {
+     "name": "Brawl Hit +5",
+     "text": "When equipped with gauntlets, grants Hit +5.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "gauntlet",
+      "stat": "hit",
+      "value": 5
+     }
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [],
+    "secondary": [
+     {
+      "skill": "Gauntlet",
+      "rank": "B"
+     },
+     {
+      "skill": "Axe",
+      "rank": "B"
+     },
+     {
+      "skill": "Sword",
+      "rank": "B"
+     }
+    ]
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "sword": 2,
+    "axe": 3,
+    "gauntlet": 2,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 20,
+    "str": 20,
+    "mag": -5,
+    "spd": 0,
+    "dex": 0,
+    "def": 5,
+    "res": -5,
+    "lck": 0,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Blacksmith",
+   "tier": "advanced",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "black",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 5,
+    "str": 1,
+    "mag": 1,
+    "spd": 1,
+    "dex": 0,
+    "def": 3,
+    "res": 1,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Makeshift",
+     "text": "When using a combat art, reduces weapon durability cost to 0 during combat. Trigger % = 10.",
+     "kind": "master"
+    },
+    {
+     "name": "Black-Magic Seeker",
+     "text": "Multiplies black magic uses by 2.",
+     "kind": "class"
+    },
+    {
+     "name": "Axe Hit +5",
+     "text": "When equipped with an axe, grants Hit +5.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "axe",
+      "stat": "hit",
+      "value": 5
+     }
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [
+     {
+      "skill": "Black Magic",
+      "rank": "D"
+     },
+     {
+      "skill": "Axe",
+      "rank": "C"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "axe": 3,
+    "black magic": 1,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 15,
+    "str": 10,
+    "mag": 10,
+    "spd": 0,
+    "dex": 5,
+    "def": 10,
+    "res": 10,
+    "lck": 0,
+    "cha": 5
+   },
+   "routes": [
+    "dietrich"
+   ]
+  },
+  {
+   "name": "Sniper",
+   "tier": "advanced",
+   "types": [
+    "infantry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "bow"
+   ],
+   "bonus": {
+    "hp": 1,
+    "str": 0,
+    "mag": 0,
+    "spd": 5,
+    "dex": 5,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Marksmanship",
+     "text": "When equipped with a bow, grants Hit +15.",
+     "kind": "master",
+     "effect": {
+      "when": "equipped",
+      "weapon": "bow",
+      "stat": "hit",
+      "value": 15
+     }
+    },
+    {
+     "name": "Combat Arts +2",
+     "text": "Unit can equip +2 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Bow Hit +10",
+     "text": "When equipped with a bow, grants Hit +10.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "bow",
+      "stat": "hit",
+      "value": 10
+     }
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [
+     {
+      "skill": "Bow",
+      "rank": "B"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "bow": 3,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": 5,
+    "mag": 0,
+    "spd": 10,
+    "dex": 20,
+    "def": 5,
+    "res": 5,
+    "lck": 5,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Forest Knight",
+   "tier": "advanced",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 7,
+   "weapons": [
+    "sword",
+    "bow"
+   ],
+   "bonus": {
+    "hp": 1,
+    "str": 0,
+    "mag": 0,
+    "spd": 5,
+    "dex": 2,
+    "def": 1,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Hunter's Eye",
+     "text": "When equipped with a bow, grants Atk +3 when making a follow-up.",
+     "kind": "master"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    },
+    {
+     "name": "Combat Arts +1",
+     "text": "Unit can equip +1 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Bow Hit +5",
+     "text": "When equipped with a bow, grants Hit +5.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "bow",
+      "stat": "hit",
+      "value": 5
+     }
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [
+     {
+      "skill": "Riding",
+      "rank": "D"
+     },
+     {
+      "skill": "Bow",
+      "rank": "B"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Cavalry",
+   "skillExp": {
+    "sword": 1,
+    "bow": 2,
+    "riding": 2
+   },
+   "growths": {
+    "hp": 10,
+    "str": 5,
+    "mag": 0,
+    "spd": 10,
+    "dex": 10,
+    "def": 5,
+    "res": 5,
+    "lck": 5,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Ranger",
+   "tier": "advanced",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "sword",
+    "bow"
+   ],
+   "bonus": {
+    "hp": 1,
+    "str": 0,
+    "mag": 0,
+    "spd": 7,
+    "dex": 4,
+    "def": 0,
+    "res": 1,
+    "lck": 1,
+    "cha": 1
+   },
+   "abilities": [
+    {
+     "name": "Countershot",
+     "text": "When equipped with a bow, unit can counter adjacent foes during combat. Trigger % = 50.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +2",
+     "text": "Unit can equip +2 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Locktouch",
+     "text": "Allows the opening of chests even without keys.",
+     "kind": "class"
+    },
+    {
+     "name": "Advanced Search",
+     "text": "Search results are more likely to be perfect.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [],
+    "secondary": [
+     {
+      "skill": "Bow",
+      "rank": "B"
+     },
+     {
+      "skill": "Sword",
+      "rank": "B"
+     }
+    ]
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "bow": 2,
+    "sword": 2,
+    "infantry": 3
+   },
+   "growths": {
+    "hp": 10,
+    "str": 5,
+    "mag": 0,
+    "spd": 15,
+    "dex": 15,
+    "def": 0,
+    "res": 10,
+    "lck": 15,
+    "cha": 0
+   },
+   "routes": [
+    "dietrich",
+    "leda"
+   ]
+  },
+  {
+   "name": "Guardian",
+   "tier": "advanced",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "white",
+    "spear"
+   ],
+   "bonus": {
+    "hp": 3,
+    "str": 1,
+    "mag": 0,
+    "spd": 1,
+    "dex": 0,
+    "def": 3,
+    "res": 4,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Brace",
+     "text": "After defeating a foe, grants Prt +3 until unit's next phase.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +2",
+     "text": "Unit can equip +2 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Magic Heal +10",
+     "text": "When healing an ally with magic, restores +10 HP.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [
+     {
+      "skill": "Spear",
+      "rank": "B"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "spear": 3,
+    "white magic": 1,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": 10,
+    "mag": 0,
+    "spd": 0,
+    "dex": 5,
+    "def": 10,
+    "res": 15,
+    "lck": 5,
+    "cha": 5
+   },
+   "routes": [
+    "dietrich",
+    "theodora"
+   ]
+  },
+  {
+   "name": "Dreadnought",
+   "tier": "advanced",
+   "types": [
+    "armored",
+    "infantry"
+   ],
+   "mov": 4,
+   "weapons": [
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 5,
+    "str": 3,
+    "mag": 0,
+    "spd": -5,
+    "dex": 0,
+    "def": 9,
+    "res": -1,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Focused Counter",
+     "text": "If foe attacks first, grants Hit +10 to unit during combat.",
+     "kind": "master"
+    },
+    {
+     "name": "Strike-Last Def +5",
+     "text": "If foe attacks first, grants Prt +5 to unit during combat.",
+     "kind": "class",
+     "effect": {
+      "when": "foeInitiates",
+      "stat": "prt",
+      "value": 5
+     }
+    },
+    {
+     "name": "Combat Arts +2",
+     "text": "Unit can equip +2 combat arts.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [
+     {
+      "skill": "Heavy Armor",
+      "rank": "D"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Axe",
+      "rank": "B"
+     },
+     {
+      "skill": "Spear",
+      "rank": "B"
+     }
+    ]
+   },
+   "typeText": "Heavy Armor Infantry",
+   "skillExp": {
+    "spear": 2,
+    "axe": 2,
+    "infantry": 1,
+    "heavy armor": 3
+   },
+   "growths": {
+    "hp": 15,
+    "str": 15,
+    "mag": -5,
+    "spd": -10,
+    "dex": 5,
+    "def": 30,
+    "res": -10,
+    "lck": 0,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Bardinger",
+   "tier": "advanced",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "sword",
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 3,
+    "str": 0,
+    "mag": 0,
+    "spd": 1,
+    "dex": 0,
+    "def": 1,
+    "res": 0,
+    "lck": 0,
+    "cha": 3
+   },
+   "abilities": [
+    {
+     "name": "Aegis",
+     "text": "Unit takes half damage when attacked with a magical attack. Trigger % = 20.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +2",
+     "text": "Unit can equip +2 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [
+     {
+      "skill": "Riding",
+      "rank": "C"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Spear",
+      "rank": "C"
+     },
+     {
+      "skill": "Sword",
+      "rank": "B"
+     }
+    ]
+   },
+   "typeText": "Cavalry",
+   "skillExp": {
+    "sword": 2,
+    "spear": 2,
+    "axe": 1,
+    "riding": 3
+   },
+   "growths": {
+    "hp": 10,
+    "str": 10,
+    "mag": -5,
+    "spd": 0,
+    "dex": 0,
+    "def": 5,
+    "res": 10,
+    "lck": 5,
+    "cha": 10
+   }
+  },
+  {
+   "name": "Elephant Rider",
+   "tier": "advanced",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 5,
+   "weapons": [],
+   "bonus": {
+    "hp": 10,
+    "str": 2,
+    "mag": 0,
+    "spd": -5,
+    "dex": 3,
+    "def": 7,
+    "res": 0,
+    "lck": 0,
+    "cha": 3
+   },
+   "abilities": [
+    {
+     "name": "Elephant Vanguard",
+     "text": "If unit is an elephant rider, grants Hit +10.",
+     "kind": "master"
+    },
+    {
+     "name": "War-Elephant Boots",
+     "text": "Unit takes half damage when attacked. Unit cannot avoid attacks.",
+     "kind": "class"
+    },
+    {
+     "name": "Elephant Tactics",
+     "text": "Allows use of the Mount and Dismount commands. Allows use of the Heavy Charge Commands.",
+     "kind": "class"
+    },
+    {
+     "name": "Elephant Rider's Path",
+     "text": "Unit's growth rate increases with level.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Elephant",
+    "level": 35,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "Riding",
+      "rank": "C"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Cavalry",
+   "skillExp": {
+    "riding": 2
+   },
+   "growths": {
+    "hp": 20,
+    "str": 10,
+    "mag": -5,
+    "spd": -10,
+    "dex": 20,
+    "def": 15,
+    "res": -5,
+    "lck": 5,
+    "cha": 10
+   },
+   "growthsGame8": {
+    "hp": 20,
+    "str": 10,
+    "mag": -5,
+    "spd": 20,
+    "dex": -10,
+    "def": 15,
+    "res": -5,
+    "lck": 5,
+    "cha": 10
+   },
+   "unsupported": "no usable weapon list published (innate attack only)"
+  },
+  {
+   "name": "Caladrius",
+   "tier": "advanced",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "black",
+    "sword",
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 2,
+    "str": 0,
+    "mag": 1,
+    "spd": 3,
+    "dex": 0,
+    "def": 1,
+    "res": 2,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Overtake",
+     "text": "After defeating a foe, grant Mov +1 through the end of the next turn. (Max +3)",
+     "kind": "master"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    },
+    {
+     "name": "Black-Magic Seeker",
+     "text": "Multiplies black magic uses by 2.",
+     "kind": "class"
+    },
+    {
+     "name": "Combat Arts +1",
+     "text": "Unit can equip +1 combat arts.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [
+     {
+      "skill": "Riding",
+      "rank": "D"
+     },
+     {
+      "skill": "Black Magic",
+      "rank": "B"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Cavalry",
+   "skillExp": {
+    "sword": 1,
+    "spear": 2,
+    "axe": 2,
+    "black magic": 2,
+    "riding": 1,
+    "flying": 1
+   },
+   "growths": {
+    "hp": 15,
+    "str": 0,
+    "mag": 10,
+    "spd": 10,
+    "dex": 5,
+    "def": 10,
+    "res": 10,
+    "lck": 5,
+    "cha": 5
+   },
+   "growthsGame8": {
+    "hp": 15,
+    "str": 0,
+    "mag": 10,
+    "spd": 5,
+    "dex": 10,
+    "def": 10,
+    "res": 10,
+    "lck": 5,
+    "cha": 5
+   },
+   "routes": [
+    "cai"
+   ]
+  },
+  {
+   "name": "Dragoon",
+   "tier": "advanced",
+   "types": [
+    "flying"
+   ],
+   "mov": 7,
+   "weapons": [
+    "sword",
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 2,
+    "str": 1,
+    "mag": 0,
+    "spd": 3,
+    "dex": 1,
+    "def": 1,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Besieger",
+     "text": "If foe is on favorable terrain, grants Hit +20 to unit during combat.",
+     "kind": "master"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    },
+    {
+     "name": "Combat Arts +1",
+     "text": "Unit can equip +1 combat arts.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [
+     {
+      "skill": "Flying",
+      "rank": "C"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Axe",
+      "rank": "B"
+     },
+     {
+      "skill": "Spear",
+      "rank": "B"
+     }
+    ]
+   },
+   "typeText": "Flier",
+   "skillExp": {
+    "sword": 1,
+    "spear": 1,
+    "axe": 3,
+    "flying": 3
+   },
+   "growths": {
+    "hp": 15,
+    "str": 5,
+    "mag": 0,
+    "spd": 5,
+    "dex": 0,
+    "def": 10,
+    "res": 10,
+    "lck": 10,
+    "cha": 5
+   },
+   "growthsGame8": {
+    "hp": 15,
+    "str": 5,
+    "mag": 0,
+    "spd": 0,
+    "dex": 5,
+    "def": 10,
+    "res": 10,
+    "lck": 10,
+    "cha": 5
+   },
+   "routes": [
+    "cai",
+    "theodora"
+   ]
+  },
+  {
+   "name": "Ovate",
+   "tier": "advanced",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "black",
+    "white",
+    "sword",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 1,
+    "str": 0,
+    "mag": 4,
+    "spd": 3,
+    "dex": 4,
+    "def": 0,
+    "res": 4,
+    "lck": 0,
+    "cha": -1
+   },
+   "abilities": [
+    {
+     "name": "Bind Speed",
+     "text": "Inflict Spd -3 on adjacent foes.",
+     "kind": "master"
+    },
+    {
+     "name": "Black-Magic Seeker",
+     "text": "Multiplies black magic uses by 2.",
+     "kind": "class"
+    },
+    {
+     "name": "Magic Hit +5",
+     "text": "When equipped with magic, grants Hit +5.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [
+     {
+      "skill": "Black Magic",
+      "rank": "B"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "sword": 2,
+    "gauntlet": 1,
+    "black magic": 3,
+    "white magic": 1,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": -5,
+    "mag": 20,
+    "spd": 5,
+    "dex": 15,
+    "def": -10,
+    "res": 15,
+    "lck": 10,
+    "cha": 0
+   }
+  },
+  {
+   "name": "Bishop",
+   "tier": "advanced",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "black",
+    "white",
+    "axe",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 1,
+    "str": 0,
+    "mag": 3,
+    "spd": 1,
+    "dex": 0,
+    "def": 0,
+    "res": 5,
+    "lck": 3,
+    "cha": 3
+   },
+   "abilities": [
+    {
+     "name": "Barrier",
+     "text": "Grants Res +3 to adjacent allies.",
+     "kind": "master"
+    },
+    {
+     "name": "White-Magic Seeker",
+     "text": "Multiplies white magic uses by 2.",
+     "kind": "class"
+    },
+    {
+     "name": "Magic Heal +10",
+     "text": "When healing an ally with magic, restores +10 HP.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [
+     {
+      "skill": "White Magic",
+      "rank": "B"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "axe": 1,
+    "gauntlet": 2,
+    "black magic": 1,
+    "white magic": 3,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": -5,
+    "mag": 15,
+    "spd": 0,
+    "dex": 5,
+    "def": -10,
+    "res": 20,
+    "lck": 20,
+    "cha": 10
+   },
+   "growthsGame8": {
+    "hp": 10,
+    "str": -5,
+    "mag": 15,
+    "spd": 0,
+    "dex": 0,
+    "def": -10,
+    "res": 20,
+    "lck": 20,
+    "cha": 10
+   }
+  },
+  {
+   "name": "Troubadour",
+   "tier": "advanced",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "black",
+    "white"
+   ],
+   "bonus": {
+    "hp": 0,
+    "str": 0,
+    "mag": 1,
+    "spd": 1,
+    "dex": 1,
+    "def": 1,
+    "res": 2,
+    "lck": 0,
+    "cha": 3
+   },
+   "abilities": [
+    {
+     "name": "Song of Courage",
+     "text": "Grants Dex/Spd +2 to allies in range until unit's next phase.",
+     "kind": "master"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    },
+    {
+     "name": "Magic Hit +3",
+     "text": "When equipped with magic, grants Hit +3.",
+     "kind": "class"
+    },
+    {
+     "name": "Magic Heal +5",
+     "text": "When healing an ally with magic, restores +5 HP.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [
+     {
+      "skill": "Riding",
+      "rank": "D"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "White Magic",
+      "rank": "B"
+     },
+     {
+      "skill": "Black Magic",
+      "rank": "B"
+     }
+    ]
+   },
+   "typeText": "Cavalry",
+   "skillExp": {
+    "black magic": 2,
+    "white magic": 2,
+    "riding": 2
+   },
+   "growths": {
+    "hp": 10,
+    "str": 0,
+    "mag": 15,
+    "spd": 0,
+    "dex": 5,
+    "def": 5,
+    "res": 15,
+    "lck": 15,
+    "cha": 10
+   },
+   "growthsGame8": {
+    "hp": 10,
+    "str": 0,
+    "mag": 15,
+    "spd": 5,
+    "dex": 0,
+    "def": 5,
+    "res": 15,
+    "lck": 15,
+    "cha": 10
+   },
+   "routes": [
+    "cai",
+    "leda"
+   ]
+  },
+  {
+   "name": "Swordmaster",
+   "tier": "master",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "sword",
+    "spear"
+   ],
+   "bonus": {
+    "hp": 5,
+    "str": 2,
+    "mag": 0,
+    "spd": 7,
+    "dex": 7,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Astra",
+     "text": "Strikes 5 times at 50% damage.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Sword Crit +7",
+     "text": "When equipped with a sword, grants Crit +7.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "sword",
+      "stat": "crit",
+      "value": 7
+     }
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "Sword",
+      "rank": "A"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "sword": 4,
+    "spear": 1,
+    "infantry": 2
+   },
+   "growths": {
+    "hp": 15,
+    "str": 10,
+    "mag": 0,
+    "spd": 20,
+    "dex": 15,
+    "def": 0,
+    "res": 0,
+    "lck": 5,
+    "cha": 5
+   }
+  },
+  {
+   "name": "High Savant",
+   "tier": "master",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 7,
+   "weapons": [
+    "black",
+    "sword"
+   ],
+   "bonus": {
+    "hp": 5,
+    "str": 2,
+    "mag": 2,
+    "spd": 3,
+    "dex": 3,
+    "def": 2,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Dark Moon",
+     "text": "Halves foe's Shld when attacking. Trigger % = 10.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +2",
+     "text": "Unit can equip +2 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    },
+    {
+     "name": "Black-Magic Seeker",
+     "text": "Multiplies black magic uses by 2.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "Riding",
+      "rank": "D"
+     },
+     {
+      "skill": "Black Magic",
+      "rank": "D"
+     },
+     {
+      "skill": "Sword",
+      "rank": "B"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Cavalry",
+   "skillExp": {
+    "sword": 3,
+    "black magic": 2,
+    "riding": 2
+   },
+   "growths": {
+    "hp": 10,
+    "str": 15,
+    "mag": 15,
+    "spd": 10,
+    "dex": 5,
+    "def": 5,
+    "res": 5,
+    "lck": 5,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Battlemaster",
+   "tier": "master",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "sword",
+    "axe",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 13,
+    "str": 6,
+    "mag": 0,
+    "spd": 2,
+    "dex": 0,
+    "def": 4,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "War Master's Strike",
+     "text": "Multiplies damage dealt by 1.5.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Axe Hit +7",
+     "text": "When equipped with an axe, grants Hit +7.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "axe",
+      "stat": "hit",
+      "value": 7
+     }
+    },
+    {
+     "name": "Brawl Hit +7",
+     "text": "When equipped with gauntlets, grants Hit+7.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "gauntlet",
+      "stat": "hit",
+      "value": 7
+     }
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [],
+    "secondary": [
+     {
+      "skill": "Gauntlet",
+      "rank": "A"
+     },
+     {
+      "skill": "Axe",
+      "rank": "A"
+     },
+     {
+      "skill": "Sword",
+      "rank": "A"
+     }
+    ]
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "sword": 2,
+    "axe": 4,
+    "gauntlet": 2,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 25,
+    "str": 25,
+    "mag": -5,
+    "spd": 5,
+    "dex": -5,
+    "def": 10,
+    "res": -5,
+    "lck": -5,
+    "cha": 5
+   },
+   "growthsGame8": {
+    "hp": 25,
+    "str": 25,
+    "mag": -5,
+    "spd": -5,
+    "dex": 5,
+    "def": 10,
+    "res": -5,
+    "lck": -5,
+    "cha": 5
+   }
+  },
+  {
+   "name": "War Monk",
+   "tier": "master",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "white",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 5,
+    "str": 2,
+    "mag": 0,
+    "spd": 5,
+    "dex": 2,
+    "def": 2,
+    "res": 4,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Strike and Heal",
+     "text": "After combat, unit can use assist magic.",
+     "kind": "master"
+    },
+    {
+     "name": "White-Magic Seeker",
+     "text": "Multiplies white magic uses by 2.",
+     "kind": "class"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Brawl Avo +7",
+     "text": "When equipped with gauntlets, grants Avo +7.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "gauntlet",
+      "stat": "avo",
+      "value": 7
+     }
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "White Magic",
+      "rank": "D"
+     },
+     {
+      "skill": "Gauntlet",
+      "rank": "B"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "gauntlet": 4,
+    "white magic": 2,
+    "infantry": 2
+   },
+   "growths": {
+    "hp": 15,
+    "str": 10,
+    "mag": 0,
+    "spd": 15,
+    "dex": 0,
+    "def": 5,
+    "res": 15,
+    "lck": 5,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Bow Adept",
+   "tier": "master",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "bow"
+   ],
+   "bonus": {
+    "hp": 4,
+    "str": 2,
+    "mag": 0,
+    "spd": 5,
+    "dex": 9,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Sky Hunter",
+     "text": "If foe is flying, grants Hit +50.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Bow Hit +15",
+     "text": "When equipped with a bow, grants Hit +15.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "bow",
+      "stat": "hit",
+      "value": 15
+     }
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "Bow",
+      "rank": "A"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "bow": 4,
+    "infantry": 2
+   },
+   "growths": {
+    "hp": 15,
+    "str": 5,
+    "mag": 0,
+    "spd": 15,
+    "dex": 20,
+    "def": 5,
+    "res": 5,
+    "lck": 5,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Bow Knight",
+   "tier": "master",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 7,
+   "weapons": [
+    "sword",
+    "bow"
+   ],
+   "bonus": {
+    "hp": 3,
+    "str": 2,
+    "mag": 0,
+    "spd": 7,
+    "dex": 5,
+    "def": 2,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Hunter's Cross",
+     "text": "High Hit/Crit",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +2",
+     "text": "Unit can equip +2 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    },
+    {
+     "name": "Bow Hit +10",
+     "text": "When equipped with a bow, grants Hit +10.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "bow",
+      "stat": "hit",
+      "value": 10
+     }
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "Riding",
+      "rank": "D"
+     },
+     {
+      "skill": "Bow",
+      "rank": "A"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Cavalry",
+   "skillExp": {
+    "sword": 1,
+    "bow": 3,
+    "riding": 2
+   },
+   "growths": {
+    "hp": 10,
+    "str": 10,
+    "mag": 0,
+    "spd": 15,
+    "dex": 10,
+    "def": 5,
+    "res": 0,
+    "lck": 5,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Shadow Seeker",
+   "tier": "master",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "sword",
+    "bow"
+   ],
+   "bonus": {
+    "hp": 4,
+    "str": 0,
+    "mag": 0,
+    "spd": 9,
+    "dex": 7,
+    "def": 0,
+    "res": 0,
+    "lck": 2,
+    "cha": -2
+   },
+   "abilities": [
+    {
+     "name": "Dropshadow Blade",
+     "text": "If foe is on favorable terrain, ignores those terrain effects.",
+     "kind": "master"
+    },
+    {
+     "name": "Locktouch",
+     "text": "Allows the opening of chests even without keys.",
+     "kind": "class"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Master Search",
+     "text": "Search results are considerably more likely to be perfect.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [],
+    "secondary": [
+     {
+      "skill": "Bow",
+      "rank": "A"
+     },
+     {
+      "skill": "Sword",
+      "rank": "A"
+     }
+    ]
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "sword": 2,
+    "bow": 3,
+    "infantry": 4
+   },
+   "growths": {
+    "hp": 15,
+    "str": 5,
+    "mag": 0,
+    "spd": 25,
+    "dex": 15,
+    "def": 0,
+    "res": 10,
+    "lck": 15,
+    "cha": 0
+   },
+   "growthsGame8": {
+    "hp": 15,
+    "str": 5,
+    "mag": 0,
+    "spd": 15,
+    "dex": 25,
+    "def": 0,
+    "res": 10,
+    "lck": 15,
+    "cha": 0
+   }
+  },
+  {
+   "name": "Sentinel",
+   "tier": "master",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "white",
+    "spear"
+   ],
+   "bonus": {
+    "hp": 5,
+    "str": 4,
+    "mag": 0,
+    "spd": 2,
+    "dex": 4,
+    "def": 4,
+    "res": 5,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Resolute Stance",
+     "text": "If unit's HP = 100%, grants Shld +5 during combat.",
+     "kind": "master"
+    },
+    {
+     "name": "White-Magic Seeker",
+     "text": "Multiplies white magic uses by 2.",
+     "kind": "class"
+    },
+    {
+     "name": "Magic Heal +10",
+     "text": "When healing an ally with magic, restores +10 HP.",
+     "kind": "class"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "Spear",
+      "rank": "A"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "spear": 4,
+    "white magic": 2,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 15,
+    "str": 15,
+    "mag": 0,
+    "spd": 5,
+    "dex": 5,
+    "def": 10,
+    "res": 15,
+    "lck": 5,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Castle Knight",
+   "tier": "master",
+   "types": [
+    "armored",
+    "infantry"
+   ],
+   "mov": 4,
+   "weapons": [
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 9,
+    "str": 6,
+    "mag": 0,
+    "spd": -6,
+    "dex": 4,
+    "def": 13,
+    "res": -2,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Intercept",
+     "text": "Reduces damage taken by 5 when attacked.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Strike-Last Def +7",
+     "text": "If foe attacks first, grants Prt +7 to unit during combat.",
+     "kind": "class",
+     "effect": {
+      "when": "foeInitiates",
+      "stat": "prt",
+      "value": 7
+     }
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "Heavy Armor",
+      "rank": "C"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Axe",
+      "rank": "A"
+     },
+     {
+      "skill": "Spear",
+      "rank": "A"
+     }
+    ]
+   },
+   "typeText": "Infantry Heavy Armor",
+   "skillExp": {
+    "spear": 2,
+    "axe": 2,
+    "infantry": 1,
+    "heavy armor": 4
+   },
+   "growths": {
+    "hp": 25,
+    "str": 20,
+    "mag": -5,
+    "spd": -15,
+    "dex": 5,
+    "def": 30,
+    "res": -10,
+    "lck": 0,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Orichaldia",
+   "tier": "master",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 7,
+   "weapons": [
+    "sword",
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 7,
+    "str": 3,
+    "mag": 0,
+    "spd": 2,
+    "dex": 3,
+    "def": 2,
+    "res": 0,
+    "lck": 0,
+    "cha": 2
+   },
+   "abilities": [
+    {
+     "name": "Fierce Spear",
+     "text": "Unit cannot suffer a follow-up during combat.",
+     "kind": "master"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "Riding",
+      "rank": "B"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Spear",
+      "rank": "A"
+     },
+     {
+      "skill": "Sword",
+      "rank": "A"
+     }
+    ]
+   },
+   "typeText": "Cavalry",
+   "skillExp": {
+    "sword": 2,
+    "spear": 3,
+    "axe": 1,
+    "riding": 4
+   },
+   "growths": {
+    "hp": 15,
+    "str": 15,
+    "mag": -5,
+    "spd": 5,
+    "dex": 0,
+    "def": 5,
+    "res": 5,
+    "lck": 5,
+    "cha": 10
+   },
+   "growthsGame8": {
+    "hp": 15,
+    "str": 15,
+    "mag": -5,
+    "spd": 0,
+    "dex": 5,
+    "def": 5,
+    "res": 5,
+    "lck": 5,
+    "cha": 10
+   }
+  },
+  {
+   "name": "Great Knight",
+   "tier": "master",
+   "types": [
+    "armored",
+    "cavalry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "sword",
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 12,
+    "str": 5,
+    "mag": 0,
+    "spd": -4,
+    "dex": 2,
+    "def": 5,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Fierce Shield",
+     "text": "If unit attacks first, unit takes half damage during combat. Trigger % = 50.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +2",
+     "text": "Unit can equip +2 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "Heavy Armor",
+      "rank": "D"
+     },
+     {
+      "skill": "Riding",
+      "rank": "D"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Axe",
+      "rank": "A"
+     },
+     {
+      "skill": "Spear",
+      "rank": "A"
+     }
+    ]
+   },
+   "typeText": "Cavalry Heavy Armor",
+   "skillExp": {
+    "sword": 1,
+    "spear": 2,
+    "axe": 3,
+    "riding": 2,
+    "heavy armor": 2
+   },
+   "growths": {
+    "hp": 20,
+    "str": 20,
+    "mag": -5,
+    "spd": -10,
+    "dex": 0,
+    "def": 15,
+    "res": -10,
+    "lck": 0,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Celestial Trooper",
+   "tier": "master",
+   "types": [
+    "flying"
+   ],
+   "mov": 7,
+   "weapons": [
+    "sword",
+    "spear"
+   ],
+   "bonus": {
+    "hp": 3,
+    "str": 0,
+    "mag": 0,
+    "spd": 5,
+    "dex": 3,
+    "def": 0,
+    "res": 5,
+    "lck": 0,
+    "cha": 2
+   },
+   "abilities": [
+    {
+     "name": "Lightning Reflexes",
+     "text": "If unit attacks first, and AS ≥ foe's AS +10, unit's follow-up occurs before foe's counter during combat.",
+     "kind": "master"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    },
+    {
+     "name": "Combat Arts +1",
+     "text": "Unit can equip +1 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Flying Avo +7",
+     "text": "Grants Avo +7.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "Flying",
+      "rank": "C"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Spear",
+      "rank": "A"
+     },
+     {
+      "skill": "Sword",
+      "rank": "A"
+     }
+    ]
+   },
+   "gender": "female",
+   "typeText": "Flier",
+   "skillExp": {
+    "sword": 2,
+    "spear": 3,
+    "flying": 4
+   },
+   "growths": {
+    "hp": 15,
+    "str": 5,
+    "mag": -5,
+    "spd": 10,
+    "dex": 5,
+    "def": 5,
+    "res": 15,
+    "lck": 15,
+    "cha": 10
+   }
+  },
+  {
+   "name": "Bau Lord",
+   "tier": "master",
+   "types": [
+    "flying"
+   ],
+   "mov": 7,
+   "weapons": [
+    "sword",
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 5,
+    "str": 2,
+    "mag": 0,
+    "spd": 3,
+    "dex": 3,
+    "def": 3,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Ambush",
+     "text": "If unit is on inaccessible terrain, grants Atk +4.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +2",
+     "text": "Unit can equip +2 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "Flying",
+      "rank": "C"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Axe",
+      "rank": "A"
+     },
+     {
+      "skill": "Spear",
+      "rank": "A"
+     }
+    ]
+   },
+   "typeText": "Flier",
+   "skillExp": {
+    "sword": 1,
+    "spear": 2,
+    "axe": 3,
+    "flying": 4
+   },
+   "growths": {
+    "hp": 15,
+    "str": 5,
+    "mag": 0,
+    "spd": 5,
+    "dex": 0,
+    "def": 10,
+    "res": 10,
+    "lck": 10,
+    "cha": 5
+   }
+  },
+  {
+   "name": "Druid",
+   "tier": "master",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "black",
+    "sword",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 4,
+    "str": 0,
+    "mag": 7,
+    "spd": 4,
+    "dex": 7,
+    "def": 0,
+    "res": 5,
+    "lck": 0,
+    "cha": -2
+   },
+   "abilities": [
+    {
+     "name": "Bind Resistance",
+     "text": "Inflict Res -3 on adjacent foes.",
+     "kind": "master"
+    },
+    {
+     "name": "Black-Magic Seeker",
+     "text": "Multiplies black magic uses by 2.",
+     "kind": "class"
+    },
+    {
+     "name": "Magic Hit +7",
+     "text": "When equipped with magic, grants Hit +7.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "Black Magic",
+      "rank": "A"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "sword": 2,
+    "gauntlet": 1,
+    "black magic": 4,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": -5,
+    "mag": 30,
+    "spd": 10,
+    "dex": 15,
+    "def": -10,
+    "res": 20,
+    "lck": 10,
+    "cha": 0
+   },
+   "growthsGame8": {
+    "hp": 10,
+    "str": -5,
+    "mag": 30,
+    "spd": 15,
+    "dex": 10,
+    "def": -10,
+    "res": 20,
+    "lck": 10,
+    "cha": 0
+   }
+  },
+  {
+   "name": "Wiseman",
+   "tier": "master",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "white",
+    "axe",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 4,
+    "str": 0,
+    "mag": 5,
+    "spd": 2,
+    "dex": 2,
+    "def": 0,
+    "res": 9,
+    "lck": 4,
+    "cha": 2
+   },
+   "abilities": [
+    {
+     "name": "Dominate Magic",
+     "text": "If foe uses magic, unit cannot be countered during combat. Trigger % = 10.",
+     "kind": "master"
+    },
+    {
+     "name": "White-Magic Seeker",
+     "text": "Multiplies white magic uses by 2.",
+     "kind": "class"
+    },
+    {
+     "name": "Magic Heal +15",
+     "text": "When healing an ally with magic, restores +15 HP.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "White Magic",
+      "rank": "A"
+     }
+    ],
+    "secondary": []
+   },
+   "typeText": "Infantry",
+   "skillExp": {
+    "axe": 1,
+    "gauntlet": 2,
+    "white magic": 4,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": -5,
+    "mag": 20,
+    "spd": 5,
+    "dex": 0,
+    "def": -10,
+    "res": 25,
+    "lck": 20,
+    "cha": 10
+   },
+   "growthsGame8": {
+    "hp": 10,
+    "str": -5,
+    "mag": 20,
+    "spd": 0,
+    "dex": 5,
+    "def": -10,
+    "res": 25,
+    "lck": 20,
+    "cha": 10
+   }
+  },
+  {
+   "name": "Valkyrium",
+   "tier": "master",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 7,
+   "weapons": [
+    "black",
+    "white"
+   ],
+   "bonus": {
+    "hp": 2,
+    "str": 0,
+    "mag": 2,
+    "spd": 2,
+    "dex": 3,
+    "def": 2,
+    "res": 3,
+    "lck": 0,
+    "cha": 2
+   },
+   "abilities": [
+    {
+     "name": "Song of Calm",
+     "text": "Grants Res +2 to allies in range until unit's next phase.",
+     "kind": "master"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    },
+    {
+     "name": "Magic Heal +10",
+     "text": "When healing an ally with magic, restores +10 HP.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Master",
+    "level": 45,
+    "renown": null,
+    "primary": [
+     {
+      "skill": "Riding",
+      "rank": "D"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "White Magic",
+      "rank": "A"
+     },
+     {
+      "skill": "Black Magic",
+      "rank": "A"
+     }
+    ]
+   },
+   "typeText": "Cavalry",
+   "skillExp": {
+    "black magic": 3,
+    "riding": 2
+   },
+   "growths": {
+    "hp": 10,
+    "str": 0,
+    "mag": 15,
+    "spd": 5,
+    "dex": 5,
+    "def": 5,
+    "res": 10,
+    "lck": 15,
+    "cha": 10
+   }
+  },
+  {
+   "name": "The Blade",
+   "tier": "divine",
+   "types": [
+    "infantry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "sword",
+    "spear"
+   ],
+   "bonus": {
+    "hp": 7,
+    "str": 4,
+    "mag": 4,
+    "spd": 7,
+    "dex": 7,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 2
+   },
+   "abilities": [
+    {
+     "name": "Divine Insight",
+     "text": "Grants Spd +10.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Sword Crit +10",
+     "text": "When equipped with a sword, grants Crit +10.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "sword",
+      "stat": "crit",
+      "value": 10
+     }
+    }
+   ],
+   "typeText": "Infantry",
+   "skillExp": {
+    "swords": 5,
+    "spears": 1,
+    "infantry": 2
+   },
+   "growths": {
+    "hp": 15,
+    "str": 10,
+    "mag": 10,
+    "spd": 20,
+    "dex": 20,
+    "def": 5,
+    "res": 5,
+    "lck": 5,
+    "cha": 10
+   }
+  },
+  {
+   "name": "The Apsara",
+   "tier": "divine",
+   "types": [
+    "infantry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "sword",
+    "bow"
+   ],
+   "bonus": {
+    "hp": 5,
+    "str": 2,
+    "mag": 4,
+    "spd": 7,
+    "dex": 5,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 9
+   },
+   "abilities": [
+    {
+     "name": "Divine Dance",
+     "text": "Grants Cha +10.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Dance",
+     "text": "Allows the use of the Dance combat art.",
+     "kind": "class"
+    }
+   ],
+   "typeText": "Infantry",
+   "skillExp": {
+    "swords": 4,
+    "bows": 2,
+    "infantry": 5
+   },
+   "growths": {
+    "hp": 15,
+    "str": 5,
+    "mag": 10,
+    "spd": 25,
+    "dex": 15,
+    "def": 5,
+    "res": 5,
+    "lck": 10,
+    "cha": 30
+   }
+  },
+  {
+   "name": "The Eternal",
+   "tier": "divine",
+   "types": [
+    "infantry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "sword",
+    "axe",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 12,
+    "str": 6,
+    "mag": 0,
+    "spd": 2,
+    "dex": 1,
+    "def": 5,
+    "res": 0,
+    "lck": 0,
+    "cha": 2
+   },
+   "abilities": [
+    {
+     "name": "Divine Might",
+     "text": "Grants Str +10.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Axe Hit +10",
+     "text": "When equipped with an axe, grants Hit+10.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "axe",
+      "stat": "hit",
+      "value": 10
+     }
+    },
+    {
+     "name": "Brawl Hit +10",
+     "text": "When equipped with gauntlets, grants Hit+10.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "gauntlet",
+      "stat": "hit",
+      "value": 10
+     }
+    }
+   ],
+   "typeText": "Infantry",
+   "skillExp": {
+    "swords": 3,
+    "axes": 5,
+    "gauntlets": 3,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 30,
+    "str": 30,
+    "mag": 0,
+    "spd": 10,
+    "dex": 0,
+    "def": 15,
+    "res": 0,
+    "lck": 0,
+    "cha": 10
+   },
+   "growthsGame8": {
+    "hp": 30,
+    "str": 30,
+    "mag": 0,
+    "spd": 10,
+    "dex": 0,
+    "def": 15,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   }
+  },
+  {
+   "name": "The Godhand",
+   "tier": "divine",
+   "types": [
+    "infantry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "white",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 7,
+    "str": 4,
+    "mag": 4,
+    "spd": 5,
+    "dex": 2,
+    "def": 4,
+    "res": 5,
+    "lck": 0,
+    "cha": 2
+   },
+   "abilities": [
+    {
+     "name": "Divine Adornment",
+     "text": "Grants Res +10.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Brawl Avo +10",
+     "text": "When equipped with gauntlets, grants Avo +10.",
+     "kind": "class",
+     "effect": {
+      "when": "equipped",
+      "weapon": "gauntlet",
+      "stat": "avo",
+      "value": 10
+     }
+    },
+    {
+     "name": "White-Magic Zenith",
+     "text": "Multiplies white magic uses by 3.",
+     "kind": "class"
+    }
+   ],
+   "typeText": "Infantry",
+   "skillExp": {
+    "gauntlet": 5,
+    "white magic": 3,
+    "infantry": 3
+   },
+   "growths": {
+    "hp": 15,
+    "str": 10,
+    "mag": 10,
+    "spd": 15,
+    "dex": 5,
+    "def": 10,
+    "res": 15,
+    "lck": 5,
+    "cha": 10
+   }
+  },
+  {
+   "name": "The Calamity",
+   "tier": "divine",
+   "types": [
+    "infantry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "sword",
+    "bow"
+   ],
+   "bonus": {
+    "hp": 5,
+    "str": 2,
+    "mag": 4,
+    "spd": 7,
+    "dex": 5,
+    "def": 0,
+    "res": 4,
+    "lck": 4,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Divine Will",
+     "text": "Grants Lck +10.",
+     "kind": "master"
+    },
+    {
+     "name": "Locktouch",
+     "text": "Allows the opening of chests even without keys.",
+     "kind": "class"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Ultimate Search",
+     "text": "Search results are exceedingly more likely to be perfect.",
+     "kind": "class"
+    }
+   ],
+   "typeText": "Infantry",
+   "skillExp": {
+    "swords": 2,
+    "bows": 4,
+    "infantry": 5
+   },
+   "growths": {
+    "hp": 15,
+    "str": 5,
+    "mag": 15,
+    "spd": 25,
+    "dex": 20,
+    "def": 5,
+    "res": 15,
+    "lck": 15,
+    "cha": 5
+   }
+  },
+  {
+   "name": "The Trident",
+   "tier": "divine",
+   "types": [
+    "infantry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "white",
+    "spear"
+   ],
+   "bonus": {
+    "hp": 7,
+    "str": 4,
+    "mag": 4,
+    "spd": 2,
+    "dex": 4,
+    "def": 5,
+    "res": 5,
+    "lck": 0,
+    "cha": 2
+   },
+   "abilities": [
+    {
+     "name": "Divine Wall",
+     "text": "Grants Def +10.",
+     "kind": "master"
+    },
+    {
+     "name": "Magic Heal +10",
+     "text": "When healing an ally with magic, restores +10 HP.",
+     "kind": "class"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "White-Magic Zenith",
+     "text": "Multiplies white magic uses by 3.",
+     "kind": "class"
+    }
+   ],
+   "typeText": "Infantry",
+   "skillExp": {
+    "spears": 5,
+    "white magic": 3,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 15,
+    "str": 15,
+    "mag": 5,
+    "spd": 10,
+    "dex": 10,
+    "def": 15,
+    "res": 15,
+    "lck": 5,
+    "cha": 10
+   }
+  },
+  {
+   "name": "The Cavalier",
+   "tier": "divine",
+   "types": [
+    "cavalry"
+   ],
+   "mov": 8,
+   "weapons": [
+    "sword",
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 11,
+    "str": 3,
+    "mag": 0,
+    "spd": 4,
+    "dex": 5,
+    "def": 5,
+    "res": 1,
+    "lck": 0,
+    "cha": 2
+   },
+   "abilities": [
+    {
+     "name": "Divine Dexterity",
+     "text": "Grants Dex +10.",
+     "kind": "master"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    },
+    {
+     "name": "Combat Arts +3",
+     "text": "Unit can equip +3 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Golden Ride",
+     "text": "Neutralizes effective vs. cavalry.",
+     "kind": "class"
+    }
+   ],
+   "typeText": "Cavalry",
+   "skillExp": {
+    "swords": 3,
+    "spears": 3,
+    "axes": 3,
+    "riding": 5
+   },
+   "growths": {
+    "hp": 20,
+    "str": 15,
+    "mag": 5,
+    "spd": 10,
+    "dex": 10,
+    "def": 15,
+    "res": 10,
+    "lck": 5,
+    "cha": 15
+   }
+  },
+  {
+   "name": "The Avatar",
+   "tier": "divine",
+   "types": [
+    "infantry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "black",
+    "white",
+    "sword",
+    "axe",
+    "gauntlet"
+   ],
+   "bonus": {
+    "hp": 5,
+    "str": 0,
+    "mag": 9,
+    "spd": 2,
+    "dex": 2,
+    "def": 0,
+    "res": 9,
+    "lck": 5,
+    "cha": 2
+   },
+   "abilities": [
+    {
+     "name": "Divine Law",
+     "text": "Grants Mag +10.",
+     "kind": "master"
+    },
+    {
+     "name": "Magic Hit +10",
+     "text": "When equipped with magic, grants Hit +10.",
+     "kind": "class"
+    },
+    {
+     "name": "Magic Heal +20",
+     "text": "When healing an ally with magic, restores +20 HP.",
+     "kind": "class"
+    },
+    {
+     "name": "All-Magic Zenith",
+     "text": "Multiplies black magic and white magic uses by 3.",
+     "kind": "class"
+    }
+   ],
+   "typeText": "Infantry",
+   "skillExp": {
+    "swords": 2,
+    "axes": 1,
+    "gauntlet": 2,
+    "black magic": 5,
+    "white magic": 5,
+    "infantry": 1
+   },
+   "growths": {
+    "hp": 10,
+    "str": -5,
+    "mag": 30,
+    "spd": 10,
+    "dex": 5,
+    "def": -5,
+    "res": 30,
+    "lck": 20,
+    "cha": 10
+   }
+  },
+  {
+   "name": "Dancer",
+   "tier": "advanced",
+   "types": [
+    "infantry"
+   ],
+   "mov": 5,
+   "weapons": [
+    "sword",
+    "bow"
+   ],
+   "bonus": {
+    "hp": 4,
+    "str": 0,
+    "mag": 0,
+    "spd": 9,
+    "dex": 5,
+    "def": 0,
+    "res": 0,
+    "lck": 0,
+    "cha": 5
+   },
+   "abilities": [
+    {
+     "name": "Special Dance",
+     "text": "When using Dance, grants Dex/Spd +3 to target ally for the current phase.",
+     "kind": "master"
+    },
+    {
+     "name": "Combat Arts +2",
+     "text": "Unit can equip +2 combat arts.",
+     "kind": "class"
+    },
+    {
+     "name": "Dance",
+     "text": "Allows the use of the Dance combat art.",
+     "kind": "class"
+    }
+   ],
+   "typeText": "Infantry",
+   "skillExp": {
+    "sword": 3,
+    "bow": 2,
+    "infantry": 4
+   },
+   "growths": {
+    "hp": 15,
+    "str": 5,
+    "mag": 0,
+    "spd": 25,
+    "dex": 10,
+    "def": 0,
+    "res": 5,
+    "lck": 10,
+    "cha": 20
+   },
+   "growthsSource": "game8",
+   "routes": [
+    "leda"
+   ]
+  },
+  {
+   "name": "Cataphract",
+   "tier": "advanced",
+   "types": [
+    "armored",
+    "cavalry"
+   ],
+   "mov": 6,
+   "weapons": [
+    "sword",
+    "spear",
+    "axe"
+   ],
+   "bonus": {
+    "hp": 5,
+    "str": 2,
+    "mag": 0,
+    "spd": -1,
+    "dex": 0,
+    "def": 5,
+    "res": 0,
+    "lck": 0,
+    "cha": 0
+   },
+   "abilities": [
+    {
+     "name": "Pavise",
+     "text": "Unit takes half damage when attacked with a physical attack. Trigger % = 20.",
+     "kind": "master"
+    },
+    {
+     "name": "Mount/Dismount",
+     "text": "Allows use of Mount and Dismount commands.",
+     "kind": "class"
+    },
+    {
+     "name": "Strike-Last Def +3",
+     "text": "If foe attacks first, grants Prt +3 to unit during combat.",
+     "kind": "class",
+     "effect": {
+      "when": "foeInitiates",
+      "stat": "prt",
+      "value": 3
+     }
+    },
+    {
+     "name": "Combat Arts +1",
+     "text": "Unit can equip +1 combat arts.",
+     "kind": "class"
+    }
+   ],
+   "exam": {
+    "license": "Advanced",
+    "level": 35,
+    "renown": 8,
+    "primary": [
+     {
+      "skill": "Heavy Armor",
+      "rank": "E+"
+     },
+     {
+      "skill": "Riding",
+      "rank": "D"
+     }
+    ],
+    "secondary": [
+     {
+      "skill": "Axe",
+      "rank": "B"
+     },
+     {
+      "skill": "Spear",
+      "rank": "B"
+     }
+    ]
+   },
+   "typeText": "Cavalry Heavy Armor",
+   "skillExp": {
+    "sword": 1,
+    "spear": 2,
+    "axe": 2,
+    "riding": 1,
+    "heavy armor": 1
+   },
+   "growths": {
+    "hp": 15,
+    "str": 15,
+    "mag": -5,
+    "spd": -10,
+    "dex": 0,
+    "def": 10,
+    "res": -5,
+    "lck": 0,
+    "cha": 5
+   },
+   "growthsSource": "game8",
+   "routes": [
+    "theodora"
+   ]
+  }
+ ]
+}

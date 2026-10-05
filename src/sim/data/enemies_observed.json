@@ -1,0 +1,752 @@
+{
+ "sources": {
+  "growths": "serenesforest.net/fortunes-weave (primary), game8.co growth guide (growthsGame8 where they disagree)",
+  "classes": "game8.co class pages (tier, type, movement, weapons, bonuses, abilities)",
+  "weapons": "game8.co weapon lists, gaps filled from serenesforest.net",
+  "abilities": "game8.co character pages (personal ability, abilities learned by level, spell list)",
+  "bases": "fireemblemwiki.org CharStats; \"estimated\" bases come from a growth regression over 18 low-level units",
+  "enemies": "fireemblemwiki.org chapter and boss pages"
+ },
+ "enemies": [
+  {
+   "class": "Gladiator",
+   "level": 1,
+   "bld": null,
+   "stats": {
+    "hp": 22,
+    "str": 7,
+    "mag": 2,
+    "spd": 4,
+    "dex": 3,
+    "def": 3,
+    "res": 3,
+    "lck": 3,
+    "cha": 4
+   },
+   "inventory": [
+    "Wooden Axe"
+   ],
+   "name": "Bandit",
+   "boss": false,
+   "chapter": "A Stranger Comes to Dagda",
+   "tab": "Normal",
+   "source": "fireemblemwiki.org/wiki/A Stranger Comes to Dagda",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Guardian",
+   "level": 1,
+   "bld": 2,
+   "stats": {
+    "hp": 30,
+    "str": 13,
+    "mag": 8,
+    "spd": 10,
+    "dex": 9,
+    "def": 9,
+    "res": 10,
+    "lck": 8,
+    "cha": 8
+   },
+   "inventory": [
+    "Wooden Spear"
+   ],
+   "name": "Boss",
+   "boss": true,
+   "chapter": "The White Bird",
+   "tab": "First Scenario",
+   "source": "fireemblemwiki.org/wiki/The White Bird",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Hunter",
+   "level": 1,
+   "bld": 2,
+   "stats": {
+    "hp": 22,
+    "str": 10,
+    "mag": 2,
+    "spd": 8,
+    "dex": 7,
+    "def": 9,
+    "res": 4,
+    "lck": 5,
+    "cha": 4
+   },
+   "inventory": [
+    "Wooden Sword"
+   ],
+   "name": "Virtual Soldier",
+   "boss": false,
+   "chapter": "The White Bird",
+   "tab": "First Scenario",
+   "source": "fireemblemwiki.org/wiki/The White Bird",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Brigand",
+   "level": 4,
+   "bld": 1,
+   "stats": {
+    "hp": 24,
+    "str": 9,
+    "mag": 2,
+    "spd": 4,
+    "dex": 4,
+    "def": 4,
+    "res": 3,
+    "lck": 4,
+    "cha": 4
+   },
+   "inventory": [
+    "Bronze Axe"
+   ],
+   "name": "Nero",
+   "boss": true,
+   "chapter": "Nero",
+   "tab": "Hard",
+   "source": "fireemblemwiki.org/wiki/Nero",
+   "difficulty": "hard",
+   "unique": false
+  },
+  {
+   "class": "Ornius Rider",
+   "level": 6,
+   "bld": 1,
+   "stats": {
+    "hp": 33,
+    "str": 9,
+    "mag": 4,
+    "spd": 14,
+    "dex": 10,
+    "def": 10,
+    "res": 8,
+    "lck": 7,
+    "cha": 4
+   },
+   "inventory": [
+    "Iron Axe"
+   ],
+   "name": "Whill",
+   "boss": true,
+   "chapter": "Whill",
+   "tab": "Hard",
+   "source": "fireemblemwiki.org/wiki/Whill",
+   "difficulty": "hard",
+   "unique": false
+  },
+  {
+   "class": "Soldier",
+   "level": 7,
+   "bld": 7,
+   "stats": {
+    "hp": 32,
+    "str": 11,
+    "mag": 2,
+    "spd": 6,
+    "dex": 5,
+    "def": 6,
+    "res": 3,
+    "lck": 7,
+    "cha": 5
+   },
+   "inventory": [
+    "Hand Axe",
+    "Bronze Axe"
+   ],
+   "name": "Goliath",
+   "boss": true,
+   "chapter": "Goliath",
+   "tab": "Hard",
+   "source": "fireemblemwiki.org/wiki/Goliath",
+   "difficulty": "hard",
+   "unique": true
+  },
+  {
+   "class": "Brigand",
+   "level": 8,
+   "bld": null,
+   "stats": {
+    "hp": 29,
+    "str": 12,
+    "mag": 3,
+    "spd": 7,
+    "dex": 5,
+    "def": 5,
+    "res": 4,
+    "lck": 5,
+    "cha": 5
+   },
+   "inventory": [
+    "Wooden Axe"
+   ],
+   "name": "Tarek",
+   "boss": true,
+   "chapter": "A Stranger Comes to Dagda",
+   "tab": "Normal",
+   "source": "fireemblemwiki.org/wiki/A Stranger Comes to Dagda",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Gladiator",
+   "level": 10,
+   "bld": null,
+   "stats": {
+    "hp": 38,
+    "def": 12,
+    "res": 4
+   },
+   "inventory": [
+    "Bronze Axe"
+   ],
+   "name": "Virtual Soldier",
+   "boss": false,
+   "chapter": "The White Bird",
+   "tab": "Second Scenario",
+   "source": "fireemblemwiki.org/wiki/The White Bird",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Guardian",
+   "level": 10,
+   "bld": null,
+   "stats": {
+    "hp": 35,
+    "def": 13,
+    "res": 14
+   },
+   "inventory": [
+    "Bronze Spear"
+   ],
+   "name": "Boss",
+   "boss": true,
+   "chapter": "The White Bird",
+   "tab": "Second Scenario",
+   "source": "fireemblemwiki.org/wiki/The White Bird",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Archer",
+   "level": 20,
+   "bld": null,
+   "stats": {
+    "hp": 38,
+    "str": 22,
+    "mag": 16,
+    "spd": 19,
+    "dex": 20,
+    "def": 15,
+    "res": 12,
+    "lck": 16,
+    "cha": 17
+   },
+   "inventory": [
+    "Iron Bow"
+   ],
+   "name": "Boss",
+   "boss": true,
+   "chapter": "The White Bird",
+   "tab": "Third Scenario",
+   "source": "fireemblemwiki.org/wiki/The White Bird",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Brigand",
+   "level": 20,
+   "bld": null,
+   "stats": {
+    "hp": 38,
+    "def": 9,
+    "res": 6
+   },
+   "inventory": [
+    "Iron Axe"
+   ],
+   "name": "Virtual Soldier",
+   "boss": false,
+   "chapter": "The White Bird",
+   "tab": "Third Scenario",
+   "source": "fireemblemwiki.org/wiki/The White Bird",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Wing Soldier",
+   "level": 20,
+   "bld": null,
+   "stats": {
+    "hp": 34,
+    "def": 11,
+    "res": 16
+   },
+   "inventory": [
+    "Iron Spear"
+   ],
+   "name": "Virtual Soldier",
+   "boss": false,
+   "chapter": "The White Bird",
+   "tab": "Third Scenario",
+   "source": "fireemblemwiki.org/wiki/The White Bird",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Guardian",
+   "level": 30,
+   "bld": null,
+   "stats": {
+    "hp": 47,
+    "str": 26,
+    "mag": 20,
+    "spd": 24,
+    "dex": 24,
+    "def": 25,
+    "res": 19,
+    "lck": 21,
+    "cha": 23
+   },
+   "inventory": [
+    "Iron Spear"
+   ],
+   "name": "Boss",
+   "boss": true,
+   "chapter": "The White Bird",
+   "tab": "Final Scenario",
+   "source": "fireemblemwiki.org/wiki/The White Bird",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Warrior",
+   "level": 35,
+   "bld": null,
+   "stats": {
+    "hp": 50,
+    "def": 26,
+    "res": 9
+   },
+   "inventory": [
+    "Iron Axe"
+   ],
+   "name": "Virtual Soldier",
+   "boss": false,
+   "chapter": "The White Bird",
+   "tab": "Final Scenario",
+   "source": "fireemblemwiki.org/wiki/The White Bird",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Bishop",
+   "level": 40,
+   "bld": 2,
+   "stats": {
+    "hp": 36,
+    "str": 10,
+    "mag": 33,
+    "spd": 22,
+    "dex": 20,
+    "def": 6,
+    "res": 31,
+    "lck": 29,
+    "cha": 10
+   },
+   "inventory": [
+    "Fortify",
+    "White-Magic Seeker",
+    "Magic Heal +10"
+   ],
+   "name": "Underworld Soldier",
+   "boss": false,
+   "chapter": "The Ruined Land",
+   "tab": "Normal",
+   "source": "fireemblemwiki.org/wiki/The Ruined Land",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Dancer",
+   "level": 40,
+   "bld": 4,
+   "stats": {
+    "hp": 48,
+    "str": 24,
+    "mag": 22,
+    "spd": 53,
+    "dex": 39,
+    "def": 40,
+    "res": 28,
+    "lck": 19,
+    "cha": 39
+   },
+   "inventory": [
+    "Kalla's Bow"
+   ],
+   "name": "Leda",
+   "boss": true,
+   "chapter": "Leda",
+   "tab": "Hard",
+   "source": "fireemblemwiki.org/wiki/Leda",
+   "difficulty": "hard",
+   "unique": true
+  },
+  {
+   "class": "Dancer",
+   "level": 40,
+   "bld": null,
+   "stats": {
+    "hp": 46,
+    "str": 23,
+    "mag": 21,
+    "spd": 50,
+    "dex": 37,
+    "def": 39,
+    "res": 27,
+    "lck": 18,
+    "cha": 36
+   },
+   "inventory": [
+    "Kalla's Bow",
+    "Blindside+",
+    "Combat Arts +2",
+    "Dance",
+    "Evasion",
+    "Dodge+",
+    "Song of Icewater",
+    "Underworld Madness",
+    "Dark Obsidian",
+    "Rampage"
+   ],
+   "name": "Leda",
+   "boss": true,
+   "chapter": "The Ruined Land",
+   "tab": "Normal",
+   "source": "fireemblemwiki.org/wiki/The Ruined Land",
+   "difficulty": "normal",
+   "unique": true
+  },
+  {
+   "class": "Dreadnought",
+   "level": 40,
+   "bld": null,
+   "stats": {
+    "hp": 53,
+    "def": 43,
+    "res": 6
+   },
+   "inventory": [
+    "Silver Axe"
+   ],
+   "name": "Underworld Soldier",
+   "boss": false,
+   "chapter": "The White Bird",
+   "tab": "Normal",
+   "source": "fireemblemwiki.org/wiki/The White Bird",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Orichaldia",
+   "level": 40,
+   "bld": null,
+   "stats": {
+    "hp": 53,
+    "str": 24,
+    "mag": 26,
+    "spd": 27,
+    "dex": 30,
+    "def": 39,
+    "res": 26,
+    "lck": 25,
+    "cha": 25
+   },
+   "inventory": [
+    "Star Spear",
+    "Brio+",
+    "Mount/Dismount",
+    "Combat Arts +3",
+    "Flamekeeper",
+    "Raging Tempest",
+    "Blinding Starlight",
+    "Underworld Inferno",
+    "Underworld Calm",
+    "Dark Red Jewel",
+    "Control"
+   ],
+   "name": "Cai",
+   "boss": true,
+   "chapter": "The Ruined Land",
+   "tab": "Normal",
+   "source": "fireemblemwiki.org/wiki/The Ruined Land",
+   "difficulty": "normal",
+   "unique": true
+  },
+  {
+   "class": "Sentinel",
+   "level": 40,
+   "bld": null,
+   "stats": {
+    "hp": 62,
+    "str": 36,
+    "mag": 18,
+    "spd": 21,
+    "dex": 29,
+    "def": 48,
+    "res": 16,
+    "lck": 19,
+    "cha": 29
+   },
+   "inventory": [
+    "Mahadu's Spear",
+    "Royal Resolve+",
+    "Combat Arts +3",
+    "Magic Heal +10",
+    "White-Magic Seeker",
+    "Unstoppable Force",
+    "Attack Formation",
+    "Rein+",
+    "Armored Blow",
+    "Protective Storm",
+    "Brilliant Strike",
+    "Full Moon",
+    "Earthen Throw",
+    "Underworld Calm",
+    "Mahadu's Dark Arm",
+    "Control"
+   ],
+   "name": "Theodora",
+   "boss": true,
+   "chapter": "The Ruined Land",
+   "tab": "Normal",
+   "source": "fireemblemwiki.org/wiki/The Ruined Land",
+   "difficulty": "normal",
+   "unique": true
+  },
+  {
+   "class": "Sentinel",
+   "level": 40,
+   "bld": 7,
+   "stats": {
+    "hp": 65,
+    "str": 38,
+    "mag": 19,
+    "spd": 22,
+    "dex": 30,
+    "def": 50,
+    "res": 17,
+    "lck": 20,
+    "cha": 31
+   },
+   "inventory": [
+    "Mahadu's Spear"
+   ],
+   "name": "Theodora",
+   "boss": true,
+   "chapter": "Theodora/Stats",
+   "tab": "Hard",
+   "source": "fireemblemwiki.org/wiki/Theodora/Stats",
+   "difficulty": "hard",
+   "unique": true
+  },
+  {
+   "class": "Shido",
+   "level": 40,
+   "bld": 3,
+   "stats": {
+    "hp": 48,
+    "str": 17,
+    "mag": 10,
+    "spd": 26,
+    "dex": 28,
+    "def": 19,
+    "res": 10,
+    "lck": 17,
+    "cha": 8
+   },
+   "inventory": [
+    "Silver Sword",
+    "Combat Arts +2",
+    "Sword Crit +5",
+    "Swords Lv. 2"
+   ],
+   "name": "Underworld Soldier",
+   "boss": false,
+   "chapter": "The White Bird",
+   "tab": "Normal",
+   "source": "fireemblemwiki.org/wiki/The White Bird",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "Swordmaster",
+   "level": 40,
+   "bld": 3,
+   "stats": {
+    "hp": 65,
+    "str": 17,
+    "mag": 20,
+    "spd": 42,
+    "dex": 51,
+    "def": 39,
+    "res": 23,
+    "lck": 32,
+    "cha": 37
+   },
+   "inventory": [
+    "Answerer"
+   ],
+   "name": "Dietrich",
+   "boss": true,
+   "chapter": "Dietrich",
+   "tab": "Hard",
+   "source": "fireemblemwiki.org/wiki/Dietrich",
+   "difficulty": "hard",
+   "unique": true
+  },
+  {
+   "class": "Swordmaster",
+   "level": 40,
+   "bld": null,
+   "stats": {
+    "hp": 53,
+    "str": 23,
+    "mag": 19,
+    "spd": 40,
+    "dex": 48,
+    "def": 38,
+    "res": 22,
+    "lck": 30,
+    "cha": 25
+   },
+   "inventory": [
+    "Answerer",
+    "Murderous Intent+",
+    "Combat Arts +3",
+    "Sword Crit +7",
+    "Bestial Impulse",
+    "Close Quarters+",
+    "Evasion",
+    "Grounder",
+    "Furious Strike",
+    "Bloodletting",
+    "Moving Shadow",
+    "Ink-Dark Wen",
+    "Unyielding"
+   ],
+   "name": "Dietrich",
+   "boss": true,
+   "chapter": "The Ruined Land",
+   "tab": "Normal",
+   "source": "fireemblemwiki.org/wiki/The Ruined Land",
+   "difficulty": "normal",
+   "unique": true
+  },
+  {
+   "class": "Warrior",
+   "level": 40,
+   "bld": null,
+   "stats": {
+    "hp": 52,
+    "def": 21,
+    "res": 10
+   },
+   "inventory": [
+    "Silver Axe"
+   ],
+   "name": "Underworld Soldier",
+   "boss": false,
+   "chapter": "The Ruined Land",
+   "tab": "Normal",
+   "source": "fireemblemwiki.org/wiki/The Ruined Land",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "High Savant",
+   "level": 45,
+   "bld": 5,
+   "stats": {
+    "hp": 49,
+    "str": 28,
+    "mag": 29,
+    "spd": 25,
+    "dex": 32,
+    "def": 45,
+    "res": 33,
+    "lck": 21,
+    "cha": 14
+   },
+   "inventory": [
+    "Dark Angela",
+    "Ice Blade"
+   ],
+   "name": "Lind",
+   "boss": true,
+   "chapter": "Lind",
+   "tab": "Normal",
+   "source": "fireemblemwiki.org/wiki/Lind",
+   "difficulty": "normal",
+   "unique": false
+  },
+  {
+   "class": "High Savant",
+   "level": 45,
+   "bld": 5,
+   "stats": {
+    "hp": 51,
+    "str": 30,
+    "mag": 31,
+    "spd": 27,
+    "dex": 33,
+    "def": 46,
+    "res": 34,
+    "lck": 22,
+    "cha": 15
+   },
+   "inventory": [
+    "Dark Angela",
+    "Ice Blade"
+   ],
+   "name": "Lind",
+   "boss": true,
+   "chapter": "Lind",
+   "tab": "Hard",
+   "source": "fireemblemwiki.org/wiki/Lind",
+   "difficulty": "hard",
+   "unique": false
+  },
+  {
+   "class": "Orichaldia",
+   "level": 45,
+   "bld": 5,
+   "stats": {
+    "hp": 55,
+    "str": 26,
+    "mag": 27,
+    "spd": 29,
+    "dex": 31,
+    "def": 40,
+    "res": 27,
+    "lck": 26,
+    "cha": 27
+   },
+   "inventory": [
+    "Star Spear"
+   ],
+   "name": "Cai",
+   "boss": true,
+   "chapter": "Cai",
+   "tab": "Hard",
+   "source": "fireemblemwiki.org/wiki/Cai",
+   "difficulty": "hard",
+   "unique": true
+  }
+ ]
+}

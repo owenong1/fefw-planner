@@ -23,7 +23,7 @@ const TOOLS = [
   },
   {
     title: 'Class Paths',
-    body: 'The class path a growth simulator recommends for every unit as a striker, mage, tank or healer.',
+    body: 'The class path a growth simulator recommends for every unit in each role, and the simulator itself to try your own.',
     to: '/paths',
     ready: true,
   },

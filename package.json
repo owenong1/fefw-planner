@@ -10,7 +10,9 @@
     "preview": "vite preview",
     "test": "vitest run",
     "import": "python3 scripts/import/import_sources.py",
-    "import:paths": "python3 scripts/import/import_class_paths.py"
+    "import:paths": "python3 scripts/import/import_class_paths.py",
+    "import:sim-data": "python3 scripts/import/build_sim_data.py",
+    "sim": "node scripts/sim/cli.js"
   },
   "dependencies": {
     "fuse.js": "^7.5.0",

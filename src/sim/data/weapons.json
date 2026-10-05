@@ -1,0 +1,2259 @@
+{
+ "sources": {
+  "growths": "serenesforest.net/fortunes-weave (primary), game8.co growth guide (growthsGame8 where they disagree)",
+  "classes": "game8.co class pages (tier, type, movement, weapons, bonuses, abilities)",
+  "weapons": "game8.co weapon lists, gaps filled from serenesforest.net",
+  "abilities": "game8.co character pages (personal ability, abilities learned by level, spell list)",
+  "bases": "fireemblemwiki.org CharStats; \"estimated\" bases come from a growth regression over 18 low-level units",
+  "enemies": "fireemblemwiki.org chapter and boss pages"
+ },
+ "weapons": [
+  {
+   "name": "Mace",
+   "type": "axe",
+   "crit": 0,
+   "uses": 20,
+   "mt": 3,
+   "hit": 90,
+   "wt": 5,
+   "range": [
+    1,
+    1
+   ],
+   "rank": "E",
+   "desc": "A bludgeoning weapon. Allows use of the Magic Strike combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "You Sou Fu",
+   "type": "axe",
+   "mt": 4,
+   "hit": 75,
+   "crit": 0,
+   "wt": 8,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "A throwing axe with a sharp blade.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Hand Axe",
+   "type": "axe",
+   "mt": 5,
+   "hit": 65,
+   "crit": 0,
+   "wt": 10,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 25,
+   "rank": "D",
+   "desc": "A throwing axe of basic design.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Wooden Axe",
+   "type": "axe",
+   "mt": 5,
+   "hit": 70,
+   "crit": 0,
+   "wt": 7,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 15,
+   "rank": "E",
+   "desc": "A light, simple axe made of wood.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Bronze Axe",
+   "type": "axe",
+   "mt": 7,
+   "hit": 70,
+   "crit": 0,
+   "wt": 9,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "E",
+   "desc": "A standard axe cast from bronze.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Short Axe",
+   "type": "axe",
+   "mt": 9,
+   "hit": 60,
+   "crit": 0,
+   "wt": 12,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 25,
+   "rank": "E",
+   "desc": "A good-quality, one-handed axe that is easy to throw.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Bardiche",
+   "type": "axe",
+   "mt": 13,
+   "hit": 65,
+   "crit": 0,
+   "wt": 9,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "An axe with a large blade atop a long handle.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Iron Axe",
+   "type": "axe",
+   "mt": 13,
+   "hit": 65,
+   "crit": 0,
+   "wt": 10,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 25,
+   "rank": "D",
+   "desc": "A good-quality axe made of iron.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Shielding Axe",
+   "type": "axe",
+   "mt": 13,
+   "hit": 65,
+   "crit": 0,
+   "wt": 12,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 25,
+   "rank": "C",
+   "desc": "An axe that also works as a shield. If foe attacks first, grants Prt+3 to unit during combat.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Velheit",
+   "type": "axe",
+   "mt": 13,
+   "hit": 95,
+   "crit": 0,
+   "wt": 5,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 25,
+   "rank": "A",
+   "desc": "A double-edged axe imbued with dark power. Allows use of the Stormstep combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Hammer",
+   "type": "axe",
+   "mt": 14,
+   "hit": 60,
+   "crit": 0,
+   "wt": 20,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 30,
+   "rank": "D",
+   "desc": "A hammer that can pummel armor with ease.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Smashing Axe",
+   "type": "axe",
+   "mt": 14,
+   "hit": 65,
+   "crit": 0,
+   "wt": 10,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 25,
+   "rank": "C",
+   "desc": "An axe heavy enough to crush stone. Allows use of the Pulverize combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Sagaris",
+   "type": "axe",
+   "mt": 15,
+   "hit": 55,
+   "crit": 0,
+   "wt": 14,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 30,
+   "rank": "B",
+   "desc": "A high-quality throwing axe with incredible power.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Da Mina Axe",
+   "type": "axe",
+   "mt": 16,
+   "hit": 65,
+   "crit": 0,
+   "wt": 10,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 30,
+   "rank": "C",
+   "desc": "A high-quality axe made in Da Mina. Grants Hit+10 when attacking with a combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Gundogya",
+   "type": "axe",
+   "mt": 16,
+   "hit": 75,
+   "crit": 0,
+   "wt": 12,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 25,
+   "rank": "A",
+   "desc": "A single-edged axe imbued with dark power. Allows the use of the Magecleaver combat art.",
+   "game8": {
+    "mt": 5,
+    "wt": 5,
+    "range": [
+     1,
+     2
+    ]
+   },
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Bloodaxe",
+   "type": "axe",
+   "crit": 0,
+   "uses": 30,
+   "mt": 18,
+   "hit": 80,
+   "wt": 10,
+   "range": [
+    1,
+    1
+   ],
+   "rank": "E",
+   "desc": "A magic, crimson axe passed down through Aragonian royals. Allows use of the Domination combat art. (Curse: 1, NPC only?)",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Zalmoxis",
+   "type": "axe",
+   "crit": 0,
+   "uses": 30,
+   "mt": 18,
+   "hit": 80,
+   "wt": 10,
+   "range": [
+    1,
+    1
+   ],
+   "rank": "E",
+   "desc": "An axe with the power to cleave even the skies. Allows use of the Domination+ combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Silver Axe",
+   "type": "axe",
+   "mt": 23,
+   "hit": 70,
+   "crit": 0,
+   "wt": 9,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 25,
+   "rank": "B",
+   "desc": "A powerful axe plated in refined silver.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Credna's Mallet",
+   "type": "axe",
+   "crit": 0,
+   "uses": 30,
+   "mt": 25,
+   "hit": 70,
+   "wt": 14,
+   "range": [
+    1,
+    1
+   ],
+   "rank": "A",
+   "desc": "A Supreme Arc with strong magic. Allows use of the Flame Ring combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Dagda's Club",
+   "type": "axe",
+   "crit": 0,
+   "uses": 35,
+   "mt": 36,
+   "hit": 5,
+   "wt": 25,
+   "range": [
+    1,
+    1
+   ],
+   "rank": "A",
+   "desc": "A Supreme Arc that obliterates all things. Allows use of the Godly Strike combat art, but removes all others.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Luna Λ",
+   "type": "black",
+   "mt": 1,
+   "hit": 50,
+   "crit": 0,
+   "wt": 20,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 3,
+   "rank": null,
+   "desc": "Ignores enemy Res.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Fire",
+   "type": "black",
+   "mt": 3,
+   "hit": 90,
+   "crit": 0,
+   "wt": 5,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 10,
+   "rank": "E",
+   "desc": "Basic fire magic that unleases a fireball.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Mire B",
+   "type": "black",
+   "mt": 3,
+   "hit": 70,
+   "crit": 0,
+   "wt": 15,
+   "range": [
+    1,
+    3
+   ],
+   "uses": 5,
+   "rank": null,
+   "desc": "Attacks using the digestive fluids of artificial lifeforms.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Wind",
+   "type": "black",
+   "mt": 3,
+   "hit": 100,
+   "crit": 0,
+   "wt": 3,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 10,
+   "rank": "E",
+   "desc": "Basic wind magic that strikes with a blade of evacuating air. Effective vs. flying.",
+   "effective": {
+    "flying": 2
+   },
+   "magical": true
+  },
+  {
+   "name": "Blizzard",
+   "type": "black",
+   "mt": 4,
+   "hit": 80,
+   "crit": 5,
+   "wt": 6,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 7,
+   "rank": "D",
+   "desc": "Basic ice magic that freezes the target.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Swarm Z",
+   "type": "black",
+   "mt": 4,
+   "hit": 65,
+   "crit": 0,
+   "wt": 21,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 4,
+   "rank": null,
+   "desc": "An attack that envelops a foe in micromachines. If unit's attack hits, inflicts Spd-3 on foe until unit's next phase.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Miasma Δ",
+   "type": "black",
+   "mt": 5,
+   "hit": 80,
+   "crit": 0,
+   "wt": 5,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 10,
+   "rank": "D",
+   "desc": "Attacks a foe with a ball of concentrated dark matter.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Thunder",
+   "type": "black",
+   "mt": 5,
+   "hit": 75,
+   "crit": 0,
+   "wt": 7,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 8,
+   "rank": "C",
+   "desc": "Basic lightning magic that causes a focused strike.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Sword of Judgment",
+   "type": "black",
+   "mt": 6,
+   "hit": 80,
+   "crit": 0,
+   "wt": 10,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 2,
+   "rank": null,
+   "desc": "Attacks a foe with a large, flying sword. Strikes 2 times. Calculates damage based on foe's Prt.",
+   "effective": {},
+   "magical": true,
+   "targets": "prt",
+   "strikes": 2
+  },
+  {
+   "name": "Cutting Gale",
+   "type": "black",
+   "mt": 7,
+   "hit": 95,
+   "crit": 5,
+   "wt": 8,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 8,
+   "rank": "C",
+   "desc": "Advanced wind magic that shreds an enemy with blades of air. Effective vs. flying.",
+   "effective": {
+    "flying": 2
+   },
+   "magical": true
+  },
+  {
+   "name": "Banshee θ",
+   "type": "black",
+   "mt": 8,
+   "hit": 50,
+   "crit": 0,
+   "wt": 23,
+   "range": [
+    1,
+    3
+   ],
+   "uses": 4,
+   "rank": null,
+   "desc": "Assaults a foe with consecutive bursts of dark energy. Inflicts Immobilize on foe.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Bolganone",
+   "type": "black",
+   "mt": 10,
+   "hit": 85,
+   "crit": 0,
+   "wt": 8,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 5,
+   "rank": "B",
+   "desc": "Advanced fire magic that incinerates an enemy.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Glass Wheel",
+   "type": "black",
+   "mt": 12,
+   "hit": 90,
+   "crit": 0,
+   "wt": 7,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 7,
+   "rank": null,
+   "desc": "Attacks a foe with shards of razor-sharp glass. Calculates damage based on foe's Prt. Effective vs. flying.",
+   "effective": {
+    "flying": 2
+   },
+   "magical": true,
+   "targets": "prt"
+  },
+  {
+   "name": "Ice Blade",
+   "type": "black",
+   "mt": 12,
+   "hit": 75,
+   "crit": 5,
+   "wt": 10,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 6,
+   "rank": "B",
+   "desc": "Advanced ice magic that attacks an enemy with sliding ice blades.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Sagittae",
+   "type": "black",
+   "mt": 13,
+   "hit": 100,
+   "crit": 0,
+   "wt": 12,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 3,
+   "rank": "A",
+   "desc": "TBD",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Death Γ",
+   "type": "black",
+   "mt": 15,
+   "hit": 75,
+   "crit": 20,
+   "wt": 13,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 5,
+   "rank": null,
+   "desc": "Summons the power of death and unleashes it on a foe. High Crit.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Excalibur",
+   "type": "black",
+   "mt": 15,
+   "hit": 100,
+   "crit": 10,
+   "wt": 10,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 3,
+   "rank": "A",
+   "desc": "High-level magic that slices and enemy with two large blades of wind. Effective vs. Flying.",
+   "effective": {
+    "flying": 2
+   },
+   "magical": true
+  },
+  {
+   "name": "Earth's Jaws",
+   "type": "black",
+   "mt": 17,
+   "hit": 90,
+   "crit": 0,
+   "wt": 25,
+   "range": [
+    3,
+    10
+   ],
+   "uses": 1,
+   "rank": null,
+   "desc": "Summons giant stone jaws that crush a foe. Calculates damage based on foe's Prt.",
+   "effective": {},
+   "magical": true,
+   "targets": "prt"
+  },
+  {
+   "name": "Dark Spikes T",
+   "type": "black",
+   "mt": 20,
+   "hit": 60,
+   "crit": 0,
+   "wt": 20,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 2,
+   "rank": null,
+   "desc": "Magic with specialized anti-cavalry capabilities. Effective + vs. Cavalry",
+   "effective": {
+    "cavalry": 3
+   },
+   "magical": true
+  },
+  {
+   "name": "Thoron",
+   "type": "black",
+   "mt": 20,
+   "hit": 55,
+   "crit": 5,
+   "wt": 25,
+   "range": [
+    1,
+    3
+   ],
+   "uses": 4,
+   "rank": "A",
+   "desc": "Advanced lightning magic that pierces an enemy with a powerful bolt of condensed lightning.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Agnea's Arrow",
+   "type": "black",
+   "mt": 25,
+   "hit": 90,
+   "crit": 5,
+   "wt": 15,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 1,
+   "rank": null,
+   "desc": "The highest tier of fire magic that purifies with a blazing strike.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Fimbulvetr Night",
+   "type": "black",
+   "mt": 30,
+   "hit": 80,
+   "crit": 10,
+   "wt": 28,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 1,
+   "rank": null,
+   "desc": "Magic of the highest tier that draws upon eternal winter.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Wooden Bow",
+   "type": "bow",
+   "mt": 2,
+   "hit": 75,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 10,
+   "rank": "E",
+   "desc": "A light, simple bow made of wood.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Venin Bow",
+   "type": "bow",
+   "mt": 3,
+   "hit": 75,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "A poison bow. If unit's attack hits, inflicts Poison on foe.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Bronze Bow",
+   "type": "bow",
+   "mt": 4,
+   "hit": 75,
+   "crit": 0,
+   "wt": 6,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 15,
+   "rank": "E",
+   "desc": "A standard bow cast from bronze.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Mini Bow",
+   "type": "bow",
+   "mt": 5,
+   "hit": 75,
+   "crit": 0,
+   "wt": 5,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "A small, easily handled bow.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Hunter's Bow",
+   "type": "bow",
+   "mt": 6,
+   "hit": 70,
+   "crit": 0,
+   "wt": 7,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "A composite bow favored by the forest clans.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Iron Bow",
+   "type": "bow",
+   "mt": 9,
+   "hit": 75,
+   "crit": 0,
+   "wt": 6,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "A good-quality bow made of iron.",
+   "game8": {
+    "hit": 100,
+    "wt": 7
+   },
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Tempest Bow",
+   "type": "bow",
+   "mt": 9,
+   "hit": 80,
+   "crit": 0,
+   "wt": 5,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 20,
+   "rank": "C",
+   "desc": "A beautiful bow imbued with the power of wind spirits. If unit attacks first, grants Avo+3 during combat.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false,
+   "avo": 3
+  },
+  {
+   "name": "Azaga's Bow",
+   "type": "bow",
+   "mt": 10,
+   "hit": 65,
+   "crit": 0,
+   "wt": 10,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 20,
+   "rank": "A",
+   "desc": "A magic bow imbued with dark power. Allows use of the Calamitous Shot combat art.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Azagi's Bow",
+   "type": "bow",
+   "crit": 0,
+   "uses": 20,
+   "mt": 10,
+   "hit": 65,
+   "wt": 10,
+   "range": [
+    2,
+    2
+   ],
+   "rank": "A",
+   "desc": "A magic bow imbued with dark power. Allows use of the Calamitous Shot combat art. (Curse: 2)",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Horsekiller Bow",
+   "type": "bow",
+   "mt": 10,
+   "hit": 70,
+   "crit": 0,
+   "wt": 8,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 20,
+   "rank": "C",
+   "desc": "A bow made for anti-cavalry use.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Da Mina Bow",
+   "type": "bow",
+   "mt": 12,
+   "hit": 70,
+   "crit": 0,
+   "wt": 6,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 25,
+   "rank": "C",
+   "desc": "A high-quality bow made in Da Mina. Grants Hit+10 when attacking with a combat art.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Longbow",
+   "type": "bow",
+   "mt": 12,
+   "hit": 60,
+   "crit": 0,
+   "wt": 13,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 20,
+   "rank": "C",
+   "desc": "A large bow capable of very long range. Allows the use of the Deadeye combat art.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Kalla's Bow",
+   "type": "bow",
+   "mt": 13,
+   "hit": 70,
+   "crit": 0,
+   "wt": 6,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 30,
+   "rank": "A",
+   "desc": "A Supreme Arc imbued with the power of wind. Allows use of the Heaven's Wind combat art.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "War Bow",
+   "type": "bow",
+   "mt": 14,
+   "hit": 50,
+   "crit": 0,
+   "wt": 14,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 25,
+   "rank": "C",
+   "desc": "A large bow with incredible power.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Idah's Bow",
+   "type": "bow",
+   "mt": 18,
+   "hit": 80,
+   "crit": 0,
+   "wt": 8,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 20,
+   "rank": "B",
+   "desc": "One of the Arcs passed down through Aragonian royals. Allows use of the Holy Flash combat art.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Silver Bow",
+   "type": "bow",
+   "mt": 18,
+   "hit": 75,
+   "crit": 0,
+   "wt": 5,
+   "range": [
+    2,
+    2
+   ],
+   "uses": 20,
+   "rank": "B",
+   "desc": "A powerful bow plated in refined silver.",
+   "effective": {
+    "flying": 3
+   },
+   "magical": false
+  },
+  {
+   "name": "Breidablik",
+   "type": "gauntlet",
+   "mt": 2,
+   "hit": 85,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 20,
+   "rank": "E",
+   "desc": "Once used by a certain summoner. Treated as a magical attack. Increases support-point gain. Allows use of the Light of Bonds combat art.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Salamander",
+   "type": "gauntlet",
+   "mt": 2,
+   "hit": 80,
+   "crit": 0,
+   "wt": 3,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 3,
+   "rank": "E",
+   "desc": "A handheld firearm of great power. Treated as a magical attack. Allows the Compressed Laser combat art.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Wooden Gauntlets",
+   "type": "gauntlet",
+   "mt": 2,
+   "hit": 90,
+   "crit": 0,
+   "wt": 1,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 10,
+   "rank": "E",
+   "desc": "Light, simple gauntlets made of wood.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Bronze Gauntlets",
+   "type": "gauntlet",
+   "mt": 3,
+   "hit": 90,
+   "crit": 0,
+   "wt": 2,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 15,
+   "rank": "E",
+   "desc": "Standard gauntlets cast from bronze.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Smyrnos's Channels",
+   "type": "gauntlet",
+   "mt": 7,
+   "hit": 85,
+   "crit": 0,
+   "wt": 1,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "A",
+   "desc": "A Supreme Arc imbued with the power of lightning. Allows use of the Thoron Gauntlet combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Iron Gauntlets",
+   "type": "gauntlet",
+   "mt": 8,
+   "hit": 90,
+   "crit": 0,
+   "wt": 3,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "Good-quality gauntlets made of iron.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Zerberus",
+   "type": "gauntlet",
+   "mt": 9,
+   "hit": 80,
+   "crit": 0,
+   "wt": 5,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 5,
+   "rank": "A",
+   "desc": "A handheld firearm made for Troy. Treated as a magical attack. Allows the Compressed Laser combat art.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Qiankun Circles",
+   "type": "gauntlet",
+   "mt": 10,
+   "hit": 70,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 20,
+   "rank": "C",
+   "desc": "Circular weapons that can also be thrown.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Counter Gauntlets",
+   "type": "gauntlet",
+   "mt": 11,
+   "hit": 70,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "C",
+   "desc": "Gauntlets that are stronger during a counterattack. If foes attacks first, grants Atk+5 to unit during combat.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Da Mina Gauntlets",
+   "type": "gauntlet",
+   "mt": 11,
+   "hit": 90,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 25,
+   "rank": "C",
+   "desc": "High-quality gauntlets made in Da Mina. Grants Hit+10 when attacking with a combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Dodge Gauntlets",
+   "type": "gauntlet",
+   "mt": 11,
+   "hit": 80,
+   "crit": 0,
+   "wt": 3,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "C",
+   "desc": "Gauntlets of lighter design for nimble fighting. Makes it easier to avoid attacks.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Jamadhars",
+   "type": "gauntlet",
+   "mt": 12,
+   "hit": 90,
+   "crit": 5,
+   "wt": 5,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "TBD",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Resistant Gauntlets",
+   "type": "gauntlet",
+   "mt": 12,
+   "hit": 80,
+   "crit": 0,
+   "wt": 5,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "C",
+   "desc": "Gauntlets that have a resistance to magic. Grants Res+3.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Ursa's Right Claw",
+   "type": "gauntlet",
+   "mt": 15,
+   "hit": 75,
+   "crit": 0,
+   "wt": 1,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "B",
+   "desc": "One of a pair of gauntlets made of ominous claws. Allows use of the Violent Claw combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Windfire Rings",
+   "type": "gauntlet",
+   "crit": 0,
+   "uses": 15,
+   "mt": 17,
+   "hit": 65,
+   "wt": 6,
+   "range": [
+    1,
+    2
+   ],
+   "rank": "B",
+   "desc": "A beautiful Arc imbued with the power of fire. Allows use of the Flame Wheel combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Silver Gauntlets",
+   "type": "gauntlet",
+   "mt": 18,
+   "hit": 90,
+   "crit": 0,
+   "wt": 5,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "B",
+   "desc": "Powerful gauntlets plated in refined silver.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Javelin",
+   "type": "spear",
+   "mt": 3,
+   "hit": 80,
+   "crit": 0,
+   "wt": 8,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "A throwing spear of basic design.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Wooden Spear",
+   "type": "spear",
+   "mt": 3,
+   "hit": 90,
+   "crit": 0,
+   "wt": 5,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 10,
+   "rank": "E",
+   "desc": "A light, simple spear made of wood.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Bronze Spear",
+   "type": "spear",
+   "mt": 5,
+   "hit": 90,
+   "crit": 0,
+   "wt": 7,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 15,
+   "rank": "E",
+   "desc": "A standard spear cast from bronze.",
+   "game8": {
+    "mt": 9,
+    "hit": 100,
+    "wt": 5
+   },
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Short Spear",
+   "type": "spear",
+   "mt": 5,
+   "hit": 75,
+   "crit": 0,
+   "wt": 10,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 20,
+   "rank": "C",
+   "desc": "A good-quality spear that is easy to throw.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Glaive",
+   "type": "spear",
+   "mt": 6,
+   "hit": 90,
+   "crit": 9,
+   "wt": 6,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "A polearm with a sharp, curved blade. Allows use of the Deadly Spear combat art.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Assal",
+   "type": "spear",
+   "mt": 7,
+   "hit": 85,
+   "crit": 0,
+   "wt": 8,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "A spear that Seteth once forged. Allows the Sacred Strike combat art.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Chosen Lance",
+   "type": "spear",
+   "mt": 7,
+   "hit": 85,
+   "crit": 0,
+   "wt": 7,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "E",
+   "desc": "Once given to a princess of ice who appears in myths about a foreign land.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Iron Spear",
+   "type": "spear",
+   "mt": 10,
+   "hit": 80,
+   "crit": 0,
+   "wt": 7,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "A good-quality spear made of iron.",
+   "game8": {
+    "hit": 100
+   },
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Mahadu's Spear",
+   "type": "spear",
+   "mt": 10,
+   "hit": 85,
+   "crit": 0,
+   "wt": 8,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "E",
+   "desc": "A shining golden spear wielded by a hero of legend. Allows use of the Full Moon combat art.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Sinza's Trident",
+   "type": "spear",
+   "mt": 10,
+   "hit": 65,
+   "crit": 0,
+   "wt": 16,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 30,
+   "rank": "E",
+   "desc": "The lost trident of Esmeralda's father. Allows use of the Brute Throw combat art.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Guandao",
+   "type": "spear",
+   "mt": 11,
+   "hit": 90,
+   "crit": 0,
+   "wt": 9,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "B",
+   "desc": "A powerful polearm with a heavy, broad blade.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Ji",
+   "type": "spear",
+   "mt": 11,
+   "hit": 80,
+   "crit": 0,
+   "wt": 7,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 25,
+   "rank": "B",
+   "desc": "A spear-like weapon that supports various combat styles. Allows use of the Windweave combat art.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Pilum",
+   "type": "spear",
+   "mt": 11,
+   "hit": 70,
+   "crit": 0,
+   "wt": 12,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 25,
+   "rank": "B",
+   "desc": "A high-quality throwing spear with incredible power.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Halberd",
+   "type": "spear",
+   "mt": 12,
+   "hit": 70,
+   "crit": 0,
+   "wt": 12,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 25,
+   "rank": "D",
+   "desc": "A polearm designed for both thrusting and slashing.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Onoa",
+   "type": "spear",
+   "mt": 12,
+   "hit": 80,
+   "crit": 0,
+   "wt": 7,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "A",
+   "desc": "A thrusting spear imbued with dark power. Allows use of the Cavalry Ruin combat art.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Ridersbane",
+   "type": "spear",
+   "mt": 12,
+   "hit": 70,
+   "crit": 0,
+   "wt": 10,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "C",
+   "desc": "A spear made for anti-cavalry use.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Da Mina Spear",
+   "type": "spear",
+   "mt": 13,
+   "hit": 80,
+   "crit": 0,
+   "wt": 7,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 25,
+   "rank": "C",
+   "desc": "A high-quality spear made in Da Mina. Grants Hit+10 when attacking with a combat art.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "The Nameless",
+   "type": "spear",
+   "mt": 13,
+   "hit": 90,
+   "crit": 0,
+   "wt": 7,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "E",
+   "desc": "A spear that has lost its original power-- and its name.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Grasitha",
+   "type": "spear",
+   "mt": 14,
+   "hit": 75,
+   "crit": 0,
+   "wt": 14,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 30,
+   "rank": "B",
+   "desc": "A Hero's Relic. Allows Esmeralda use of the Leave No Dust combat art.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Star Spear",
+   "type": "spear",
+   "mt": 16,
+   "hit": 85,
+   "crit": 0,
+   "wt": 8,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 25,
+   "rank": "C",
+   "desc": "A Supreme Arc that holds starry brightness. Allows use of the Blinding Starlight combat art.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Shining Spear",
+   "type": "spear",
+   "crit": 0,
+   "uses": 20,
+   "mt": 18,
+   "hit": 90,
+   "wt": 7,
+   "range": [
+    1,
+    1
+   ],
+   "rank": "A",
+   "desc": "A Supreme Arc with the power of the sun. Allows use of the Sol combat art, upgraded to recover HP equal to all damage dealt. (NPC only?)",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Silver Spear",
+   "type": "spear",
+   "mt": 20,
+   "hit": 85,
+   "crit": 0,
+   "wt": 6,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "B",
+   "desc": "A powerful spear plated in refined silver.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Muen",
+   "type": "spear",
+   "mt": 22,
+   "hit": 45,
+   "crit": 0,
+   "wt": 20,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 30,
+   "rank": "A",
+   "desc": "A magic spear imbued with dark power. Allows the use of the Black Roar combat art.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Vendetta",
+   "type": "spear",
+   "mt": 27,
+   "hit": 60,
+   "crit": 0,
+   "wt": 20,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 20,
+   "rank": "A",
+   "desc": "An extending spear imbued with dark power. Allows use of the Supreme Serpent combat art.",
+   "effective": {
+    "cavalry": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Wooden Sword",
+   "type": "sword",
+   "mt": 2,
+   "hit": 90,
+   "crit": 0,
+   "wt": 2,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 10,
+   "rank": "E",
+   "desc": "A light, simple sword made of wood.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Venin Edge",
+   "type": "sword",
+   "mt": 3,
+   "hit": 90,
+   "crit": 0,
+   "wt": 3,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "A sword with a blade coated in deadly poison. If unit's attack hits, inflicts Poison on foe.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Bronze Sword",
+   "type": "sword",
+   "mt": 4,
+   "hit": 90,
+   "crit": 0,
+   "wt": 3,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 15,
+   "rank": "E",
+   "desc": "A standard sword cast from Bronze.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Long-Night Katara",
+   "type": "sword",
+   "mt": 5,
+   "hit": 90,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "E",
+   "desc": "A liyuedao imbued with dark power. Allows use of the Siphon Luck combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Royal Sword",
+   "type": "sword",
+   "mt": 5,
+   "hit": 90,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 10,
+   "rank": "E",
+   "desc": "Once wielded by an exiled prince who appears in a fable about a foreign land. Allows use of the Ennea Fire EX combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Chosen Sword",
+   "type": "sword",
+   "mt": 6,
+   "hit": 90,
+   "crit": 0,
+   "wt": 5,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "E",
+   "desc": "Once given to a divinely descended prince who appears in myths about a foreign land. Grants Shld +1 to adjacent allies.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Cleansing Blade",
+   "type": "sword",
+   "mt": 8,
+   "hit": 90,
+   "crit": 0,
+   "wt": 3,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "E",
+   "desc": "A short sword, purified with holy blessings. Neutralizes Underworld Boon on foe during combat.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Whirlwind Blade",
+   "type": "sword",
+   "mt": 8,
+   "hit": 90,
+   "crit": 0,
+   "wt": 2,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "C",
+   "desc": "A sword imbued with the power of wind spirits.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Answerer",
+   "type": "sword",
+   "mt": 9,
+   "hit": 90,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "E",
+   "desc": "A Hero's Relic. Allows Dietrich use of the Bloodletting combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Iron Sword",
+   "type": "sword",
+   "mt": 9,
+   "hit": 90,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "A good-quality sword made of iron.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Flyssa",
+   "type": "sword",
+   "mt": 10,
+   "hit": 90,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "C",
+   "desc": "A thrusting sword for piercing gaps in armor.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Lakshashi's Iron Fan",
+   "type": "sword",
+   "mt": 10,
+   "hit": 80,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "E",
+   "desc": "A poison fan sword imbued with dark power. Allows use of the Toxic Wind combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Killing Edge",
+   "type": "sword",
+   "mt": 11,
+   "hit": 90,
+   "crit": 0,
+   "wt": 6,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 40,
+   "rank": "C",
+   "desc": "A sharp sword crafted with eastern techniques. Allow use of the Deadly Blade combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Da Mina Sword",
+   "type": "sword",
+   "mt": 12,
+   "hit": 90,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 25,
+   "rank": "C",
+   "desc": "A high-quality sword made in Da Mina. Grants Hit+10 when attacking with a combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Levin Sword",
+   "type": "sword",
+   "mt": 12,
+   "hit": 70,
+   "crit": 0,
+   "wt": 8,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 20,
+   "rank": "C",
+   "desc": "A sword imbued with the power of lightning spirits. Treated as a magical attack. Allows the use of the Lightning Strike combat art.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Veroquine",
+   "type": "sword",
+   "mt": 13,
+   "hit": 60,
+   "crit": 0,
+   "wt": 12,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 30,
+   "rank": "B",
+   "desc": "A slender magic sword imbued with dark power. Allows use of the Prune combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Angela",
+   "type": "sword",
+   "mt": 14,
+   "hit": 80,
+   "crit": 0,
+   "wt": 8,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "A",
+   "desc": "A magic poison sword imbued with dark power. Allows use of the Poison Burial combat art.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Zanbato",
+   "type": "sword",
+   "mt": 14,
+   "hit": 80,
+   "crit": 0,
+   "wt": 7,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "D",
+   "desc": "A large sword designed to cut down mounted cavalry.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Greatsword",
+   "type": "sword",
+   "mt": 15,
+   "hit": 60,
+   "crit": 0,
+   "wt": 15,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 30,
+   "rank": "D",
+   "desc": "A huge sword that slashes through targets with ease. Effective vs. Armor.",
+   "effective": {
+    "armored": 2
+   },
+   "magical": false
+  },
+  {
+   "name": "Silver Sword",
+   "type": "sword",
+   "mt": 18,
+   "hit": 95,
+   "crit": 0,
+   "wt": 4,
+   "range": [
+    1,
+    1
+   ],
+   "uses": 20,
+   "rank": "B",
+   "desc": "A powerful sword plated in refined silver.",
+   "effective": {},
+   "magical": false
+  },
+  {
+   "name": "Nosferatu",
+   "type": "white",
+   "mt": 1,
+   "hit": 80,
+   "crit": 0,
+   "wt": 8,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 8,
+   "rank": "C",
+   "desc": "Magic that absorbs lifeforce from a target. Unit recovers HP equal to half the damage they deal.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Seraphim",
+   "type": "white",
+   "mt": 10,
+   "hit": 75,
+   "crit": 0,
+   "wt": 10,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 3,
+   "rank": "B",
+   "desc": "Sacred magic that attacks with a ball of pure light. Effective vs. undead.",
+   "effective": {
+    "undead": 2
+   },
+   "magical": true
+  },
+  {
+   "name": "Starlight",
+   "type": "white",
+   "mt": 13,
+   "hit": 90,
+   "crit": 0,
+   "wt": 30,
+   "range": [
+    1,
+    3
+   ],
+   "uses": 3,
+   "rank": null,
+   "desc": "Sacred magic that strikes a foe with a concentrated beam of starlight.",
+   "effective": {},
+   "magical": true
+  },
+  {
+   "name": "Aura",
+   "type": "white",
+   "mt": 22,
+   "hit": 70,
+   "crit": 0,
+   "wt": 18,
+   "range": [
+    1,
+    2
+   ],
+   "uses": 3,
+   "rank": "A",
+   "desc": "Sacred magic that incinerates a target with light from the ground.",
+   "effective": {},
+   "magical": true
+  }
+ ],
+ "heals": [
+  {
+   "name": "Laia",
+   "power": 5,
+   "uses": 15,
+   "range": [
+    1,
+    1
+   ],
+   "desc": "Sacred magic that heals wounds. Restores a little HP to an ally. Sometimes restores +100 HP.",
+   "powerSource": "assumed"
+  },
+  {
+   "name": "Physic",
+   "power": 8,
+   "uses": 5,
+   "range": [
+    1,
+    10
+   ],
+   "desc": "Sacred magic that heals wounds from afar. Restores HP to a distant ally."
+  },
+  {
+   "name": "Heal",
+   "power": 10,
+   "uses": 10,
+   "range": [
+    1,
+    1
+   ],
+   "desc": "Sacred magic that heals wounds. Restores HP to an ally."
+  },
+  {
+   "name": "Fortify",
+   "power": 20,
+   "uses": 2,
+   "range": [
+    1,
+    5
+   ],
+   "desc": "Heals allies within range.",
+   "area": true
+  },
+  {
+   "name": "Recover",
+   "power": 30,
+   "uses": 5,
+   "range": [
+    1,
+    1
+   ],
+   "desc": "Sacred magic that heals wounds. Restores a lot of HP to an ally."
+  }
+ ]
+}

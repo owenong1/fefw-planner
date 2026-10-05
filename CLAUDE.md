@@ -15,7 +15,10 @@ npx vitest run src/engine/growth.test.ts   # one file
 npx vitest run -t "mid-rank"       # tests matching a name
 npm run import                     # regenerate data/*.json (Python 3, see below)
 python3 scripts/import/fetch_portraits.py [--force]   # download unit icons into src/assets/portraits/ and class icons into src/assets/classes/
-npm run import:paths               # regenerate data/classPaths.json from the growth simulator (Node, about a minute; see below)
+npm run sim -- char Sofia          # the growth simulator from a terminal (`npm run sim help`; see below)
+npx vitest run src/sim             # the simulator's tests only
+npm run import:paths               # regenerate data/classPaths.json from the simulator (about a minute)
+npm run import:sim-data            # rebuild the simulator's own data from its source sites (Python 3; --refresh re-downloads)
 ```
 
 ## Data pipeline
@@ -27,10 +30,22 @@ Game data flows one way:
 - **Do not hand-edit the generated JSON** (`units`, `classes`, `skills`, `routes`, `paralogues`). A re-import overwrites it. Corrections go in `data/overrides.json`, shaped `{ collection: { id: { field: value } } }`, which the importer applies last.
 - The importer writes anything it could not parse, plus disagreements between sources, to `data/import-report.txt`. Read it after every import.
 - `src/data/index.ts` imports the JSON and **casts** it to the schema types without parsing. The Zod schemas in `src/data/schema.ts` are only run by `src/data/data.test.ts`, which also checks that every cross-collection id reference resolves. So `npm test` is the data validator: run it after any change to `data/`, the importer, or the schema.
-- `data/classPaths.json` (the Class Paths page and the card on each unit page) is generated separately, by `scripts/import/import_class_paths.py`. It runs the growth simulator's `export` command, a separate repo ([fefw-growth-sim](https://github.com/owenong1/fefw-growth-sim)) expected at `../fefw_growth_sim` (or `--sim <dir>` / `$FEFW_SIM`), and rewrites its unit and class names as ids. The simulator keeps its own copy of the game data and its own rules, so its numbers are not derived from `data/*.json` here; only the names have to match, and the script fails if one does not. Extra flags pass through to the simulator (`npm run import:paths -- --hard`). Re-run it when the simulator or its data changes; the site build does not need the simulator.
 - A schema change has to be made in three places: `schema.ts`, the importer's output, and the regenerated JSON.
 - Ids are slugs of the display name (`slug()` in the importer). A route's id is its lord's unit id (`cai`, `dietrich`, `theodora`, `leda`), and that same id keys the `--route-<id>` CSS variables in `src/index.css`.
 - `data/SOURCES.md` records where each field comes from. `data/MECHANICS.md` records which game rules are confirmed and which are assumptions; update it when a rule changes, because the engine and UI copy lean on it.
+
+## The growth simulator
+
+`src/sim/` is a class-path simulator: it searches the class paths a unit could take and recommends one per role. It was a separate project (fefw-growth-sim) and now lives here; `src/sim/README.md` explains the method, every command and option, and what not to trust. It powers the Simulator page (`/sim`), the Class Paths page and the paths card on each unit page.
+
+- `src/sim/engine/` is the simulator, plain JavaScript with no Node imports (a test enforces it), because the site runs it in a web worker. tsc reads it through `allowJs` without type-checking it, and oxlint skips it.
+- `src/sim/data/` is the simulator's **own** game data and rules, separate from `data/*.json`: it needs weapons, enemy stats, exams and a `mechanics.json` of tagged assumptions that the site's data does not carry. Its numbers are not derived from `data/*.json`; only unit and class names have to match (`src/sim/sim.test.ts` and the paths importer both check). `scripts/import/build_sim_data.py` regenerates all of it except the hand-maintained `mechanics.json`, from pages cached in `.cache/sim/`, and overwrites hand edits to the rest.
+- Every command (`char`, `path`, `all`, `classes`, `refs`, `enemies`, `visuals`, `export`, `list`, `help`) is in `engine/commands.js` and returns a document of text, table and file blocks. Two front ends run them: `scripts/sim/cli.js` in a terminal (`npm run sim`), which prints the document, and `src/sim/worker.ts` on the site, whose document `components/SimDoc.tsx` renders. The two give identical output by construction, so add or change a command in `commands.js`, never in a front end. A new option also needs a field on the Simulator page (`Fields`, `USES` and `buildArgv` in `SimPage.tsx`).
+- Whole-cast commands search all 63 units, a few seconds each. `scripts/sim/cast.js` shares them over worker threads; `worker.ts` shares them over a pool of `castWorker.ts` web workers and caches finished runs. Both use `engine/castjob.js`.
+- Pages may import only `src/sim/client.ts` and `protocol.ts`. Importing anything under `engine/` or `data/` from a page pulls the whole simulator into the main bundle.
+- `data/classPaths.json` is the simulator's `export` at default settings, precomputed by `scripts/import/import_class_paths.py` with names rewritten as ids, so the Class Paths page and unit cards are instant and spoiler-aware. Re-run `npm run import:paths` after changing the engine or its data (extra flags pass through: `npm run import:paths -- --hard`).
+- The Simulator page sits behind a level-1 `SpoilerGate`, because its output is the simulator's own text and names Master classes and late-joining units throughout.
+- The engine's tests are in `src/sim/test/` (vitest, with `node:assert`). After a change to `commands.js` or a front end, also check a few commands from the terminal: the output there is what the site shows.
 
 ## Architecture
 

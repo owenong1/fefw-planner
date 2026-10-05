@@ -1,12 +1,11 @@
 """Builds data/classPaths.json from the growth simulator's results.
 
-Usage: python3 scripts/import/import_class_paths.py [--sim <dir>] [--from <export.json>] [sim options]
+Usage: python3 scripts/import/import_class_paths.py [--from <export.json>] [simulator options]
 
-The simulator (https://github.com/owenong1/fefw-growth-sim) searches every
-unit's class paths and recommends one per role. This runs its `export` command
-(about a minute; needs Node 18+) and rewrites unit and class names as this
-site's ids. `--sim` is the simulator checkout (default: ../fefw_growth_sim, or
-$FEFW_SIM); `--from` reads an export made earlier instead of running it.
+The simulator (src/sim/, run from the terminal by scripts/sim/cli.js) searches
+every unit's class paths and recommends one per role. This runs its `export`
+command (about a minute; needs Node 18+) and rewrites unit and class names as
+this site's ids. `--from` reads an export made earlier instead of running it.
 Anything else is passed to the simulator, e.g. `--hard` or `--route cai`.
 """
 import json
@@ -30,10 +29,8 @@ def take(args, flag):
     return value
 
 
-def run_sim(sim, extra):
-    cli = os.path.join(sim, 'src', 'cli.js')
-    if not os.path.exists(cli):
-        sys.exit(f'No simulator at {sim}. Clone fefw-growth-sim there, or pass --sim <dir> or --from <export.json>.')
+def run_sim(extra):
+    cli = os.path.join(ROOT, 'scripts', 'sim', 'cli.js')
     with tempfile.TemporaryDirectory() as tmp:
         path = os.path.join(tmp, 'export.json')
         subprocess.run(['node', cli, 'export', path, *extra], check=True, stderr=subprocess.DEVNULL)
@@ -44,12 +41,11 @@ def run_sim(sim, extra):
 def main():
     args = sys.argv[1:]
     source = take(args, '--from')
-    sim = take(args, '--sim') or os.environ.get('FEFW_SIM') or os.path.join(ROOT, '..', 'fefw_growth_sim')
     if source:
         with open(source, encoding='utf-8') as f:
             export = json.load(f)
     else:
-        export = run_sim(os.path.abspath(sim), args)
+        export = run_sim(args)
 
     with open(os.path.join(ROOT, 'data', 'units.json'), encoding='utf-8') as f:
         unit_ids = {u['id'] for u in json.load(f)}
