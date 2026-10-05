@@ -11,7 +11,7 @@ export const AXIS_TEXT: Record<string, string> = {
   physBulk: 'Share of HP left after a physical enemy attacks, if every strike lands. Measured holding the weapons the unit attacks with.',
   magBulk: 'The same against a magic enemy.',
   avoid: 'Chance an enemy strike misses.',
-  physSurv: 'Attacked by one physical enemy, then by two: the share of its HP the unit has left on average, with hit and crit chances played out. Dead counts as none.',
+  physSurv: 'Attacked by one physical enemy, then by two, then by three: the share of its HP the unit has left on average, with hit and crit chances played out. Dead counts as none.',
   magSurv: 'The same against magical attackers.',
   support: `HP healed per map (${profile.healBars} ally HP bars = 100). Being able to Dance counts ${profile.dance}.`,
   reach: `Movement, from Mov ${profile.movFloor} (0) to Mov ${profile.movCeil} (100). Fliers count ${profile.flyingMov} extra. No role weights it.`,

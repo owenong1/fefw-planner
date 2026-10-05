@@ -55,7 +55,7 @@ for the share of playthroughs that get it:
 | Phys bulk | Share of its HP left after a physical enemy attacks it, if every strike lands. This, avoid and survival are measured holding the weapons the unit attacks with |
 | Mag bulk | The same against a magic enemy |
 | Avoid | Chance an enemy's strike misses |
-| Phys surv / Mag surv | Attacked by one physical (or magical) enemy, then by two, with hit and crit chances played out: the share of its HP it has left on average after each. Bulk and avoid combined, and dying counts as nothing left |
+| Phys surv / Mag surv | Attacked by one physical (or magical) enemy, then by two, then by three, with hit and crit chances played out: the share of its HP it has left on average after each. Bulk and avoid combined, and dying counts as nothing left |
 | Support | HP it can heal per map (12 ally HP bars = 100); being able to Dance counts 60 |
 | Reach | Movement, from Mov 4 (0) to Mov 9 (100); fliers count one extra |
 
