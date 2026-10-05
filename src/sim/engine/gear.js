@@ -119,10 +119,13 @@ const dominates = (a, b, bld) =>
  *             type, strictly worse ones dropped) and attack spells, each as { weapon, uses } where uses
  *             is casts per map (Infinity for physical weapons)
  *   heals   - [{ heal, uses }]
- * Spells come from the unit's own spell list; a unit without a published list
- * uses the standard spell lines.
+ * Spells come from the unit's own spell list (a unit without a published list
+ * uses the standard spell lines) plus the scroll spells, which ask for no rank.
+ * `opts` are the run's ways of playing, each on unless set false: `magicWeapons`
+ * (the Levin Sword and its like are carried), `scrolls` (scroll spells are
+ * learned) and `castLimit` (attack spells run out during a map).
  */
-export function unitGear(data, char, cls, level, expo) {
+export function unitGear(data, char, cls, level, expo, opts = {}) {
   const bld = bldAt(data, char, level);
   const rank = (type) => rankAt(data, expo[WEAPON_SKILL[type]]);
   const physical = [];
@@ -131,6 +134,7 @@ export function unitGear(data, char, cls, level, expo) {
   for (const e of data.playerArsenal) {
     const w = e.weapon;
     if (e.level > level || !cls.weapons.includes(w.type) || w.rankValue > rank(w.type)) continue;
+    if (e.magical && opts.magicWeapons === false) continue;
     if (w.type === 'black' || w.type === 'white') { if (!char.spellBook) spells.push(w); }
     else physical.push({ w, unlock: e.level });
   }
@@ -145,6 +149,9 @@ export function unitGear(data, char, cls, level, expo) {
       const heal = data.heals.get(name);
       if (heal && rankValue(data.mechanics, r) <= rank('white')) heals.push(heal);
     }
+  }
+  if (opts.scrolls !== false && cls.weapons.includes('black')) {
+    for (const s of data.scrolls) if (s.level <= level && !spells.includes(s.weapon)) spells.push(s.weapon);
   }
   const all = physical.map((p) => p.w);
   const perType = new Map();
@@ -162,7 +169,7 @@ export function unitGear(data, char, cls, level, expo) {
     bld,
     weapons: [
       ...kept.map((p) => ({ weapon: p.w, uses: Infinity })),
-      ...spells.map((w) => ({ weapon: w, uses: (w.uses || Infinity) * cls.usesMult[w.type] })),
+      ...spells.map((w) => ({ weapon: w, uses: opts.castLimit === false ? Infinity : (w.uses || Infinity) * cls.usesMult[w.type] })),
     ],
     heals: heals.map((h) => ({ heal: h, uses: h.uses * cls.usesMult.white })),
   };

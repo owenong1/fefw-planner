@@ -37,11 +37,12 @@ const USES: Record<string, CommandId[]> = {
 /** Form state. Everything is a string because it lives in the URL; '' means "leave the option off". */
 type Fields = {
   cmd: CommandId; unit: string; path: string; role: string; at: string; top: string
-  route: string; hard: string; divine: string; noArts: string; maxGap: string; free: string; detours: string
+  route: string; hard: string; divine: string; noArts: string; noMagicWeapons: string; noCastLimit: string; noScrolls: string
+  maxGap: string; free: string; detours: string
   from: string; to: string; runs: string; offense: string; json: string; csv: string
 }
 const EMPTY: Fields = {
-  cmd: 'char', unit: '', path: '', role: '', at: '', top: '', route: '', hard: '', divine: '', noArts: '', maxGap: '', free: '',
+  cmd: 'char', unit: '', path: '', role: '', at: '', top: '', route: '', hard: '', divine: '', noArts: '', noMagicWeapons: '', noCastLimit: '', noScrolls: '', maxGap: '', free: '',
   detours: '', from: '', to: '', runs: '', offense: '', json: '', csv: '',
 }
 const KEYS = Object.keys(EMPTY) as (keyof Fields)[]
@@ -73,6 +74,9 @@ function buildArgv(f: Fields): string[] {
     opt('route', f.route)
     flag('divine', f.divine)
     flag('no-arts', f.noArts)
+    flag('no-magic-weapons', f.noMagicWeapons)
+    flag('no-cast-limit', f.noCastLimit)
+    flag('no-scrolls', f.noScrolls)
     if (f.free) flag('free-reclass', f.free)
     else opt('max-gap', f.maxGap)
     opt('detours', f.detours)
@@ -291,6 +295,9 @@ function Simulator() {
                   {uses('hard') && <Check label="Hard difficulty" checked={!!fields.hard} onChange={(v) => update({ hard: v ? '1' : '' })} />}
                   {uses('search') && <Check label="Divine classes" checked={!!fields.divine} onChange={(v) => update({ divine: v ? '1' : '' })} title="Also search Divine classes (one more decision late in Part III)" />}
                   {uses('search') && <Check label="No combat arts" checked={!!fields.noArts} onChange={(v) => update({ noArts: v ? '1' : '' })} title="Abilities that need a combat art are not counted (by default they count as if the unit always attacked with one)" />}
+                  {uses('search') && <Check label="No magic weapons" checked={!!fields.noMagicWeapons} onChange={(v) => update({ noMagicWeapons: v ? '1' : '' })} title="Units do not carry weapons that strike as magic (the Levin Sword), so a class without spells has no magic damage" />}
+                  {uses('search') && <Check label="No cast limit" checked={!!fields.noCastLimit} onChange={(v) => update({ noCastLimit: v ? '1' : '' })} title="Attack spells do not run out during a map (by default each has its own number of casts)" />}
+                  {uses('search') && <Check label="No scroll spells" checked={!!fields.noScrolls} onChange={(v) => update({ noScrolls: v ? '1' : '' })} title="Units know only their own spell list (by default every unit has also learned the scroll spells, such as Death, once they can be had)" />}
                   {uses('search') && <Check label="Free reclassing" checked={!!fields.free} onChange={(v) => update({ free: v ? '1' : '' })} title="Allow any class change regardless of skill ranks" />}
                   {uses('csv') && (fields.cmd === 'all' || fields.role) && !fields.json && <Check label="Also as CSV" checked={!!fields.csv} onChange={(v) => update({ csv: v ? '1' : '' })} />}
                   {uses('json') && <Check label="JSON output" checked={!!fields.json} onChange={(v) => update({ json: v ? '1' : '' })} title="Machine-readable output instead of tables" />}

@@ -4,6 +4,7 @@
   "classes": "game8.co class pages (tier, type, movement, weapons, bonuses, abilities)",
   "weapons": "game8.co weapon lists, gaps filled from serenesforest.net",
   "abilities": "game8.co character pages (personal ability, abilities learned by level, spell list)",
+  "spells": "game8.co character pages, completed from the Reason and Faith tabs of a community spreadsheet (a spell either lists is kept, at the lower rank where they disagree)",
   "bases": "fireemblemwiki.org CharStats; \"estimated\" bases come from a growth regression over 18 low-level units",
   "enemies": "fireemblemwiki.org chapter and boss pages"
  },

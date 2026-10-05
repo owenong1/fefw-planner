@@ -28,7 +28,8 @@ const caster = [45, 5, 40, 30, 30, 12, 35, 20, 10];
 test('physical and magical damage are separate axes', () => {
   const war = profile('Cai', 'Warrior', 15, fighter);
   assert.ok(war.axes[ax('physDmg')] > 40);
-  assert.equal(war.axes[ax('magDmg')], 0);
+  assert.ok(war.axes[ax('magDmg')] < 10);                   // only its Levin Sword, on 5 Mag
+  assert.equal(profile('Cai', 'Dreadnought', 15, fighter).axes[ax('magDmg')], 0);   // no swords, no spells
   assert.equal(war.axes[ax('bestDmg')], war.axes[ax('physDmg')]);
   const ovate = profile('Cai', 'Ovate', 15, caster);
   assert.ok(ovate.axes[ax('magDmg')] > 30);
@@ -147,6 +148,16 @@ test('abilities that need a combat art count only for a unit that uses arts', ()
   assert.ok(score(ctx, 'Tobias') > score(off, 'Tobias') + 1);
   assert.ok(!unit('Cai').abilityList.some((a) => a.effects.some((e) => e.art)));
   assert.equal(score(ctx, 'Cai'), score(off, 'Cai'));
+});
+
+test('a run without magic weapons, scroll spells or the cast limit scores the paths they touch differently', () => {
+  const score = (opts, steps, role) => { const c = createContext(data, opts); return roleScore(c, evaluatePath(c, unit('Cai'), steps, {}), role).score; };
+  const sword = [{ level: 5, name: 'Gladiator' }, { level: 20, name: 'Myrmidon' }, { level: 35, name: 'Shido' }];
+  const mage = [{ level: 5, name: 'Diviner' }, { level: 20, name: 'Shaman' }, { level: 35, name: 'Ovate' }, { level: 45, name: 'Druid' }];
+  assert.ok(score({}, sword, 'mage') > score({ magicWeapons: false }, sword, 'mage') + 1);   // the Levin Sword is all its magic
+  assert.ok(score({ magicWeapons: false }, mage, 'mage') > score({ magicWeapons: false, scrolls: false }, mage, 'mage'));
+  assert.ok(score({ magicWeapons: false, castLimit: false }, mage, 'mage') > score({ magicWeapons: false }, mage, 'mage'));
+  assert.equal(score({}, sword, 'striker'), score({ scrolls: false, castLimit: false }, sword, 'striker'));   // no spells, nothing changes
 });
 
 test('survival is the HP left after one attacker and after two', () => {

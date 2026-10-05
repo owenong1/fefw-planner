@@ -7,7 +7,7 @@ import { UnitDetail } from '../components/paths/UnitDetail'
 import { WeightEditor } from '../components/paths/WeightEditor'
 import { Avatar, Badge, Empty, PageHeader, Select } from '../components/ui'
 import { classById, classPaths, classSpoiler, roleAxes, unitById } from '../data'
-import { ARTS, buildView, PLANS, variantSuffix } from '../data/pathModel'
+import { ARTS, buildView, CAST_LIMIT, MAGIC_WEAPONS, PLANS, variantSuffix } from '../data/pathModel'
 import type { ClassPaths, PathCandidates } from '../data/schema'
 import { signed, trainLabel, vsCastTint } from '../lib/display'
 import { useSettings } from '../lib/settings'
@@ -41,15 +41,20 @@ function useJson<T>(url: string | null) {
 export function PathsPage() {
   const { spoilerLevel } = useSettings()
   const [params, setParams] = useSearchParams()
-  // ?plan= is the stretch of the campaign the paths are optimised for and ?arts= whether combat arts are used: a variant,
-  // each with its own results file. Until that has loaded the first variant's results stay on show.
+  // ?plan= is the stretch of the campaign the paths are optimised for; ?arts=, ?magic= and ?limit= are how the units are
+  // played (combat arts, magic weapons, the cast limit on spells). Together they are a variant, each with its own results
+  // file. Until that has loaded the first variant's results stay on show.
   const planId = PLANS.find((p) => p.id === params.get('plan'))?.id ?? ''
   const artsId = ARTS.find((a) => a.id === params.get('arts'))?.id ?? ''
-  const wanted = variantSuffix(planId, artsId)
+  const magicId = MAGIC_WEAPONS.find((m) => m.id === params.get('magic'))?.id ?? ''
+  const limitId = CAST_LIMIT.find((l) => l.id === params.get('limit'))?.id ?? ''
+  const wanted = variantSuffix(planId, artsId, magicId, limitId)
   const fetched = useJson<ClassPaths>(wanted ? fileUrl('classPaths', wanted) : null)
   const data = fetched.data ?? classPaths
   const plan = PLANS.find((p) => p.id === (fetched.data ? planId : ''))!
   const arts = ARTS.find((a) => a.id === (fetched.data ? artsId : ''))!
+  const magic = MAGIC_WEAPONS.find((m) => m.id === (fetched.data ? magicId : ''))!
+  const limit = CAST_LIMIT.find((l) => l.id === (fetched.data ? limitId : ''))!
   const { checkpoints, units } = data
   const first = classPaths.roles[0].id
   const roleParam = params.get('role')
@@ -64,14 +69,19 @@ export function PathsPage() {
   const start = Math.max(0, checkpoints.findIndex((c) => c.id === plan.from))
   const from = Math.max(start, index('from', start))
   const to = Math.max(from, index('to', last))
-  const setQuery = (next: { role?: string; plan?: string; arts?: string; from?: number; to?: number }) => {
-    const q = { role: viewId, plan: planId, arts: artsId, from, to, ...next }
-    // Another plan has other chapters, so the chapter range starts over.
-    if (q.plan !== planId) return setParams({ ...(q.role !== first && { role: q.role }), ...(q.plan && { plan: q.plan }), ...(q.arts && { arts: q.arts }) }, { replace: true })
-    setParams({
+  const setQuery = (next: { role?: string; plan?: string; arts?: string; magic?: string; limit?: string; from?: number; to?: number }) => {
+    const q = { role: viewId, plan: planId, arts: artsId, magic: magicId, limit: limitId, from, to, ...next }
+    const variant = {
       ...(q.role !== first && { role: q.role }),
       ...(q.plan && { plan: q.plan }),
       ...(q.arts && { arts: q.arts }),
+      ...(q.magic && { magic: q.magic }),
+      ...(q.limit && { limit: q.limit }),
+    }
+    // Another plan has other chapters, so the chapter range starts over.
+    if (q.plan !== planId) return setParams(variant, { replace: true })
+    setParams({
+      ...variant,
       ...(q.from > start && { from: checkpoints[q.from].id }),
       ...(q.to < last && { to: checkpoints[Math.max(q.from, q.to)].id }),
     }, { replace: true })
@@ -79,7 +89,7 @@ export function PathsPage() {
 
   // Slider positions per role the reader has touched. They only take effect once the candidate paths have loaded.
   const [sliders, setSliders] = useState<Record<string, number[]>>({})
-  const { data: candidates, status } = useJson<PathCandidates>(Object.keys(sliders).length > 0 ? fileUrl('pathCandidates', variantSuffix(plan.id, arts.id)) : null)
+  const { data: candidates, status } = useJson<PathCandidates>(Object.keys(sliders).length > 0 ? fileUrl('pathCandidates', variantSuffix(plan.id, arts.id, magic.id, limit.id)) : null)
   const view = buildView(data, candidates, sliders, from, to)
   const { ranged } = view
 
@@ -110,7 +120,7 @@ export function PathsPage() {
   const hidden = ranked.length - visible.length
   const absent = units.length - ranked.length
   const caveats = visible.flatMap(({ u }) => u.caveats)
-  const simQuery = `cmd=all${role && role.id !== first ? `&role=${role.id}` : ''}${from > 0 ? `&from=${checkpoints[from].id}` : ''}${to < last ? `&to=${checkpoints[to].id}` : ''}${arts.id ? '&noArts=1' : ''}`
+  const simQuery = `cmd=all${role && role.id !== first ? `&role=${role.id}` : ''}${from > 0 ? `&from=${checkpoints[from].id}` : ''}${to < last ? `&to=${checkpoints[to].id}` : ''}${arts.id ? '&noArts=1' : ''}${magic.id ? '&noMagicWeapons=1' : ''}${limit.id ? '&noCastLimit=1' : ''}`
   const columns = (role ? 7 + shownAxes.length : 7 + view.roles.length)
   const anyEdited = view.roles.some((r) => r.edited)
 
@@ -147,6 +157,14 @@ export function PathsPage() {
           <Select
             label="Combat arts" value={artsId} onChange={(v) => { setQuery({ arts: v }); setOpen(null) }}
             options={ARTS.map((a) => ({ value: a.id, label: a.label }))}
+          />
+          <Select
+            label="Magic weapons" value={magicId} onChange={(v) => { setQuery({ magic: v }); setOpen(null) }}
+            options={MAGIC_WEAPONS.map((m) => ({ value: m.id, label: m.label }))}
+          />
+          <Select
+            label="Cast limit" value={limitId} onChange={(v) => { setQuery({ limit: v }); setOpen(null) }}
+            options={CAST_LIMIT.map((l) => ({ value: l.id, label: l.label }))}
           />
           <Select
             label="From chapter" value={String(from)} onChange={(v) => setQuery({ from: +v, to: Math.max(+v, to) })}
@@ -195,8 +213,10 @@ export function PathsPage() {
             </>
           )}
           {arts.id && ' Units never attack with combat arts here, so abilities that need one count for nothing.'}
+          {magic.id && ' Units carry no Levin Sword here, so a class without spells has no magic damage.'}
+          {limit.id && ' Attack spells never run out here, as if the unit rested between fights.'}
           {fetched.status === 'loading' && ' Loading those results…'}
-          {fetched.status === 'error' && ' Those results could not be loaded, so these are the whole campaign\'s, with combat arts.'}
+          {fetched.status === 'error' && ' Those results could not be loaded, so these are the whole campaign\'s, with every setting at its default.'}
           {ranged && (
             <>
               {' '}Score, vs cast and place count {checkpoints[from].label}{to > from && ` to ${checkpoints[to].label}`} only

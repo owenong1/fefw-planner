@@ -4,6 +4,7 @@
   "classes": "game8.co class pages (tier, type, movement, weapons, bonuses, abilities)",
   "weapons": "game8.co weapon lists, gaps filled from serenesforest.net",
   "abilities": "game8.co character pages (personal ability, abilities learned by level, spell list)",
+  "spells": "game8.co character pages, completed from the Reason and Faith tabs of a community spreadsheet (a spell either lists is kept, at the lower rank where they disagree)",
   "bases": "fireemblemwiki.org CharStats; \"estimated\" bases come from a growth regression over 18 low-level units",
   "enemies": "fireemblemwiki.org chapter and boss pages"
  },
@@ -119,6 +120,14 @@
      {
       "name": "Bolganone",
       "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
+     },
+     {
+      "name": "Sagittae",
+      "rank": "S"
      }
     ],
     "white": [
@@ -133,6 +142,14 @@
      {
       "name": "Recover",
       "rank": "B"
+     },
+     {
+      "name": "Ward",
+      "rank": "A"
+     },
+     {
+      "name": "Aura",
+      "rank": "S"
      }
     ]
    }
@@ -205,6 +222,28 @@
      {
       "name": "Thoron",
       "rank": "A"
+     },
+     {
+      "name": "Bolting",
+      "rank": "S"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "C"
+     },
+     {
+      "name": "Rescue",
+      "rank": "B"
+     },
+     {
+      "name": "Ward",
+      "rank": "A"
+     },
+     {
+      "name": "Warp",
+      "rank": "S"
      }
     ]
    }
@@ -261,6 +300,7 @@
     }
    ],
    "spells": {
+    "black": [],
     "white": [
      {
       "name": "Heal",
@@ -273,6 +313,14 @@
      {
       "name": "Restore",
       "rank": "B"
+     },
+     {
+      "name": "Recover",
+      "rank": "S"
+     },
+     {
+      "name": "Barrier",
+      "rank": "S"
      }
     ]
    }
@@ -366,6 +414,14 @@
      {
       "name": "Seraphim",
       "rank": "B"
+     },
+     {
+      "name": "Recover",
+      "rank": "A"
+     },
+     {
+      "name": "Warp",
+      "rank": "S"
      }
     ]
    }
@@ -426,12 +482,36 @@
      {
       "name": "Blizzard",
       "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Heal",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Silence",
+      "rank": "B"
+     },
+     {
+      "name": "Berserk",
+      "rank": "A"
      }
     ]
    }
@@ -509,6 +589,14 @@
      {
       "name": "Thunder",
       "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
      }
     ],
     "white": [
@@ -519,6 +607,18 @@
      {
       "name": "Seraphim",
       "rank": "C"
+     },
+     {
+      "name": "Physic",
+      "rank": "B"
+     },
+     {
+      "name": "Barrier",
+      "rank": "A"
+     },
+     {
+      "name": "Aura",
+      "rank": "S"
      }
     ]
    }
@@ -581,12 +681,40 @@
      {
       "name": "Fire",
       "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Heal",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "B"
+     },
+     {
+      "name": "Recover",
+      "rank": "A"
+     },
+     {
+      "name": "Fortify",
+      "rank": "S"
      }
     ]
    }
@@ -692,6 +820,10 @@
      {
       "name": "Seraphim",
       "rank": "A"
+     },
+     {
+      "name": "Aura",
+      "rank": "S"
      }
     ]
    }
@@ -770,6 +902,10 @@
      {
       "name": "Cutting Gale",
       "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
@@ -784,6 +920,10 @@
      {
       "name": "Freeze",
       "rank": "B"
+     },
+     {
+      "name": "Physic",
+      "rank": "A"
      }
     ]
    }
@@ -864,6 +1004,10 @@
      {
       "name": "Bolganone",
       "rank": "B"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "A"
      }
     ],
     "white": [
@@ -1064,6 +1208,18 @@
      {
       "name": "Fire",
       "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
      }
     ],
     "white": [
@@ -1078,6 +1234,10 @@
      {
       "name": "Seraphim",
       "rank": "B"
+     },
+     {
+      "name": "Barrier",
+      "rank": "A"
      }
     ]
    }
@@ -1148,12 +1308,36 @@
      {
       "name": "Wind",
       "rank": "D"
+     },
+     {
+      "name": "Fire",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Torch",
+      "rank": "C"
+     },
+     {
+      "name": "Resquia",
+      "rank": "B"
+     },
+     {
+      "name": "Fortify",
+      "rank": "A"
      }
     ]
    }
@@ -1332,12 +1516,36 @@
      {
       "name": "Thunder",
       "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Thoron",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Resquia",
+      "rank": "B"
+     },
+     {
+      "name": "Regenera",
+      "rank": "A"
      }
     ]
    }
@@ -1404,12 +1612,36 @@
      {
       "name": "Fire",
       "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Heal",
       "rank": "D"
+     },
+     {
+      "name": "Restore",
+      "rank": "C"
+     },
+     {
+      "name": "Physic",
+      "rank": "B"
+     },
+     {
+      "name": "Ward",
+      "rank": "A"
      }
     ]
    }
@@ -1483,7 +1715,15 @@
      },
      {
       "name": "Thunder",
-      "rank": "C"
+      "rank": "D"
+     },
+     {
+      "name": "Thoron",
+      "rank": "B"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "A"
      }
     ],
     "white": [
@@ -1494,6 +1734,14 @@
      {
       "name": "Laia",
       "rank": "C"
+     },
+     {
+      "name": "Emergis",
+      "rank": "B"
+     },
+     {
+      "name": "Rescue",
+      "rank": "A"
      }
     ]
    }
@@ -1567,12 +1815,36 @@
      {
       "name": "Fire",
       "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Torch",
+      "rank": "C"
+     },
+     {
+      "name": "Emergis",
+      "rank": "B"
+     },
+     {
+      "name": "Recover",
+      "rank": "A"
      }
     ]
    }
@@ -1659,6 +1931,10 @@
      {
       "name": "Thoron",
       "rank": "A"
+     },
+     {
+      "name": "Excalibur",
+      "rank": "S"
      }
     ],
     "white": [
@@ -1672,7 +1948,7 @@
      },
      {
       "name": "Restore",
-      "rank": "B"
+      "rank": "C"
      },
      {
       "name": "Fortify",
@@ -1761,6 +2037,10 @@
      {
       "name": "Ice Blade",
       "rank": "A"
+     },
+     {
+      "name": "Bolting",
+      "rank": "S"
      }
     ],
     "white": [
@@ -1857,6 +2137,18 @@
      {
       "name": "Wind",
       "rank": "D"
+     },
+     {
+      "name": "Fire",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "A"
      }
     ],
     "white": [
@@ -1867,6 +2159,18 @@
      {
       "name": "Nosferatu",
       "rank": "C"
+     },
+     {
+      "name": "Regenera",
+      "rank": "B"
+     },
+     {
+      "name": "Warp",
+      "rank": "A"
+     },
+     {
+      "name": "Aura",
+      "rank": "S"
      }
     ]
    },
@@ -1936,12 +2240,36 @@
      {
       "name": "Fire",
       "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "B"
+     },
+     {
+      "name": "Rescue",
+      "rank": "A"
      }
     ]
    }
@@ -2021,6 +2349,10 @@
      {
       "name": "Thoron",
       "rank": "A"
+     },
+     {
+      "name": "Bolting",
+      "rank": "S"
      }
     ],
     "white": [
@@ -2035,6 +2367,10 @@
      {
       "name": "Recover",
       "rank": "B"
+     },
+     {
+      "name": "Freeze",
+      "rank": "A"
      }
     ]
    }
@@ -2100,12 +2436,32 @@
      {
       "name": "Wind",
       "rank": "D"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "C"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Heal",
       "rank": "D"
+     },
+     {
+      "name": "Restore",
+      "rank": "C"
+     },
+     {
+      "name": "Ward",
+      "rank": "B"
      }
     ]
    }
@@ -2173,12 +2529,32 @@
      {
       "name": "Thunder",
       "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Thoron",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Heal",
       "rank": "D"
+     },
+     {
+      "name": "Torch",
+      "rank": "C"
+     },
+     {
+      "name": "Emergis",
+      "rank": "A"
      }
     ]
    }
@@ -2246,7 +2622,45 @@
      "kind": "level",
      "level": 35
     }
-   ]
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Silence",
+      "rank": "B"
+     },
+     {
+      "name": "Berserk",
+      "rank": "A"
+     }
+    ]
+   }
   },
   {
    "name": "Ninae",
@@ -2315,6 +2729,14 @@
      {
       "name": "Blizzard",
       "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
@@ -2329,6 +2751,14 @@
      {
       "name": "Physic",
       "rank": "B"
+     },
+     {
+      "name": "Ward",
+      "rank": "A"
+     },
+     {
+      "name": "Aura",
+      "rank": "S"
      }
     ]
    }
@@ -2404,6 +2834,14 @@
      {
       "name": "Blizzard",
       "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
@@ -2418,6 +2856,14 @@
      {
       "name": "Recover",
       "rank": "B"
+     },
+     {
+      "name": "Rescue",
+      "rank": "A"
+     },
+     {
+      "name": "Fortify",
+      "rank": "S"
      }
     ]
    }
@@ -2496,12 +2942,40 @@
      {
       "name": "Fire",
       "rank": "D"
+     },
+     {
+      "name": "Wandering Wall",
+      "rank": "D"
+     },
+     {
+      "name": "Wind",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Torch",
+      "rank": "B"
+     },
+     {
+      "name": "Barrier",
+      "rank": "A"
      }
     ]
    }
@@ -2575,12 +3049,36 @@
      {
       "name": "Fire",
       "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Emergis",
+      "rank": "B"
+     },
+     {
+      "name": "Recover",
+      "rank": "A"
      }
     ]
    }
@@ -2649,12 +3147,36 @@
      {
       "name": "Fire",
       "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Restore",
+      "rank": "C"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "B"
+     },
+     {
+      "name": "Regenera",
+      "rank": "A"
      }
     ]
    }
@@ -2722,12 +3244,40 @@
      {
       "name": "Wind",
       "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
+     },
+     {
+      "name": "Excalibur",
+      "rank": "S"
      }
     ],
     "white": [
      {
       "name": "Heal",
       "rank": "D"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "C"
+     },
+     {
+      "name": "Physic",
+      "rank": "B"
+     },
+     {
+      "name": "Warp",
+      "rank": "A"
      }
     ]
    }
@@ -2796,12 +3346,36 @@
      {
       "name": "Thunder",
       "rank": "D"
+     },
+     {
+      "name": "Wind",
+      "rank": "C"
+     },
+     {
+      "name": "Thoron",
+      "rank": "B"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Emergis",
+      "rank": "C"
+     },
+     {
+      "name": "Resquia",
+      "rank": "B"
+     },
+     {
+      "name": "Rescue",
+      "rank": "A"
      }
     ]
    }
@@ -2863,7 +3437,37 @@
      "kind": "level",
      "level": 35
     }
-   ]
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     },
+     {
+      "name": "Restore",
+      "rank": "C"
+     },
+     {
+      "name": "Physic",
+      "rank": "B"
+     },
+     {
+      "name": "Barrier",
+      "rank": "A"
+     }
+    ]
+   }
   },
   {
    "name": "Alexandra",
@@ -2929,12 +3533,40 @@
      {
       "name": "Wind",
       "rank": "D"
+     },
+     {
+      "name": "Fire",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "A"
+     },
+     {
+      "name": "Excalibur",
+      "rank": "S"
      }
     ],
     "white": [
      {
       "name": "Heal",
       "rank": "D"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "C"
+     },
+     {
+      "name": "Ward",
+      "rank": "B"
+     },
+     {
+      "name": "Recover",
+      "rank": "A"
      }
     ]
    }
@@ -3121,12 +3753,36 @@
      {
       "name": "Thunder",
       "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Thoron",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Freeze",
+      "rank": "B"
+     },
+     {
+      "name": "Silence",
+      "rank": "A"
      }
     ]
    }
@@ -3212,6 +3868,10 @@
      {
       "name": "Bolganone",
       "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
@@ -3301,12 +3961,32 @@
      {
       "name": "Wind",
       "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Torch",
+      "rank": "C"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "B"
      }
     ]
    }
@@ -3377,12 +4057,32 @@
      {
       "name": "Wind",
       "rank": "D"
+     },
+     {
+      "name": "Fire",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
      }
     ],
     "white": [
      {
       "name": "Heal",
       "rank": "D"
+     },
+     {
+      "name": "Resquia",
+      "rank": "C"
+     },
+     {
+      "name": "Regenera",
+      "rank": "B"
+     },
+     {
+      "name": "Warp",
+      "rank": "A"
      }
     ]
    }
@@ -3450,12 +4150,40 @@
      {
       "name": "Fire",
       "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Heal",
       "rank": "D"
+     },
+     {
+      "name": "Restore",
+      "rank": "C"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "B"
+     },
+     {
+      "name": "Recover",
+      "rank": "A"
+     },
+     {
+      "name": "Rescue",
+      "rank": "S"
      }
     ]
    }
@@ -3517,7 +4245,45 @@
      "kind": "level",
      "level": 35
     }
-   ]
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     },
+     {
+      "name": "Restore",
+      "rank": "C"
+     },
+     {
+      "name": "Physic",
+      "rank": "B"
+     },
+     {
+      "name": "Freeze",
+      "rank": "A"
+     }
+    ]
+   }
   },
   {
    "name": "Goliath",
@@ -3587,12 +4353,36 @@
      {
       "name": "Blizzard",
       "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "D"
+     },
+     {
+      "name": "Thoron",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Regenera",
+      "rank": "B"
+     },
+     {
+      "name": "Barrier",
+      "rank": "A"
      }
     ]
    }
@@ -3661,12 +4451,36 @@
      {
       "name": "Wind",
       "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "B"
+     },
+     {
+      "name": "Berserk",
+      "rank": "A"
      }
     ]
    }
@@ -3735,12 +4549,36 @@
      {
       "name": "Thunder",
       "rank": "D"
+     },
+     {
+      "name": "Wandering Wall",
+      "rank": "D"
+     },
+     {
+      "name": "Fire",
+      "rank": "C"
+     },
+     {
+      "name": "Thoron",
+      "rank": "B"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Freeze",
+      "rank": "B"
      }
     ]
    }
@@ -3813,6 +4651,14 @@
      {
       "name": "Thunder",
       "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
      }
     ],
     "white": [
@@ -3827,6 +4673,14 @@
      {
       "name": "Recover",
       "rank": "B"
+     },
+     {
+      "name": "Regenera",
+      "rank": "A"
+     },
+     {
+      "name": "Rescue",
+      "rank": "S"
      }
     ]
    }
@@ -3893,12 +4747,36 @@
      {
       "name": "Fire",
       "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Heal",
       "rank": "D"
+     },
+     {
+      "name": "Restore",
+      "rank": "C"
+     },
+     {
+      "name": "Resquia",
+      "rank": "B"
+     },
+     {
+      "name": "Berserk",
+      "rank": "A"
      }
     ]
    }
@@ -3966,12 +4844,36 @@
      {
       "name": "Thunder",
       "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Thoron",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Heal",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Torch",
+      "rank": "B"
+     },
+     {
+      "name": "Fortify",
+      "rank": "A"
      }
     ]
    }
@@ -4036,10 +4938,40 @@
     }
    ],
    "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Thunder",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
+     }
+    ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Freeze",
+      "rank": "B"
+     },
+     {
+      "name": "Warp",
+      "rank": "A"
      }
     ]
    }
@@ -4103,12 +5035,36 @@
      {
       "name": "Thunder",
       "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Thoron",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
      }
     ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Torch",
+      "rank": "B"
+     },
+     {
+      "name": "Berserk",
+      "rank": "A"
      }
     ]
    }
@@ -4171,7 +5127,45 @@
      "kind": "level",
      "level": 35
     }
-   ]
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Wind",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "A"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     },
+     {
+      "name": "Resquia",
+      "rank": "C"
+     },
+     {
+      "name": "Regenera",
+      "rank": "B"
+     },
+     {
+      "name": "Rescue",
+      "rank": "A"
+     }
+    ]
+   }
   },
   {
    "name": "Nuzzuo",
@@ -4228,7 +5222,45 @@
      "kind": "level",
      "level": 35
     }
-   ]
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Thunder",
+      "rank": "D"
+     },
+     {
+      "name": "Wind",
+      "rank": "C"
+     },
+     {
+      "name": "Thoron",
+      "rank": "B"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "A"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Silence",
+      "rank": "B"
+     },
+     {
+      "name": "Berserk",
+      "rank": "A"
+     }
+    ]
+   }
   },
   {
    "name": "Inyoni",
@@ -4289,10 +5321,32 @@
     }
    ],
    "spells": {
+    "black": [
+     {
+      "name": "Blizzard",
+      "rank": "D"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "B"
+     }
+    ],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     },
+     {
+      "name": "Berserk",
+      "rank": "B"
+     },
+     {
+      "name": "Ward",
+      "rank": "A"
      }
     ]
    }
@@ -4339,7 +5393,28 @@
      "text": "If foe attacks first, grants AS+3, Avo+10 to unit during combat.",
      "kind": "personal"
     }
-   ]
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Wind",
+      "rank": "D"
+     },
+     {
+      "name": "Blizzard",
+      "rank": "C"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "B"
+     },
+     {
+      "name": "Ice Blade",
+      "rank": "A"
+     }
+    ],
+    "white": []
+   }
   },
   {
    "name": "Nathan",
@@ -4384,7 +5459,25 @@
      "text": "If unit attacks first, grants AS+3, Hit+10 during combat.",
      "kind": "personal"
     }
-   ]
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     }
+    ],
+    "white": [
+     {
+      "name": "Laia",
+      "rank": "D"
+     },
+     {
+      "name": "Nosferatu",
+      "rank": "C"
+     }
+    ]
+   }
   },
   {
    "name": "Bertrand",
@@ -4439,7 +5532,25 @@
      "kind": "level",
      "level": null
     }
-   ]
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
   },
   {
    "name": "Talimun",
@@ -4512,12 +5623,32 @@
      {
       "name": "Bolganone",
       "rank": "B"
+     },
+     {
+      "name": "Thoron",
+      "rank": "A"
+     },
+     {
+      "name": "Excalibur",
+      "rank": "S"
      }
     ],
     "white": [
      {
       "name": "Heal",
       "rank": "D"
+     },
+     {
+      "name": "Seraphim",
+      "rank": "C"
+     },
+     {
+      "name": "Recover",
+      "rank": "B"
+     },
+     {
+      "name": "Physic",
+      "rank": "A"
      }
     ]
    }
@@ -4615,6 +5746,18 @@
      {
       "name": "Heal",
       "rank": "D"
+     },
+     {
+      "name": "Silence",
+      "rank": "C"
+     },
+     {
+      "name": "Ward",
+      "rank": "B"
+     },
+     {
+      "name": "Warp",
+      "rank": "A"
      }
     ]
    }
@@ -4704,6 +5847,22 @@
      {
       "name": "Fire",
       "rank": "D"
+     },
+     {
+      "name": "Wind",
+      "rank": "C"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     },
+     {
+      "name": "Cutting Gale",
+      "rank": "A"
+     },
+     {
+      "name": "Sagittae",
+      "rank": "S"
      }
     ],
     "white": [
@@ -4720,16 +5879,20 @@
       "rank": "C"
      },
      {
-      "name": "Starlight",
-      "rank": "B"
+      "name": "Recover",
+      "rank": "C"
      },
      {
-      "name": "Recover",
+      "name": "Starlight",
       "rank": "B"
      },
      {
       "name": "Aura",
       "rank": "A"
+     },
+     {
+      "name": "Fortify",
+      "rank": "S"
      }
     ]
    }
@@ -4777,7 +5940,25 @@
      "text": "For the first combat in enemy's phase, unit takes half damage.",
      "kind": "personal"
     }
-   ]
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     }
+    ]
+   }
   },
   {
    "name": "Aswan",
@@ -4826,7 +6007,29 @@
      "text": "When equipped with a bow, grants Hit+20.",
      "kind": "personal"
     }
-   ]
+   ],
+   "spells": {
+    "black": [
+     {
+      "name": "Fire",
+      "rank": "D"
+     },
+     {
+      "name": "Bolganone",
+      "rank": "B"
+     }
+    ],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "D"
+     },
+     {
+      "name": "Warp",
+      "rank": "A"
+     }
+    ]
+   }
   },
   {
    "name": "Tahonia",
@@ -4863,7 +6066,20 @@
     "Gauntlet"
    ],
    "nonIdeal": [],
-   "abilities": []
+   "abilities": [],
+   "spells": {
+    "black": [],
+    "white": [
+     {
+      "name": "Heal",
+      "rank": "C"
+     },
+     {
+      "name": "Restore",
+      "rank": "B"
+     }
+    ]
+   }
   },
   {
    "name": "Klapka",
@@ -4915,10 +6131,15 @@
     }
    ],
    "spells": {
+    "black": [],
     "white": [
      {
       "name": "Laia",
       "rank": "D"
+     },
+     {
+      "name": "Torch",
+      "rank": "C"
      }
     ]
    }

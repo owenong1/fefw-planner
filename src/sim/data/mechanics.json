@@ -131,7 +131,7 @@
 
   "arsenal": {
     "basis": "assumed",
-    "note": "Standard gear a unit is assumed to own at a given level, and what generic enemies carry. Player unlock levels follow the weapon-rank requirements of each license tier (D by Lv5, C by Lv20, B by Lv35, A by Lv45); enemy levels follow observed inventories (wooden Lv1, bronze Lv4-10, iron Lv20-35, silver Lv40). Relics, forged +N weapons and low-use spells are left out.",
+    "note": "Standard gear a unit is assumed to own at a given level, and what generic enemies carry. Player unlock levels follow the weapon-rank requirements of each license tier (D by Lv5, C by Lv20, B by Lv35, A by Lv45); enemy levels follow observed inventories (wooden Lv1, bronze Lv4-10, iron Lv20-35, silver Lv40). Relics, forged +N weapons and low-use spells are left out; of the special weapons only those under 'magical' are carried.",
     "tiers": [
       { "prefix": "Wooden", "player": 1, "enemy": 1 },
       { "prefix": "Bronze", "player": 3, "enemy": 4 },
@@ -161,6 +161,16 @@
       "Hand Axe": { "player": 6, "enemy": null },
       "Short Axe": { "player": 20, "enemy": null },
       "Sagaris": { "player": 35, "enemy": null }
+    },
+    "magical": {
+      "note": "Weapons of a physical type that are 'treated as a magical attack': they strike with Mag against Res and count towards magDmg, so a sword class has a magic option. Carried like the thrown weapons, once the unit has the level and the skill rank (Levin Sword is rank C, so the Da Mina tier's level). Like every weapon here its durability is not modelled, so unlike a spell it does not run out during a map. --no-magic-weapons leaves them out. The magical gauntlets are left out: Zerberus is Troy's own, Salamander and Zerberus have 3 and 5 uses, and Breidablik is a Might 2 bonus item.",
+      "Levin Sword": { "player": 20, "enemy": null }
+    },
+    "scrolls": {
+      "note": "Dark spells any unit can be taught from a scroll, on top of its own spell list: no skill rank is asked for, only a class that casts black magic. 'player' is the level of the chapter the scroll can first be had: Mire and Death are traded for at the Vandahl Trading Company from about Part I Ch.10, the Dark Spikes scroll is in a Part III chest. A scroll teaches one unit, so this is what one unit could have, not what a whole army can. Left out: Swarm and Banshee (when their scrolls can be had is not recorded), Luna (no scroll found) and the single-use Fimbulvetr Night and Agnea's Arrow. Death's 'high Crit' has no published number and is not counted. --no-scrolls leaves them all out. (Community spreadsheet, Reason tab.)",
+      "Mire B": { "player": 31 },
+      "Death Γ": { "player": 31 },
+      "Dark Spikes T": { "player": 47 }
     },
     "fallbackHeals": {
       "note": "Player units use their own published spell list (data/characters.json) at the ranks it gives. A unit whose list is not published yet falls back to the 'spells' above, gated by level and skill rank, and to these heals.",
@@ -380,7 +390,7 @@
         ]
       }
     },
-    "combatsPerMap": { "value": 10, "note": "Attacks a unit makes per map. Spells have limited uses (doubled or tripled by Seeker / Zenith class abilities); magDmg averages the best spells that fit into this many attacks, and an attack with no spell left counts as zero." },
+    "combatsPerMap": { "value": 10, "note": "Attacks a unit makes per map. Spells have limited uses (doubled or tripled by Seeker / Zenith class abilities); magDmg averages the best spells that fit into this many attacks, and an attack with no spell left counts as zero. --no-cast-limit lifts the limit on attack spells (not on heals), as if the unit rested between fights: every attack is then its best spell." },
     "heldWeapon": { "note": "A unit cannot change weapon between its own attack and the enemy's answer, so it defends with the weapon it attacked with. Each weapon is held for the share of the reference enemies the unit attacks with it (its faster kill of physical and magical; spells by the casts they fill), and bulk, avoid and survival are averaged with those shares. A class with gauntlets therefore gets their Avoid only when it also attacks with them. A unit that cannot hurt any reference enemy counts every weapon equally. The game does let a unit that does not attack end its turn holding anything; that is not modelled." },
     "oneAttackKill": { "value": 0.5, "note": "Share of a damage axis given to killing outright in the one attack the unit starts (its follow-up included); the rest goes to kill speed. A kill that takes two attacks leaves an enemy alive to answer, so a unit that kills in one counts for more than twice one that needs two. 0 = kill speed alone." },
     "enemyPhaseAttacks": { "value": 3, "note": "The most attackers a unit is measured against at once. physSurv / magSurv average the HP it has left after 1, 2, ... this many attacks in a row, each from a physical / magical reference enemy picked at random. 3 = one-on-one, one-on-two and one-on-three: a unit is assumed to be healed or pulled back before a longer beating, which is why this is not a whole enemy phase." },
@@ -410,7 +420,7 @@
 
   "roles": {
     "basis": "assumed",
-    "note": "A role is a weighting of the profile axes; paths are ranked per role, never across roles. Weights are a judgment call - edit them or add roles. No role weights reach: as a flat bonus it outweighed the small combat differences between classes and put every unit on a mount, so roles are judged on combat alone and reach is shown beside them. 'duel' is the old single score (one-on-one duels against every enemy in the chapter roster) kept for comparison; it is slow.",
+    "note": "A role is a weighting of the profile axes; paths are ranked per role, never across roles. Weights are a judgment call - edit them or add roles. The three tank roles weigh survival alone (two parts the named kind to one of the other, equal for the mixed tank): with damage in, a 'magic tank' was picked for its Str. No role weights reach: as a flat bonus it outweighed the small combat differences between classes and put every unit on a mount, so roles are judged on combat alone and reach is shown beside them. 'duel' is the old single score (one-on-one duels against every enemy in the chapter roster) kept for comparison; it is slow.",
     "rolled": {
       "runs": 100, "top": 6, "winShare": 0.75, "minGap": 0.25,
       "note": "How a role's leading paths are told apart. The 'top' paths by score are each replayed 'runs' times with level-ups actually rolled, every path with the same dice. The leader is the path with the best rolled average; another path is as good as the leader when the leader beats it in fewer than 'winShare' of those playthroughs, or by less than 'minGap' points on average. Of the paths that are as good, the one needing the least training is recommended. --runs 0 skips the replay and falls back to 'tolerance'."
@@ -419,9 +429,9 @@
     "list": {
       "striker": { "label": "Physical striker", "weights": { "physDmg": 0.7, "safety": 0.15, "physBulk": 0.15 } },
       "mage": { "label": "Mage", "weights": { "magDmg": 0.7, "safety": 0.15, "magBulk": 0.15 } },
-      "tank": { "label": "Physical tank", "weights": { "physSurv": 0.5, "magSurv": 0.25, "bestDmg": 0.25 } },
-      "magetank": { "label": "Magic tank", "weights": { "magSurv": 0.5, "physSurv": 0.25, "bestDmg": 0.25 } },
-      "mixedtank": { "label": "Mixed tank", "weights": { "physSurv": 0.375, "magSurv": 0.375, "bestDmg": 0.25 } },
+      "tank": { "label": "Physical tank", "weights": { "physSurv": 0.6667, "magSurv": 0.3333 } },
+      "magetank": { "label": "Magic tank", "weights": { "magSurv": 0.6667, "physSurv": 0.3333 } },
+      "mixedtank": { "label": "Mixed tank", "weights": { "physSurv": 0.5, "magSurv": 0.5 } },
       "healer": { "label": "Healer / support", "weights": { "support": 0.8, "physBulk": 0.1, "magBulk": 0.1 } },
       "duel": { "label": "Duel score (legacy)", "weights": { "duel": 1 } }
     }

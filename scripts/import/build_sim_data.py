@@ -9,6 +9,8 @@ Sources
   Game8            growth rates (cross-check), class pages, weapon/magic lists,
                    character skill preferences, abilities and spell lists
   Fire Emblem Wiki character base stats, boss stats, chapter enemy stats
+  Community sheet  spell lists by skill rank (the Reason and Faith tabs of a
+                   player-maintained spreadsheet; fuller than Game8's)
 
 Usage
   python3 scripts/import/build_sim_data.py            # use cached pages where present
@@ -16,7 +18,9 @@ Usage
 
 src/sim/data/mechanics.json is hand-maintained and is never touched by this script.
 """
+import csv
 import hashlib
+import io
 import json
 import os
 import re
@@ -36,6 +40,10 @@ REFRESH = '--refresh' in sys.argv
 G8 = 'https://game8.co/games/Fire-Emblem-Fortunes-Weave/archives/'
 SF = 'https://serenesforest.net/fortunes-weave/'
 WIKI_API = 'https://fireemblemwiki.org/w/api.php'
+# Player-maintained spreadsheet of what every unit learns at each skill rank.
+SHEET = 'https://docs.google.com/spreadsheets/d/1YW5AdvPUbLPr1RAGlnotcRaNTFCQPTKiIgshwrcdUtE/export?format=csv&gid='
+SHEET_SPELL_TABS = {'black': ('0', 'reason'), 'white': ('1374016682', 'faith')}
+SPELL_RANKS = ['E', 'E+', 'D', 'D+', 'C', 'C+', 'B', 'B+', 'A', 'A+', 'S', 'S+']
 
 STATS = ['hp', 'str', 'mag', 'spd', 'dex', 'def', 'res', 'lck', 'cha']
 G8_GROWTH_PAGE = '618974'
@@ -729,6 +737,89 @@ def parse_char_page(html_text):
     return info
 
 
+def spell_key(name):
+    """Spell names without the Greek letter the dark spells carry ("Death Γ", "Mire Β" or "Mire B")."""
+    words = name.split()
+    if len(words) > 1 and len(words[-1]) == 1:
+        words = words[:-1]
+    return norm(' '.join(words))
+
+
+def parse_spell_sheet(text, char_names, canon):
+    """{unit: [{name, rank}]} from one tab of the community sheet: a row per unit, a column per rank D to S.
+
+    A cell is a spell name, sometimes several ("Fire/Wandering Wall", one per line) and often
+    with a note in brackets ("Fire(D+)", "Death Γ (Scroll: ...)"), which is dropped.
+    """
+    out = {}
+    for row in csv.reader(io.StringIO(text)):
+        name = row[0].strip() if row else ''
+        if name not in char_names or name in out:
+            continue   # headings, notes and the sheet's own "who gets each spell" summary below the table
+        spells = []
+        for rank, cell in zip('DCBAS', row[1:6]):
+            prev = None
+            while prev != cell:
+                prev, cell = cell, re.sub(r'\([^()]*\)', '', cell)
+            if cell.strip() == 'N/A':
+                continue
+            for line in cell.split('\n'):
+                for part in re.split(r'[/,]', line.split('(')[0]):
+                    part = ' '.join(part.split())
+                    if part:
+                        spells.append({'name': canon.get(spell_key(part), part), 'rank': rank})
+        out[name] = spells
+    return out
+
+
+def merge_spells(name, school, game8, sheet, notes):
+    """One spell list from both sources: every spell either lists, at the lower rank where they disagree."""
+    rank = {}
+    for src, spells in (('Game8', game8), ('sheet', sheet)):
+        for sp in spells:
+            r = sp['rank'] if sp['rank'] in SPELL_RANKS else 'D'
+            key = spell_key(sp['name'])
+            if key not in rank:
+                rank[key] = [sp['name'], r, src]
+            elif SPELL_RANKS.index(r) != SPELL_RANKS.index(rank[key][1]):
+                notes.append(f'{name} {school}: {sp["name"]} is rank {rank[key][1]} on Game8, {r} on the sheet')
+                if SPELL_RANKS.index(r) < SPELL_RANKS.index(rank[key][1]):
+                    rank[key][1] = r
+                rank[key][0] = sp['name']
+            else:
+                rank[key][0] = sp['name']
+    sheet_keys = {spell_key(sp['name']) for sp in sheet}
+    for key, (spell, r, src) in rank.items():
+        if src == 'Game8' and sheet and key not in sheet_keys:
+            notes.append(f'{name} {school}: {spell} ({r}) is on Game8 but not on the sheet; kept')
+    return sorted(({'name': n, 'rank': r} for n, r, _ in rank.values()), key=lambda sp: SPELL_RANKS.index(sp['rank']))
+
+
+def apply_spell_sheet(characters, weapons, heals):
+    """Complete every unit's spell list from the community sheet (Game8 lists most units' first spell or two only)."""
+    canon = {spell_key(w['name']): w['name'] for w in weapons if w['type'] in ('black', 'white')}
+    canon.update({spell_key(h['name']): h['name'] for h in heals})
+    names = {c['name'] for c in characters}
+    pages = fetch_many([(SHEET + gid, f'sheet_{tab}.csv') for gid, tab in SHEET_SPELL_TABS.values()])
+    notes, added = [], 0
+    for school, (_, tab) in SHEET_SPELL_TABS.items():
+        text = pages.get(f'sheet_{tab}.csv')
+        if not text:
+            continue
+        sheet = parse_spell_sheet(text, names, canon)
+        for c in characters:
+            if c['name'] not in sheet:
+                continue
+            old = (c.get('spells') or {}).get(school, [])
+            merged = merge_spells(c['name'], school, old, sheet[c['name']], notes)
+            added += len(merged) - len(old)
+            c.setdefault('spells', {})[school] = merged
+    for c in characters:   # black before white, as on Game8
+        if 'spells' in c:
+            c['spells'] = {school: c['spells'][school] for school in ('black', 'white') if school in c['spells']}
+    return added, notes
+
+
 def ols(xs, ys):
     n = len(xs)
     mx, my = sum(xs) / n, sum(ys) / n
@@ -821,12 +912,16 @@ def main():
     observed = clean_observed(observed, {c['name'] for c in classes}, set(g8_chars))
     print('characters...')
     characters, base_fit, n_fit = build_characters(sf_chars, g8_chars, index, classes, bases, genders)
+    print('spell lists...')
+    spells_added, spell_notes = apply_spell_sheet(characters, weapons, heals)
 
     meta = {
         'growths': 'serenesforest.net/fortunes-weave (primary), game8.co growth guide (growthsGame8 where they disagree)',
         'classes': 'game8.co class pages (tier, type, movement, weapons, bonuses, abilities)',
         'weapons': 'game8.co weapon lists, gaps filled from serenesforest.net',
         'abilities': 'game8.co character pages (personal ability, abilities learned by level, spell list)',
+        'spells': 'game8.co character pages, completed from the Reason and Faith tabs of a community spreadsheet '
+                  '(a spell either lists is kept, at the lower rank where they disagree)',
         'bases': 'fireemblemwiki.org CharStats; "estimated" bases come from a growth regression over %d low-level units' % n_fit,
         'enemies': 'fireemblemwiki.org chapter and boss pages',
     }
@@ -835,6 +930,9 @@ def main():
     dump('weapons.json', {'sources': meta, 'weapons': weapons, 'heals': heals})
     dump('enemies_observed.json', {'sources': meta, 'enemies': observed})
 
+    print(f'  {spells_added} spells added from the community sheet; {len(spell_notes)} disagreements with Game8:')
+    for note in spell_notes:
+        print(f'    {note}')
     wiki_n = sum(1 for c in characters if c['base']['source'] == 'wiki')
     print(f'{len(characters)} characters ({wiki_n} with wiki base stats), {len(classes)} classes, '
           f'{len(weapons)} weapons, {len(observed)} observed enemy stat lines')

@@ -101,10 +101,13 @@ function buildArsenal(mech, weapons, side) {
       if (w) list.push({ weapon: w, level: tier[side] });
     }
   }
-  for (const [name, unlock] of [...Object.entries(mech.arsenal.spells), ...Object.entries(mech.arsenal.thrown || {})]) {
-    if (name === 'note') continue;
-    const w = weapons.get(name);
-    if (w && unlock[side] != null) list.push({ weapon: w, level: unlock[side] });
+  for (const group of ['spells', 'thrown', 'magical']) {
+    for (const [name, unlock] of Object.entries(mech.arsenal[group] || {})) {
+      if (name === 'note') continue;
+      const w = weapons.get(name);
+      // `magical`: a weapon of a physical type that strikes as magic (left out by --no-magic-weapons).
+      if (w && unlock[side] != null) list.push({ weapon: w, level: unlock[side], magical: group === 'magical' });
+    }
   }
   return list;
 }
@@ -189,6 +192,9 @@ export function buildData(raw) {
     checkpoints: mechanics.checkpoints.list,
     playerArsenal: buildArsenal(mechanics, weapons, 'player'),
     enemyArsenal: buildArsenal(mechanics, weapons, 'enemy'),
+    // Spells any unit can learn from a scroll, whatever its own spell list.
+    scrolls: Object.entries(mechanics.arsenal.scrolls || {}).filter(([name]) => name !== 'note' && weapons.has(name))
+      .map(([name, unlock]) => ({ weapon: weapons.get(name), level: unlock.player })),
     sources: charFile.sources,
   };
 }

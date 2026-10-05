@@ -138,10 +138,25 @@ fitting weapon, as if it always attacked with an art. The art itself is not
 modelled, so the unit only earns that score if it does use its arts: `char` and
 `all` print the caveat, and the site shows it on the unit.
 
-**Spells.** A unit casts only the spells on its own spell list, at the skill
-rank the list gives, with the published number of uses per map (doubled or
-tripled by Seeker and Zenith class abilities). Eleven units have no published
-list yet and fall back to the standard spell lines.
+**Spells.** A unit casts the spells on its own spell list, at the skill rank
+the list gives, with the published number of uses per map (doubled or tripled
+by Seeker and Zenith class abilities). The lists are Game8's, completed from a
+community spreadsheet: Game8 gives most units their first spell or two only.
+Spells with no published stats (Bolting, Wandering Wall and the utility white
+magic) are listed but do nothing here.
+
+Three ways of playing can be switched off, each on by default:
+
+- **Scroll spells** (`--no-scrolls`). Any unit can be taught the dark spells
+  Mire, Death and Dark Spikes from a scroll, whatever its own list and skill
+  rank, once the scroll can be had (`arsenal.scrolls` in `mechanics.json`). A
+  scroll teaches one unit, so this is what one unit could have.
+- **Magic weapons** (`--no-magic-weapons`). The Levin Sword strikes with Mag
+  against Res and never runs out, so it gives sword classes magic damage and
+  gives a mage in a sword-wielding class an attack for when its spells are
+  spent.
+- **The cast limit** (`--no-cast-limit`). Without it attack spells do not run
+  out during a map, as if the unit rested between fights. Heals still do.
 
 **Combat.** Each exchange is resolved exactly (the full hit / crit / miss tree,
 no dice). Rules used: Atk = Str or Mag + Might, tripled or doubled Might for
@@ -222,8 +237,9 @@ holds the widths.
   could hold anything; that is not modelled. The legacy `duel` role still
   picks its enemy-phase weapon freely.
 - **Standard gear only**: wooden to silver weapons plus the thrown spears and
-  axes (Javelin to Pilum, Hand Axe to Sagaris), unlocked by level and skill
-  rank. No relics, special shop weapons, forging or combat arts.
+  axes (Javelin to Pilum, Hand Axe to Sagaris) and the Levin Sword (a sword
+  that strikes with Mag, so it counts as magic damage), unlocked by level and
+  skill rank. No relics, other special shop weapons, forging or combat arts.
 - **All learned abilities are active at once.** The game may limit how many can
   be equipped.
 
@@ -256,7 +272,8 @@ Node; keep Node imports out of `engine/` (a test checks).
 | Data | Source | State |
 |---|---|---|
 | Character growths | Serenes Forest, cross-checked with Game8 | 63 units |
-| Skill preferences, abilities, spell lists | Game8 character pages | 63 units; 52 spell lists |
+| Skill preferences, abilities | Game8 character pages | 63 units |
+| Spell lists | Game8 character pages, completed from the community spreadsheet's Reason and Faith tabs | 63 units; where the two disagree on a rank the lower is used, and the importer prints each disagreement |
 | Class growths, bonuses, type, weapons, exams | Serenes Forest and Game8 class pages | 59 classes; 13 have growths the two sites disagree on (flag `~`, Serenes Forest used) |
 | Weapons, magic and heals | Serenes Forest, Game8 | 122 weapons and spells, 5 heals |
 | Character base stats | Fire Emblem Wiki | 23 units; the other 40 are **estimated** from their growth rates (marked `*`) |

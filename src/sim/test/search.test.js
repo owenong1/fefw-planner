@@ -51,6 +51,11 @@ test('gear: only what the class wields, unlocked by level and skill rank, at mos
   assert.ok(names('Warrior', 40, flat(50)).includes('Sagaris'));
   assert.ok(!names('Warrior', 40, flat(10)).includes('Sagaris'));
   assert.ok(names('Dreadnought', 10, flat(10)).includes('Javelin'));
+  // So does the Levin Sword, the one magical weapon of a physical type (rank C, Lv20).
+  assert.ok(names('Warrior', 40, flat(50)).includes('Levin Sword'));
+  assert.ok(!names('Warrior', 40, flat(10)).includes('Levin Sword'));
+  assert.ok(!names('Warrior', 15, flat(50)).includes('Levin Sword'));
+  assert.ok(!names('Dreadnought', 40, flat(50)).includes('Levin Sword'));   // no swords
 });
 
 test('gear: spells come from the unit\'s own list, with limited casts doubled by Seeker', () => {
@@ -64,6 +69,26 @@ test('gear: spells come from the unit\'s own list, with limited casts doubled by
   const bishop = unitGear(data, unit('Tialla'), cls('Bishop'), 60, flat(60));
   assert.ok(bishop.heals.some((h) => h.heal.name === 'Recover'));
   assert.ok(!unitGear(data, unit('Tialla'), cls('Bishop'), 60, flat(5)).heals.some((h) => h.heal.name === 'Recover'));
+});
+
+test('gear: magic weapons, scroll spells and the cast limit can each be switched off', () => {
+  const names = (g) => g.weapons.map((w) => w.weapon.name);
+  const gear = (c, level, opts) => unitGear(data, unit('Cai'), cls(c), level, flat(60), opts);
+  assert.ok(!names(gear('Warrior', 40, { magicWeapons: false })).includes('Levin Sword'));
+  assert.ok(names(gear('Warrior', 40, { magicWeapons: false })).includes('Sagaris'));   // thrown weapons stay
+  // A scroll spell is on nobody's list but Fabio's, asks for no rank, and is known once the scroll can be had.
+  assert.ok(!unit('Cai').spellBook.some((sp) => sp.weapon && sp.weapon.name === 'Death Γ'));
+  assert.ok(names(gear('Druid', 40)).includes('Death Γ'));
+  assert.ok(names(unitGear(data, unit('Cai'), cls('Druid'), 40, flat(0))).includes('Death Γ'));
+  assert.ok(!names(gear('Druid', 20)).includes('Death Γ'));
+  assert.ok(!names(gear('Druid', 40)).includes('Dark Spikes T') && names(gear('Druid', 50)).includes('Dark Spikes T'));
+  assert.ok(!names(gear('Druid', 50, { scrolls: false })).some((n) => n === 'Death Γ' || n === 'Dark Spikes T' || n === 'Mire B'));
+  assert.ok(!names(gear('Warrior', 50)).includes('Death Γ'));                           // no black magic
+  assert.equal(names(unitGear(data, unit('Fabio'), cls('Druid'), 50, flat(60))).filter((n) => n === 'Death Γ').length, 1);
+  const thoron = (opts) => gear('Druid', 50, opts).weapons.find((w) => w.weapon.name === 'Thoron');
+  assert.ok(Number.isFinite(thoron().uses));
+  assert.equal(thoron({ castLimit: false }).uses, Infinity);
+  assert.ok(gear('Bishop', 50, { castLimit: false }).heals.every((h) => Number.isFinite(h.uses)));   // heals still run out
 });
 
 test('skill ranks follow exposure, faster in preferred skills and slower in non-ideal ones', () => {

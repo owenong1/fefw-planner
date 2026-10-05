@@ -12,7 +12,7 @@ import {
   aptitudeFit, canUseClass, classById, classPaths, combinedGrowths, isRecruitableOn, paralogueById, routeById, skillById,
   unitById, units,
 } from './index'
-import { bestRoles, buildView, normalizeWeights, rescore, standingsOver, type RoleResult, ARTS, PLANS, variantSuffix } from './pathModel'
+import { bestRoles, buildView, normalizeWeights, rescore, standingsOver, type RoleResult, ARTS, CAST_LIMIT, MAGIC_WEAPONS, PLANS, variantSuffix } from './pathModel'
 
 describe('data files match the schema', () => {
   it.each([
@@ -241,10 +241,10 @@ describe('class path variants', () => {
   const files = import.meta.glob<string>('../../data/{classPaths,pathCandidates}.*.json', { query: '?raw', import: 'default', eager: true })
   const last = classPaths.checkpoints.length - 1
   for (const plan of PLANS) {
-    for (const arts of ARTS) {
-      const suffix = variantSuffix(plan.id, arts.id)
+    for (const [arts, magic, limit] of ARTS.flatMap((a) => MAGIC_WEAPONS.flatMap((m) => CAST_LIMIT.map((l) => [a, m, l] as const)))) {
+      const suffix = variantSuffix(plan.id, arts.id, magic.id, limit.id)
       if (!suffix) continue
-      it(`${plan.label}, combat arts ${arts.label.toLowerCase()}`, () => {
+      it(`${plan.label}, combat arts ${arts.label.toLowerCase()}, magic weapons ${magic.label.toLowerCase()}, cast limit ${limit.label.toLowerCase()}`, () => {
         const paths = JSON.parse(files[`../../data/classPaths${suffix}.json`]) as ClassPaths
         const candidates = JSON.parse(files[`../../data/pathCandidates${suffix}.json`]) as PathCandidates
         expect(classPathsSchema.safeParse(paths).error?.issues ?? []).toEqual([])
@@ -255,6 +255,9 @@ describe('class path variants', () => {
         expect(paths.axes).toEqual(classPaths.axes)
         expect(paths.units.map((u) => u.unit)).toEqual(classPaths.units.map((u) => u.unit))
         expect(paths.scope.arts).toBe(!arts.id)
+        expect(paths.scope.magicWeapons).toBe(!magic.id)
+        expect(paths.scope.castLimit).toBe(!limit.id)
+        expect(paths.scope.scrolls).toBe(true)
         if (arts.id) expect(paths.units.flatMap((u) => u.caveats)).toEqual([])
         const start = Math.max(0, classPaths.checkpoints.findIndex((c) => c.id === plan.from))
         expect(start > 0).toBe(!!plan.id)
@@ -275,7 +278,8 @@ describe('class path variants', () => {
     }
   }
   it('the first variant is the one in the bundle', () => {
-    expect(variantSuffix(PLANS[0].id, ARTS[0].id)).toBe('')
-    expect(classPaths.scope.arts).toBe(true)
+    expect(variantSuffix(PLANS[0].id, ARTS[0].id, MAGIC_WEAPONS[0].id, CAST_LIMIT[0].id)).toBe('')
+    expect(variantSuffix('p2', 'noarts', 'nomagic', 'nolimit')).toBe('.p2.noarts.nomagic.nolimit')
+    expect(classPaths.scope).toMatchObject({ arts: true, magicWeapons: true, castLimit: true, scrolls: true })
   })
 })

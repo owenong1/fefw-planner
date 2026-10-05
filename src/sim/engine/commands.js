@@ -68,6 +68,12 @@ Options
   --divine           Also search Divine classes (one more decision late in Part III)
   --no-arts          Units never attack with combat arts: abilities that need one are not
                      counted (by default they count as if the unit always used an art)
+  --no-magic-weapons Units do not carry weapons that strike as magic (the Levin Sword), so a
+                     class without spells has no magic damage
+  --no-cast-limit    Attack spells do not run out during a map (by default each has its own
+                     number of casts, and an attack with no spell left counts for nothing)
+  --no-scrolls       Units know only their own spell list (by default every unit has also
+                     learned the scroll spells, such as Death, once they can be had)
   --role <name>      striker | mage | tank | magetank | mixedtank | healer (see "roles" in
                      src/sim/data/mechanics.json), or duel for the old single score (slow)
   --max-gap <n>      Largest exam shortfall, in skill ranks, a class change may have
@@ -89,7 +95,7 @@ Options
 
 function parseArgs(argv) {
   const opts = { _: [] };
-  const flags = new Set(['hard', 'divine', 'no-arts', 'free-reclass', 'json', 'help', 'watch']);
+  const flags = new Set(['hard', 'divine', 'no-arts', 'no-magic-weapons', 'no-cast-limit', 'no-scrolls', 'free-reclass', 'json', 'help', 'watch']);
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (!a.startsWith('--')) { opts._.push(a); continue; }
@@ -119,6 +125,7 @@ function searchOptions(data, args) {
   }
   return {
     route, role, hard: !!args.hard, divine: !!args.divine, arts: !args['no-arts'], maxGap,
+    magicWeapons: !args['no-magic-weapons'], castLimit: !args['no-cast-limit'], scrolls: !args['no-scrolls'],
     freeReclass: !!args['free-reclass'], from: args.from, to: args.to,
     offense: offenseOption(args.offense),
     detours: intOption(args.detours, undefined, 'detours'),
@@ -193,6 +200,9 @@ function scopeLine(ctx, opts) {
   const parts = [classes, `difficulty: ${opts.hard ? 'hard' : 'normal'}`];
   if (opts.divine) parts.push('divine classes on');
   if (opts.arts === false) parts.push('no combat arts');
+  if (opts.magicWeapons === false) parts.push('no magic weapons');
+  if (opts.castLimit === false) parts.push('no cast limit');
+  if (opts.scrolls === false) parts.push('no scroll spells');
   if (opts.detours != null) parts.push(`${opts.detours} sideways change(s)`);
   if (opts.freeReclass) parts.push('free reclassing');
   else if (opts.maxGap != null) parts.push(`exam gap up to ${opts.maxGap} rank(s)`);
@@ -693,7 +703,7 @@ async function cmdExport(data, args) {
   // late: the change is not made at its tier's usual level (shown as "Warrior (Lv38)" elsewhere).
   const stepsOut = (char, steps) => steps.map((s) => ({ name: s.name, level: s.level, late: s.level !== usual(s.name) && s.level !== char.base.level }));
   const out = {
-    scope: { route: opts.route, hard: opts.hard, divine: opts.divine, arts: opts.arts, runs: opts.runs },
+    scope: { route: opts.route, hard: opts.hard, divine: opts.divine, arts: opts.arts, magicWeapons: opts.magicWeapons, castLimit: opts.castLimit, scrolls: opts.scrolls, runs: opts.runs },
     counts: castCounts(data, rows, opts.arts),
     tiers: [...prog.tiers, ...(opts.divine ? [{ tier: 'divine', level: prog.divineLevel }] : [])],
     maxExamGap: opts.freeReclass ? null : opts.maxGap ?? mech.skills.maxExamGap.value,

@@ -137,7 +137,7 @@ const lineBuf = new Float64Array(N);
  */
 function profileAt(ctx, char, cls, mean, vari, level, expo, cpIndex, detail = false, median = false) {
   const { data } = ctx;
-  const gear = unitGear(data, char, cls, level, expo);
+  const gear = unitGear(data, char, cls, level, expo, ctx.opts);
   if (!vari) return profileExact(ctx, char, cls, level, expo, cpIndex, gear, mean, detail);
   if (median && !detail) return profileExact(ctx, char, cls, level, expo, cpIndex, gear, lineStats(mean, vari, NO_LUCK, lineBuf), false);
   const lines = linesFor(ctx, char);
@@ -570,7 +570,7 @@ export function rollPath(ctx, char, spec, opts = {}) {
   const levels = cps.map(({ cp }) => cp.playerLevel);
   const at = cps.map(({ cp, index }) => {
     const cls = classAt(segments, cp.playerLevel), expo = plan.exposureAt(cp.playerLevel);
-    return { cls, expo, index, level: cp.playerLevel, gear: unitGear(data, char, cls, cp.playerLevel, expo) };
+    return { cls, expo, index, level: cp.playerLevel, gear: unitGear(data, char, cls, cp.playerLevel, expo, ctx.opts) };
   });
   const rng = mulberry32(opts.seed ?? 12345);
   const campaign = new Float64Array(runs * NA), final = new Float64Array(runs * NA);

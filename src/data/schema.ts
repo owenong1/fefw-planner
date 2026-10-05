@@ -133,7 +133,10 @@ export type RolePath = z.infer<typeof rolePath>
 /** Growth simulator results (scripts/import/import_class_paths.py): each unit's recommended class path per role. */
 export const classPathsSchema = z.object({
   /** `arts`: abilities that need a combat art count, as if every attack were one; false leaves them out. */
-  scope: z.object({ route: z.string(), hard: z.boolean(), divine: z.boolean(), arts: z.boolean(), runs: z.number().int() }),
+  scope: z.object({
+    route: z.string(), hard: z.boolean(), divine: z.boolean(), arts: z.boolean(),
+    magicWeapons: z.boolean(), castLimit: z.boolean(), scrolls: z.boolean(), runs: z.number().int(),
+  }),
   /** How much went into the simulation and how firm it is. `basis` counts its rules by how well they are established. */
   counts: z.object({
     units: z.number().int(), classes: z.number().int(), weapons: z.number().int(), heals: z.number().int(),

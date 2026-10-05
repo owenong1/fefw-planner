@@ -315,6 +315,9 @@ export function CaveatsSection({ data, caveats }: { data: ClassPaths; caveats: s
       The search used {SCOPE_ROUTE[scope.route] ?? `classes on ${scope.route}'s route`}, {scope.hard ? 'hard' : 'normal'} difficulty,
       {scope.divine ? ' Divine classes included' : ' no Divine classes'}
       {!scope.arts && ', no combat arts'}
+      {!scope.magicWeapons && ', no magic weapons'}
+      {!scope.castLimit && ', no limit on spell casts'}
+      {!scope.scrolls && ', no scroll spells'}
       {scope.runs > 0 && `, with each role's leading paths replayed ${scope.runs} times with level-ups rolled`}.
     </>],
     ['Enemy stats are mostly modelled.', `Only ${counts.observedEnemies} enemy stat lines are published, none above Lv45. Out of sample the model is off by 3 to 7 points per stat, and Part III is extrapolation.`],

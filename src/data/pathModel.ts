@@ -22,8 +22,22 @@ export const ARTS = [
   { id: '', label: 'Always used' },
   { id: 'noarts', label: 'Never used' },
 ] as const
+/**
+ * Whether units carry the weapons that strike as magic (the Levin Sword): they give a sword class magic damage, and a
+ * mage in a class that wields swords an attack that never runs out.
+ */
+export const MAGIC_WEAPONS = [
+  { id: '', label: 'Carried' },
+  { id: 'nomagic', label: 'Not carried' },
+] as const
+/** Whether attack spells run out during a map, each after its own number of casts, or can be cast every time. */
+export const CAST_LIMIT = [
+  { id: '', label: 'Spells run out' },
+  { id: 'nolimit', label: 'Ignored' },
+] as const
 /** A variant's part of its file names: `classPaths<suffix>.json`. The first of each list is the file in the bundle. */
-export const variantSuffix = (plan: string, arts: string) => `${plan && `.${plan}`}${arts && `.${arts}`}`
+export const variantSuffix = (plan: string, arts: string, magic: string, limit: string) =>
+  [plan, arts, magic, limit].map((id) => id && `.${id}`).join('')
 
 /** One unit's path for a role and how it profiles: what the page needs of a `RolePath`, stored or re-scored. */
 export type RoleResult = Pick<RolePath, 'path' | 'train' | 'axes' | 'chapters'>
