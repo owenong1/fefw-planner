@@ -17,7 +17,7 @@ npm run import                     # regenerate data/*.json (Python 3, see below
 python3 scripts/import/fetch_portraits.py [--force]   # download unit icons into src/assets/portraits/ and class icons into src/assets/classes/
 npm run sim -- char Sofia          # the growth simulator from a terminal (`npm run sim help`; see below)
 npx vitest run src/sim             # the simulator's tests only
-npm run import:paths               # regenerate data/classPaths.json from the simulator (about a minute)
+npm run import:paths               # regenerate data/classPaths.json and data/pathCandidates.json from the simulator (about a minute)
 npm run import:sim-data            # rebuild the simulator's own data from its source sites (Python 3; --refresh re-downloads)
 ```
 
@@ -44,6 +44,7 @@ Game data flows one way:
 - Whole-cast commands search all 63 units, a few seconds each. `scripts/sim/cast.js` shares them over worker threads; `worker.ts` shares them over a pool of `castWorker.ts` web workers and caches finished runs. Both use `engine/castjob.js`.
 - Pages may import only `src/sim/client.ts` and `protocol.ts`. Importing anything under `engine/` or `data/` from a page pulls the whole simulator into the main bundle.
 - `data/classPaths.json` is the simulator's `export` at default settings, precomputed by `scripts/import/import_class_paths.py` with names rewritten as ids, so the Class Paths page and unit cards are instant and spoiler-aware. Re-run `npm run import:paths` after changing the engine or its data (extra flags pass through: `npm run import:paths -- --hard`).
+- The Class Paths page is the native port of the simulator's `visuals` page (`engine/visuals.template.html`): results, the explanation of how a number is made, charts, class value tables and role-weight sliders. Its arithmetic (standings over a chapter range, re-scoring a role with other weights) is `src/data/pathModel.ts`, which mirrors `rankCast` in `commands.js`; its sections are in `src/components/paths/`. The sliders re-score `data/pathCandidates.json` (each unit's candidate paths, about 5 MB, written by the same importer). That file is never imported as a module: the page fetches it by URL (`?url`) the first time a slider moves, and the test reads it as text.
 - The Simulator page sits behind a level-1 `SpoilerGate`, because its output is the simulator's own text and names Master classes and late-joining units throughout.
 - The engine's tests are in `src/sim/test/` (vitest, with `node:assert`). After a change to `commands.js` or a front end, also check a few commands from the terminal: the output there is what the site shows.
 

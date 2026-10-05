@@ -249,6 +249,7 @@ export function UnitDetailPage() {
             </div>
             <p className="mt-3 text-xs text-muted">
               Simulated against modelled enemies{paths.estimated && ', from estimated base stats'}. Scores compare units within a role, not roles with each other.
+              {paths.caveats.length > 0 && ` ${paths.caveats.join(' ')} The scores only hold if ${unit.name} is played that way.`}
             </p>
           </Card>
         </div>

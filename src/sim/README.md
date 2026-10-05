@@ -21,7 +21,7 @@ npm run sim -- char Sofia --role healer   # ranked paths for one role, chapter b
 npm run sim -- all                        # every unit: score and rank in each role, and its best-fit path (under a minute on 8 cores)
 npm run sim -- all --role tank            # one role's leaderboard
 npm run sim -- classes                    # which classes suit which role
-npm run sim -- export paths.json          # the `all` results as JSON for other tools (the planner site reads this)
+npm run sim -- export paths.json          # the `all` results and candidate paths as JSON (about 5 MB; the planner site reads this)
 npm run sim -- path Cai "Ornius Rider>Light Cavalry>Bardinger>Orichaldia"             # one path, chapter by chapter
 npm run sim -- path Cai "Ornius Rider>Light Cavalry>Bardinger>Orichaldia" --at P2-04  # the numbers behind one chapter
 npm run sim -- path Cai "Gladiator@5>Brigand@20>Warrior@38>Battlemaster@45"           # a path with its own change levels
@@ -128,9 +128,15 @@ level (Lv20 and Lv35 for most) are read from their in-game text. Plain combat,
 stat and healing modifiers are applied: for example Ursula's *Seize the Chance*
 (Lck/2 % chance to multiply damage by 1.3, then 1.5), Aswan's bow Hit+20,
 Theodora's 30% chance to halve damage, Sofia's +10 HP per heal. A "Trigger %"
-effect is applied at its average value. 81 of 170 abilities are scored this
-way; the rest depend on allies, positioning, combat arts or earlier fights in
+effect is applied at its average value. 86 of 170 abilities are scored this
+way; the rest depend on allies, positioning, Blaze arts or earlier fights in
 the map, and `char` lists them per unit as not scored.
+
+A bonus for attacking with a combat art (Inyoni's *Pierce*, Tobias's *Power
+Arts* and *All-Out Attack*) is counted in every fight the unit starts with a
+fitting weapon, as if it always attacked with an art. The art itself is not
+modelled, so the unit only earns that score if it does use its arts: `char` and
+`all` print the caveat, and the site shows it on the unit.
 
 **Spells.** A unit casts only the spells on its own spell list, at the skill
 rank the list gives, with the published number of uses per map (doubled or
@@ -200,7 +206,8 @@ holds the widths.
 
 ## What is not modeled
 
-Combat arts, Blaze arts, gambits, bloodmarks, mastery abilities, abilities
+Combat arts themselves (their might, hit and cost; only an ability's bonus for
+using one is counted), Blaze arts, gambits, bloodmarks, mastery abilities, abilities
 learned by skill rank, mounts (their growth bonuses and abilities such as
 Canto), shields, terrain, supports, stat caps, merging a unit's stats between
 routes, and Elephant Rider (its attack has no published stats). Ally buffs and

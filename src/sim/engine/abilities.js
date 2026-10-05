@@ -15,13 +15,19 @@ const PAIR = /((?:Hit|Avo|Crit|Atk|AS|Prt|Rsl|Shld|Ddg|Str|Mag|Spd|Dex|Def|Res|L
 
 // Text that makes an effect depend on things the simulator does not track.
 const NOT_SCORED = [
-  [/combat art|Blaze Art|Overblaze|staggering/i, 'needs combat arts'],
+  [/Blaze Art|Overblaze|staggering/i, 'needs Blaze arts or staggering blows'],
   [/adjacent all|allies within|to allies|target allies|all allies|for each adjacent ally|an adjacent ally/i, 'affects or depends on allies'],
   [/After (?:combat|defeating|using)|until (?:the end|unit|a unit)|When .* triggers|after .* triggers/i, 'builds up over a map'],
   [/status effect|is damaged|foe.s HP|avoids? an attack|Underworld|undead|obstacles|artillery|terrain|Diadem/i, 'situational'],
   [/attacks first during combat|unit attacks first\.? Trigger/i, 'changes strike order'],
   [/storage|move through|movement cost|Mov ?[-−]|Extends range|Rng ?\+|stat increase|levels up|leaves unit with 1 HP|cannot be countered|cannot suffer/i, 'utility'],
 ];
+
+// A bonus for attacking with a combat art is scored as if the unit always attacks
+// with one: it applies whenever the unit starts the fight. The art's own might,
+// hit and cost are not modelled. The ability carries the assumption (`assumes`)
+// so every front end can say that the unit has to use its arts to earn the score.
+const COMBAT_ART = /when attacking with (?:an? )?(?:(sword|axe|bow|spear|gauntlet|magic) )?combat arts?/i;
 
 const lower = (s) => s.toLowerCase();
 
@@ -70,6 +76,7 @@ function parseClause(clause, inherited) {
   if (/to magic during combat/i.test(clause)) e.weapon = 'magic';
   if (/adjacent foe\b/i.test(clause)) e.range = 1;
   if (/throwing a spear/i.test(clause)) { e.weapon = 'spear'; e.range = 2; }
+  if ((m = COMBAT_ART.exec(clause))) { e.phase = 1; if (m[1]) e.weapon = lower(m[1]); }
   if (/If foes? uses magic/i.test(clause)) e.foeMagic = true;
   if (/unit is effective against foe/i.test(clause)) e.effective = true;
   if ((m = /AS (?:≥|is greater than or equal to) foe.s AS ?\+ ?(\d+)/i.exec(clause))) e.asLead = +m[1];
@@ -104,13 +111,17 @@ function parseClause(clause, inherited) {
   return payload ? e : null;
 }
 
-/** Parse one ability's text. Returns { effects, reason } - `reason` set when nothing could be scored. */
+/**
+ * Parse one ability's text. Returns { effects, reason, assumes }: `reason` is set
+ * when nothing could be scored, `assumes` when the score takes a choice of the
+ * player's for granted (e.g. "attacks with bow combat arts").
+ */
 export function parseAbilityText(text) {
   const clean = text.replace(/[’]/g, "'").trim();
   // Healing bonuses mention allies but are scored (support axis).
   const healing = /When healing an ally with magic, (?:restores \+\d+ HP|reduces magic cost)/i.test(clean);
   if (!healing) {
-    for (const [re, reason] of NOT_SCORED) if (re.test(clean)) return { effects: [], reason };
+    for (const [re, reason] of NOT_SCORED) if (re.test(clean)) return { effects: [], reason, assumes: null };
   }
   // A standalone "Trigger % = ..." sentence applies to the whole ability.
   const global = /(?:^|\. ?)Trigger ?% ?=/.test(clean) ? parseTrigger(clean) : null;
@@ -125,8 +136,9 @@ export function parseAbilityText(text) {
     inherited = { phase: e.phase, weapon: e.weapon, type: e.type, cls: e.cls };
     effects.push(e);
   }
-  if (!effects.length) return { effects, reason: 'not a plain modifier' };
-  return { effects, reason: null };
+  if (!effects.length) return { effects, reason: 'not a plain modifier', assumes: null };
+  const art = COMBAT_ART.exec(clean);
+  return { effects, reason: null, assumes: art ? `attacks with ${art[1] ? `${lower(art[1])} ` : ''}combat arts` : null };
 }
 
 /**
@@ -134,7 +146,7 @@ export function parseAbilityText(text) {
  * "X+" replaces "X" once learned; "Changes the effect of X to grant +N" rewrites X.
  */
 export function prepareAbilities(char) {
-  const list = (char.abilities || []).map((a) => ({ ...a, replaces: [] }));
+  const list = (char.abilities || []).map((a) => ({ assumes: null, ...a, replaces: [] }));
   for (const a of list) {
     // An upgrade supersedes its base version: same name plus "+", or an explicit rewrite.
     if (a.name.endsWith('+') && list.some((b) => b.name === a.name.slice(0, -1))) a.replaces.push(a.name.slice(0, -1));
@@ -157,6 +169,19 @@ export function activeAbilities(char, level) {
   const have = char.abilityList.filter((a) => a.kind === 'personal' || a.level == null || a.level <= level);
   const replaced = new Set(have.flatMap((a) => a.replaces));
   return have.filter((a) => !replaced.has(a.name));
+}
+
+/**
+ * What a unit's score takes for granted about how it is played, one sentence
+ * per assumption: "Pierce and Pierce+ are counted as if Inyoni always attacks with bow combat arts."
+ */
+export function abilityCaveats(char) {
+  const by = new Map();
+  for (const a of char.abilityList) if (a.assumes && !a.reason) by.set(a.assumes, [...(by.get(a.assumes) || []), a.name]);
+  return [...by].map(([assumes, names]) => {
+    const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]} are` : `${names[0]} is`;
+    return `${list} counted as if ${char.name} always ${assumes}.`;
+  });
 }
 
 /** Class and movement restrictions that hold for the whole game. */

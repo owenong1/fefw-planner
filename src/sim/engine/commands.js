@@ -7,7 +7,7 @@ import { findByName, STATS, ROUTES, TIERS, SKILLS } from './data.js';
 import { createContext, searchPaths, rankPaths, rankRolled, evaluatePath, roleScore, roleNames, monteCarlo, classMarginals, decisionPlan } from './search.js';
 import { AXES, AXIS_LABEL } from './profile.js';
 import { rankAt, rankName } from './gear.js';
-import { activeAbilities } from './abilities.js';
+import { activeAbilities, abilityCaveats } from './abilities.js';
 
 /** A mistake in the command itself (unknown unit, bad option): reported, not a crash. */
 export class CommandError extends Error {}
@@ -43,8 +43,9 @@ Commands
   all                    Every unit: the role it fits best and the path for it
                          (add --role for one role's leaderboard)
   classes                Which classes help the most units, per tier and role
-  export [file]          The \`all\` results as self-describing JSON (roles, axes, every unit's
-                         path per role) for other tools to read; stdout when no file is given
+  export [file]          The \`all\` results as self-describing JSON (roles, axes, chapters, class
+                         value, every unit's path per role and its candidate paths) for other
+                         tools to read; stdout when no file is given
   refs                   The reference enemies every profile is measured against
   visuals                Write out/visuals.html: how every number is made, and the results,
                          colour-coded. Rebuilt from the data on every run (--out <file>,
@@ -225,6 +226,7 @@ function abilityLines(char) {
   const when = (a) => (a.kind === 'personal' ? 'personal' : a.level == null ? 'level not published, assumed learned' : `Lv${a.level}`);
   if (scored.length) lines.push(`Abilities scored:     ${scored.map((a) => `${a.name} (${when(a)}): ${a.text}`).join('\n                      ')}`);
   if (skipped.length) lines.push(`Abilities not scored: ${skipped.map((a) => `${a.name} - ${a.reason}`).join('; ')}`);
+  for (const c of abilityCaveats(char)) lines.push(`Caveat:               ${c} The arts themselves are not modelled.`);
   return lines;
 }
 
@@ -622,6 +624,8 @@ async function cmdAll(data, args) {
     }
   }
   print(`\n* base stats estimated (not published yet).  ${LEGEND}`);
+  const caveats = rows.flatMap((r) => abilityCaveats(r.char));
+  if (caveats.length) print(`Caveats: ${caveats.join(' ')}`);
   print(`Score and profile are campaign averages over the chapters a unit is present for${single ? '; vs cast is the score against the cast average in those same chapters, and sets the order' : ''}. ${NOTES}`);
   if (args.csv) {
     const extra = single ? [] : roles.flatMap((role) => [
@@ -634,9 +638,43 @@ async function cmdAll(data, args) {
   }
 }
 
-/** The `all` results with the role and axis definitions alongside, for other tools (the planner site) to read. */
+/** How much data went in and how firm it is, for the pages that explain the results. */
+function castCounts(data, rows) {
+  return {
+    units: rows.length, classes: data.classes.size, weapons: data.weapons.size, heals: data.heals.size,
+    observedEnemies: data.observed.length, paths: rows.reduce((n, r) => n + r.result.paths.length, 0),
+    estimatedBases: rows.filter((r) => r.char.base.source === 'estimated').length,
+    abilities: rows.reduce((n, r) => n + r.char.abilityList.length, 0),
+    abilitiesScored: rows.reduce((n, r) => n + r.char.abilityList.filter((a) => !a.reason).length, 0),
+    basis: basisCounts(data.mechanics),
+  };
+}
+
+/** The constants of the profile axes that their explanations quote. */
+function profileConstants(mech) {
+  return {
+    healBars: mech.profile.healBars.value, dance: mech.profile.dance.value, healDiv: mech.profile.healFormula.magDiv,
+    combatsPerMap: mech.profile.combatsPerMap.value, movFloor: mech.profile.movFloor, movCeil: mech.profile.movCeil, flyingMov: mech.profile.flyingMov,
+  };
+}
+
+/** classValue() per tier in tier order: each class's average gap to the best option per role, rounded by `round`. */
+function classTierList(data, ctx, rows, roles, round) {
+  return [...classValue(data, ctx, rows, roles)].sort((a, b) => TIERS.indexOf(a[0]) - TIERS.indexOf(b[0])).map(([tier, map]) => ({
+    tier, classes: [...map.values()].map((e) => ({
+      name: e.name, types: data.classes.get(e.name).types, mov: data.classes.get(e.name).mov,
+      roles: Object.fromEntries(roles.map((role) => [role, e.roles[role] ? { gap: round(e.roles[role].gap / e.roles[role].n), best: e.roles[role].best, n: e.roles[role].n } : null])),
+    })),
+  }));
+}
+
+/**
+ * The `all` results with everything needed to explain and re-weight them alongside, for other tools (the planner
+ * site) to read: role and axis definitions, the chapters, class value per tier, and each unit's candidate paths.
+ */
 async function cmdExport(data, args) {
   const { ctx, opts, rows, roles } = await rankCast(data, { ...args, json: !args._[1] });
+  const mech = data.mechanics;
   const prog = data.mechanics.progression;
   const usual = (name) => {
     const tier = data.classes.get(name).tier;
@@ -644,19 +682,42 @@ async function cmdExport(data, args) {
   };
   const r1 = (x) => Math.round(10 * x) / 10;
   const axes = shownAxes(ctx);
+  const cpIndex = new Map(data.checkpoints.map((cp, i) => [cp.id, i]));
+  // late: the change is not made at its tier's usual level (shown as "Warrior (Lv38)" elsewhere).
+  const stepsOut = (char, steps) => steps.map((s) => ({ name: s.name, level: s.level, late: s.level !== usual(s.name) && s.level !== char.base.level }));
   const out = {
     scope: { route: opts.route, hard: opts.hard, divine: opts.divine, runs: opts.runs },
+    counts: castCounts(data, rows),
+    tiers: [...prog.tiers, ...(opts.divine ? [{ tier: 'divine', level: prog.divineLevel }] : [])],
+    maxExamGap: opts.freeReclass ? null : opts.maxGap ?? mech.skills.maxExamGap.value,
+    profile: profileConstants(mech),
+    checkpoints: data.checkpoints.map((cp, i) => ({
+      id: cp.id, label: cp.label, playerLevel: cp.playerLevel, enemyLevel: cp.enemyLevel, bossLevel: cp.bossLevel ?? null,
+      refs: ctx.refs[i].map((e) => ({ archetype: e.archetype, class: e.cls.name })),
+    })),
+    classTiers: classTierList(data, ctx, rows, roles, r1),
     roles: roles.map((id) => ({ id, label: roleLabel(data, id), weights: data.mechanics.roles.list[id].weights })),
     axes: axes.map((a) => ({ id: a.name, label: AXIS_LABEL[a.name] })),
     units: rows.map((r) => ({
       unit: r.char.name, joinLevel: r.char.base.level, joinClass: r.char.base.class,
-      estimated: r.char.base.source === 'estimated', chapters: r.result.checkpoints.length, bestRole: r.role,
+      estimated: r.char.base.source === 'estimated', chapters: r.result.checkpoints.length, paths: r.result.paths.length,
+      // The paths that could lead under some weighting of the axes, so a reader can re-score a role with other weights.
+      // `ch` is the profile at every chapter the unit is present for, flattened (chapter * axes + axis), in tenths.
+      cands: weightCandidates(r.result.paths, axes, roles.map((role) => r.result.paths.indexOf(r.roles[role].rec.path))).map((pi) => {
+        const p = r.result.paths[pi];
+        return { path: stepsOut(r.char, p.steps), train: p.train, ch: evaluatePath(ctx, r.char, p.steps, opts).rows.flatMap((row) => axes.map((a) => Math.round(row.axes[a.i] * 10))) };
+      }),
+      // The unit is present from this checkpoint (an index into `checkpoints`) to the last one scored.
+      firstChapter: cpIndex.get(r.result.checkpoints[0].cp.id), bestRole: r.role,
+      // What the scores take for granted about how the unit is played.
+      caveats: abilityCaveats(r.char),
       roles: Object.fromEntries(roles.map((role) => {
         const e = r.roles[role];
         return [role, {
           rank: e.rank, vsCast: r1(e.vsCast), score: r1(e.rec.score), endgame: r1(e.rec.final), train: e.rec.train,
-          // late: the change is not made at its tier's usual level (shown as "Warrior (Lv38)" elsewhere).
-          path: e.rec.steps.map((s) => ({ name: s.name, level: s.level, late: s.level !== usual(s.name) && s.level !== r.char.base.level })),
+          // The role score at each chapter from firstChapter on, so a reader can compare part of the campaign.
+          chapters: e.chapters.map((c) => r1(c.score)),
+          path: stepsOut(r.char, e.rec.steps),
           axes: axes.map((a) => r1(e.rec.path.axes[a.i])),
         }];
       })),
@@ -770,29 +831,18 @@ async function visualsPayload(data, args) {
   const axes = shownAxes(ctx);
   const cpIndex = new Map(data.checkpoints.map((cp, i) => [cp.id, i]));
   const round = (x) => Math.round(x * 100) / 100;
-  const tiers = classValue(data, ctx, rows, roles);
   return {
     generated: new Date().toISOString(),
     seconds: 0,
     scope: scopeLine(ctx, opts),
-    counts: {
-      units: rows.length, classes: data.classes.size, weapons: data.weapons.size, heals: data.heals.size,
-      observedEnemies: data.observed.length, paths: rows.reduce((n, r) => n + r.result.paths.length, 0),
-      estimatedBases: rows.filter((r) => r.char.base.source === 'estimated').length,
-      abilities: rows.reduce((n, r) => n + r.char.abilityList.length, 0),
-      abilitiesScored: rows.reduce((n, r) => n + r.char.abilityList.filter((a) => !a.reason).length, 0),
-      basis: basisCounts(mech),
-    },
+    counts: castCounts(data, rows),
     roles: roles.map((id) => ({ id, label: roleLabel(data, id), weights: mech.roles.list[id].weights })),
     axes: axes.map((a) => ({ id: a.name, label: AXIS_LABEL[a.name] })),
     tolerance: mech.roles.tolerance.value,
     tiers: [...mech.progression.tiers, ...(opts.divine ? [{ tier: 'divine', level: mech.progression.divineLevel }] : [])],
     maxExamGap: opts.freeReclass ? null : opts.maxGap ?? mech.skills.maxExamGap.value,
     formulas: data.formulas,
-    profile: {
-      healBars: mech.profile.healBars.value, dance: mech.profile.dance.value, healDiv: mech.profile.healFormula.magDiv,
-      combatsPerMap: mech.profile.combatsPerMap.value, movFloor: mech.profile.movFloor, movCeil: mech.profile.movCeil, flyingMov: mech.profile.flyingMov,
-    },
+    profile: profileConstants(mech),
     checkpoints: data.checkpoints.map((cp, i) => ({
       ...cp, castAvg: Object.fromEntries(roles.map((role) => [role, castAvg[role].has(cp.id) ? round(castAvg[role].get(cp.id)) : null])),
       refs: ctx.refs[i].map((e) => ({ archetype: e.archetype, class: e.cls.name, magic: !!e.magic })),
@@ -823,12 +873,7 @@ async function visualsPayload(data, args) {
         }];
       })),
     })),
-    classTiers: [...tiers].sort((a, b) => TIERS.indexOf(a[0]) - TIERS.indexOf(b[0])).map(([tier, map]) => ({
-      tier, classes: [...map.values()].map((e) => ({
-        name: e.name, types: data.classes.get(e.name).types, mov: data.classes.get(e.name).mov,
-        roles: Object.fromEntries(roles.map((role) => [role, e.roles[role] ? { gap: round(e.roles[role].gap / e.roles[role].n), best: e.roles[role].best, n: e.roles[role].n } : null])),
-      })),
-    })),
+    classTiers: classTierList(data, ctx, rows, roles, round),
     seconds: Math.round((Date.now() - t0) / 1000),
   };
 }

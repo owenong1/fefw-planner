@@ -1,4 +1,4 @@
-"""Builds data/classPaths.json from the growth simulator's results.
+"""Builds data/classPaths.json and data/pathCandidates.json from the growth simulator's results.
 
 Usage: python3 scripts/import/import_class_paths.py [--from <export.json>] [simulator options]
 
@@ -7,6 +7,10 @@ every unit's class paths and recommends one per role. This runs its `export`
 command (about a minute; needs Node 18+) and rewrites unit and class names as
 this site's ids. `--from` reads an export made earlier instead of running it.
 Anything else is passed to the simulator, e.g. `--hard` or `--route cai`.
+
+The export's candidate paths (what the Class Paths page re-scores when a role's
+weights are edited) are several megabytes, so they go in a file of their own
+that the page only fetches when the weights are first changed.
 """
 import json
 import os
@@ -16,6 +20,7 @@ import tempfile
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 OUT = os.path.join(ROOT, 'data', 'classPaths.json')
+CANDIDATES = os.path.join(ROOT, 'data', 'pathCandidates.json')
 sys.path.insert(0, os.path.dirname(__file__))
 from import_sources import slug  # noqa: E402
 
@@ -59,23 +64,36 @@ def main():
             unknown.add(f'{kind} {name}')
         return slug(name)
 
-    units = []
+    def steps(path):
+        return [{'class': ref(s['name'], class_ids, 'class'), 'level': s['level'], 'late': s['late']} for s in path]
+
+    units, candidates = [], {}
     for u in export['units']:
-        roles = {}
-        for role, r in u['roles'].items():
-            path = [{'class': ref(s['name'], class_ids, 'class'), 'level': s['level'], 'late': s['late']} for s in r['path']]
-            roles[role] = {**r, 'path': path}
-        units.append({**u, 'unit': ref(u['unit'], unit_ids, 'unit'), 'joinClass': ref(u['joinClass'], class_ids, 'class'), 'roles': roles})
+        roles = {role: {**r, 'path': steps(r['path'])} for role, r in u['roles'].items()}
+        unit = ref(u['unit'], unit_ids, 'unit')
+        candidates[unit] = [{**c, 'path': steps(c['path'])} for c in u['cands']]
+        units.append({**{k: v for k, v in u.items() if k != 'cands'}, 'unit': unit, 'joinClass': ref(u['joinClass'], class_ids, 'class'), 'roles': roles})
+    checkpoints = [{**c, 'refs': [{'archetype': e['archetype'], 'class': ref(e['class'], class_ids, 'class')} for e in c['refs']]} for c in export['checkpoints']]
+    class_tiers = [{**t, 'classes': [{**{k: v for k, v in c.items() if k != 'name'}, 'class': ref(c['name'], class_ids, 'class')} for c in t['classes']]} for t in export['classTiers']]
     if unknown:
         sys.exit('The simulator names records this site does not have: ' + ', '.join(sorted(unknown)))
     units.sort(key=lambda u: u['unit'])
 
     # One unit per line, so a re-run shows up in a diff as the units that changed.
-    head = {k: export[k] for k in ('scope', 'roles', 'axes')}
-    lines = ',\n'.join('  ' + json.dumps(u, separators=(',', ':')) for u in units)
+    def line(x):
+        return json.dumps(x, separators=(',', ':'))
+
+    head = {**{k: export[k] for k in ('scope', 'counts', 'tiers', 'maxExamGap', 'profile', 'roles', 'axes')}, 'checkpoints': checkpoints, 'classTiers': class_tiers}
+    compact = {k: line(head[k]) for k in ('checkpoints', 'classTiers')}
+    text = json.dumps({k: (f'@@{k}@@' if k in compact else v) for k, v in head.items()}, indent=1)[:-2]
+    for k, rows in compact.items():
+        text = text.replace(f'"@@{k}@@"', '[\n' + ',\n'.join('  ' + line(x) for x in head[k]) + '\n ]')
     with open(OUT, 'w', encoding='utf-8') as f:
-        f.write(json.dumps(head, indent=1)[:-2] + ',\n "units": [\n' + lines + '\n ]\n}\n')
+        f.write(text + ',\n "units": [\n' + ',\n'.join('  ' + line(u) for u in units) + '\n ]\n}\n')
+    with open(CANDIDATES, 'w', encoding='utf-8') as f:
+        f.write('{\n "units": {\n' + ',\n'.join(f'  {json.dumps(k)}: {line(candidates[k])}' for k in sorted(candidates)) + '\n }\n}\n')
     print(f'Wrote {os.path.relpath(OUT, ROOT)}: {len(units)} units, {len(head["roles"])} roles')
+    print(f'Wrote {os.path.relpath(CANDIDATES, ROOT)}: {sum(len(c) for c in candidates.values())} candidate paths')
 
 
 if __name__ == '__main__':

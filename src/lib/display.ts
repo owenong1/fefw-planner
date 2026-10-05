@@ -10,6 +10,26 @@ export const ROUTE_COLOR: Record<string, string> = {
   leda: 'var(--route-leda)',
 }
 
+/** A role's colour on the Class Paths page. It follows the role's id, so a role keeps its colour wherever it appears. */
+export function roleColor(id: string) {
+  return ['striker', 'mage', 'tank', 'magetank', 'mixedtank', 'healer'].includes(id) ? `var(--role-${id})` : 'var(--muted)'
+}
+
+/** Background for a margin over the cast's average: blue above, red below, full strength at 15 points. */
+export function vsCastTint(v: number) {
+  return `color-mix(in oklab, var(${v >= 0 ? '--viz-pos' : '--viz-neg'}) ${Math.round(Math.min(Math.abs(v) / 15, 1) * 70)}%, var(--viz-mid))`
+}
+
+/** Background for a class's average gap to the best option at its tier (0 or below): full strength at 0, neutral at 6 points lost. */
+export function classFitTint(gap: number) {
+  return `color-mix(in oklab, var(--viz-pos) ${Math.round(Math.max(0, Math.min(1 + gap / 6, 1)) * 72)}%, var(--viz-mid))`
+}
+
+/** A signed number to one decimal, with a real minus sign and no sign on zero. */
+export function signed(x: number) {
+  return (x > 0.049 ? '+' : x < -0.049 ? '−' : '') + Math.abs(x).toFixed(1)
+}
+
 /** Stepped colour for a growth value so 30% and 60% read differently at a glance. */
 export function growthColor(v: number) {
   if (v <= 20) return 'var(--bad)'

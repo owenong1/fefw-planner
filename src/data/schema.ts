@@ -110,6 +110,8 @@ export const paralogueSchema = z.object({
 export type Paralogue = z.infer<typeof paralogueSchema>
 export type Route = z.infer<typeof routeSchema>
 
+const pathSteps = z.array(z.object({ class: z.string(), level: z.number().int(), late: z.boolean() }))
+
 const rolePath = z.object({
   /** Place among every unit in the cast for this role (1 = best), on vsCast. */
   rank: z.number().int().min(1),
@@ -117,10 +119,12 @@ const rolePath = z.object({
   vsCast: z.number(),
   score: z.number(),
   endgame: z.number(),
+  /** The role score at each story chapter the unit is present for, from the unit's `firstChapter` on. */
+  chapters: z.array(z.number()),
   /** Skill ranks the path's exams ask for beyond what its classes train. */
   train: z.number().min(0),
   /** Class changes in order. `late` marks a change not made at its tier's usual level. */
-  path: z.array(z.object({ class: z.string(), level: z.number().int(), late: z.boolean() })),
+  path: pathSteps,
   /** The profile on this path, one value (0-100) per entry of the file's `axes`. */
   axes: z.array(z.number()),
 })
@@ -129,6 +133,35 @@ export type RolePath = z.infer<typeof rolePath>
 /** Growth simulator results (scripts/import/import_class_paths.py): each unit's recommended class path per role. */
 export const classPathsSchema = z.object({
   scope: z.object({ route: z.string(), hard: z.boolean(), divine: z.boolean(), runs: z.number().int() }),
+  /** How much went into the simulation and how firm it is. `basis` counts its rules by how well they are established. */
+  counts: z.object({
+    units: z.number().int(), classes: z.number().int(), weapons: z.number().int(), heals: z.number().int(),
+    observedEnemies: z.number().int(), paths: z.number().int(), estimatedBases: z.number().int(),
+    abilities: z.number().int(), abilitiesScored: z.number().int(), basis: z.record(z.string(), z.number().int()),
+  }),
+  /** The level each class tier opens at. */
+  tiers: z.array(z.object({ tier: z.string(), level: z.number().int() })),
+  /** Largest exam shortfall, in skill ranks, a class change may have; null when reclassing was free. */
+  maxExamGap: z.number().nullable(),
+  /** Constants the axis explanations quote. */
+  profile: z.object({
+    healBars: z.number(), dance: z.number(), healDiv: z.number(), combatsPerMap: z.number(),
+    movFloor: z.number(), movCeil: z.number(), flyingMov: z.number(),
+  }),
+  /** The story chapters the simulator scores, in order, with the levels it expects and the enemies it measures against. */
+  checkpoints: z.array(z.object({
+    id: z.string(), label: z.string(),
+    playerLevel: z.number().int(), enemyLevel: z.number().int(), bossLevel: z.number().int().nullable(),
+    refs: z.array(z.object({ archetype: z.string(), class: z.string() })),
+  })),
+  /** Per tier and class: the points a unit loses on average (`gap`, 0 or below) by passing through it, and for how many of the `n` units that can take it it is the best option. */
+  classTiers: z.array(z.object({
+    tier: z.string(),
+    classes: z.array(z.object({
+      class: z.string(), types: z.array(z.string()), mov: z.number().int(),
+      roles: z.record(z.string(), z.object({ gap: z.number(), best: z.number().int(), n: z.number().int() }).nullable()),
+    })),
+  })),
   roles: z.array(z.object({ id: z.string(), label: z.string(), weights: z.record(z.string(), z.number()) })),
   axes: z.array(z.object({ id: z.string(), label: z.string() })),
   units: z.array(z.object({
@@ -139,9 +172,24 @@ export const classPathsSchema = z.object({
     estimated: z.boolean(),
     /** Story chapters the unit is present for, out of the 24 the simulator scores. */
     chapters: z.number().int(),
+    /** Class paths the search kept and compared for this unit. */
+    paths: z.number().int(),
+    /** Index into `checkpoints` of the first chapter the unit is present for; it stays to the last one. */
+    firstChapter: z.number().int().min(0),
     bestRole: z.string(),
+    /** What the scores take for granted about how the unit is played, e.g. that it attacks with combat arts. */
+    caveats: z.array(z.string()),
     roles: z.record(z.string(), rolePath),
   })),
 })
 export type ClassPaths = z.infer<typeof classPathsSchema>
 export type UnitPaths = ClassPaths['units'][number]
+
+/**
+ * Each unit's candidate paths (same importer): the ones that could lead under some weighting of the axes.
+ * `ch` is the profile at every chapter the unit is present for, flattened (chapter * axes + axis), in tenths.
+ */
+export const pathCandidatesSchema = z.object({
+  units: z.record(z.string(), z.array(z.object({ path: pathSteps, train: z.number().min(0), ch: z.array(z.number().int()) }))),
+})
+export type PathCandidates = z.infer<typeof pathCandidatesSchema>

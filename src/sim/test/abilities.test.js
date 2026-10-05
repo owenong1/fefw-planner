@@ -2,7 +2,7 @@ import { test } from 'vitest';
 import assert from 'node:assert/strict';
 import { loadData } from '../../../scripts/sim/load.js';
 import { STATS } from '../engine/data.js';
-import { parseAbilityText, activeAbilities, effectsAt, effectsFor } from '../engine/abilities.js';
+import { parseAbilityText, activeAbilities, abilityCaveats, effectsAt, effectsFor } from '../engine/abilities.js';
 import { makeLoadout, resolveRound } from '../engine/combat.js';
 
 const data = loadData();
@@ -30,7 +30,30 @@ test('parser: plain modifiers become effects, everything else is left unscored w
   near(oneOf.mods.hit, 10 / 3);
   assert.equal(parseAbilityText('Grants Def+3 to adjacent allies.').reason, 'affects or depends on allies');
   assert.equal(parseAbilityText('After defeating a foe, grants Spd +1 until the end of the map. (Max +10)').reason, 'builds up over a map');
-  assert.equal(parseAbilityText('Grants Atk +3 when attacking with a combat art,').reason, 'needs combat arts');
+  assert.equal(parseAbilityText('Deals +10 damage when attacking with Blaze Arts. Trigger % = 30.').reason, 'needs Blaze arts or staggering blows');
+  assert.equal(parseAbilityText('Grants Rng+1 when attacking with a bow combat art.').reason, 'utility');
+});
+
+test('a combat art bonus is scored as if the unit always attacks with one, and says so', () => {
+  const pierce = parseAbilityText('Grants Atk+2, Crit+5 when attacking with a bow combat art.');
+  assert.equal(pierce.reason, null);
+  assert.equal(pierce.assumes, 'attacks with bow combat arts');
+  assert.deepEqual([pierce.effects[0].phase, pierce.effects[0].weapon, pierce.effects[0].mods.atk, pierce.effects[0].mods.crit], [1, 'bow', 2, 5]);
+  assert.equal(parseAbilityText('Grants Atk +3 when attacking with a combat art,').assumes, 'attacks with combat arts');
+  assert.equal(parseAbilityText('When equipped with a bow, grants Hit+20.').assumes, null);
+
+  // It counts when the unit starts the fight with that weapon, and not when it is attacked.
+  const text = 'Grants Atk+4, Crit+10 when attacking with a bow combat art.';
+  const foe = build([100, 10, 0, 5, 0, 0, 0, 0, 0], {});
+  const archer = build([30, 10, 0, 5, 0, 0, 0, 0, 0], { type: 'bow', mt: 0 }, text);
+  const out = resolveRound(archer, foe, false, F, {});
+  assert.deepEqual([out.dmgI, out.critI], [14, 0.1]);
+  assert.equal(resolveRound(foe, archer, true, F, {}).dmgD, 10);
+  assert.equal(resolveRound(build([30, 10, 0, 5, 0, 0, 0, 0, 0], { type: 'axe', mt: 0 }, text), foe, false, F, {}).dmgI, 10);
+
+  assert.deepEqual(abilityCaveats(unit('Inyoni')), ['Pierce and Pierce+ are counted as if Inyoni always attacks with bow combat arts.']);
+  assert.equal(abilityCaveats(unit('Tobias')).length, 1);
+  assert.deepEqual(abilityCaveats(unit('Cai')), []);
 });
 
 test('every unit\'s abilities parse, and upgrades replace their base version', () => {

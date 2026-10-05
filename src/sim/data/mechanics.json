@@ -224,7 +224,8 @@
 
   "abilities": {
     "basis": "assumed",
-    "note": "Personal abilities and abilities learned by level are read from their in-game text (src/abilities.js). Every learned ability is assumed to be active at once (the game may limit equipped abilities). A 'Trigger %' effect is applied at its average value. Conditions on HP assume the unit is at full HP. Effects that depend on position, allies, combat arts, status effects or earlier combats in the map are not scored; `char` lists them.",
+    "note": "Personal abilities and abilities learned by level are read from their in-game text (src/abilities.js). Every learned ability is assumed to be active at once (the game may limit equipped abilities). A 'Trigger %' effect is applied at its average value. Conditions on HP assume the unit is at full HP. Effects that depend on position, allies, Blaze arts, status effects or earlier combats in the map are not scored; `char` lists them.",
+    "combatArts": { "note": "A bonus 'when attacking with a (bow) combat art' is counted in every fight the unit starts with a fitting weapon, as if it always attacked with a combat art. The art's own might, hit and cost are not modelled, so this is the ability's bonus alone, and the unit only earns it by using its arts; `char`, `all` and the site state that caveat. Affects Inyoni (Pierce) and Tobias (Power Arts, All-Out Attack)." },
     "adjacentAllies": { "value": 0, "note": "Allies assumed adjacent for 'for each adjacent ally' effects." }
   },
 
@@ -288,7 +289,7 @@
   },
 
   "notModeled": [
-    "Combat arts, Blaze arts, gambits/battalions and bloodmarks. Personal and level-up abilities are applied only where their text is a plain combat or healing modifier; the rest are listed per unit by `char`.",
+    "Combat arts themselves (only an ability's bonus for using one is counted, see 'abilities'), Blaze arts, gambits/battalions and bloodmarks. Personal and level-up abilities are applied only where their text is a plain combat or healing modifier; the rest are listed per unit by `char`.",
     "Mounts' bonus stats and growths, shields, terrain, supports, weapon forging and durability.",
     "Mastery abilities and abilities learned by skill rank (only always-on class abilities such as 'Axe Hit +5' are applied).",
     "Certification odds and the Arena: skill ranks are estimated from time spent in each class (see 'skills'), not simulated.",

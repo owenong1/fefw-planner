@@ -1,16 +1,18 @@
 import { describe, expect, it } from 'vitest'
 import { z } from 'zod'
+import type { PathCandidates } from './schema'
 import unitsJson from '../../data/units.json'
 import classesJson from '../../data/classes.json'
 import skillsJson from '../../data/skills.json'
 import routesJson from '../../data/routes.json'
 import paraloguesJson from '../../data/paralogues.json'
 import classPathsJson from '../../data/classPaths.json'
-import { classPathsSchema, classSchema, paralogueSchema, routeSchema, skillSchema, unitSchema } from './schema'
+import { classPathsSchema, pathCandidatesSchema, classSchema, paralogueSchema, routeSchema, skillSchema, unitSchema } from './schema'
 import {
   aptitudeFit, canUseClass, classById, classPaths, combinedGrowths, isRecruitableOn, paralogueById, routeById, skillById,
   unitById, units,
 } from './index'
+import { bestRoles, buildView, normalizeWeights, rescore, standingsOver, type RoleResult } from './pathModel'
 
 describe('data files match the schema', () => {
   it.each([
@@ -66,6 +68,8 @@ describe('references resolve', () => {
   for (const r of classPaths.roles) {
     for (const a of Object.keys(r.weights)) if (!axisIds.includes(a)) missing.push(`classPaths role ${r.id} → axis ${a}`)
   }
+  for (const c of classPaths.checkpoints) for (const e of c.refs) if (!classById.has(e.class)) missing.push(`classPaths ${c.id} → class ${e.class}`)
+  for (const t of classPaths.classTiers) for (const c of t.classes) if (!classById.has(c.class)) missing.push(`classPaths ${t.tier} → class ${c.class}`)
   for (const u of classPaths.units) {
     if (!unitById.has(u.unit)) missing.push(`classPaths → unit ${u.unit}`)
     if (!classById.has(u.joinClass)) missing.push(`classPaths ${u.unit}.joinClass → ${u.joinClass}`)
@@ -74,6 +78,7 @@ describe('references resolve', () => {
       const r = u.roles[id]
       if (!r) missing.push(`classPaths ${u.unit} has no ${id} path`)
       else if (r.axes.length !== axisIds.length) missing.push(`classPaths ${u.unit}.${id} has ${r.axes.length} axes`)
+      if (r && (r.chapters.length !== u.chapters || u.firstChapter + u.chapters !== classPaths.checkpoints.length)) missing.push(`classPaths ${u.unit}.${id} has ${r.chapters.length} chapter scores`)
       for (const s of r?.path ?? []) if (!classById.has(s.class)) missing.push(`classPaths ${u.unit}.${id} → class ${s.class}`)
     }
   }
@@ -142,5 +147,91 @@ describe('helpers', () => {
 
   it('rates aptitude fit from weapon requirements', () => {
     expect(aptitudeFit(unitById.get('peter')!, classById.get('sniper')!)).toBe('favored')
+  })
+})
+
+describe('class path standings and re-weighting', () => {
+  const { units, axes, roles, checkpoints } = classPaths
+  const last = checkpoints.length - 1
+  const stored = (role: string) => new Map<string, RoleResult>(units.map((u) => [u.unit, u.roles[role]]))
+  // Read as text: the file is several megabytes, too much to have the compiler infer a type for.
+  const raw = import.meta.glob<string>('../../data/pathCandidates.json', { query: '?raw', import: 'default', eager: true })
+  const candidates = JSON.parse(Object.values(raw)[0]) as PathCandidates
+
+  it('the candidates file matches the schema and the units', () => {
+    expect(pathCandidatesSchema.safeParse(candidates).error?.issues ?? []).toEqual([])
+    for (const u of units) {
+      const cands = candidates.units[u.unit]
+      expect(cands?.length, u.unit).toBeGreaterThan(0)
+      for (const c of cands) {
+        expect(c.ch.length, u.unit).toBe(u.chapters * axes.length)
+        for (const s of c.path) expect(classById.has(s.class), s.class).toBe(true)
+      }
+    }
+  })
+
+  it('agrees with the simulator over the whole campaign', () => {
+    for (const role of roles) {
+      const all = standingsOver(units, stored(role.id), 0, last)
+      expect(all.size).toBe(units.length)
+      for (const u of units) {
+        // Chapter scores are stored to one decimal, so the margin can differ from the simulator's by a rounding step.
+        expect(Math.abs(all.get(u.unit)!.vsCast - u.roles[role.id].vsCast)).toBeLessThan(0.15)
+        expect(all.get(u.unit)!.endgame).toBe(u.roles[role.id].chapters.at(-1))
+      }
+    }
+  })
+
+  it('leaves out units that have not joined yet and ranks the rest 1..n', () => {
+    const results = stored(roles[0].id)
+    const early = standingsOver(units, results, 0, 2)
+    const late = units.filter((u) => u.firstChapter > 2)
+    expect(late.length).toBeGreaterThan(0)
+    for (const u of late) expect(early.has(u.unit)).toBe(false)
+    expect([...early.values()].map((r) => r.rank).sort((a, b) => a - b)).toEqual(Array.from({ length: early.size }, (_, i) => i + 1))
+    // A single chapter's margins over the cast average sum to zero.
+    const one = [...standingsOver(units, results, last, last).values()]
+    expect(Math.abs(one.reduce((sum, r) => sum + r.vsCast, 0))).toBeLessThan(1e-6)
+    expect(one.every((r) => r.score === r.endgame)).toBe(true)
+  })
+
+  it('re-scoring a role with its own weights gives back nearly the simulator\'s scores', () => {
+    for (const role of roles) {
+      const again = rescore(axes, candidates, role.weights)
+      for (const u of units) {
+        const r = again.get(u.unit)!
+        expect(r.chapters.length).toBe(u.chapters)
+        const score = r.chapters.reduce((t, v) => t + v, 0) / r.chapters.length
+        // The simulator's pick is among the candidates, so the best candidate scores at least as well (to rounding).
+        expect(score, `${u.unit} ${role.id}`).toBeGreaterThan(u.roles[role.id].score - 0.5)
+      }
+    }
+  })
+
+  it('other weights move the ranking, and all-zero sliders are no weighting', () => {
+    const reach = normalizeWeights(axes, axes.map((a) => (a.id === 'reach' ? 40 : 0)))!
+    expect(reach).toEqual({ reach: 1 })
+    const results = rescore(axes, candidates, reach)
+    const index = axes.findIndex((a) => a.id === 'reach')
+    for (const u of units) {
+      const r = results.get(u.unit)!
+      expect(Math.max(...candidates.units[u.unit].map((c) => c.ch.filter((_, k) => k % axes.length === index).reduce((t, v) => t + v, 0) / u.chapters / 10)) - r.axes[index]).toBeLessThan(0.05)
+    }
+    expect(normalizeWeights(axes, axes.map(() => 0))).toBeNull()
+
+    // The page's view: an untouched role is the stored results, an edited one carries a like-for-like baseline.
+    const sliders = { [roles[0].id]: axes.map((a) => (a.id === 'reach' ? 40 : 0)) }
+    expect(buildView(classPaths, null, sliders, 0, last).roles[0].edited).toBe(false)
+    const view = buildView(classPaths, candidates, sliders, 0, last)
+    expect(view.roles[0].edited && view.roles[0].weights).toEqual({ reach: 1 })
+    expect(view.roles[0].baseline!.results.size).toBe(units.length)
+    expect(view.roles[1].edited || view.roles[1].baseline).toBeFalsy()
+    for (const u of units) expect(view.roles[1].standings.get(u.unit)!.rank).toBe(u.roles[roles[1].id].rank)
+    const own = buildView(classPaths, candidates, { [roles[0].id]: axes.map((a) => (roles[0].weights[a.id] ?? 0) * 100) }, 0, last)
+    expect(own.roles[0].edited).toBe(false)
+    expect(normalizeWeights(axes, axes.map((_, i) => (i < 2 ? 30 : 0)))).toEqual({ [axes[0].id]: 0.5, [axes[1].id]: 0.5 })
+    const standings = { a: standingsOver(units, stored(roles[0].id), 0, last), b: standingsOver(units, results, 0, last) }
+    const best = bestRoles(units, standings)
+    for (const u of units) expect(standings[best.get(u.unit) as 'a' | 'b'].get(u.unit)!.rank).toBe(Math.min(standings.a.get(u.unit)!.rank, standings.b.get(u.unit)!.rank))
   })
 })

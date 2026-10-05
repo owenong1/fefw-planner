@@ -38,6 +38,20 @@
   --route-dietrich: #3651b8;
   --route-theodora: #0f7a63;
   --route-leda: #b8326b;
+
+  /* Class Paths: one hue per role (identity), blue/red around a neutral for above/below the cast, one blue ramp for amounts. */
+  --role-striker: #eb6834;
+  --role-mage: #4a3aa7;
+  --role-tank: #1baf7a;
+  --role-magetank: #eda100;
+  --role-mixedtank: #e87ba4;
+  --role-healer: #008300;
+  --viz-pos: #2a78d6;
+  --viz-neg: #e34948;
+  --viz-mid: #eceae5;
+  --viz-1: #184f95;
+  --viz-2: #3987e5;
+  --viz-3: #9ec5f4;
   color-scheme: light;
 }
 
@@ -59,6 +73,19 @@
     --route-dietrich: #8ea2f2;
     --route-theodora: #4cc7a6;
     --route-leda: #f07aaa;
+
+    --role-striker: #d95926;
+    --role-mage: #9085e9;
+    --role-tank: #199e70;
+    --role-magetank: #c98500;
+    --role-mixedtank: #d55181;
+    --role-healer: #008300;
+    --viz-pos: #3987e5;
+    --viz-neg: #e66767;
+    --viz-mid: #302c27;
+    --viz-1: #86b6ef;
+    --viz-2: #3987e5;
+    --viz-3: #184f95;
     color-scheme: dark;
   }
 }
